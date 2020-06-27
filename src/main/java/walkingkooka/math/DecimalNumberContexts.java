@@ -16,12 +16,11 @@
  */
 package walkingkooka.math;
 
-import javaemul.internal.annotations.GwtIncompatible;
-import walkingkooka.reflect.PublicStaticHelper;
+import walkingkooka.reflect.*;
 
-import java.math.MathContext;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
+import java.math.*;
+import java.text.*;
+import java.util.*;
 
 /**
  * A collection of factory methods to create {@link DecimalNumberContext}.
@@ -31,7 +30,6 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
     /**
      * {@see AmericanDecimalNumberContext}
      */
-    @GwtIncompatible
     public static DecimalNumberContext american(final MathContext mathContext) {
         return AmericanDecimalNumberContext.with(mathContext);
     }
@@ -62,7 +60,6 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
     /**
      * {@see DecimalFormatSymbolsDecimalNumberContext}
      */
-    @GwtIncompatible
     public static DecimalNumberContext decimalFormatSymbols(final DecimalFormatSymbols symbols,
                                                             final char exponentSymbol,
                                                             final char positiveSign,
