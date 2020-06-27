@@ -97,8 +97,10 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
 
     @Override
     public Locale locale() {
-        return Locale.US;
+        return US;
     }
+
+    private final static Locale US = Locale.forLanguageTag("EN-US");
 
     @Override
     public MathContext mathContext() {
