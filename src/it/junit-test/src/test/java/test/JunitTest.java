@@ -40,7 +40,7 @@ public class JunitTest {
     public void testDateTimeContextBasic() {
         Assert.assertNotNull(DecimalNumberContexts.basic("$",
                 '.',
-                'E',
+                "E",
                 ',',
                 '-',
                 '%',
@@ -52,7 +52,6 @@ public class JunitTest {
     @Test
     public void testDateTimeContextDecimalFormatSymbols() {
         Assert.assertNotNull(DecimalNumberContexts.decimalFormatSymbols(DecimalFormatSymbols.getInstance(LOCALE),
-                'E',
                 '+',
                 LOCALE,
                 MATH_CONTEXT));
