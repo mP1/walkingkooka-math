@@ -76,7 +76,7 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
         final AmericanDecimalNumberContext context = AmericanDecimalNumberContext.with(mathContext);
         this.checkCurrencySymbol(context, "$");
         this.checkDecimalSeparator(context, '.');
-        this.checkExponentSymbol(context, 'E');
+        this.checkExponentSymbol(context, "E");
         this.checkGroupingSeparator(context, ',');
         this.checkNegativeSign(context, '-');
         this.checkPercentageSymbol(context, '%');
@@ -91,7 +91,7 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
 
     @Test
     public void testToString() {
-        this.toStringAndCheck(this.createContext(), "\"$\" '.' 'E' ',' '-' '%' '+' " + MATH_CONTEXT);
+        this.toStringAndCheck(this.createContext(), "\"$\" '.' \"E\" ',' '-' '%' '+' " + MATH_CONTEXT);
     }
 
     @Override
@@ -110,8 +110,8 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
     }
 
     @Override
-    public char exponentSymbol() {
-        return 'E';
+    public String exponentSymbol() {
+        return "E";
     }
 
     @Override

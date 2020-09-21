@@ -39,7 +39,7 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
      */
     public static DecimalNumberContext basic(final String currencySymbol,
                                              final char decimalSeparator,
-                                             final char exponentSymbol,
+                                             final String exponentSymbol,
                                              final char groupingSeparator,
                                              final char negativeSign,
                                              final char percentageSymbol,
@@ -61,12 +61,10 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
      * {@see DecimalFormatSymbolsDecimalNumberContext}
      */
     public static DecimalNumberContext decimalFormatSymbols(final DecimalFormatSymbols symbols,
-                                                            final char exponentSymbol,
                                                             final char positiveSign,
                                                             final Locale locale,
                                                             final MathContext mathContext) {
         return DecimalFormatSymbolsDecimalNumberContext.with(symbols,
-                exponentSymbol,
                 positiveSign,
                 locale,
                 mathContext);

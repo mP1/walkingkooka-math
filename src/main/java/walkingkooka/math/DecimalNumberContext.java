@@ -33,9 +33,9 @@ public interface DecimalNumberContext extends NumberContext, HasMathContext{
     char decimalSeparator();
 
     /**
-     * The exponentDigitSymbolCount
+     * The exponent symbol
      */
-    char exponentSymbol();
+    String exponentSymbol();
 
     /**
      * The grouping separator.

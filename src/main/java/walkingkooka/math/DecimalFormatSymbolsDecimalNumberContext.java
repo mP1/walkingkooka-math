@@ -31,32 +31,25 @@ import java.util.Objects;
 final class DecimalFormatSymbolsDecimalNumberContext implements DecimalNumberContext {
 
     static DecimalFormatSymbolsDecimalNumberContext with(final DecimalFormatSymbols symbols,
-                                                         final char exponentSymbol,
                                                          final char positiveSign,
                                                          final Locale locale,
                                                          final MathContext mathContext) {
         Objects.requireNonNull(symbols, "symbols");
         Objects.requireNonNull(locale, "locale");
         Objects.requireNonNull(mathContext, "mathContext");
-        if (exponentSymbol == positiveSign) {
-            throw new IllegalArgumentException("Exponent symbol == positive sign " + CharSequences.quoteIfChars(exponentSymbol));
-        }
 
         return new DecimalFormatSymbolsDecimalNumberContext(symbols,
-                exponentSymbol,
                 positiveSign,
                 locale,
                 mathContext);
     }
 
     private DecimalFormatSymbolsDecimalNumberContext(final DecimalFormatSymbols symbols,
-                                                     final char exponentSymbol,
                                                      final char positiveSign,
                                                      final Locale locale,
                                                      final MathContext mathContext) {
         super();
         this.symbols = symbols;
-        this.exponentSymbol = exponentSymbol;
         this.positiveSign = positiveSign;
         this.locale = locale;
         this.mathContext = mathContext;
@@ -73,11 +66,9 @@ final class DecimalFormatSymbolsDecimalNumberContext implements DecimalNumberCon
     }
 
     @Override
-    public char exponentSymbol() {
-        return this.exponentSymbol;
+    public String exponentSymbol() {
+        return this.symbols.getExponentSeparator();
     }
-
-    private final char exponentSymbol;
 
     @Override
     public char groupingSeparator() {

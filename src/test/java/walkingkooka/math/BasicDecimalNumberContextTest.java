@@ -36,7 +36,33 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testWithNullCurrencySymbol() {
         assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with(null,
                 '.',
-                'E',
+                "E",
+                ',',
+                '-',
+                '%',
+                '+',
+                LOCALE,
+                MATH_CONTEXT));
+    }
+
+    @Test
+    public void testWithNullExponentSymbol() {
+        assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with(null,
+                '.',
+                null,
+                ',',
+                '-',
+                '%',
+                '+',
+                LOCALE,
+                MATH_CONTEXT));
+    }
+
+    @Test
+    public void testWithEmptyExponentSymbol() {
+        assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with(null,
+                '.',
+                "",
                 ',',
                 '-',
                 '%',
@@ -49,7 +75,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testWithNullLocale() {
         assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with("$",
                 '.',
-                'E',
+                "E",
                 ',',
                 '-',
                 '%',
@@ -62,7 +88,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testWithNullMathContext() {
         assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with("$",
                 '.',
-                'E',
+                "E",
                 ',',
                 '-',
                 '%',
@@ -76,7 +102,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         final BasicDecimalNumberContext context = this.createContext();
         this.checkCurrencySymbol(context, "$");
         this.checkDecimalSeparator(context, '.');
-        this.checkExponentSymbol(context, 'E');
+        this.checkExponentSymbol(context, "E");
         this.checkGroupingSeparator(context, ',');
         this.checkNegativeSign(context, '-');
         this.checkPercentageSymbol(context, '%');
@@ -88,14 +114,14 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
 
     @Test
     public void testToString() {
-        this.toStringAndCheck(this.createContext(), "\"$\" '.' 'E' ',' '-' '%' '+' " + LOCALE + " " + MATH_CONTEXT);
+        this.toStringAndCheck(this.createContext(), "\"$\" '.' \"E\" ',' '-' '%' '+' " + LOCALE + " " + MATH_CONTEXT);
     }
 
     @Override
     public BasicDecimalNumberContext createContext() {
         return BasicDecimalNumberContext.with("$",
                 '.',
-                'E',
+                "E",
                 ',',
                 '-',
                 '%',
@@ -115,8 +141,8 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     }
 
     @Override
-    public char exponentSymbol() {
-        return 'E';
+    public String exponentSymbol() {
+        return "E";
     }
 
     @Override

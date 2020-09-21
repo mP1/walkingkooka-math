@@ -71,7 +71,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     char decimalSeparator();
 
-    char exponentSymbol();
+    String exponentSymbol();
 
     char groupingSeparator();
 
