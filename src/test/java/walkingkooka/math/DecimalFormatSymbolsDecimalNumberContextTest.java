@@ -36,17 +36,7 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
     @Test
     public void testWithNullSymbolFails() {
         assertThrows(NullPointerException.class, () -> DecimalFormatSymbolsDecimalNumberContext.with(null,
-                'E',
                 '+',
-                LOCALE,
-                MATH_CONTEXT));
-    }
-
-    @Test
-    public void testWithExponentAndPositiveSameFails() {
-        assertThrows(IllegalArgumentException.class, () -> DecimalFormatSymbolsDecimalNumberContext.with(this.decimalFormatSymbols(),
-                '?',
-                '?',
                 LOCALE,
                 MATH_CONTEXT));
     }
@@ -54,7 +44,6 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
     @Test
     public void testWithNullLocaleFails() {
         assertThrows(NullPointerException.class, () -> DecimalFormatSymbolsDecimalNumberContext.with(this.decimalFormatSymbols(),
-                'E',
                 '+',
                 null,
                 MATH_CONTEXT));
@@ -63,7 +52,6 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
     @Test
     public void testWithNullMathContextFails() {
         assertThrows(NullPointerException.class, () -> DecimalFormatSymbolsDecimalNumberContext.with(this.decimalFormatSymbols(),
-                'E',
                 '+',
                 LOCALE,
                 null));
@@ -75,7 +63,7 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
 
         this.checkCurrencySymbol(context, "¤");
         this.checkDecimalSeparator(context, '.');
-        this.checkExponentSymbol(context, 'E');
+        this.checkExponentSymbol(context, "E");
         this.checkGroupingSeparator(context, ',');
         this.checkNegativeSign(context, '-');
         this.checkPercentageSymbol(context, '%');
@@ -87,13 +75,12 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
 
     @Test
     public void testToString() {
-        this.toStringAndCheck(this.createContext(), "\"¤\" '.' 'E' ',' '-' '%' '+' fr_FR precision=7 roundingMode=HALF_EVEN");
+        this.toStringAndCheck(this.createContext(), "\"¤\" '.' \"E\" ',' '-' '%' '+' fr_FR precision=7 roundingMode=HALF_EVEN");
     }
 
     @Override
     public DecimalFormatSymbolsDecimalNumberContext createContext() {
         return DecimalFormatSymbolsDecimalNumberContext.with(this.decimalFormatSymbols(),
-                'E',
                 '+',
                 LOCALE,
                 MATH_CONTEXT);
@@ -114,8 +101,8 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
     }
 
     @Override
-    public char exponentSymbol() {
-        return 'E';
+    public String exponentSymbol() {
+        return "E";
     }
 
     @Override

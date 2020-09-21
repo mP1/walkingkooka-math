@@ -30,7 +30,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
 
     static BasicDecimalNumberContext with(final String currencySymbol,
                                           final char decimalSeparator,
-                                          final char exponentSymbol,
+                                          final String exponentSymbol,
                                           final char groupingSeparator,
                                           final char negativeSign,
                                           final char percentageSymbol,
@@ -38,6 +38,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
                                           final Locale locale,
                                           final MathContext mathContext) {
         Objects.requireNonNull(currencySymbol, "currencySymbol");
+        Objects.requireNonNull(exponentSymbol, "exponentSymbol");
         Objects.requireNonNull(locale, "locale");
         Objects.requireNonNull(mathContext, "mathContext");
 
@@ -54,7 +55,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
 
     private BasicDecimalNumberContext(final String currencySymbol,
                                       final char decimalSeparator,
-                                      final char exponentSymbol,
+                                      final String exponentSymbol,
                                       final char groupingSeparator,
                                       final char negativeSign,
                                       final char percentageSymbol,
@@ -90,11 +91,11 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     private final char decimalSeparator;
 
     @Override
-    public char exponentSymbol() {
+    public String exponentSymbol() {
         return this.exponentSymbol;
     }
 
-    private final char exponentSymbol;
+    private final String exponentSymbol;
 
     @Override
     public char groupingSeparator() {

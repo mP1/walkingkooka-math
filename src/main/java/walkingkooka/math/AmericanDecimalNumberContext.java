@@ -71,8 +71,8 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public char exponentSymbol() {
-        return 'E';
+    public String exponentSymbol() {
+        return "E";
     }
 
     @Override

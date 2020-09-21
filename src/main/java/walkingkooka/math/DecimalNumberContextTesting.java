@@ -34,7 +34,7 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         assertEquals(decimalSeparator, context.decimalSeparator(), "decimalSeparator");
     }
 
-    default void checkExponentSymbol(final DecimalNumberContext context, final char exponentSymbol) {
+    default void checkExponentSymbol(final DecimalNumberContext context, final String exponentSymbol) {
         assertEquals(exponentSymbol, context.exponentSymbol(), "exponentSymbol");
     }
 

@@ -33,7 +33,7 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public char exponentSymbol() {
+    public String exponentSymbol() {
         throw new UnsupportedOperationException();
     }
 
