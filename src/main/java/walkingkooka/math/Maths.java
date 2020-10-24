@@ -17,15 +17,28 @@
 
 package walkingkooka.math;
 
-import walkingkooka.NeverError;
-import walkingkooka.reflect.PublicStaticHelper;
+import walkingkooka.*;
+import walkingkooka.reflect.*;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Objects;
-import java.util.Optional;
+import java.math.*;
+import java.util.*;
 
 public final class Maths implements PublicStaticHelper {
+
+    /**
+     * Returns true if the given {@link Class type} is a JDK Number type and not a custom type.
+     * These are the same types supported by {@link NumberVisitor} and its visit methods.
+     */
+    public static boolean isNumber(final Class<?> type) {
+        return type == BigDecimal.class ||
+                type == BigInteger.class ||
+                type == Byte.class ||
+                type == Double.class ||
+                type == Float.class ||
+                type == Integer.class ||
+                type == Long.class ||
+                type == Short.class;
+    }
 
     /**
      * Attempts to convert the given {@link Number number} to a {@link BigDecimal}.
