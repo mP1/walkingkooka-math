@@ -17,21 +17,97 @@
 
 package walkingkooka.math;
 
-import org.junit.jupiter.api.Test;
-import walkingkooka.reflect.ClassTesting2;
-import walkingkooka.reflect.JavaVisibility;
-import walkingkooka.reflect.PublicStaticHelperTesting;
+import org.junit.jupiter.api.*;
+import walkingkooka.reflect.*;
 
-import java.lang.reflect.Method;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Arrays;
+import java.lang.reflect.*;
+import java.math.*;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public final class MathsTest implements ClassTesting2<Maths>,
         PublicStaticHelperTesting<Maths> {
+
+    @Test
+    public void testIsNumberByte() {
+        this.isNumberAndCheck(Byte.class);
+    }
+
+    @Test
+    public void testIsNumberShort() {
+        this.isNumberAndCheck(Short.class);
+    }
+
+    @Test
+    public void testIsNumberInteger() {
+        this.isNumberAndCheck(Integer.class);
+    }
+
+    @Test
+    public void testIsNumberLong() {
+        this.isNumberAndCheck(Long.class);
+    }
+
+    @Test
+    public void testIsNumberFloat() {
+        this.isNumberAndCheck(Float.class);
+    }
+
+    @Test
+    public void testIsNumberDouble() {
+        this.isNumberAndCheck(Double.class);
+    }
+
+    @Test
+    public void testIsNumberBigInteger() {
+        this.isNumberAndCheck(BigInteger.class);
+    }
+
+    @Test
+    public void testIsNumberBigDecimal() {
+        this.isNumberAndCheck(BigDecimal.class);
+    }
+
+    private void isNumberAndCheck(final Class<?> type) {
+        this.isNumberAndCheck(type, true);
+    }
+
+    @Test
+    public void testIsNumberNonJdkNumberType() {
+        this.isNumberAndCheck(new Number() {
+            private static final long serialVersionUID = 0;
+
+            @Override
+            public int intValue() {
+                return 0;
+            }
+
+            @Override
+            public long longValue() {
+                return 0;
+            }
+
+            @Override
+            public float floatValue() {
+                return 0;
+            }
+
+            @Override
+            public double doubleValue() {
+                return 0;
+            }
+        }.getClass(), false);
+    }
+
+    @Test
+    public void testIsNumberObject() {
+        this.isNumberAndCheck(this.getClass(), false);
+    }
+
+    private void isNumberAndCheck(final Class<?> type, final boolean expected) {
+        assertEquals(expected, Maths.isNumber(type), () -> type.getName());
+    }
 
     // toBigDecimalRoundingMode.........................................................................................
 
