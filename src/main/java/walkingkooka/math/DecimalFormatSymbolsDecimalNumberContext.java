@@ -18,7 +18,6 @@
 package walkingkooka.math;
 
 import walkingkooka.ToStringBuilder;
-import walkingkooka.text.CharSequences;
 
 import java.math.MathContext;
 import java.text.DecimalFormatSymbols;
