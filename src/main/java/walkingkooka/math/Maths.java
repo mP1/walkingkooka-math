@@ -17,11 +17,14 @@
 
 package walkingkooka.math;
 
-import walkingkooka.*;
-import walkingkooka.reflect.*;
+import walkingkooka.NeverError;
+import walkingkooka.reflect.PublicStaticHelper;
 
-import java.math.*;
-import java.util.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
+import java.util.Objects;
+import java.util.Optional;
 
 public final class Maths implements PublicStaticHelper {
 
