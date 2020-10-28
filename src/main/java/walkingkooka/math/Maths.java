@@ -32,7 +32,7 @@ public final class Maths implements PublicStaticHelper {
      * Returns true if the given {@link Class type} is a JDK Number type and not a custom type.
      * These are the same types supported by {@link NumberVisitor} and its visit methods.
      */
-    public static boolean isNumber(final Class<?> type) {
+    public static boolean isNumberClass(final Class<?> type) {
         return type == BigDecimal.class ||
                 type == BigInteger.class ||
                 type == Byte.class ||

@@ -35,52 +35,52 @@ public final class MathsTest implements ClassTesting2<Maths>,
         PublicStaticHelperTesting<Maths> {
 
     @Test
-    public void testIsNumberByte() {
-        this.isNumberAndCheck(Byte.class);
+    public void testIsNumberObjectByte() {
+        this.isNumberClassAndCheck(Byte.class);
     }
 
     @Test
-    public void testIsNumberShort() {
-        this.isNumberAndCheck(Short.class);
+    public void testIsNumberObjectShort() {
+        this.isNumberClassAndCheck(Short.class);
     }
 
     @Test
-    public void testIsNumberInteger() {
-        this.isNumberAndCheck(Integer.class);
+    public void testIsNumberObjectInteger() {
+        this.isNumberClassAndCheck(Integer.class);
     }
 
     @Test
-    public void testIsNumberLong() {
-        this.isNumberAndCheck(Long.class);
+    public void testIsNumberObjectLong() {
+        this.isNumberClassAndCheck(Long.class);
     }
 
     @Test
-    public void testIsNumberFloat() {
-        this.isNumberAndCheck(Float.class);
+    public void testIsNumberObjectFloat() {
+        this.isNumberClassAndCheck(Float.class);
     }
 
     @Test
-    public void testIsNumberDouble() {
-        this.isNumberAndCheck(Double.class);
+    public void testIsNumberObjectDouble() {
+        this.isNumberClassAndCheck(Double.class);
     }
 
     @Test
-    public void testIsNumberBigInteger() {
-        this.isNumberAndCheck(BigInteger.class);
+    public void testIsNumberObjectBigInteger() {
+        this.isNumberClassAndCheck(BigInteger.class);
     }
 
     @Test
-    public void testIsNumberBigDecimal() {
-        this.isNumberAndCheck(BigDecimal.class);
+    public void testIsNumberObjectBigDecimal() {
+        this.isNumberClassAndCheck(BigDecimal.class);
     }
 
     private void isNumberAndCheck(final Class<?> type) {
-        this.isNumberAndCheck(type, true);
+        this.isNumberClassAndCheck(type, true);
     }
 
     @Test
-    public void testIsNumberNonJdkNumberType() {
-        this.isNumberAndCheck(new Number() {
+    public void testIsNumberObjectNonJdkNumberType() {
+        this.isNumberClassAndCheck(new Number() {
             private static final long serialVersionUID = 0;
 
             @Override
@@ -106,12 +106,16 @@ public final class MathsTest implements ClassTesting2<Maths>,
     }
 
     @Test
-    public void testIsNumberObject() {
-        this.isNumberAndCheck(this.getClass(), false);
+    public void testIsNumberClassObject() {
+        this.isNumberClassAndCheck(this.getClass(), false);
     }
 
-    private void isNumberAndCheck(final Class<?> type, final boolean expected) {
-        assertEquals(expected, Maths.isNumber(type), () -> type.getName());
+    private void isNumberClassAndCheck(final Class<?> type) {
+        this.isNumberClassAndCheck(type, true);
+    }
+
+    private void isNumberClassAndCheck(final Class<?> type, final boolean expected) {
+        assertEquals(expected, Maths.isNumberClass(type), () -> type.getName());
     }
 
     // toBigDecimalRoundingMode.........................................................................................
