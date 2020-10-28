@@ -29,6 +29,13 @@ import java.util.Optional;
 public final class Maths implements PublicStaticHelper {
 
     /**
+     * Returns true if the given {@link Object} is a number as defined by {@link #isNumberClass(Class)}.
+     */
+    public static boolean isNumber(final Object value) {
+        return null != value && isNumberClass(value.getClass());
+    }
+
+    /**
      * Returns true if the given {@link Class type} is a JDK Number type and not a custom type.
      * These are the same types supported by {@link NumberVisitor} and its visit methods.
      */
