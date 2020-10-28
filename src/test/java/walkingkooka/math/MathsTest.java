@@ -79,10 +79,6 @@ public final class MathsTest implements ClassTesting2<Maths>,
         this.isNumberAndCheck(BigDecimal.ONE);
     }
 
-    private void isNumberAndCheck(final Class<?> type) {
-        this.isNumberAndCheck(type, true);
-    }
-
     @Test
     public void testIsNumberNonJdkNumberType() {
         this.isNumberAndCheck(new Number() {
