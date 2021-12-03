@@ -154,7 +154,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
         final String prefix = "prefix-123";
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
                 .prefix(prefix);
-        assertEquals(prefix, b.prefix, "prefix");
+        this.checkEquals(prefix, b.prefix, "prefix");
     }
 
     @Test
@@ -163,7 +163,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
                 .prefix("last")
                 .prefix(prefix);
-        assertEquals(prefix, b.prefix, "prefix");
+        this.checkEquals(prefix, b.prefix, "prefix");
     }
 
     @Test
@@ -175,7 +175,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
                     b.digit();
 
                     final DecimalFormat decimalFormat = b.build();
-                    assertEquals(r, decimalFormat.getRoundingMode());
+                    this.checkEquals(r, decimalFormat.getRoundingMode());
                 });
     }
 
@@ -189,7 +189,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
         final String suffix = "suffix-123";
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
                 .suffix(suffix);
-        assertEquals(suffix, b.suffix, "suffix");
+        this.checkEquals(suffix, b.suffix, "suffix");
     }
 
     @Test
@@ -198,7 +198,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
                 .suffix("lost")
                 .suffix(suffix);
-        assertEquals(suffix, b.suffix, "suffix");
+        this.checkEquals(suffix, b.suffix, "suffix");
     }
 
     @Test
@@ -329,7 +329,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     private void buildAndFormat(final DecimalFormatBuilder builder,
                                 final Number number,
                                 final String text) {
-        assertEquals(text, builder.build().format(number), () -> "format " + number + " using " + builder);
+        this.checkEquals(text, builder.build().format(number), () -> "format " + number + " using " + builder);
     }
 
     // toString..........................................................................................................

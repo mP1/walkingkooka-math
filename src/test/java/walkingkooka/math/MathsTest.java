@@ -28,7 +28,6 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class MathsTest implements ClassTesting2<Maths>,
@@ -116,10 +115,10 @@ public final class MathsTest implements ClassTesting2<Maths>,
     }
 
     private void isNumberAndCheck(final Object value, final boolean expected) {
-        assertEquals(expected, Maths.isNumber(value));
+        this.checkEquals(expected, Maths.isNumber(value));
 
         final Class<?> type = null != value ? value.getClass() : null;
-        assertEquals(expected, Maths.isNumberClass(type));
+        this.checkEquals(expected, Maths.isNumberClass(type));
     }
 
     // toBigDecimalRoundingMode.........................................................................................
@@ -171,7 +170,7 @@ public final class MathsTest implements ClassTesting2<Maths>,
 
     @Test
     public void testSevenRoundModeConstants() {
-        assertEquals(8,
+        this.checkEquals(8,
                 RoundingMode.values().length,
                 () -> Arrays.toString(RoundingMode.values()));
     }
@@ -183,9 +182,9 @@ public final class MathsTest implements ClassTesting2<Maths>,
         }
     }
 
-    private static void toBigDecimalRoundingModeAndCheck(final RoundingMode mode,
-                                                         final int bigDecimal) {
-        assertEquals(bigDecimal,
+    private void toBigDecimalRoundingModeAndCheck(final RoundingMode mode,
+                                                  final int bigDecimal) {
+        this.checkEquals(bigDecimal,
                 Maths.toBigDecimalRoundingMode(mode),
                 () -> "" + mode + " toBigDecimalRoundingMode ");
     }
