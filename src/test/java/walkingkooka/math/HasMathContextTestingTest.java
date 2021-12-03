@@ -40,6 +40,6 @@ public final class HasMathContextTestingTest implements HasMathContextTesting {
         } catch (final AssertionFailedError expected) {
             failed = true;
         }
-        assertEquals(true, failed);
+        this.checkEquals(true, failed);
     }
 }

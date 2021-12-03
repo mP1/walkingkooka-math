@@ -27,30 +27,30 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         HasMathContextTesting {
 
     default void checkCurrencySymbol(final DecimalNumberContext context, final String currencySymbol) {
-        assertEquals(currencySymbol, context.currencySymbol(), "currencySymbol");
+        this.checkEquals(currencySymbol, context.currencySymbol(), "currencySymbol");
     }
 
     default void checkDecimalSeparator(final DecimalNumberContext context, final char decimalSeparator) {
-        assertEquals(decimalSeparator, context.decimalSeparator(), "decimalSeparator");
+        this.checkEquals(decimalSeparator, context.decimalSeparator(), "decimalSeparator");
     }
 
     default void checkExponentSymbol(final DecimalNumberContext context, final String exponentSymbol) {
-        assertEquals(exponentSymbol, context.exponentSymbol(), "exponentSymbol");
+        this.checkEquals(exponentSymbol, context.exponentSymbol(), "exponentSymbol");
     }
 
     default void checkGroupingSeparator(final DecimalNumberContext context, final char groupingSeparator) {
-        assertEquals(groupingSeparator, context.groupingSeparator(), "groupingSeparator");
+        this.checkEquals(groupingSeparator, context.groupingSeparator(), "groupingSeparator");
     }
 
     default void checkNegativeSign(final DecimalNumberContext context, final char negativeSign) {
-        assertEquals(negativeSign, context.negativeSign(), "negativeSign");
+        this.checkEquals(negativeSign, context.negativeSign(), "negativeSign");
     }
 
     default void checkPercentageSymbol(final DecimalNumberContext context, final char percentageSymbol) {
-        assertEquals(percentageSymbol, context.percentageSymbol(), "percentageSymbol");
+        this.checkEquals(percentageSymbol, context.percentageSymbol(), "percentageSymbol");
     }
 
     default void checkPositiveSign(final DecimalNumberContext context, final char positiveSign) {
-        assertEquals(positiveSign, context.positiveSign(), "positiveSign");
+        this.checkEquals(positiveSign, context.positiveSign(), "positiveSign");
     }
 }

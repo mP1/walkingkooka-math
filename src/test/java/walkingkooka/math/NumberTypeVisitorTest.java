@@ -55,7 +55,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test
@@ -90,7 +90,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test
@@ -125,7 +125,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test
@@ -160,7 +160,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test
@@ -195,7 +195,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test
@@ -230,7 +230,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test
@@ -265,7 +265,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test
@@ -300,7 +300,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test
@@ -336,7 +336,7 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
                 b.append("3");
             }
         }.accept(type);
-        assertEquals("132", b.toString());
+        this.checkEquals("132", b.toString());
     }
 
     @Test

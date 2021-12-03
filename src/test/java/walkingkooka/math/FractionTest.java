@@ -54,8 +54,8 @@ public final class FractionTest implements ClassTesting2<Fraction>,
     @Test
     public void testWith() {
         final Fraction fraction = Fraction.with(NUMERATOR, DENOMINATOR);
-        assertEquals(NUMERATOR, fraction.numerator(), "numerator");
-        assertEquals(DENOMINATOR, fraction.denominator(), "denominator");
+        this.checkEquals(NUMERATOR, fraction.numerator(), "numerator");
+        this.checkEquals(DENOMINATOR, fraction.denominator(), "denominator");
     }
 
     @Test
