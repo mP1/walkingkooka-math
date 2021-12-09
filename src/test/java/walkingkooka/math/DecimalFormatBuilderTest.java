@@ -135,6 +135,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
         this.textAndCheck(b, "##;00");
     }
 
+    @Test
     public void testNegativeSubPatternTwiceFails() {
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
                 .digit()
