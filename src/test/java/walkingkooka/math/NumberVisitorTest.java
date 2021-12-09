@@ -24,7 +24,6 @@ import walkingkooka.visit.Visiting;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public final class NumberVisitorTest implements NumberVisitorTesting<NumberVisitor> {

@@ -18,8 +18,6 @@ package walkingkooka.math;
 
 import walkingkooka.locale.HasLocaleTesting;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 /**
  * Mixing testing interface for {@link DecimalNumberContext}
  */

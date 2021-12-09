@@ -21,8 +21,6 @@ import walkingkooka.test.Testing;
 
 import java.math.MathContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public interface HasMathContextTesting extends Testing {
 
     default void hasMathContextAndCheck(final HasMathContext has, final MathContext mathContext) {

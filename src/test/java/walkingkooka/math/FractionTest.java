@@ -25,7 +25,6 @@ import walkingkooka.reflect.JavaVisibility;
 
 import java.math.BigInteger;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class FractionTest implements ClassTesting2<Fraction>,
