@@ -24,8 +24,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public final class MathsToBigDecimalNumberVisitorTest implements NumberVisitorTesting<MathsToBigDecimalNumberVisitor> {
 
     @Test

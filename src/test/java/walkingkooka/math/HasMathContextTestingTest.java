@@ -22,8 +22,6 @@ import org.opentest4j.AssertionFailedError;
 
 import java.math.MathContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public final class HasMathContextTestingTest implements HasMathContextTesting {
 
     @Test
