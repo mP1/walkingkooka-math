@@ -51,6 +51,82 @@ public final class Maths implements PublicStaticHelper {
     }
 
     /**
+     * Rounds the given double using the provided {@link RoundingMode}. Note NAN or INIFINITE values are returned as is.
+     */
+    public static double round(final double value,
+                               final RoundingMode roundingMode) {
+        Objects.requireNonNull(roundingMode, "roundingMode");
+
+        return Double.isFinite(value) ?
+                roundFinite(value, roundingMode) :
+                value;
+    }
+
+    private static double roundFinite(final double value,
+                                      final RoundingMode roundingMode) {
+        double rounded = value;
+
+        switch (roundingMode) {
+            case UP:
+                rounded = Math.ceil(
+                        Math.abs(value)
+                );
+
+                rounded = value < 0 ? -rounded : rounded;
+                break;
+            case DOWN:
+                rounded = Math.floor(
+                        Math.abs(value)
+                );
+
+                rounded = value < 0 ? -rounded : rounded;
+                break;
+            case CEILING:
+                rounded = Math.ceil(value);
+                break;
+            case FLOOR:
+                rounded = Math.floor(value);
+                break;
+            case HALF_UP:
+                rounded = halfUp(value);
+                break;
+            case HALF_DOWN:
+                rounded = halfDown(value);
+                break;
+            case HALF_EVEN:
+                rounded = ((((long) value) & 1) == 1) ?
+                        halfUp(value) :
+                        halfDown(value);
+                break;
+            case UNNECESSARY:
+                rounded = Math.floor(value);
+                if (rounded != value) {
+                    throw new IllegalArgumentException("Invalid value " + value);
+                }
+                break;
+            default:
+                NeverError.unhandledEnum(roundingMode, RoundingMode.values());
+        }
+
+        return rounded;
+    }
+
+    private static double halfDown(final double value) {
+        final double rounded = Math.ceil(
+                Math.abs(value) - 0.5
+        );
+
+        return value < 0 ? -rounded : rounded;
+    }
+
+    private static double halfUp(final double value) {
+        double rounded = Math.round(
+                Math.abs(value)
+        );
+        return value < 0 ? -rounded : rounded;
+    }
+
+    /**
      * Attempts to convert the given {@link Number number} to a {@link BigDecimal}.
      */
     public static Optional<BigDecimal> toBigDecimal(final Number value) {
