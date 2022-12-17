@@ -136,6 +136,7 @@ public final class Maths implements PublicStaticHelper {
     /**
      * Converts a {@link RoundingMode} to equivalent {@link BigDecimal} rounding constant.
      */
+    @SuppressWarnings("deprecation")
     public static int toBigDecimalRoundingMode(final RoundingMode mode) {
         Objects.requireNonNull(mode, "RoundingMode");
 

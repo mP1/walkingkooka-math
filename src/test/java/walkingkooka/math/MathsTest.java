@@ -903,44 +903,76 @@ public final class MathsTest implements ClassTesting2<Maths>,
         assertThrows(NullPointerException.class, () -> Maths.toBigDecimalRoundingMode(null));
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testToBigDecimalRoundingModeCeiling() {
-        this.toBigDecimalRoundingModeAndCheck(RoundingMode.CEILING, BigDecimal.ROUND_CEILING);
+        this.toBigDecimalRoundingModeAndCheck(
+                RoundingMode.CEILING,
+                BigDecimal.ROUND_CEILING
+        );
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testToBigDecimalRoundingModeDown() {
-        this.toBigDecimalRoundingModeAndCheck(RoundingMode.DOWN, BigDecimal.ROUND_DOWN);
+        this.toBigDecimalRoundingModeAndCheck(
+                RoundingMode.DOWN,
+                BigDecimal.ROUND_DOWN
+        );
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testToBigDecimalRoundingModeFloor() {
-        this.toBigDecimalRoundingModeAndCheck(RoundingMode.FLOOR, BigDecimal.ROUND_FLOOR);
+        this.toBigDecimalRoundingModeAndCheck(
+                RoundingMode.FLOOR,
+                BigDecimal.ROUND_FLOOR
+        );
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testToBigDecimalRoundingModeHalfDown() {
-        this.toBigDecimalRoundingModeAndCheck(RoundingMode.HALF_DOWN, BigDecimal.ROUND_HALF_DOWN);
+        this.toBigDecimalRoundingModeAndCheck(
+                RoundingMode.HALF_DOWN,
+                BigDecimal.ROUND_HALF_DOWN
+        );
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testToBigDecimalRoundingModeHalfEven() {
-        this.toBigDecimalRoundingModeAndCheck(RoundingMode.HALF_EVEN, BigDecimal.ROUND_HALF_EVEN);
+        this.toBigDecimalRoundingModeAndCheck(
+                RoundingMode.HALF_EVEN,
+                BigDecimal.ROUND_HALF_EVEN
+        );
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testToBigDecimalRoundingModeHalfUp() {
-        this.toBigDecimalRoundingModeAndCheck(RoundingMode.HALF_UP, BigDecimal.ROUND_HALF_UP);
+        this.toBigDecimalRoundingModeAndCheck(
+                RoundingMode.HALF_UP,
+                BigDecimal.ROUND_HALF_UP
+        );
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testToBigDecimalRoundingModeUnnecessary() {
-        this.toBigDecimalRoundingModeAndCheck(RoundingMode.UNNECESSARY, BigDecimal.ROUND_UNNECESSARY);
+        this.toBigDecimalRoundingModeAndCheck(
+                RoundingMode.UNNECESSARY,
+                BigDecimal.ROUND_UNNECESSARY
+        );
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public void testToBigDecimalRoundingModeUp() {
-        this.toBigDecimalRoundingModeAndCheck(RoundingMode.UP, BigDecimal.ROUND_UP);
+        this.toBigDecimalRoundingModeAndCheck(
+                RoundingMode.UP,
+                BigDecimal.ROUND_UP
+        );
     }
 
     @Test
