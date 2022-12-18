@@ -822,9 +822,7 @@ public final class MathsTest implements ClassTesting2<Maths>,
     private void roundUnnecessaryFails(final double value) {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    Maths.round(value, RoundingMode.UNNECESSARY);
-                }
+                () -> Maths.round(value, RoundingMode.UNNECESSARY)
         );
     }
 
