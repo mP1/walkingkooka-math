@@ -28,7 +28,7 @@ import java.util.Locale;
 @J2clTestInput(JunitTest.class)
 public class JunitTest {
 
-    private final static Locale LOCALE = Locale.forLanguageTag("FR");
+    private final static Locale LOCALE = Locale.forLanguageTag("fr");
     private final static MathContext MATH_CONTEXT = MathContext.DECIMAL32;
 
     @Test
