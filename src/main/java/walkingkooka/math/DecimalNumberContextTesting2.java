@@ -43,8 +43,8 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
     }
 
     @Test
-    default void testGroupingSeparator() {
-        this.checkGroupingSeparator(this.createContext(), this.groupingSeparator());
+    default void testGroupSeparator() {
+        this.checkGroupSeparator(this.createContext(), this.groupSeparator());
     }
 
     @Test
@@ -73,7 +73,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     String exponentSymbol();
 
-    char groupingSeparator();
+    char groupSeparator();
 
     MathContext mathContext();
 

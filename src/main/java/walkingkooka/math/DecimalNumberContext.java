@@ -38,9 +38,9 @@ public interface DecimalNumberContext extends NumberContext, HasMathContext{
     String exponentSymbol();
 
     /**
-     * The grouping separator.
+     * The group separator.
      */
-    char groupingSeparator();
+    char groupSeparator();
 
     /**
      * The percentage symbol.

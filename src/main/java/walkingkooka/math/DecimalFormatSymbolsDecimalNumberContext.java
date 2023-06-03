@@ -70,7 +70,7 @@ final class DecimalFormatSymbolsDecimalNumberContext implements DecimalNumberCon
     }
 
     @Override
-    public char groupingSeparator() {
+    public char groupSeparator() {
         return this.symbols.getGroupingSeparator();
     }
 
@@ -115,7 +115,7 @@ final class DecimalFormatSymbolsDecimalNumberContext implements DecimalNumberCon
                 .value(this.currencySymbol())
                 .value(this.decimalSeparator())
                 .value(this.exponentSymbol())
-                .value(this.groupingSeparator())
+                .value(this.groupSeparator())
                 .value(this.negativeSign())
                 .value(this.percentageSymbol())
                 .value(this.positiveSign())

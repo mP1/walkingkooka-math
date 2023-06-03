@@ -36,8 +36,8 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         this.checkEquals(exponentSymbol, context.exponentSymbol(), "exponentSymbol");
     }
 
-    default void checkGroupingSeparator(final DecimalNumberContext context, final char groupingSeparator) {
-        this.checkEquals(groupingSeparator, context.groupingSeparator(), "groupingSeparator");
+    default void checkGroupSeparator(final DecimalNumberContext context, final char groupSeparator) {
+        this.checkEquals(groupSeparator, context.groupSeparator(), "groupSeparator");
     }
 
     default void checkNegativeSign(final DecimalNumberContext context, final char negativeSign) {

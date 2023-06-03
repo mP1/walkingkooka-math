@@ -64,7 +64,7 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
         this.checkCurrencySymbol(context, "¤");
         this.checkDecimalSeparator(context, '.');
         this.checkExponentSymbol(context, "E");
-        this.checkGroupingSeparator(context, ',');
+        this.checkGroupSeparator(context, ',');
         this.checkNegativeSign(context, '-');
         this.checkPercentageSymbol(context, '%');
         this.checkPositiveSign(context, '+');
@@ -106,7 +106,7 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
     }
 
     @Override
-    public char groupingSeparator() {
+    public char groupSeparator() {
         return ',';
     }
 
