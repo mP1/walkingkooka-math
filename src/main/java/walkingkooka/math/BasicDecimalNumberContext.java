@@ -31,7 +31,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     static BasicDecimalNumberContext with(final String currencySymbol,
                                           final char decimalSeparator,
                                           final String exponentSymbol,
-                                          final char groupingSeparator,
+                                          final char groupSeparator,
                                           final char negativeSign,
                                           final char percentageSymbol,
                                           final char positiveSign,
@@ -45,7 +45,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
         return new BasicDecimalNumberContext(currencySymbol,
                 decimalSeparator,
                 exponentSymbol,
-                groupingSeparator,
+                groupSeparator,
                 negativeSign,
                 percentageSymbol,
                 positiveSign,
@@ -56,7 +56,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     private BasicDecimalNumberContext(final String currencySymbol,
                                       final char decimalSeparator,
                                       final String exponentSymbol,
-                                      final char groupingSeparator,
+                                      final char groupSeparator,
                                       final char negativeSign,
                                       final char percentageSymbol,
                                       final char positiveSign,
@@ -66,7 +66,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
         this.currencySymbol = currencySymbol;
         this.decimalSeparator = decimalSeparator;
         this.exponentSymbol = exponentSymbol;
-        this.groupingSeparator = groupingSeparator;
+        this.groupSeparator = groupSeparator;
         this.negativeSign = negativeSign;
         this.percentageSymbol = percentageSymbol;
         this.positiveSign = positiveSign;
@@ -98,11 +98,11 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     private final String exponentSymbol;
 
     @Override
-    public char groupingSeparator() {
-        return this.groupingSeparator;
+    public char groupSeparator() {
+        return this.groupSeparator;
     }
 
-    private final char groupingSeparator;
+    private final char groupSeparator;
 
     @Override
     public char negativeSign() {
@@ -145,7 +145,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
                 .value(this.currencySymbol)
                 .value(this.decimalSeparator)
                 .value(this.exponentSymbol)
-                .value(this.groupingSeparator)
+                .value(this.groupSeparator)
                 .value(this.negativeSign)
                 .value(this.percentageSymbol)
                 .value(this.positiveSign)

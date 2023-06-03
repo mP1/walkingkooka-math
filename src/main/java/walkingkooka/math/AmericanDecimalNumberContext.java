@@ -76,7 +76,7 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public char groupingSeparator() {
+    public char groupSeparator() {
         return ',';
     }
 
@@ -115,7 +115,7 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
                 .value(this.currencySymbol())
                 .value(this.decimalSeparator())
                 .value(this.exponentSymbol())
-                .value(this.groupingSeparator())
+                .value(this.groupSeparator())
                 .value(this.negativeSign())
                 .value(this.percentageSymbol())
                 .value(this.positiveSign())

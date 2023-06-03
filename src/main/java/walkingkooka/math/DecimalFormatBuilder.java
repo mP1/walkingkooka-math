@@ -79,7 +79,7 @@ public final class DecimalFormatBuilder implements Builder<DecimalFormat>, HasTe
         return this.append('E');
     }
 
-    public DecimalFormatBuilder groupingSeparator() {
+    public DecimalFormatBuilder groupSeparator() {
         return this.append(',');
     }
 

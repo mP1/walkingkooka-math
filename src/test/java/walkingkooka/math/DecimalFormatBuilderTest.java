@@ -84,7 +84,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
 
     @Test
     public void testGroupingSeparator() {
-        this.appendAndCheck(DecimalFormatBuilder::groupingSeparator, ",");
+        this.appendAndCheck(DecimalFormatBuilder::groupSeparator, ",");
     }
 
     @Test
@@ -271,7 +271,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     public void testFormatWithLocaleUK() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
                         .currency()
-                        .groupingSeparator()
+                        .groupSeparator()
                         .groupingSize(3)
                         .digit()
                         .decimalSeparator()
@@ -286,7 +286,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     public void testFormatWithLocaleGermany() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
                         .currency()
-                        .groupingSeparator()
+                        .groupSeparator()
                         .groupingSize(3)
                         .digit()
                         .decimalSeparator()
