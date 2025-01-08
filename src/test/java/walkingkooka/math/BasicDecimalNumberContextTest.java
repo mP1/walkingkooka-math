@@ -27,7 +27,7 @@ import java.util.Locale;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicDecimalNumberContext>,
-        DecimalNumberContextTesting2<BasicDecimalNumberContext> {
+    DecimalNumberContextTesting2<BasicDecimalNumberContext> {
 
     private final static Locale LOCALE = Locale.FRANCE;
     private final static MathContext MATH_CONTEXT = MathContext.DECIMAL32;
@@ -35,66 +35,66 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     @Test
     public void testWithNullCurrencySymbol() {
         assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with(null,
-                '.',
-                "E",
-                ',',
-                '-',
-                '%',
-                '+',
-                LOCALE,
-                MATH_CONTEXT));
+            '.',
+            "E",
+            ',',
+            '-',
+            '%',
+            '+',
+            LOCALE,
+            MATH_CONTEXT));
     }
 
     @Test
     public void testWithNullExponentSymbol() {
         assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with(null,
-                '.',
-                null,
-                ',',
-                '-',
-                '%',
-                '+',
-                LOCALE,
-                MATH_CONTEXT));
+            '.',
+            null,
+            ',',
+            '-',
+            '%',
+            '+',
+            LOCALE,
+            MATH_CONTEXT));
     }
 
     @Test
     public void testWithEmptyExponentSymbol() {
         assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with(null,
-                '.',
-                "",
-                ',',
-                '-',
-                '%',
-                '+',
-                LOCALE,
-                MATH_CONTEXT));
+            '.',
+            "",
+            ',',
+            '-',
+            '%',
+            '+',
+            LOCALE,
+            MATH_CONTEXT));
     }
 
     @Test
     public void testWithNullLocale() {
         assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with("$",
-                '.',
-                "E",
-                ',',
-                '-',
-                '%',
-                '+',
-                null,
-                MATH_CONTEXT));
+            '.',
+            "E",
+            ',',
+            '-',
+            '%',
+            '+',
+            null,
+            MATH_CONTEXT));
     }
 
     @Test
     public void testWithNullMathContext() {
         assertThrows(NullPointerException.class, () -> BasicDecimalNumberContext.with("$",
-                '.',
-                "E",
-                ',',
-                '-',
-                '%',
-                '+',
-                LOCALE,
-                null));
+            '.',
+            "E",
+            ',',
+            '-',
+            '%',
+            '+',
+            LOCALE,
+            null));
     }
 
     @Test
@@ -120,14 +120,14 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     @Override
     public BasicDecimalNumberContext createContext() {
         return BasicDecimalNumberContext.with("$",
-                '.',
-                "E",
-                ',',
-                '-',
-                '%',
-                '+',
-                LOCALE,
-                MATH_CONTEXT);
+            '.',
+            "E",
+            ',',
+            '-',
+            '%',
+            '+',
+            LOCALE,
+            MATH_CONTEXT);
     }
 
     @Override

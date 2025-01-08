@@ -95,11 +95,11 @@ public final class MathsToBigDecimalNumberVisitorTest implements NumberVisitorTe
 
     private void toBigDecimalAndCheck(final Number value, final BigDecimal expected) {
         this.checkEquals(Optional.ofNullable(expected),
-                MathsToBigDecimalNumberVisitor.toBigDecimal(value),
-                () -> "MathsToBigDecimalNumberVisitor.toBigDecimal " + value);
+            MathsToBigDecimalNumberVisitor.toBigDecimal(value),
+            () -> "MathsToBigDecimalNumberVisitor.toBigDecimal " + value);
         this.checkEquals(Optional.ofNullable(expected),
-                Maths.toBigDecimal(value),
-                () -> "Maths.toBigDecimal " + value);
+            Maths.toBigDecimal(value),
+            () -> "Maths.toBigDecimal " + value);
     }
 
     @Test

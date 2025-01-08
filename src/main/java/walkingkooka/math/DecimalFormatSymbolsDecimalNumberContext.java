@@ -38,9 +38,9 @@ final class DecimalFormatSymbolsDecimalNumberContext implements DecimalNumberCon
         Objects.requireNonNull(mathContext, "mathContext");
 
         return new DecimalFormatSymbolsDecimalNumberContext(symbols,
-                positiveSign,
-                locale,
-                mathContext);
+            positiveSign,
+            locale,
+            mathContext);
     }
 
     private DecimalFormatSymbolsDecimalNumberContext(final DecimalFormatSymbols symbols,
@@ -112,15 +112,15 @@ final class DecimalFormatSymbolsDecimalNumberContext implements DecimalNumberCon
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .value(this.currencySymbol())
-                .value(this.decimalSeparator())
-                .value(this.exponentSymbol())
-                .value(this.groupSeparator())
-                .value(this.negativeSign())
-                .value(this.percentageSymbol())
-                .value(this.positiveSign())
-                .value(this.locale())
-                .value(this.mathContext())
-                .build();
+            .value(this.currencySymbol())
+            .value(this.decimalSeparator())
+            .value(this.exponentSymbol())
+            .value(this.groupSeparator())
+            .value(this.negativeSign())
+            .value(this.percentageSymbol())
+            .value(this.positiveSign())
+            .value(this.locale())
+            .value(this.mathContext())
+            .build();
     }
 }

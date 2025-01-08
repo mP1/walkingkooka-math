@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class AmericanDecimalNumberContextTest implements ClassTesting2<AmericanDecimalNumberContext>,
-        DecimalNumberContextTesting2<AmericanDecimalNumberContext> {
+    DecimalNumberContextTesting2<AmericanDecimalNumberContext> {
 
     private final static MathContext MATH_CONTEXT = MathContext.DECIMAL32;
 

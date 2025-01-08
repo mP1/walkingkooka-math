@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class MathsTest implements ClassTesting2<Maths>,
-        PublicStaticHelperTesting<Maths> {
+    PublicStaticHelperTesting<Maths> {
 
     @Test
     public void testIsNumberNull() {
@@ -127,711 +127,711 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testRoundUp5_5() {
         this.roundUpAndCheck(
-                5.5,
-                6
+            5.5,
+            6
         );
     }
 
     @Test
     public void testRoundUp2_5() {
         this.roundUpAndCheck(
-                2.5,
-                3
+            2.5,
+            3
         );
     }
 
     @Test
     public void testRoundUp1_6() {
         this.roundUpAndCheck(
-                1.6,
-                2
+            1.6,
+            2
         );
     }
 
     @Test
     public void testRoundUp1_1() {
         this.roundUpAndCheck(
-                1.1,
-                2
+            1.1,
+            2
         );
     }
 
     @Test
     public void testRoundUp1_0() {
         this.roundUpAndCheck(
-                1.0,
-                1
+            1.0,
+            1
         );
     }
 
     @Test
     public void testRoundUpMinus1_0() {
         this.roundUpAndCheck(
-                -1.0,
-                -1
+            -1.0,
+            -1
         );
     }
 
     @Test
     public void testRoundUpMinus1_1() {
         this.roundUpAndCheck(
-                -1.1,
-                -2
+            -1.1,
+            -2
         );
     }
 
     @Test
     public void testRoundUpMinus1_6() {
         this.roundUpAndCheck(
-                -1.6,
-                -2
+            -1.6,
+            -2
         );
     }
 
     @Test
     public void testRoundUpMinus2_5() {
         this.roundUpAndCheck(
-                -2.5,
-                -3
+            -2.5,
+            -3
         );
     }
 
     @Test
     public void testRoundUpMinus5_5() {
         this.roundUpAndCheck(
-                -5.5,
-                -6
+            -5.5,
+            -6
         );
     }
 
     private void roundUpAndCheck(final double value,
                                  final double expectedValue) {
         this.roundAndCheck(
-                value,
-                RoundingMode.UP,
-                expectedValue
+            value,
+            RoundingMode.UP,
+            expectedValue
         );
     }
 
     @Test
     public void testRoundDown5_5() {
         this.roundDownAndCheck(
-                5.5,
-                5
+            5.5,
+            5
         );
     }
 
     @Test
     public void testRoundDown2_5() {
         this.roundDownAndCheck(
-                2.5,
-                2
+            2.5,
+            2
         );
     }
 
     @Test
     public void testRoundDown1_6() {
         this.roundDownAndCheck(
-                1.6,
-                1
+            1.6,
+            1
         );
     }
 
     @Test
     public void testRoundDown1_1() {
         this.roundDownAndCheck(
-                1.1,
-                1
+            1.1,
+            1
         );
     }
 
     @Test
     public void testRoundDown1_0() {
         this.roundDownAndCheck(
-                1.0,
-                1
+            1.0,
+            1
         );
     }
 
     @Test
     public void testRoundDownMinus1_0() {
         this.roundDownAndCheck(
-                -1.0,
-                -1
+            -1.0,
+            -1
         );
     }
 
     @Test
     public void testRoundDownMinus1_1() {
         this.roundDownAndCheck(
-                -1.1,
-                -1
+            -1.1,
+            -1
         );
     }
 
     @Test
     public void testRoundDownMinus1_6() {
         this.roundDownAndCheck(
-                -1.6,
-                -1
+            -1.6,
+            -1
         );
     }
 
     @Test
     public void testRoundDownMinus2_5() {
         this.roundDownAndCheck(
-                -2.5,
-                -2
+            -2.5,
+            -2
         );
     }
 
     @Test
     public void testRoundDownMinus5_5() {
         this.roundDownAndCheck(
-                -5.5,
-                -5
+            -5.5,
+            -5
         );
     }
 
     private void roundDownAndCheck(final double value,
                                    final double expectedValue) {
         this.roundAndCheck(
-                value,
-                RoundingMode.DOWN,
-                expectedValue
+            value,
+            RoundingMode.DOWN,
+            expectedValue
         );
     }
 
     @Test
     public void testRoundCeiling5_5() {
         this.roundCeilingAndCheck(
-                5.5,
-                6
+            5.5,
+            6
         );
     }
 
     @Test
     public void testRoundCeiling2_5() {
         this.roundCeilingAndCheck(
-                2.5,
-                3
+            2.5,
+            3
         );
     }
 
     @Test
     public void testRoundCeiling1_6() {
         this.roundCeilingAndCheck(
-                1.6,
-                2
+            1.6,
+            2
         );
     }
 
     @Test
     public void testRoundCeiling1_1() {
         this.roundCeilingAndCheck(
-                1.1,
-                2
+            1.1,
+            2
         );
     }
 
     @Test
     public void testRoundCeiling1_0() {
         this.roundCeilingAndCheck(
-                1.0,
-                1
+            1.0,
+            1
         );
     }
 
     @Test
     public void testRoundCeilingMinus1_0() {
         this.roundCeilingAndCheck(
-                -1.0,
-                -1
+            -1.0,
+            -1
         );
     }
 
     @Test
     public void testRoundCeilingMinus1_1() {
         this.roundCeilingAndCheck(
-                -1.1,
-                -1
+            -1.1,
+            -1
         );
     }
 
     @Test
     public void testRoundCeilingMinus1_6() {
         this.roundCeilingAndCheck(
-                -1.6,
-                -1
+            -1.6,
+            -1
         );
     }
 
     @Test
     public void testRoundCeilingMinus2_5() {
         this.roundCeilingAndCheck(
-                -2.5,
-                -2
+            -2.5,
+            -2
         );
     }
 
     @Test
     public void testRoundCeilingMinus5_5() {
         this.roundCeilingAndCheck(
-                -5.5,
-                -5
+            -5.5,
+            -5
         );
     }
 
     private void roundCeilingAndCheck(final double value,
                                       final double expectedValue) {
         this.roundAndCheck(
-                value,
-                RoundingMode.CEILING,
-                expectedValue
+            value,
+            RoundingMode.CEILING,
+            expectedValue
         );
     }
 
     @Test
     public void testRoundFloor5_5() {
         this.roundFloorAndCheck(
-                5.5,
-                5
+            5.5,
+            5
         );
     }
 
     @Test
     public void testRoundFloor2_5() {
         this.roundFloorAndCheck(
-                2.5,
-                2
+            2.5,
+            2
         );
     }
 
     @Test
     public void testRoundFloor1_6() {
         this.roundFloorAndCheck(
-                1.6,
-                1
+            1.6,
+            1
         );
     }
 
     @Test
     public void testRoundFloor1_1() {
         this.roundFloorAndCheck(
-                1.1,
-                1
+            1.1,
+            1
         );
     }
 
     @Test
     public void testRoundFloor1_0() {
         this.roundFloorAndCheck(
-                1.0,
-                1
+            1.0,
+            1
         );
     }
 
     @Test
     public void testRoundFloorMinus1_0() {
         this.roundFloorAndCheck(
-                -1.0,
-                -1
+            -1.0,
+            -1
         );
     }
 
     @Test
     public void testRoundFloorMinus1_1() {
         this.roundFloorAndCheck(
-                -1.1,
-                -2
+            -1.1,
+            -2
         );
     }
 
     @Test
     public void testRoundFloorMinus1_6() {
         this.roundFloorAndCheck(
-                -1.6,
-                -2
+            -1.6,
+            -2
         );
     }
 
     @Test
     public void testRoundFloorMinus2_5() {
         this.roundFloorAndCheck(
-                -2.5,
-                -3
+            -2.5,
+            -3
         );
     }
 
     @Test
     public void testRoundFloorMinus5_5() {
         this.roundFloorAndCheck(
-                -5.5,
-                -6
+            -5.5,
+            -6
         );
     }
 
     private void roundFloorAndCheck(final double value,
                                     final double expectedValue) {
         this.roundAndCheck(
-                value,
-                RoundingMode.FLOOR,
-                expectedValue
+            value,
+            RoundingMode.FLOOR,
+            expectedValue
         );
     }
 
     @Test
     public void testRoundHalfUp5_5() {
         this.roundHalfUpAndCheck(
-                5.5,
-                6
+            5.5,
+            6
         );
     }
 
     @Test
     public void testRoundHalfUp2_5() {
         this.roundHalfUpAndCheck(
-                2.5,
-                3
+            2.5,
+            3
         );
     }
 
     @Test
     public void testRoundHalfUp1_6() {
         this.roundHalfUpAndCheck(
-                1.6,
-                2
+            1.6,
+            2
         );
     }
 
     @Test
     public void testRoundHalfUp1_1() {
         this.roundHalfUpAndCheck(
-                1.1,
-                1
+            1.1,
+            1
         );
     }
 
     @Test
     public void testRoundHalfUp1_0() {
         this.roundHalfUpAndCheck(
-                1.0,
-                1
+            1.0,
+            1
         );
     }
 
     @Test
     public void testRoundHalfUpMinus1_0() {
         this.roundHalfUpAndCheck(
-                -1.0,
-                -1
+            -1.0,
+            -1
         );
     }
 
     @Test
     public void testRoundHalfUpMinus1_1() {
         this.roundHalfUpAndCheck(
-                -1.1,
-                -1
+            -1.1,
+            -1
         );
     }
 
     @Test
     public void testRoundHalfUpMinus1_6() {
         this.roundHalfUpAndCheck(
-                -1.6,
-                -2
+            -1.6,
+            -2
         );
     }
 
     @Test
     public void testRoundHalfUpMinus2_5() {
         this.roundHalfUpAndCheck(
-                -2.5,
-                -3
+            -2.5,
+            -3
         );
     }
 
     @Test
     public void testRoundHalfUpMinus5_5() {
         this.roundHalfUpAndCheck(
-                -5.5,
-                -6
+            -5.5,
+            -6
         );
     }
 
     private void roundHalfUpAndCheck(final double value,
                                      final double expectedValue) {
         this.roundAndCheck(
-                value,
-                RoundingMode.HALF_UP,
-                expectedValue
+            value,
+            RoundingMode.HALF_UP,
+            expectedValue
         );
     }
 
     @Test
     public void testRoundHalfDown5_5() {
         this.roundHalfDownAndCheck(
-                5.5,
-                5
+            5.5,
+            5
         );
     }
 
     @Test
     public void testRoundHalfDown2_5() {
         this.roundHalfDownAndCheck(
-                2.5,
-                2
+            2.5,
+            2
         );
     }
 
     @Test
     public void testRoundHalfDown1_6() {
         this.roundHalfDownAndCheck(
-                1.6,
-                2
+            1.6,
+            2
         );
     }
 
     @Test
     public void testRoundHalfDown1_1() {
         this.roundHalfDownAndCheck(
-                1.1,
-                1
+            1.1,
+            1
         );
     }
 
     @Test
     public void testRoundHalfDown1_0() {
         this.roundHalfDownAndCheck(
-                1.0,
-                1
+            1.0,
+            1
         );
     }
 
     @Test
     public void testRoundHalfDownMinus1_0() {
         this.roundHalfDownAndCheck(
-                -1.0,
-                -1
+            -1.0,
+            -1
         );
     }
 
     @Test
     public void testRoundHalfDownMinus1_1() {
         this.roundHalfDownAndCheck(
-                -1.1,
-                -1
+            -1.1,
+            -1
         );
     }
 
     @Test
     public void testRoundHalfDownMinus1_6() {
         this.roundHalfDownAndCheck(
-                -1.6,
-                -2
+            -1.6,
+            -2
         );
     }
 
     @Test
     public void testRoundHalfDownMinus2_5() {
         this.roundHalfDownAndCheck(
-                -2.5,
-                -2
+            -2.5,
+            -2
         );
     }
 
     @Test
     public void testRoundHalfDownMinus5_5() {
         this.roundHalfDownAndCheck(
-                -5.5,
-                -5
+            -5.5,
+            -5
         );
     }
 
     private void roundHalfDownAndCheck(final double value,
                                        final double expectedValue) {
         this.roundAndCheck(
-                value,
-                RoundingMode.HALF_DOWN,
-                expectedValue
+            value,
+            RoundingMode.HALF_DOWN,
+            expectedValue
         );
     }
 
     @Test
     public void testRoundHalfEven5_5() {
         this.roundHalfEvenAndCheck(
-                5.5,
-                6
+            5.5,
+            6
         );
     }
 
     @Test
     public void testRoundHalfEven2_5() {
         this.roundHalfEvenAndCheck(
-                2.5,
-                2
+            2.5,
+            2
         );
     }
 
     @Test
     public void testRoundHalfEven1_6() {
         this.roundHalfEvenAndCheck(
-                1.6,
-                2
+            1.6,
+            2
         );
     }
 
     @Test
     public void testRoundHalfEven1_1() {
         this.roundHalfEvenAndCheck(
-                1.1,
-                1
+            1.1,
+            1
         );
     }
 
     @Test
     public void testRoundHalfEven1_0() {
         this.roundHalfEvenAndCheck(
-                1.0,
-                1
+            1.0,
+            1
         );
     }
 
     @Test
     public void testRoundHalfEvenMinus1_0() {
         this.roundHalfEvenAndCheck(
-                -1.0,
-                -1
+            -1.0,
+            -1
         );
     }
 
     @Test
     public void testRoundHalfEvenMinus1_1() {
         this.roundHalfEvenAndCheck(
-                -1.1,
-                -1
+            -1.1,
+            -1
         );
     }
 
     @Test
     public void testRoundHalfEvenMinus1_6() {
         this.roundHalfEvenAndCheck(
-                -1.6,
-                -2
+            -1.6,
+            -2
         );
     }
 
     @Test
     public void testRoundHalfEvenMinus2_5() {
         this.roundHalfEvenAndCheck(
-                -2.5,
-                -2
+            -2.5,
+            -2
         );
     }
 
     @Test
     public void testRoundHalfEvenMinus5_5() {
         this.roundHalfEvenAndCheck(
-                -5.5,
-                -6
+            -5.5,
+            -6
         );
     }
 
     private void roundHalfEvenAndCheck(final double value,
                                        final double expectedValue) {
         this.roundAndCheck(
-                value,
-                RoundingMode.HALF_EVEN,
-                expectedValue
+            value,
+            RoundingMode.HALF_EVEN,
+            expectedValue
         );
     }
 
     @Test
     public void testRoundUnnecessary5_5() {
         this.roundUnnecessaryFails(
-                5.5
+            5.5
         );
     }
 
     @Test
     public void testRoundUnnecessary2_5() {
         this.roundUnnecessaryFails(
-                2.5
+            2.5
         );
     }
 
     @Test
     public void testRoundUnnecessary1_6() {
         this.roundUnnecessaryFails(
-                1.6
+            1.6
         );
     }
 
     @Test
     public void testRoundUnnecessary1_1() {
         this.roundUnnecessaryFails(
-                1.1
+            1.1
         );
     }
 
     @Test
     public void testRoundUnnecessary1_0() {
         this.roundUnnecessaryAndCheck(
-                1.0,
-                1
+            1.0,
+            1
         );
     }
 
     @Test
     public void testRoundUnnecessaryMinus1_0() {
         this.roundUnnecessaryAndCheck(
-                -1.0,
-                -1
+            -1.0,
+            -1
         );
     }
 
     @Test
     public void testRoundUnnecessaryMinus1_1() {
         this.roundUnnecessaryFails(
-                -1.1
+            -1.1
         );
     }
 
     @Test
     public void testRoundUnnecessaryMinus1_6() {
         this.roundUnnecessaryFails(
-                -1.6
+            -1.6
         );
     }
 
     @Test
     public void testRoundUnnecessaryMinus2_5() {
         this.roundUnnecessaryFails(
-                -2.5
+            -2.5
         );
     }
 
     @Test
     public void testRoundUnnecessaryMinus5_5() {
         this.roundUnnecessaryFails(
-                -5.5
+            -5.5
         );
     }
 
     private void roundUnnecessaryFails(final double value) {
         assertThrows(
-                IllegalArgumentException.class,
-                () -> Maths.round(value, RoundingMode.UNNECESSARY)
+            IllegalArgumentException.class,
+            () -> Maths.round(value, RoundingMode.UNNECESSARY)
         );
     }
 
     private void roundUnnecessaryAndCheck(final double value,
                                           final double expectedValue) {
         this.roundAndCheck(
-                value,
-                RoundingMode.UNNECESSARY,
-                expectedValue
+            value,
+            RoundingMode.UNNECESSARY,
+            expectedValue
         );
     }
 
@@ -839,9 +839,9 @@ public final class MathsTest implements ClassTesting2<Maths>,
                                final RoundingMode roundingMode,
                                final double expectedValue) {
         this.checkEquals(
-                expectedValue,
-                Maths.round(value, roundingMode),
-                () -> "round " + value + " " + roundingMode
+            expectedValue,
+            Maths.round(value, roundingMode),
+            () -> "round " + value + " " + roundingMode
         );
     }
 
@@ -881,16 +881,16 @@ public final class MathsTest implements ClassTesting2<Maths>,
     }
 
     private void roundManyValuesAndCheck(final RoundingMode roundingMode) {
-        for(double value = -6.0; value < +6.0; value = value + 0.2) {
+        for (double value = -6.0; value < +6.0; value = value + 0.2) {
             final double finalValue = value;
 
             assertEquals(
-                    new BigDecimal(value)
-                            .setScale(0, roundingMode)
-                            .doubleValue(),
-                    Maths.round(value, roundingMode),
-                    0.1,
-                    () -> "round " + finalValue + " " + roundingMode
+                new BigDecimal(value)
+                    .setScale(0, roundingMode)
+                    .doubleValue(),
+                Maths.round(value, roundingMode),
+                0.1,
+                () -> "round " + finalValue + " " + roundingMode
             );
         }
     }
@@ -905,8 +905,8 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testToBigDecimalRoundingModeCeiling() {
         this.toBigDecimalRoundingModeAndCheck(
-                RoundingMode.CEILING,
-                BigDecimal.ROUND_CEILING
+            RoundingMode.CEILING,
+            BigDecimal.ROUND_CEILING
         );
     }
 
@@ -914,8 +914,8 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testToBigDecimalRoundingModeDown() {
         this.toBigDecimalRoundingModeAndCheck(
-                RoundingMode.DOWN,
-                BigDecimal.ROUND_DOWN
+            RoundingMode.DOWN,
+            BigDecimal.ROUND_DOWN
         );
     }
 
@@ -923,8 +923,8 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testToBigDecimalRoundingModeFloor() {
         this.toBigDecimalRoundingModeAndCheck(
-                RoundingMode.FLOOR,
-                BigDecimal.ROUND_FLOOR
+            RoundingMode.FLOOR,
+            BigDecimal.ROUND_FLOOR
         );
     }
 
@@ -932,8 +932,8 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testToBigDecimalRoundingModeHalfDown() {
         this.toBigDecimalRoundingModeAndCheck(
-                RoundingMode.HALF_DOWN,
-                BigDecimal.ROUND_HALF_DOWN
+            RoundingMode.HALF_DOWN,
+            BigDecimal.ROUND_HALF_DOWN
         );
     }
 
@@ -941,8 +941,8 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testToBigDecimalRoundingModeHalfEven() {
         this.toBigDecimalRoundingModeAndCheck(
-                RoundingMode.HALF_EVEN,
-                BigDecimal.ROUND_HALF_EVEN
+            RoundingMode.HALF_EVEN,
+            BigDecimal.ROUND_HALF_EVEN
         );
     }
 
@@ -950,8 +950,8 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testToBigDecimalRoundingModeHalfUp() {
         this.toBigDecimalRoundingModeAndCheck(
-                RoundingMode.HALF_UP,
-                BigDecimal.ROUND_HALF_UP
+            RoundingMode.HALF_UP,
+            BigDecimal.ROUND_HALF_UP
         );
     }
 
@@ -959,8 +959,8 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testToBigDecimalRoundingModeUnnecessary() {
         this.toBigDecimalRoundingModeAndCheck(
-                RoundingMode.UNNECESSARY,
-                BigDecimal.ROUND_UNNECESSARY
+            RoundingMode.UNNECESSARY,
+            BigDecimal.ROUND_UNNECESSARY
         );
     }
 
@@ -968,16 +968,16 @@ public final class MathsTest implements ClassTesting2<Maths>,
     @Test
     public void testToBigDecimalRoundingModeUp() {
         this.toBigDecimalRoundingModeAndCheck(
-                RoundingMode.UP,
-                BigDecimal.ROUND_UP
+            RoundingMode.UP,
+            BigDecimal.ROUND_UP
         );
     }
 
     @Test
     public void testSevenRoundModeConstants() {
         this.checkEquals(8,
-                RoundingMode.values().length,
-                () -> Arrays.toString(RoundingMode.values()));
+            RoundingMode.values().length,
+            () -> Arrays.toString(RoundingMode.values()));
     }
 
     @Test
@@ -990,8 +990,8 @@ public final class MathsTest implements ClassTesting2<Maths>,
     private void toBigDecimalRoundingModeAndCheck(final RoundingMode mode,
                                                   final int bigDecimal) {
         this.checkEquals(bigDecimal,
-                Maths.toBigDecimalRoundingMode(mode),
-                () -> "" + mode + " toBigDecimalRoundingMode ");
+            Maths.toBigDecimalRoundingMode(mode),
+            () -> "" + mode + " toBigDecimalRoundingMode ");
     }
 
     // ClassTesting.....................................................................................................

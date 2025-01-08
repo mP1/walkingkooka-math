@@ -22,7 +22,7 @@ import walkingkooka.math.DecimalNumberContextDelegatorTest.TestDecimalNumberCont
 import java.math.MathContext;
 
 public final class DecimalNumberContextDelegatorTest implements DecimalNumberContextDelegator,
-        DecimalNumberContextTesting2<TestDecimalNumberContextDelegator> {
+    DecimalNumberContextTesting2<TestDecimalNumberContextDelegator> {
 
     @Override
     public void testCheckToStringOverridden() {

@@ -45,11 +45,11 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     @Test
     public void testRoundingMode() {
         Arrays.stream(RoundingMode.values())
-                .forEach(r -> {
-                    final DecimalFormatBuilder b = DecimalFormatBuilder.empty();
-                    b.roundingMode(r);
-                    assertSame(r, b.roundingMode, "roundingMode");
-                });
+            .forEach(r -> {
+                final DecimalFormatBuilder b = DecimalFormatBuilder.empty();
+                b.roundingMode(r);
+                assertSame(r, b.roundingMode, "roundingMode");
+            });
     }
 
     @Test
@@ -116,31 +116,31 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     @Test
     public void testMultipleAppends() {
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
-                .digit()
-                .digit()
-                .decimalSeparator()
-                .digitOrZero()
-                .digitOrZero();
+            .digit()
+            .digit()
+            .decimalSeparator()
+            .digitOrZero()
+            .digitOrZero();
         this.textAndCheck(b, "##.00");
     }
 
     @Test
     public void testNegativeSubPattern() {
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
-                .digit()
-                .digit()
-                .negativeSubPattern()
-                .digitOrZero()
-                .digitOrZero();
+            .digit()
+            .digit()
+            .negativeSubPattern()
+            .digitOrZero()
+            .digitOrZero();
         this.textAndCheck(b, "##;00");
     }
 
     @Test
     public void testNegativeSubPatternTwiceFails() {
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
-                .digit()
-                .digit()
-                .negativeSubPattern();
+            .digit()
+            .digit()
+            .negativeSubPattern();
         assertThrows(IllegalArgumentException.class, b::negativeSubPattern);
     }
 
@@ -153,7 +153,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     public void testPrefix() {
         final String prefix = "prefix-123";
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
-                .prefix(prefix);
+            .prefix(prefix);
         this.checkEquals(prefix, b.prefix, "prefix");
     }
 
@@ -161,22 +161,22 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     public void testPrefixKeepsLast() {
         final String prefix = "prefix-123";
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
-                .prefix("last")
-                .prefix(prefix);
+            .prefix("last")
+            .prefix(prefix);
         this.checkEquals(prefix, b.prefix, "prefix");
     }
 
     @Test
     public void testRoundingModeAndBuild() {
         Arrays.stream(RoundingMode.values())
-                .forEach(r -> {
-                    final DecimalFormatBuilder b = DecimalFormatBuilder.empty();
-                    b.roundingMode(r);
-                    b.digit();
+            .forEach(r -> {
+                final DecimalFormatBuilder b = DecimalFormatBuilder.empty();
+                b.roundingMode(r);
+                b.digit();
 
-                    final DecimalFormat decimalFormat = b.build();
-                    this.checkEquals(r, decimalFormat.getRoundingMode());
-                });
+                final DecimalFormat decimalFormat = b.build();
+                this.checkEquals(r, decimalFormat.getRoundingMode());
+            });
     }
 
     @Test
@@ -188,7 +188,7 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     public void testSuffix() {
         final String suffix = "suffix-123";
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
-                .suffix(suffix);
+            .suffix(suffix);
         this.checkEquals(suffix, b.suffix, "suffix");
     }
 
@@ -196,8 +196,8 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     public void testSuffixKeepsLast() {
         final String suffix = "suffix-123";
         final DecimalFormatBuilder b = DecimalFormatBuilder.empty()
-                .suffix("lost")
-                .suffix(suffix);
+            .suffix("lost")
+            .suffix(suffix);
         this.checkEquals(suffix, b.suffix, "suffix");
     }
 
@@ -209,121 +209,121 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     @Test
     public void testFormat() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .digit()
-                        .digitOrZero()
-                        .decimalSeparator()
-                        .digitOrZero()
-                        .digitOrZero(),
-                12.5,
-                "12.50");
+                .digit()
+                .digitOrZero()
+                .decimalSeparator()
+                .digitOrZero()
+                .digitOrZero(),
+            12.5,
+            "12.50");
     }
 
     @Test
     public void testFormatWithPrefix() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .digit()
-                        .prefix("abc"),
-                12.5,
-                "abc12");
+                .digit()
+                .prefix("abc"),
+            12.5,
+            "abc12");
     }
 
     @Test
     public void testFormatWithPrefixRequiresEscaping() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .digit()
-                        .prefix("ab'c"),
-                12.5,
-                "ab'c12");
+                .digit()
+                .prefix("ab'c"),
+            12.5,
+            "ab'c12");
     }
 
     @Test
     public void testFormatWithSuffix() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .digit()
-                        .suffix("xyz"),
-                12.5,
-                "12xyz");
+                .digit()
+                .suffix("xyz"),
+            12.5,
+            "12xyz");
     }
 
     @Test
     public void testFormatWithSuffixRequiresEscaping() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .digit()
-                        .suffix("x'yz"),
-                12.5,
-                "12x'yz");
+                .digit()
+                .suffix("x'yz"),
+            12.5,
+            "12x'yz");
     }
 
     @Test
     public void testFormatWithCurrency() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .currency()
-                        .digit()
-                        .digitOrZero()
-                        .decimalSeparator()
-                        .digitOrZero()
-                        .digitOrZero(),
-                12.5,
-                "$12.50");
+                .currency()
+                .digit()
+                .digitOrZero()
+                .decimalSeparator()
+                .digitOrZero()
+                .digitOrZero(),
+            12.5,
+            "$12.50");
     }
 
     @Test
     public void testFormatWithLocaleUK() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .currency()
-                        .groupSeparator()
-                        .groupingSize(3)
-                        .digit()
-                        .decimalSeparator()
-                        .digitOrZero()
-                        .digitOrZero()
-                        .locale(Locale.UK),
-                1234.56,
-                "£1,234.56");
+                .currency()
+                .groupSeparator()
+                .groupingSize(3)
+                .digit()
+                .decimalSeparator()
+                .digitOrZero()
+                .digitOrZero()
+                .locale(Locale.UK),
+            1234.56,
+            "£1,234.56");
     }
 
     @Test
     public void testFormatWithLocaleGermany() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .currency()
-                        .groupSeparator()
-                        .groupingSize(3)
-                        .digit()
-                        .decimalSeparator()
-                        .digitOrZero()
-                        .digitOrZero()
-                        .locale(Locale.GERMANY),
-                1234.56,
-                "€1.234,56");
+                .currency()
+                .groupSeparator()
+                .groupingSize(3)
+                .digit()
+                .decimalSeparator()
+                .digitOrZero()
+                .digitOrZero()
+                .locale(Locale.GERMANY),
+            1234.56,
+            "€1.234,56");
     }
 
     @Test
     public void testFormatWithPositiveAndNegative() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .prefix("A")
-                        .digit()
-                        .suffix("B")
-                        .negativeSubPattern()
-                        .prefix("C")
-                        .digit()
-                        .suffix("D"),
-                12,
-                "A12B");
+                .prefix("A")
+                .digit()
+                .suffix("B")
+                .negativeSubPattern()
+                .prefix("C")
+                .digit()
+                .suffix("D"),
+            12,
+            "A12B");
     }
 
     @Test
     public void testFormatWithPositiveAndNegative2() {
         this.buildAndFormat(DecimalFormatBuilder.empty()
-                        .prefix("A")
-                        .digit()
-                        .suffix("B")
-                        .negativeSubPattern()
-                        .prefix("C")
-                        .digit()
-                        .negativeSign()
-                        .suffix("D"),
-                -12,
-                "C12-D");
+                .prefix("A")
+                .digit()
+                .suffix("B")
+                .negativeSubPattern()
+                .prefix("C")
+                .digit()
+                .negativeSign()
+                .suffix("D"),
+            -12,
+            "C12-D");
     }
 
     private void buildAndFormat(final DecimalFormatBuilder builder,
@@ -337,12 +337,12 @@ public final class DecimalFormatBuilderTest implements BuilderTesting<DecimalFor
     @Test
     public void testToString() {
         this.toStringAndCheck(DecimalFormatBuilder.empty()
-                        .digit()
-                        .digitOrZero()
-                        .decimalSeparator()
-                        .digitOrZero()
-                        .digitOrZero(),
-                "#0.00");
+                .digit()
+                .digitOrZero()
+                .decimalSeparator()
+                .digitOrZero()
+                .digitOrZero(),
+            "#0.00");
     }
 
     // Builder..........................................................................................................

@@ -28,8 +28,8 @@ import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class FractionTest implements ClassTesting2<Fraction>,
-        HashCodeEqualsDefinedTesting2<Fraction>,
-        ToStringTesting<Fraction> {
+    HashCodeEqualsDefinedTesting2<Fraction>,
+    ToStringTesting<Fraction> {
 
     private final static BigInteger NUMERATOR = BigInteger.ONE;
     private final static BigInteger DENOMINATOR = BigInteger.TEN;

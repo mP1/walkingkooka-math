@@ -25,9 +25,9 @@ public interface HasMathContextTesting extends Testing {
 
     default void hasMathContextAndCheck(final HasMathContext has, final MathContext mathContext) {
         this.checkEquals(
-                mathContext,
-                has.mathContext(),
-                () -> has + " mathContext()"
+            mathContext,
+            has.mathContext(),
+            () -> has + " mathContext()"
         );
     }
 }

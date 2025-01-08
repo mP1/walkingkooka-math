@@ -20,7 +20,7 @@ package walkingkooka.math;
 import java.math.MathContext;
 
 public interface DecimalNumberContextDelegator extends DecimalNumberContext,
-        NumberContextDelegator {
+    NumberContextDelegator {
 
     @Override
     default String currencySymbol() {

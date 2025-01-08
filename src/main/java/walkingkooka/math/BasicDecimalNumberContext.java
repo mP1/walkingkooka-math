@@ -43,14 +43,14 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
         Objects.requireNonNull(mathContext, "mathContext");
 
         return new BasicDecimalNumberContext(currencySymbol,
-                decimalSeparator,
-                exponentSymbol,
-                groupSeparator,
-                negativeSign,
-                percentageSymbol,
-                positiveSign,
-                locale,
-                mathContext);
+            decimalSeparator,
+            exponentSymbol,
+            groupSeparator,
+            negativeSign,
+            percentageSymbol,
+            positiveSign,
+            locale,
+            mathContext);
     }
 
     private BasicDecimalNumberContext(final String currencySymbol,
@@ -70,9 +70,9 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
         this.negativeSign = negativeSign;
         this.percentageSymbol = percentageSymbol;
         this.positiveSign = positiveSign;
-        
+
         this.locale = locale;
-        
+
         this.mathContext = mathContext;
     }
 
@@ -131,7 +131,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     }
 
     private final Locale locale;
-    
+
     @Override
     public MathContext mathContext() {
         return this.mathContext;
@@ -142,15 +142,15 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .value(this.currencySymbol)
-                .value(this.decimalSeparator)
-                .value(this.exponentSymbol)
-                .value(this.groupSeparator)
-                .value(this.negativeSign)
-                .value(this.percentageSymbol)
-                .value(this.positiveSign)
-                .value(this.locale)
-                .value(this.mathContext)
-                .build();
+            .value(this.currencySymbol)
+            .value(this.decimalSeparator)
+            .value(this.exponentSymbol)
+            .value(this.groupSeparator)
+            .value(this.negativeSign)
+            .value(this.percentageSymbol)
+            .value(this.positiveSign)
+            .value(this.locale)
+            .value(this.mathContext)
+            .build();
     }
 }

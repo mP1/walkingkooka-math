@@ -22,7 +22,7 @@ import walkingkooka.locale.HasLocaleTesting;
  * Mixing testing interface for {@link DecimalNumberContext}
  */
 public interface DecimalNumberContextTesting extends HasLocaleTesting,
-        HasMathContextTesting {
+    HasMathContextTesting {
 
     default void checkCurrencySymbol(final DecimalNumberContext context, final String currencySymbol) {
         this.checkEquals(currencySymbol, context.currencySymbol(), "currencySymbol");

@@ -28,7 +28,7 @@ import java.util.Locale;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DecimalFormatSymbolsDecimalNumberContextTest implements ClassTesting2<DecimalFormatSymbolsDecimalNumberContext>,
-        DecimalNumberContextTesting2<DecimalFormatSymbolsDecimalNumberContext> {
+    DecimalNumberContextTesting2<DecimalFormatSymbolsDecimalNumberContext> {
 
     private final static Locale LOCALE = Locale.FRANCE;
     private final static MathContext MATH_CONTEXT = MathContext.DECIMAL32;
@@ -36,25 +36,25 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
     @Test
     public void testWithNullSymbolFails() {
         assertThrows(NullPointerException.class, () -> DecimalFormatSymbolsDecimalNumberContext.with(null,
-                '+',
-                LOCALE,
-                MATH_CONTEXT));
+            '+',
+            LOCALE,
+            MATH_CONTEXT));
     }
 
     @Test
     public void testWithNullLocaleFails() {
         assertThrows(NullPointerException.class, () -> DecimalFormatSymbolsDecimalNumberContext.with(this.decimalFormatSymbols(),
-                '+',
-                null,
-                MATH_CONTEXT));
+            '+',
+            null,
+            MATH_CONTEXT));
     }
 
     @Test
     public void testWithNullMathContextFails() {
         assertThrows(NullPointerException.class, () -> DecimalFormatSymbolsDecimalNumberContext.with(this.decimalFormatSymbols(),
-                '+',
-                LOCALE,
-                null));
+            '+',
+            LOCALE,
+            null));
     }
 
     @Test
@@ -81,9 +81,9 @@ public final class DecimalFormatSymbolsDecimalNumberContextTest implements Class
     @Override
     public DecimalFormatSymbolsDecimalNumberContext createContext() {
         return DecimalFormatSymbolsDecimalNumberContext.with(this.decimalFormatSymbols(),
-                '+',
-                LOCALE,
-                MATH_CONTEXT);
+            '+',
+            LOCALE,
+            MATH_CONTEXT);
     }
 
     private DecimalFormatSymbols decimalFormatSymbols() {

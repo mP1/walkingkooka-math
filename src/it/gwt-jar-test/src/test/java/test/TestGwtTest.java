@@ -27,15 +27,15 @@ public class TestGwtTest extends GWTTestCase {
 
     public void testAssertEquals() {
         assertEquals(
-                1,
-                1
+            1,
+            1
         );
     }
 
     public void testMathsIsNumber() {
         assertEquals(
-                true,
-                Maths.isNumber(12)
+            true,
+            Maths.isNumber(12)
         );
     }
 }

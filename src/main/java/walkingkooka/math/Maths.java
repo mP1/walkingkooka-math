@@ -41,13 +41,13 @@ public final class Maths implements PublicStaticHelper {
      */
     public static boolean isNumberClass(final Class<?> type) {
         return type == BigDecimal.class ||
-                type == BigInteger.class ||
-                type == Byte.class ||
-                type == Double.class ||
-                type == Float.class ||
-                type == Integer.class ||
-                type == Long.class ||
-                type == Short.class;
+            type == BigInteger.class ||
+            type == Byte.class ||
+            type == Double.class ||
+            type == Float.class ||
+            type == Integer.class ||
+            type == Long.class ||
+            type == Short.class;
     }
 
     /**
@@ -58,8 +58,8 @@ public final class Maths implements PublicStaticHelper {
         Objects.requireNonNull(roundingMode, "roundingMode");
 
         return Double.isFinite(value) ?
-                roundFinite(value, roundingMode) :
-                value;
+            roundFinite(value, roundingMode) :
+            value;
     }
 
     private static double roundFinite(final double value,
@@ -69,14 +69,14 @@ public final class Maths implements PublicStaticHelper {
         switch (roundingMode) {
             case UP:
                 rounded = Math.ceil(
-                        Math.abs(value)
+                    Math.abs(value)
                 );
 
                 rounded = value < 0 ? -rounded : rounded;
                 break;
             case DOWN:
                 rounded = Math.floor(
-                        Math.abs(value)
+                    Math.abs(value)
                 );
 
                 rounded = value < 0 ? -rounded : rounded;
@@ -95,8 +95,8 @@ public final class Maths implements PublicStaticHelper {
                 break;
             case HALF_EVEN:
                 rounded = ((((long) value) & 1) == 1) ?
-                        halfUp(value) :
-                        halfDown(value);
+                    halfUp(value) :
+                    halfDown(value);
                 break;
             case UNNECESSARY:
                 rounded = Math.floor(value);
@@ -113,7 +113,7 @@ public final class Maths implements PublicStaticHelper {
 
     private static double halfDown(final double value) {
         final double rounded = Math.ceil(
-                Math.abs(value) - 0.5
+            Math.abs(value) - 0.5
         );
 
         return value < 0 ? -rounded : rounded;
@@ -121,7 +121,7 @@ public final class Maths implements PublicStaticHelper {
 
     private static double halfUp(final double value) {
         double rounded = Math.round(
-                Math.abs(value)
+            Math.abs(value)
         );
         return value < 0 ? -rounded : rounded;
     }
