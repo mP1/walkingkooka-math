@@ -37,14 +37,14 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
         Objects.requireNonNull(mathContext, "mathContext");
 
         return UNLIMITED.mathContext.equals(mathContext) ?
-                UNLIMITED :
-                DECIMAL32.mathContext.equals(mathContext) ?
-                        DECIMAL32 :
-                        DECIMAL64.mathContext.equals(mathContext) ?
-                                DECIMAL64 :
-                                DECIMAL128.mathContext.equals(mathContext) ?
-                                        DECIMAL128 :
-                                        new AmericanDecimalNumberContext(mathContext);
+            UNLIMITED :
+            DECIMAL32.mathContext.equals(mathContext) ?
+                DECIMAL32 :
+                DECIMAL64.mathContext.equals(mathContext) ?
+                    DECIMAL64 :
+                    DECIMAL128.mathContext.equals(mathContext) ?
+                        DECIMAL128 :
+                        new AmericanDecimalNumberContext(mathContext);
     }
 
     private final static AmericanDecimalNumberContext UNLIMITED = new AmericanDecimalNumberContext(MathContext.UNLIMITED);
@@ -112,14 +112,14 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .value(this.currencySymbol())
-                .value(this.decimalSeparator())
-                .value(this.exponentSymbol())
-                .value(this.groupSeparator())
-                .value(this.negativeSign())
-                .value(this.percentageSymbol())
-                .value(this.positiveSign())
-                .value(this.mathContext())
-                .build();
+            .value(this.currencySymbol())
+            .value(this.decimalSeparator())
+            .value(this.exponentSymbol())
+            .value(this.groupSeparator())
+            .value(this.negativeSign())
+            .value(this.percentageSymbol())
+            .value(this.positiveSign())
+            .value(this.mathContext())
+            .build();
     }
 }

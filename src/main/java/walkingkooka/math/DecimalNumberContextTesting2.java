@@ -25,7 +25,7 @@ import java.math.MathContext;
  * Mixing testing interface for {@link DecimalNumberContext}
  */
 public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> extends DecimalNumberContextTesting,
-        ContextTesting<C> {
+    ContextTesting<C> {
 
     @Test
     default void testCurrencySymbol() {

@@ -39,21 +39,21 @@ public class JunitTest {
     @Test
     public void testDateTimeContextBasic() {
         Assert.assertNotNull(DecimalNumberContexts.basic("$",
-                '.',
-                "E",
-                ',',
-                '-',
-                '%',
-                '+',
-                LOCALE,
-                MATH_CONTEXT));
+            '.',
+            "E",
+            ',',
+            '-',
+            '%',
+            '+',
+            LOCALE,
+            MATH_CONTEXT));
     }
 
     @Test
     public void testDateTimeContextDecimalFormatSymbols() {
         Assert.assertNotNull(DecimalNumberContexts.decimalFormatSymbols(DecimalFormatSymbols.getInstance(LOCALE),
-                '+',
-                LOCALE,
-                MATH_CONTEXT));
+            '+',
+            LOCALE,
+            MATH_CONTEXT));
     }
 }

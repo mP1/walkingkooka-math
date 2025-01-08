@@ -24,19 +24,19 @@ public interface NumberContextDelegator extends NumberContext {
     @Override
     default char negativeSign() {
         return this.numberContext()
-                .negativeSign();
+            .negativeSign();
     }
 
     @Override
     default char positiveSign() {
         return this.numberContext()
-                .positiveSign();
+            .positiveSign();
     }
 
     @Override
     default Locale locale() {
         return this.numberContext()
-                .locale();
+            .locale();
     }
 
     NumberContext numberContext();

@@ -68,12 +68,12 @@ public final class Fraction {
     @Override
     public boolean equals(final Object other) {
         return (this == other) || ((other instanceof Fraction)
-                && this.equals0((Fraction) other));
+            && this.equals0((Fraction) other));
     }
 
     private boolean equals0(final Fraction other) {
         return this.numerator.equals(other.numerator) &&
-                this.denominator.equals(other.denominator);
+            this.denominator.equals(other.denominator);
     }
 
     @Override

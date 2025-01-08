@@ -84,7 +84,7 @@ final class MathsToBigDecimalNumberVisitor extends NumberVisitor {
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-                .value(this.bigDecimal)
-                .build();
+            .value(this.bigDecimal)
+            .build();
     }
 }

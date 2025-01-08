@@ -47,14 +47,14 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
                                              final Locale locale,
                                              final MathContext mathContext) {
         return BasicDecimalNumberContext.with(currencySymbol,
-                decimalSeparator,
-                exponentSymbol,
-                groupSeparator,
-                negativeSign,
-                percentageSymbol,
-                positiveSign,
-                locale,
-                mathContext);
+            decimalSeparator,
+            exponentSymbol,
+            groupSeparator,
+            negativeSign,
+            percentageSymbol,
+            positiveSign,
+            locale,
+            mathContext);
     }
 
     /**
@@ -65,9 +65,9 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
                                                             final Locale locale,
                                                             final MathContext mathContext) {
         return DecimalFormatSymbolsDecimalNumberContext.with(symbols,
-                positiveSign,
-                locale,
-                mathContext);
+            positiveSign,
+            locale,
+            mathContext);
     }
 
     /**
