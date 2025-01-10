@@ -25,11 +25,6 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
     DecimalNumberContextTesting2<TestDecimalNumberContextDelegator> {
 
     @Override
-    public void testCheckToStringOverridden() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public void testTypeNaming() {
         throw new UnsupportedOperationException();
     }
@@ -44,6 +39,11 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
         @Override
         public DecimalNumberContext decimalNumberContext() {
             return DecimalNumberContexts.american(MathContext.DECIMAL32);
+        }
+
+        @Override
+        public String toString() {
+            return this.getClass().getSimpleName();
         }
     }
 
