@@ -18,6 +18,7 @@
 package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.math.NumberVisitorTest.TestNumberVisitor;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.visit.Visiting;
 
@@ -26,7 +27,7 @@ import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class NumberVisitorTest implements NumberVisitorTesting<NumberVisitor> {
+public final class NumberVisitorTest implements NumberVisitorTesting<TestNumberVisitor> {
 
     // BigDecimal.......................................................................................................
 
@@ -378,27 +379,42 @@ public final class NumberVisitorTest implements NumberVisitorTesting<NumberVisit
     }
 
     @Override
-    public NumberVisitor createVisitor() {
-        return new FakeNumberVisitor() {
-            @Override
-            public String toString() {
-                return this.getClass().getSimpleName();
-            }
-        };
+    public TestNumberVisitor createVisitor() {
+        return new TestNumberVisitor();
+    }
+
+    final static class TestNumberVisitor extends FakeNumberVisitor {
+
+        @Override
+        public String toString() {
+            return this.getClass().getSimpleName();
+        }
+    }
+
+    // class............................................................................................................
+
+    @Override
+    public void testTestNaming() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void testTypeNaming() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public String typeNamePrefix() {
-        return "";
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Class<TestNumberVisitor> type() {
+        return TestNumberVisitor.class;
     }
 
     @Override
     public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
-    }
-
-    @Override
-    public Class<NumberVisitor> type() {
-        return NumberVisitor.class;
+        return JavaVisibility.PACKAGE_PRIVATE;
     }
 }
