@@ -378,12 +378,13 @@ public final class NumberVisitorTest implements NumberVisitorTesting<NumberVisit
     }
 
     @Override
-    public void testCheckToStringOverridden() {
-    }
-
-    @Override
     public NumberVisitor createVisitor() {
-        return new FakeNumberVisitor();
+        return new FakeNumberVisitor() {
+            @Override
+            public String toString() {
+                return this.getClass().getSimpleName();
+            }
+        };
     }
 
     @Override
