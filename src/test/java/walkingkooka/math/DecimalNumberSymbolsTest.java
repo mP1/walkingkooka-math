@@ -22,6 +22,7 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.text.printer.TreePrintableTesting;
 
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -29,6 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTesting2<DecimalNumberSymbols>,
     ToStringTesting<DecimalNumberSymbols>,
+    TreePrintableTesting,
     ClassTesting<DecimalNumberSymbols> {
 
     private final static char NEGATIVE_SIGN = '-';
@@ -1126,6 +1128,29 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.toStringAndCheck(
             this.createObject(),
             "negativeSign='-' positiveSign='+' currencySymbol=\"AUD\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' percentageSymbol='%'"
+        );
+    }
+
+    // TreePrintable....................................................................................................
+
+    @Test
+    public void testTreePrintable() {
+        this.treePrintAndCheck(
+            this.createObject(),
+            "DecimalNumberSymbolsnegativeSign\n" +
+                "    '-'\n" +
+                "  positiveSign\n" +
+                "    '+'\n" +
+                "  currencySymbol\n" +
+                "    \"AUD\"\n" +
+                "  decimalSeparator\n" +
+                "    '.'\n" +
+                "  exponentSymbol\n" +
+                "    \"E\"\n" +
+                "  groupSeparator\n" +
+                "    ','\n" +
+                "  percentageSymbol\n" +
+                "    '%'\n"
         );
     }
 

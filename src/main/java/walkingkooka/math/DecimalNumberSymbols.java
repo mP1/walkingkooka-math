@@ -21,13 +21,16 @@ import walkingkooka.ToStringBuilder;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
 import walkingkooka.text.CharSequences;
+import walkingkooka.text.printer.IndentingPrinter;
+import walkingkooka.text.printer.TreePrintable;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
  * Holds locale sensitive symbols related to the text representation or formatting of a number into text.
  */
-public final class DecimalNumberSymbols {
+public final class DecimalNumberSymbols implements TreePrintable {
 
     public static DecimalNumberSymbols with(final char negativeSign,
                                             final char positiveSign,
@@ -321,5 +324,66 @@ public final class DecimalNumberSymbols {
             .label("groupSeparator").value(this.groupSeparator)
             .label("percentageSymbol").value(this.percentageSymbol)
             .build();
+    }
+
+    // TreePrintable....................................................................................................
+
+    @Override
+    public void printTree(IndentingPrinter printer) {
+        printer.print(this.getClass().getSimpleName());
+
+        printer.indent();
+        {
+            this.printLabelAndValues(
+                "negativeSign",
+                this.negativeSign,
+                printer
+            );
+            this.printLabelAndValues(
+                "positiveSign",
+                this.positiveSign,
+                printer
+            );
+            this.printLabelAndValues(
+                "currencySymbol",
+                this.currencySymbol,
+                printer
+            );
+            this.printLabelAndValues(
+                "decimalSeparator",
+                this.decimalSeparator,
+                printer
+            );
+            this.printLabelAndValues(
+                "exponentSymbol",
+                this.exponentSymbol,
+                printer
+            );
+            this.printLabelAndValues(
+                "groupSeparator",
+                this.groupSeparator,
+                printer
+            );
+            this.printLabelAndValues(
+                "percentageSymbol",
+                this.percentageSymbol,
+                printer
+            );
+        }
+        printer.outdent();
+    }
+
+    private void printLabelAndValues(final String label,
+                                     final Object value,
+                                     final IndentingPrinter printer) {
+        printer.println(label);
+
+        printer.indent();
+        {
+            printer.println(
+                CharSequences.quoteIfChars(value)
+            );
+        }
+        printer.outdent();
     }
 }
