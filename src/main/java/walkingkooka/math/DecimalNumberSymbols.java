@@ -290,14 +290,12 @@ public final class DecimalNumberSymbols implements TreePrintable {
 
     private static String checkString(final String label,
                                       final String value) {
-        CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(
+        return CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(
             value,
             label,
             CHAR_PREDICATE,
             CHAR_PREDICATE
         );
-
-        return value;
     }
 
     // Object...........................................................................................................
