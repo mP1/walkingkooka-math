@@ -20,7 +20,7 @@ import com.google.j2cl.junit.apt.J2clTestInput;
 import org.junit.Assert;
 import org.junit.Test;
 import walkingkooka.math.DecimalNumberContexts;
-
+import walkingkooka.math.DecimalNumberSymbols;
 import java.math.MathContext;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -38,22 +38,20 @@ public class JunitTest {
 
     @Test
     public void testDateTimeContextBasic() {
-        Assert.assertNotNull(DecimalNumberContexts.basic("$",
-            '.',
-            "E",
-            ',',
-            '-',
-            '%',
-            '+',
-            LOCALE,
-            MATH_CONTEXT));
-    }
-
-    @Test
-    public void testDateTimeContextDecimalFormatSymbols() {
-        Assert.assertNotNull(DecimalNumberContexts.decimalFormatSymbols(DecimalFormatSymbols.getInstance(LOCALE),
-            '+',
-            LOCALE,
-            MATH_CONTEXT));
+        Assert.assertNotNull(
+            DecimalNumberContexts.basic(
+                DecimalNumberSymbols.with(
+                    '-',
+                    '+',
+                    "$",
+                    '.',
+                    "E",
+                    ',',
+                    '%'
+                ),
+                LOCALE,
+                MATH_CONTEXT
+            )
+        );
     }
 }

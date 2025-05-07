@@ -47,19 +47,6 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
     }
 
     /**
-     * {@see DecimalFormatSymbolsDecimalNumberContext}
-     */
-    public static DecimalNumberContext decimalFormatSymbols(final DecimalFormatSymbols symbols,
-                                                            final char positiveSign,
-                                                            final Locale locale,
-                                                            final MathContext mathContext) {
-        return DecimalFormatSymbolsDecimalNumberContext.with(symbols,
-            positiveSign,
-            locale,
-            mathContext);
-    }
-
-    /**
      * {@see FakeDecimalNumberContext}
      */
     public static DecimalNumberContext fake() {
