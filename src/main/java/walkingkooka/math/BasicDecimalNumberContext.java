@@ -28,102 +28,61 @@ import java.util.Objects;
  */
 final class BasicDecimalNumberContext implements DecimalNumberContext {
 
-    static BasicDecimalNumberContext with(final String currencySymbol,
-                                          final char decimalSeparator,
-                                          final String exponentSymbol,
-                                          final char groupSeparator,
-                                          final char negativeSign,
-                                          final char percentageSymbol,
-                                          final char positiveSign,
+    static BasicDecimalNumberContext with(final DecimalNumberSymbols symbols,
                                           final Locale locale,
                                           final MathContext mathContext) {
-        Objects.requireNonNull(currencySymbol, "currencySymbol");
-        Objects.requireNonNull(exponentSymbol, "exponentSymbol");
-        Objects.requireNonNull(locale, "locale");
-        Objects.requireNonNull(mathContext, "mathContext");
-
-        return new BasicDecimalNumberContext(currencySymbol,
-            decimalSeparator,
-            exponentSymbol,
-            groupSeparator,
-            negativeSign,
-            percentageSymbol,
-            positiveSign,
-            locale,
-            mathContext);
+        return new BasicDecimalNumberContext(
+            Objects.requireNonNull(symbols, "symbols"),
+            Objects.requireNonNull(locale, "locale"),
+            Objects.requireNonNull(mathContext, "mathContext")
+        );
     }
 
-    private BasicDecimalNumberContext(final String currencySymbol,
-                                      final char decimalSeparator,
-                                      final String exponentSymbol,
-                                      final char groupSeparator,
-                                      final char negativeSign,
-                                      final char percentageSymbol,
-                                      final char positiveSign,
+    private BasicDecimalNumberContext(final DecimalNumberSymbols symbols,
                                       final Locale locale,
                                       final MathContext mathContext) {
         super();
-        this.currencySymbol = currencySymbol;
-        this.decimalSeparator = decimalSeparator;
-        this.exponentSymbol = exponentSymbol;
-        this.groupSeparator = groupSeparator;
-        this.negativeSign = negativeSign;
-        this.percentageSymbol = percentageSymbol;
-        this.positiveSign = positiveSign;
-
+        this.symbols = symbols;
         this.locale = locale;
-
         this.mathContext = mathContext;
     }
 
     @Override
     public String currencySymbol() {
-        return this.currencySymbol;
+        return this.symbols.currencySymbol();
     }
-
-    private final String currencySymbol;
 
     @Override
     public char decimalSeparator() {
-        return this.decimalSeparator;
+        return this.symbols.decimalSeparator();
     }
-
-    private final char decimalSeparator;
 
     @Override
     public String exponentSymbol() {
-        return this.exponentSymbol;
+        return this.symbols.exponentSymbol();
     }
-
-    private final String exponentSymbol;
 
     @Override
     public char groupSeparator() {
-        return this.groupSeparator;
+        return this.symbols.groupSeparator();
     }
-
-    private final char groupSeparator;
 
     @Override
     public char negativeSign() {
-        return this.negativeSign;
+        return this.symbols.negativeSign();
     }
-
-    private final char negativeSign;
 
     @Override
     public char percentageSymbol() {
-        return this.percentageSymbol;
+        return this.symbols.percentageSymbol();
     }
-
-    private final char percentageSymbol;
 
     @Override
     public char positiveSign() {
-        return this.positiveSign;
+        return this.symbols.positiveSign();
     }
 
-    private final char positiveSign;
+    private final DecimalNumberSymbols symbols;
 
     @Override
     public Locale locale() {
@@ -142,13 +101,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-            .value(this.currencySymbol)
-            .value(this.decimalSeparator)
-            .value(this.exponentSymbol)
-            .value(this.groupSeparator)
-            .value(this.negativeSign)
-            .value(this.percentageSymbol)
-            .value(this.positiveSign)
+            .value(this.symbols)
             .value(this.locale)
             .value(this.mathContext)
             .build();
