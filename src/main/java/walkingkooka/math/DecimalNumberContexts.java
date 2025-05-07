@@ -37,22 +37,11 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
     /**
      * {@see BasicDecimalNumberContext}
      */
-    public static DecimalNumberContext basic(final String currencySymbol,
-                                             final char decimalSeparator,
-                                             final String exponentSymbol,
-                                             final char groupSeparator,
-                                             final char negativeSign,
-                                             final char percentageSymbol,
-                                             final char positiveSign,
+    public static DecimalNumberContext basic(final DecimalNumberSymbols symbols,
                                              final Locale locale,
                                              final MathContext mathContext) {
-        return BasicDecimalNumberContext.with(currencySymbol,
-            decimalSeparator,
-            exponentSymbol,
-            groupSeparator,
-            negativeSign,
-            percentageSymbol,
-            positiveSign,
+        return BasicDecimalNumberContext.with(
+            symbols,
             locale,
             mathContext);
     }
