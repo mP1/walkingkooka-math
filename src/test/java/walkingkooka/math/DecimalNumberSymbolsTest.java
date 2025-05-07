@@ -24,6 +24,9 @@ import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.text.printer.TreePrintableTesting;
 
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -1152,6 +1155,42 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
                 "  percentageSymbol\n" +
                 "    '%'\n"
         );
+    }
+
+    // fromDecimalFormatSymbols.........................................................................................
+
+    @Test
+    public void testFromDecimalFormatSymbolsWithNullDecimalFormatSymbols() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DecimalNumberSymbols.fromDecimalFormatSymbols(
+                '+',
+                null
+            )
+        );
+    }
+
+    @Test
+    public void testFromDecimalFormatSymbols() {
+        final DecimalNumberSymbols symbols = DecimalNumberSymbols.fromDecimalFormatSymbols(
+            '+',
+            DecimalFormatSymbols.getInstance(
+                Locale.forLanguageTag("EN-AU")
+            )
+        );
+        this.positiveSignAndCheck(symbols, '+');
+        this.negativeSignAndCheck(symbols, '-');
+        this.currencySymbolAndCheck(symbols, "$");
+        this.exponentSymbolAndCheck(symbols, "e");
+        this.groupSeparatorAndCheck(symbols, ',');
+        this.percentageSymbolAndCheck(symbols, '%');
+    }
+
+    @Test
+    public void testFromDecimalFormatSymbolsFromAllLocales() {
+        for (final Locale locale : Locale.getAvailableLocales()) {
+            DecimalFormatSymbols.getInstance(locale);
+        }
     }
 
     // class............................................................................................................

@@ -24,6 +24,7 @@ import walkingkooka.text.CharSequences;
 import walkingkooka.text.printer.IndentingPrinter;
 import walkingkooka.text.printer.TreePrintable;
 
+import java.text.DecimalFormatSymbols;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -31,6 +32,22 @@ import java.util.Objects;
  * Holds locale sensitive symbols related to the text representation or formatting of a number into text.
  */
 public final class DecimalNumberSymbols implements TreePrintable {
+
+    public static DecimalNumberSymbols fromDecimalFormatSymbols(final char positiveSign,
+                                                                final DecimalFormatSymbols symbols) {
+        Objects.requireNonNull(symbols, "symbols");
+
+        return with(
+            symbols.getMinusSign(),
+            positiveSign,
+            symbols.getCurrencySymbol(),
+            symbols.getDecimalSeparator(),
+            symbols.getExponentSeparator(),
+            symbols.getGroupingSeparator(),
+            symbols.getPercent()
+        );
+    }
+
 
     public static DecimalNumberSymbols with(final char negativeSign,
                                             final char positiveSign,
