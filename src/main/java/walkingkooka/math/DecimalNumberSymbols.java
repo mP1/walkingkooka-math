@@ -25,7 +25,6 @@ import walkingkooka.text.printer.IndentingPrinter;
 import walkingkooka.text.printer.TreePrintable;
 
 import java.text.DecimalFormatSymbols;
-import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -277,13 +276,21 @@ public final class DecimalNumberSymbols implements TreePrintable {
 
     // helper...........................................................................................................
 
-    private final static CharPredicate CHAR_PREDICATE = CharPredicates.asciiControl()
+    private final static CharPredicate PRINTABLE = CharPredicates.asciiControl()
         .negate();
+
+    private final static CharPredicate SYMBOL = PRINTABLE.and(
+        CharPredicates.letterOrDigit()
+            .negate()
+    ).and(
+        CharPredicates.whitespace()
+            .negate()
+    );
 
     private static char checkCharacter(final String label,
                                        final char c) {
-        if (false == CHAR_PREDICATE.test(c)) {
-            throw new IllegalArgumentException("Invalid " + label + " " + CharSequences.quoteAndEscape(c) + " is not printable");
+        if (false == SYMBOL.test(c)) {
+            throw new IllegalArgumentException("Invalid " + label + " " + CharSequences.quoteAndEscape(c) + " is not a symbol");
         }
         return c;
     }
@@ -293,8 +300,8 @@ public final class DecimalNumberSymbols implements TreePrintable {
         return CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(
             value,
             label,
-            CHAR_PREDICATE,
-            CHAR_PREDICATE
+            PRINTABLE,
+            PRINTABLE
         );
     }
 
