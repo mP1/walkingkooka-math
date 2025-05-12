@@ -18,9 +18,11 @@
 package walkingkooka.math;
 
 import walkingkooka.ToStringBuilder;
+import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
 import walkingkooka.text.CharSequences;
+import walkingkooka.text.HasText;
 import walkingkooka.text.printer.IndentingPrinter;
 import walkingkooka.text.printer.TreePrintable;
 
@@ -30,7 +32,8 @@ import java.util.Objects;
 /**
  * Holds locale sensitive symbols related to the text representation or formatting of a number into text.
  */
-public final class DecimalNumberSymbols implements TreePrintable {
+public final class DecimalNumberSymbols implements TreePrintable,
+    HasText {
 
     public static DecimalNumberSymbols fromDecimalFormatSymbols(final char positiveSign,
                                                                 final DecimalFormatSymbols symbols) {
@@ -347,6 +350,30 @@ public final class DecimalNumberSymbols implements TreePrintable {
         }
 
         return zeroDigit;
+    }
+
+    // HasText..........................................................................................................
+
+    /**
+     * Returns a CSV string with the individual symbols.
+     */
+    @Override
+    public String text() {
+        return CsvStringList.EMPTY.concat(
+                String.valueOf(this.negativeSign)
+            ).concat(
+                String.valueOf(this.positiveSign)
+            ).concat(
+                String.valueOf(this.zeroDigit)
+            ).concat(this.currencySymbol)
+            .concat(
+                String.valueOf(this.decimalSeparator)
+            ).concat(this.exponentSymbol)
+            .concat(
+                String.valueOf(this.groupSeparator)
+            ).concat(
+                String.valueOf(this.percentageSymbol)
+            ).text();
     }
 
     // Object...........................................................................................................
