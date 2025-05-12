@@ -17,6 +17,7 @@
 
 package walkingkooka.math;
 
+import walkingkooka.EmptyTextException;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.predicate.character.CharPredicate;
@@ -34,6 +35,43 @@ import java.util.Objects;
  */
 public final class DecimalNumberSymbols implements TreePrintable,
     HasText {
+
+    /**
+     * Parses the {@link String csv text} with each token interpreted as a character or string for each
+     * of the {@link DecimalNumberSymbols} properties. This is the inverse of {@link #text()}.
+     */
+    public static DecimalNumberSymbols parse(final String text) {
+        final CsvStringList csv = CsvStringList.parse(text);
+
+        final int tokenCount = csv.size();
+        if (8 != tokenCount) {
+            throw new IllegalArgumentException("Expected 8 tokens but got " + tokenCount);
+        }
+
+        return with(
+            stringToChar("negativeSign", csv.get(0)),
+            stringToChar("positiveSign", csv.get(1)),
+            stringToChar("zeroDigit", csv.get(2)),
+            csv.get(3), // currencySymbol
+            stringToChar("decimalSeparator", csv.get(4)),
+            csv.get(5), // exponentSymbol
+            stringToChar("groupSeparator", csv.get(6)),
+            stringToChar("percentageSymbol", csv.get(7))
+        );
+    }
+
+    private static char stringToChar(final String label,
+                                     final String string) {
+        final int length = string.length();
+        switch (length) {
+            case 0:
+                throw new EmptyTextException(label);
+            case 1:
+                return string.charAt(0);
+            default:
+                throw new IllegalArgumentException("Invalid " + label + " expected 1 character but got " + length);
+        }
+    }
 
     public static DecimalNumberSymbols fromDecimalFormatSymbols(final char positiveSign,
                                                                 final DecimalFormatSymbols symbols) {

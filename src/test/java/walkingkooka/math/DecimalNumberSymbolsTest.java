@@ -22,6 +22,7 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
 
@@ -35,6 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTesting2<DecimalNumberSymbols>,
     ToStringTesting<DecimalNumberSymbols>,
     HasTextTesting,
+    ParseStringTesting<DecimalNumberSymbols>,
     TreePrintableTesting,
     ClassTesting<DecimalNumberSymbols> {
 
@@ -1372,6 +1374,59 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
                 .setDecimalSeparator(','),
             "-,+,0,AUD,\",\",E,;,%"
         );
+    }
+
+    // parseString......................................................................................................
+
+    @Test
+    public void testParseWrongTokenCount() {
+        final IllegalArgumentException thrown = assertThrows(
+            IllegalArgumentException.class,
+            () -> DecimalNumberSymbols.parse("-,+,0")
+        );
+
+        this.checkEquals(
+            "Expected 8 tokens but got 3",
+            thrown.getMessage()
+        );
+    }
+
+    @Test
+    public void testParseEmptyNegativeSign() {
+        final IllegalArgumentException thrown = assertThrows(
+            IllegalArgumentException.class,
+            () -> DecimalNumberSymbols.parse(",+,0,$,.,E,\",\",%")
+        );
+
+        this.checkEquals(
+            "Empty \"negativeSign\"",
+            thrown.getMessage()
+        );
+    }
+
+    @Test
+    public void testParse() {
+        final DecimalNumberSymbols symbols = this.createObject();
+
+        this.parseStringAndCheck(
+            symbols.text(),
+            symbols
+        );
+    }
+
+    @Override
+    public DecimalNumberSymbols parseString(final String text) {
+        return DecimalNumberSymbols.parse(text);
+    }
+
+    @Override
+    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> thrown) {
+        return thrown;
+    }
+
+    @Override
+    public RuntimeException parseStringFailedExpected(final RuntimeException thrown) {
+        return thrown;
     }
 
     // class............................................................................................................
