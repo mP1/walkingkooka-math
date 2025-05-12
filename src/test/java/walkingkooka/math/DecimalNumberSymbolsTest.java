@@ -44,8 +44,8 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     private final static char GROUP_SEPARATOR = ',';
     private final static char PERCENTAGE_SYMBOL = '%';
 
-    private final static char INVALID_CHAR = '\n';
-    private final static String INVALID_STRING = "" + INVALID_CHAR;
+    private final static char INVALID_CHAR = 'A';
+    private final static String INVALID_STRING = "\n";
 
     private final static char DIFFERENT_CHAR = '!';
     private final static String DIFFERENT_STRING = "Different";
