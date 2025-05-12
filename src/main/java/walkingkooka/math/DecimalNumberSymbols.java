@@ -25,7 +25,6 @@ import walkingkooka.text.printer.IndentingPrinter;
 import walkingkooka.text.printer.TreePrintable;
 
 import java.text.DecimalFormatSymbols;
-import java.util.Collection;
 import java.util.Objects;
 
 /**

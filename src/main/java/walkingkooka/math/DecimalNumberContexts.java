@@ -19,7 +19,6 @@ package walkingkooka.math;
 import walkingkooka.reflect.PublicStaticHelper;
 
 import java.math.MathContext;
-import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
