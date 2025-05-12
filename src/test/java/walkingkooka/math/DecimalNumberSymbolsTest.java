@@ -22,6 +22,7 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.text.HasTextTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.text.DecimalFormatSymbols;
@@ -33,6 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTesting2<DecimalNumberSymbols>,
     ToStringTesting<DecimalNumberSymbols>,
+    HasTextTesting,
     TreePrintableTesting,
     ClassTesting<DecimalNumberSymbols> {
 
@@ -1307,6 +1309,26 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         for (final Locale locale : Locale.getAvailableLocales()) {
             DecimalFormatSymbols.getInstance(locale);
         }
+    }
+
+    // HasText..........................................................................................................
+
+    @Test
+    public void testText() {
+        this.textAndCheck(
+            this.createObject(),
+            "-,+,0,AUD,.,E,\",\",%"
+        );
+    }
+
+    @Test
+    public void testTextWithDecimalSeparatorComma() {
+        this.textAndCheck(
+            this.createObject()
+                .setGroupSeparator(';')
+                .setDecimalSeparator(','),
+            "-,+,0,AUD,\",\",E,;,%"
+        );
     }
 
     // class............................................................................................................
