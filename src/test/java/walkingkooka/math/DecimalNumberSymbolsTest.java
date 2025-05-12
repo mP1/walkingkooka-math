@@ -1306,9 +1306,52 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
     @Test
     public void testFromDecimalFormatSymbolsFromAllLocales() {
+        final StringBuilder b = new StringBuilder();
+
+        final char leftToRight = '\u200e';
+
         for (final Locale locale : Locale.getAvailableLocales()) {
-            DecimalFormatSymbols.getInstance(locale);
+            final DecimalFormatSymbols decimalFormatSymbols = DecimalFormatSymbols.getInstance(locale);
+
+            // some locales have bad data such as LEFT for minusSign
+            if(leftToRight == decimalFormatSymbols.getDecimalSeparator() ||
+                leftToRight == decimalFormatSymbols.getGroupingSeparator() ||
+                leftToRight == decimalFormatSymbols.getMinusSign() ||
+                leftToRight == decimalFormatSymbols.getMonetaryDecimalSeparator() ||
+                leftToRight == decimalFormatSymbols.getPercent() ||
+                leftToRight == decimalFormatSymbols.getPerMill()) {
+                continue;
+            }
+
+            try {
+                DecimalNumberSymbols.fromDecimalFormatSymbols(
+                    '+',
+                    decimalFormatSymbols
+                );
+            } catch (final IllegalArgumentException fail) {
+                b.append(
+                    locale +
+                        " " +
+                        locale.getDisplayName() +
+                        " " +
+                        locale.getCountry() +
+                        " " +
+                        locale.getLanguage() +
+                        " decimalSeparator=" + decimalFormatSymbols.getDecimalSeparator() +
+                        " groupingSeparator=" + decimalFormatSymbols.getGroupingSeparator() +
+                        " minusSign=" + decimalFormatSymbols.getMinusSign() +
+                        " monetaryDecimalSeparator=" + decimalFormatSymbols.getMonetaryDecimalSeparator() +
+                        " percent=" + decimalFormatSymbols.getPercent() +
+                        " perMill=" + decimalFormatSymbols.getPerMill() +
+                        "\n"
+                );
+            }
         }
+
+        this.checkEquals(
+            "",
+            b.toString()
+        );
     }
 
     // HasText..........................................................................................................
