@@ -39,6 +39,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
         return with(
             symbols.getMinusSign(),
             positiveSign,
+            symbols.getZeroDigit(),
             symbols.getCurrencySymbol(),
             symbols.getDecimalSeparator(),
             symbols.getExponentSeparator(),
@@ -50,6 +51,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
 
     public static DecimalNumberSymbols with(final char negativeSign,
                                             final char positiveSign,
+                                            final char zeroDigit,
                                             final String currencySymbol,
                                             final char decimalSeparator,
                                             final String exponentSymbol,
@@ -58,6 +60,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
         return new DecimalNumberSymbols(
             checkCharacter("negativeSign", negativeSign),
             checkCharacter("positiveSign", positiveSign),
+            checkZeroDigit(zeroDigit),
             checkString("currencySymbol", currencySymbol),
             checkCharacter("decimalSeparator", decimalSeparator),
             checkString("exponentSymbol", exponentSymbol),
@@ -68,6 +71,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
 
     private DecimalNumberSymbols(final char negativeSign,
                                  final char positiveSign,
+                                 final char zeroDigit,
                                  final String currencySymbol,
                                  final char decimalSeparator,
                                  final String exponentSymbol,
@@ -75,8 +79,9 @@ public final class DecimalNumberSymbols implements TreePrintable {
                                  final char percentageSymbol) {
         this.negativeSign = negativeSign;
         this.positiveSign = positiveSign;
-        this.decimalSeparator = decimalSeparator;
-        ;
+        this.zeroDigit = zeroDigit;
+
+        this.decimalSeparator = decimalSeparator;;
         this.groupSeparator = groupSeparator;
         this.percentageSymbol = percentageSymbol;
 
@@ -112,7 +117,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
             );
         }
     }
-
+    
     /**
      * Returns the negative sign.
      */
@@ -126,6 +131,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
             new DecimalNumberSymbols(
                 checkCharacter("negativeSign", negativeSign),
                 this.positiveSign,
+                this.zeroDigit,
                 this.currencySymbol,
                 this.decimalSeparator,
                 this.exponentSymbol,
@@ -149,6 +155,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
             new DecimalNumberSymbols(
                 this.negativeSign,
                 checkCharacter("positiveSign", positiveSign),
+                this.zeroDigit,
                 this.currencySymbol,
                 this.decimalSeparator,
                 this.exponentSymbol,
@@ -158,6 +165,30 @@ public final class DecimalNumberSymbols implements TreePrintable {
     }
 
     private final char positiveSign;
+
+    /**
+     * Returns the zero digit.
+     */
+    public char zeroDigit() {
+        return this.zeroDigit;
+    }
+
+    public DecimalNumberSymbols setZeroDigit(final char zeroDigit) {
+        return this.zeroDigit == zeroDigit ?
+            this :
+            new DecimalNumberSymbols(
+                this.negativeSign,
+                this.positiveSign,
+                checkZeroDigit(zeroDigit),
+                this.currencySymbol,
+                this.decimalSeparator,
+                this.exponentSymbol,
+                this.groupSeparator,
+                this.percentageSymbol
+            );
+    }
+
+    private final char zeroDigit;
 
     /**
      * The currency symbol character.
@@ -172,6 +203,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
             new DecimalNumberSymbols(
                 this.negativeSign,
                 this.positiveSign,
+                this.zeroDigit,
                 checkString("currencySymbol", currencySymbol),
                 this.decimalSeparator,
                 this.exponentSymbol,
@@ -195,6 +227,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
             new DecimalNumberSymbols(
                 this.negativeSign,
                 this.positiveSign,
+                this.zeroDigit,
                 this.currencySymbol,
                 checkCharacter("decimalSeparator", decimalSeparator),
                 this.exponentSymbol,
@@ -218,6 +251,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
             new DecimalNumberSymbols(
                 this.negativeSign,
                 this.positiveSign,
+                this.zeroDigit,
                 this.currencySymbol,
                 this.decimalSeparator,
                 checkString("exponentSymbol", exponentSymbol),
@@ -241,6 +275,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
             new DecimalNumberSymbols(
                 this.negativeSign,
                 this.positiveSign,
+                this.zeroDigit,
                 this.currencySymbol,
                 this.decimalSeparator,
                 this.exponentSymbol,
@@ -264,6 +299,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
             new DecimalNumberSymbols(
                 this.negativeSign,
                 this.positiveSign,
+                this.zeroDigit,
                 this.currencySymbol,
                 this.decimalSeparator,
                 this.exponentSymbol,
@@ -305,6 +341,14 @@ public final class DecimalNumberSymbols implements TreePrintable {
         );
     }
 
+    private static char checkZeroDigit(final char zeroDigit) {
+        if (false == Character.isDigit(zeroDigit)) {
+            throw new IllegalArgumentException("Invalid zero digit " + CharSequences.quoteIfChars(zeroDigit));
+        }
+
+        return zeroDigit;
+    }
+
     // Object...........................................................................................................
 
     @Override
@@ -312,6 +356,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
         return Objects.hash(
             this.negativeSign,
             this.positiveSign,
+            this.zeroDigit,
             this.currencySymbol,
             this.decimalSeparator,
             this.exponentSymbol,
@@ -328,6 +373,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
     private boolean equals0(final DecimalNumberSymbols other) {
         return this.negativeSign == other.negativeSign &&
             this.positiveSign == other.positiveSign &&
+            this.zeroDigit == other.zeroDigit &&
             this.currencySymbol.equals(other.currencySymbol) &&
             this.decimalSeparator == other.decimalSeparator &&
             this.exponentSymbol.equals(other.exponentSymbol) &&
@@ -340,6 +386,7 @@ public final class DecimalNumberSymbols implements TreePrintable {
         return ToStringBuilder.empty()
             .label("negativeSign").value(this.negativeSign)
             .label("positiveSign").value(this.positiveSign)
+            .label("zeroDigit").value(this.zeroDigit)
             .label("currencySymbol").value(this.currencySymbol)
             .label("decimalSeparator").value(this.decimalSeparator)
             .label("exponentSymbol").value(this.exponentSymbol)
@@ -364,6 +411,11 @@ public final class DecimalNumberSymbols implements TreePrintable {
             this.printLabelAndValues(
                 "positiveSign",
                 this.positiveSign,
+                printer
+            );
+            this.printLabelAndValues(
+                "zeroDigit",
+                this.zeroDigit,
                 printer
             );
             this.printLabelAndValues(

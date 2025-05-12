@@ -38,6 +38,8 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
     private final static char NEGATIVE_SIGN = '-';
     private final static char POSITIVE_SIGN = '+';
+    private final static char ZERO_DIGIT = '0';
+    
     private final static String CURRENCY_SYMBOL = "AUD";
     private final static char DECIMAL_SEPARATOR = '.';
     private final static String EXPONENT_SYMBOL = "E";
@@ -48,6 +50,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     private final static String INVALID_STRING = "\n";
 
     private final static char DIFFERENT_CHAR = '!';
+    private final static char DIFFERENT_ZERO_DIGIT = '1';
     private final static String DIFFERENT_STRING = "Different";
 
     // with.............................................................................................................
@@ -59,6 +62,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 INVALID_CHAR,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -75,6 +79,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 INVALID_CHAR,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -91,6 +96,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 null,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -107,6 +113,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 "",
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -123,6 +130,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 INVALID_STRING,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -139,6 +147,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 INVALID_CHAR,
                 EXPONENT_SYMBOL,
@@ -155,6 +164,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 null,
@@ -171,6 +181,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 "",
@@ -187,6 +198,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 INVALID_STRING,
@@ -203,6 +215,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -219,6 +232,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -235,6 +249,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 POSITIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -256,6 +271,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 DECIMAL_SEPARATOR,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -277,6 +293,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 GROUP_SEPARATOR,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -298,6 +315,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 PERCENTAGE_SYMBOL,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -319,6 +337,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 DECIMAL_SEPARATOR,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -340,6 +359,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 GROUP_SEPARATOR,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -361,6 +381,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 PERCENTAGE_SYMBOL,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -382,6 +403,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -402,6 +424,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         final DecimalNumberSymbols symbols = DecimalNumberSymbols.with(
             NEGATIVE_SIGN,
             POSITIVE_SIGN,
+            ZERO_DIGIT,
             CURRENCY_SYMBOL,
             DECIMAL_SEPARATOR,
             EXPONENT_SYMBOL,
@@ -490,6 +513,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DIFFERENT_CHAR
         );
         this.positiveSignAndCheck(different);
+        this.zeroDigitAndCheck(different);
         this.currencySymbolAndCheck(different);
         this.decimalSeparatorAndCheck(different);
         this.exponentSymbolAndCheck(different);
@@ -584,6 +608,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             different,
             DIFFERENT_CHAR
         );
+        this.zeroDigitAndCheck(different);
         this.currencySymbolAndCheck(different);
         this.decimalSeparatorAndCheck(different);
         this.exponentSymbolAndCheck(different);
@@ -603,6 +628,65 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.checkEquals(
             expected,
             symbols.positiveSign()
+        );
+    }
+
+    // positiveSign.....................................................................................................
+
+    @Test
+    public void testSetZeroDigitWithInvalidFails() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> this.createObject()
+                .setZeroDigit(INVALID_CHAR)
+        );
+    }
+
+    @Test
+    public void testSetZeroDigitSame() {
+        final DecimalNumberSymbols symbols = this.createObject();
+
+        assertSame(
+            symbols,
+            symbols.setZeroDigit(ZERO_DIGIT)
+        );
+    }
+
+    @Test
+    public void testSetZeroDigitDifferent() {
+        final DecimalNumberSymbols symbols = this.createObject();
+        final DecimalNumberSymbols different = symbols.setZeroDigit(DIFFERENT_ZERO_DIGIT);
+
+        assertNotSame(
+            symbols,
+            different
+        );
+
+        this.negativeSignAndCheck(different);
+        this.positiveSignAndCheck(different);
+        this.zeroDigitAndCheck(
+            different,
+            DIFFERENT_ZERO_DIGIT
+        );
+        this.currencySymbolAndCheck(different);
+        this.decimalSeparatorAndCheck(different);
+        this.exponentSymbolAndCheck(different);
+        this.groupSeparatorAndCheck(different);
+        this.percentageSymbolAndCheck(different);
+    }
+
+    private void zeroDigitAndCheck(final DecimalNumberSymbols symbols) {
+        this.zeroDigitAndCheck(
+            symbols,
+            ZERO_DIGIT
+        );
+    }
+
+    private void zeroDigitAndCheck(final DecimalNumberSymbols symbols,
+                                   final char expected) {
+        this.checkEquals(
+            expected,
+            symbols.zeroDigit()
         );
     }
 
@@ -639,6 +723,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
         this.negativeSignAndCheck(different);
         this.positiveSignAndCheck(different);
+        this.zeroDigitAndCheck(different);
         this.currencySymbolAndCheck(
             different,
             DIFFERENT_STRING
@@ -733,6 +818,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
         this.negativeSignAndCheck(different);
         this.positiveSignAndCheck(different);
+        this.zeroDigitAndCheck(different);
         this.currencySymbolAndCheck(different);
         this.decimalSeparatorAndCheck(
             different,
@@ -791,6 +877,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
         this.negativeSignAndCheck(different);
         this.positiveSignAndCheck(different);
+        this.zeroDigitAndCheck(different);
         this.currencySymbolAndCheck(different);
         this.decimalSeparatorAndCheck(different);
         this.exponentSymbolAndCheck(
@@ -885,6 +972,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
         this.negativeSignAndCheck(different);
         this.positiveSignAndCheck(different);
+        this.zeroDigitAndCheck(different);
         this.currencySymbolAndCheck(different);
         this.decimalSeparatorAndCheck(different);
         this.exponentSymbolAndCheck(different);
@@ -979,6 +1067,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
         this.negativeSignAndCheck(different);
         this.positiveSignAndCheck(different);
+        this.zeroDigitAndCheck(different);
         this.currencySymbolAndCheck(different);
         this.decimalSeparatorAndCheck(different);
         this.exponentSymbolAndCheck(different);
@@ -1012,6 +1101,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DecimalNumberSymbols.with(
                 '!',
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -1027,6 +1117,23 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 '!',
+                ZERO_DIGIT,
+                CURRENCY_SYMBOL,
+                DECIMAL_SEPARATOR,
+                EXPONENT_SYMBOL,
+                GROUP_SEPARATOR,
+                PERCENTAGE_SYMBOL
+            )
+        );
+    }
+
+    @Test
+    public void testEqualsDifferentZeroDigit() {
+        this.checkNotEquals(
+            DecimalNumberSymbols.with(
+                NEGATIVE_SIGN,
+                POSITIVE_SIGN,
+                DIFFERENT_ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -1042,6 +1149,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 DIFFERENT_STRING,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -1057,6 +1165,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 '!',
                 EXPONENT_SYMBOL,
@@ -1072,6 +1181,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 DIFFERENT_STRING,
@@ -1087,6 +1197,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -1102,6 +1213,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
+                ZERO_DIGIT,
                 CURRENCY_SYMBOL,
                 DECIMAL_SEPARATOR,
                 EXPONENT_SYMBOL,
@@ -1116,6 +1228,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         return DecimalNumberSymbols.with(
             NEGATIVE_SIGN,
             POSITIVE_SIGN,
+            ZERO_DIGIT,
             CURRENCY_SYMBOL,
             DECIMAL_SEPARATOR,
             EXPONENT_SYMBOL,
@@ -1130,7 +1243,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     public void testToString() {
         this.toStringAndCheck(
             this.createObject(),
-            "negativeSign='-' positiveSign='+' currencySymbol=\"AUD\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' percentageSymbol='%'"
+            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"AUD\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' percentageSymbol='%'"
         );
     }
 
@@ -1144,6 +1257,8 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
                 "    '-'\n" +
                 "  positiveSign\n" +
                 "    '+'\n" +
+                "  zeroDigit\n" +
+                "    '0'\n" +
                 "  currencySymbol\n" +
                 "    \"AUD\"\n" +
                 "  decimalSeparator\n" +
@@ -1180,6 +1295,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         );
         this.positiveSignAndCheck(symbols, '+');
         this.negativeSignAndCheck(symbols, '-');
+        this.zeroDigitAndCheck(symbols, '0');
         this.currencySymbolAndCheck(symbols, "$");
         this.exponentSymbolAndCheck(symbols, "e");
         this.groupSeparatorAndCheck(symbols, ',');

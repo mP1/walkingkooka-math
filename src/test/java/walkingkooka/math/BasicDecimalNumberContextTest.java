@@ -33,6 +33,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     private final static DecimalNumberSymbols SYMBOLS = DecimalNumberSymbols.with(
         '-',
         '+',
+        '0',
         "$",
         '.',
         "E",
@@ -96,7 +97,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testToString() {
         this.toStringAndCheck(
             this.createContext(),
-            "negativeSign='-' positiveSign='+' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' percentageSymbol='%' fr_FR precision=7 roundingMode=HALF_EVEN"
+            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' percentageSymbol='%' fr_FR precision=7 roundingMode=HALF_EVEN"
         );
     }
 
