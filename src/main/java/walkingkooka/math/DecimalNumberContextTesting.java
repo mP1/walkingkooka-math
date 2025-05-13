@@ -24,31 +24,66 @@ import walkingkooka.locale.HasLocaleTesting;
 public interface DecimalNumberContextTesting extends HasLocaleTesting,
     HasMathContextTesting {
 
-    default void checkCurrencySymbol(final DecimalNumberContext context, final String currencySymbol) {
-        this.checkEquals(currencySymbol, context.currencySymbol(), "currencySymbol");
+    default void checkCurrencySymbol(final DecimalNumberContext context,
+                                     final String currencySymbol) {
+        this.checkEquals(
+            currencySymbol,
+            context.currencySymbol(),
+            "currencySymbol"
+        );
     }
 
-    default void checkDecimalSeparator(final DecimalNumberContext context, final char decimalSeparator) {
-        this.checkEquals(decimalSeparator, context.decimalSeparator(), "decimalSeparator");
+    default void checkDecimalSeparator(final DecimalNumberContext context,
+                                       final char decimalSeparator) {
+        this.checkEquals(
+            decimalSeparator,
+            context.decimalSeparator(),
+            "decimalSeparator"
+        );
     }
 
-    default void checkExponentSymbol(final DecimalNumberContext context, final String exponentSymbol) {
-        this.checkEquals(exponentSymbol, context.exponentSymbol(), "exponentSymbol");
+    default void checkExponentSymbol(final DecimalNumberContext context,
+                                     final String exponentSymbol) {
+        this.checkEquals(
+            exponentSymbol,
+            context.exponentSymbol(),
+            "exponentSymbol"
+        );
     }
 
-    default void checkGroupSeparator(final DecimalNumberContext context, final char groupSeparator) {
-        this.checkEquals(groupSeparator, context.groupSeparator(), "groupSeparator");
+    default void checkGroupSeparator(final DecimalNumberContext context,
+                                     final char groupSeparator) {
+        this.checkEquals(
+            groupSeparator,
+            context.groupSeparator(),
+            "groupSeparator"
+        );
     }
 
-    default void checkNegativeSign(final DecimalNumberContext context, final char negativeSign) {
-        this.checkEquals(negativeSign, context.negativeSign(), "negativeSign");
+    default void checkNegativeSign(final DecimalNumberContext context,
+                                   final char negativeSign) {
+        this.checkEquals(
+            negativeSign,
+            context.negativeSign(),
+            "negativeSign"
+        );
     }
 
-    default void checkPercentageSymbol(final DecimalNumberContext context, final char percentageSymbol) {
-        this.checkEquals(percentageSymbol, context.percentageSymbol(), "percentageSymbol");
+    default void checkPercentageSymbol(final DecimalNumberContext context,
+                                       final char percentageSymbol) {
+        this.checkEquals(
+            percentageSymbol,
+            context.percentageSymbol(),
+            "percentageSymbol"
+        );
     }
 
-    default void checkPositiveSign(final DecimalNumberContext context, final char positiveSign) {
-        this.checkEquals(positiveSign, context.positiveSign(), "positiveSign");
+    default void checkPositiveSign(final DecimalNumberContext context,
+                                   final char positiveSign) {
+        this.checkEquals(
+            positiveSign,
+            context.positiveSign(),
+            "positiveSign"
+        );
     }
 }
