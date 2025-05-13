@@ -358,7 +358,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testWithInvalidPercentageSymbolFails() {
+    public void testWithInvalidPercentSymbolFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> DecimalNumberSymbols.with(
@@ -504,7 +504,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testWithNegativeSignEqualPercentageSymbolFails() {
+    public void testWithNegativeSignEqualPercentSymbolFails() {
         final IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> DecimalNumberSymbols.with(
@@ -524,7 +524,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         );
 
         this.checkEquals(
-            "Invalid character \"negativeSign\" is same as \"percentageSymbol\" '%'",
+            "Invalid character \"negativeSign\" is same as \"percentSymbol\" '%'",
             thrown.getMessage()
         );
     }
@@ -634,7 +634,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testWithPositiveSignEqualPercentageSymbolFails() {
+    public void testWithPositiveSignEqualPercentSymbolFails() {
         final IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> DecimalNumberSymbols.with(
@@ -654,7 +654,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         );
 
         this.checkEquals(
-            "Invalid character \"positiveSign\" is same as \"percentageSymbol\" '%'",
+            "Invalid character \"positiveSign\" is same as \"percentSymbol\" '%'",
             thrown.getMessage()
         );
     }
@@ -712,7 +712,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testWithGroupSeparatorEqualPercentageSymbolFails() {
+    public void testWithGroupSeparatorEqualPercentSymbolFails() {
         final IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> DecimalNumberSymbols.with(
@@ -764,7 +764,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testWithPercentageSymbolEqualPermillSymbolFails() {
+    public void testWithPercentSymbolEqualPermillSymbolFails() {
         final IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> DecimalNumberSymbols.with(
@@ -784,7 +784,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         );
 
         this.checkEquals(
-            "Invalid character \"percentageSymbol\" is same as \"permillSymbol\" '^'",
+            "Invalid character \"percentSymbol\" is same as \"permillSymbol\" '^'",
             thrown.getMessage()
         );
     }
@@ -815,7 +815,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(symbols);
         this.monetaryDecimalSeparatorAndCheck(symbols);
         this.nanSymbolAndCheck(symbols);
-        this.percentageSymbolAndCheck(symbols);
+        this.percentSymbolAndCheck(symbols);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -867,7 +867,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testSetNegativeSignWithPercentageSymbolFails() {
+    public void testSetNegativeSignWithPercentSymbolFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
@@ -917,7 +917,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(different);
         this.nanSymbolAndCheck(different);
         this.monetaryDecimalSeparatorAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -984,7 +984,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testSetPositiveSignWithPercentageSymbolFails() {
+    public void testSetPositiveSignWithPercentSymbolFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
@@ -1034,7 +1034,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(different);
         this.nanSymbolAndCheck(different);
         this.monetaryDecimalSeparatorAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1097,7 +1097,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(different);
         this.nanSymbolAndCheck(different);
         this.monetaryDecimalSeparatorAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1160,7 +1160,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(different);
         this.nanSymbolAndCheck(different);
         this.monetaryDecimalSeparatorAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1218,7 +1218,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testSetDecimalSeparatorWithPercentageSymbolFails() {
+    public void testSetDecimalSeparatorWithPercentSymbolFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
@@ -1268,7 +1268,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(different);
         this.nanSymbolAndCheck(different);
         this.monetaryDecimalSeparatorAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1295,7 +1295,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(different);
         this.nanSymbolAndCheck(different);
         this.monetaryDecimalSeparatorAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1358,7 +1358,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(different);
         this.monetaryDecimalSeparatorAndCheck(different);
         this.nanSymbolAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1425,7 +1425,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testSetGroupSeparatorWithPercentageSymbolFails() {
+    public void testSetGroupSeparatorWithPercentSymbolFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
@@ -1475,7 +1475,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(different);
         this.monetaryDecimalSeparatorAndCheck(different);
         this.nanSymbolAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1538,7 +1538,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         );
         this.monetaryDecimalSeparatorAndCheck(different);
         this.nanSymbolAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1596,7 +1596,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testSetMonetaryDecimalSeparatorWithPercentageSymbolFails() {
+    public void testSetMonetaryDecimalSeparatorWithPercentSymbolFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
@@ -1646,7 +1646,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DECIMAL_SEPARATOR
         );
         this.nanSymbolAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1673,7 +1673,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DIFFERENT_CHAR
         );
         this.nanSymbolAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1735,7 +1735,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             DIFFERENT_STRING
         );
         this.monetaryDecimalSeparatorAndCheck(different);
-        this.percentageSymbolAndCheck(different);
+        this.percentSymbolAndCheck(different);
         this.permillSymbolAndCheck(symbols);
     }
 
@@ -1754,85 +1754,85 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         );
     }
 
-    // percentageSymbol.................................................................................................
+    // percentSymbol.................................................................................................
 
     @Test
-    public void testSetPercentageSymbolWithInvalidFails() {
+    public void testSetPercentSymbolWithInvalidFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
-                .setPercentageSymbol(INVALID_CHAR)
+                .setPercentSymbol(INVALID_CHAR)
         );
     }
 
     @Test
-    public void testSetPercentageSymbolWithNegativeSignFails() {
+    public void testSetPercentSymbolWithNegativeSignFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
-                .setPercentageSymbol(NEGATIVE_SIGN)
+                .setPercentSymbol(NEGATIVE_SIGN)
         );
     }
 
     @Test
-    public void testSetPercentageSymbolWithPositiveSignFails() {
+    public void testSetPercentSymbolWithPositiveSignFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
-                .setPercentageSymbol(POSITIVE_SIGN)
+                .setPercentSymbol(POSITIVE_SIGN)
         );
     }
 
     @Test
-    public void testSetPercentageSymbolWithDecimalSeparatorFails() {
+    public void testSetPercentSymbolWithDecimalSeparatorFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
-                .setPercentageSymbol(DECIMAL_SEPARATOR)
+                .setPercentSymbol(DECIMAL_SEPARATOR)
         );
     }
 
     @Test
-    public void testSetPercentageSymbolWithGroupSeparatorFails() {
+    public void testSetPercentSymbolWithGroupSeparatorFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
-                .setPercentageSymbol(GROUP_SEPARATOR)
+                .setPercentSymbol(GROUP_SEPARATOR)
         );
     }
 
     @Test
-    public void testSetPercentageSymbolWithMonetaryDecimalSeparatorFails() {
+    public void testSetPercentSymbolWithMonetaryDecimalSeparatorFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
-                .setPercentageSymbol(MONETARY_DECIMAL_SEPARATOR)
+                .setPercentSymbol(MONETARY_DECIMAL_SEPARATOR)
         );
     }
 
     @Test
-    public void testSetPercentageSymbolWithPermillSymbolFails() {
+    public void testSetPercentSymbolWithPermillSymbolFails() {
         assertThrows(
             IllegalArgumentException.class,
             () -> this.createObject()
-                .setPercentageSymbol(PERMILL_SYMBOL)
+                .setPercentSymbol(PERMILL_SYMBOL)
         );
     }
 
     @Test
-    public void testSetPercentageSymbolSame() {
+    public void testSetPercentSymbolSame() {
         final DecimalNumberSymbols symbols = this.createObject();
 
         assertSame(
             symbols,
-            symbols.setPercentageSymbol(PERCENTAGE_SYMBOL)
+            symbols.setPercentSymbol(PERCENTAGE_SYMBOL)
         );
     }
 
     @Test
-    public void testSetPercentageSymbolDifferent() {
+    public void testSetPercentSymbolDifferent() {
         final DecimalNumberSymbols symbols = this.createObject();
-        final DecimalNumberSymbols different = symbols.setPercentageSymbol(DIFFERENT_CHAR);
+        final DecimalNumberSymbols different = symbols.setPercentSymbol(DIFFERENT_CHAR);
 
         assertNotSame(
             symbols,
@@ -1846,25 +1846,25 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.decimalSeparatorAndCheck(different);
         this.exponentSymbolAndCheck(different);
         this.groupSeparatorAndCheck(different);
-        this.percentageSymbolAndCheck(
+        this.percentSymbolAndCheck(
             different,
             DIFFERENT_CHAR
         );
         this.permillSymbolAndCheck(symbols);
     }
 
-    private void percentageSymbolAndCheck(final DecimalNumberSymbols symbols) {
-        this.percentageSymbolAndCheck(
+    private void percentSymbolAndCheck(final DecimalNumberSymbols symbols) {
+        this.percentSymbolAndCheck(
             symbols,
             PERCENTAGE_SYMBOL
         );
     }
 
-    private void percentageSymbolAndCheck(final DecimalNumberSymbols symbols,
+    private void percentSymbolAndCheck(final DecimalNumberSymbols symbols,
                                           final char expected) {
         this.checkEquals(
             expected,
-            symbols.percentageSymbol()
+            symbols.percentSymbol()
         );
     }
 
@@ -2165,7 +2165,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     }
 
     @Test
-    public void testEqualsDifferentPercentageSymbol() {
+    public void testEqualsDifferentPercentSymbol() {
         this.checkNotEquals(
             DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
@@ -2228,7 +2228,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     public void testToString() {
         this.toStringAndCheck(
             this.createObject(),
-            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"AUD\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY\" monetaryDecimalSeparator='*' nanSymbol=\"NAN\" percentageSymbol='%' permillSymbol='^'"
+            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"AUD\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY\" monetaryDecimalSeparator='*' nanSymbol=\"NAN\" percentSymbol='%' permillSymbol='^'"
         );
     }
 
@@ -2259,7 +2259,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
                 "    '*'\n" +
                 "  nanSymbol\n" +
                 "    \"NAN\"\n" +
-                "  percentageSymbol\n" +
+                "  percentSymbol\n" +
                 "    '%'\n" +
                 "  permillSymbol\n" +
                 "    '^'\n"
@@ -2297,7 +2297,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.infinitySymbolAndCheck(symbols, "\u221e"); // infinity symbol
         this.monetaryDecimalSeparatorAndCheck(symbols, '.');
         this.nanSymbolAndCheck(symbols, "NaN");
-        this.percentageSymbolAndCheck(symbols, '%');
+        this.percentSymbolAndCheck(symbols, '%');
         this.permillSymbolAndCheck(symbols, '\u2030'); // per mill symbol
     }
 

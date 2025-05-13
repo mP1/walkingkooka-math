@@ -81,9 +81,9 @@ public interface DecimalNumberSymbolsDelegator {
     /**
      * The percentage symbol.
      */
-    default char percentageSymbol() {
+    default char percentSymbol() {
         return this.decimalNumberSymbols()
-            .percentageSymbol();
+            .percentSymbol();
     }
 
     DecimalNumberSymbols decimalNumberSymbols();

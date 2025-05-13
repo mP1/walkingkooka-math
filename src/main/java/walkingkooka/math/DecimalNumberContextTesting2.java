@@ -76,10 +76,10 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
     }
 
     @Test
-    default void testPercentageSymbol() {
-        this.percentageSymbolAndCheck(
+    default void testPercentSymbol() {
+        this.percentSymbolAndCheck(
             this.createContext(),
-            this.percentageSymbol()
+            this.percentSymbol()
         );
     }
 
@@ -103,7 +103,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     char negativeSign();
 
-    char percentageSymbol();
+    char percentSymbol();
 
     char positiveSign();
 

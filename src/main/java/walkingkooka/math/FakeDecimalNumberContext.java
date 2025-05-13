@@ -48,7 +48,7 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public char percentageSymbol() {
+    public char percentSymbol() {
         throw new UnsupportedOperationException();
     }
 

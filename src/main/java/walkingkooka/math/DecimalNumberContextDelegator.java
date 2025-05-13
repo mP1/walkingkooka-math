@@ -48,8 +48,8 @@ public interface DecimalNumberContextDelegator extends DecimalNumberContext,
     }
 
     @Override
-    default char percentageSymbol() {
-        return this.decimalNumberContext().percentageSymbol();
+    default char percentSymbol() {
+        return this.decimalNumberContext().percentSymbol();
     }
 
     @Override
