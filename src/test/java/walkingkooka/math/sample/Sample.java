@@ -1,5 +1,5 @@
 /*
- * Copyright © 2020 Miroslav Pokorny
+ * Copyright 2019 Miroslav Pokorny (github.com/mP1)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,14 +12,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
-package test;
 
+package walkingkooka.math.sample;
 
-import com.google.j2cl.junit.apt.J2clTestInput;
-import org.junit.Assert;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.math.DecimalNumberSymbols;
 import walkingkooka.math.Maths;
@@ -27,8 +25,17 @@ import walkingkooka.math.Maths;
 import java.math.MathContext;
 import java.util.Locale;
 
-@J2clTestInput(JunitTest.class)
-public class JunitTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public final class Sample {
+
+    public static void main(final String[] args) {
+        new Sample();
+    }
+
+    private Sample() {
+        this.testMathsIsNumber();
+    }
 
     @Test
     public void testMathsIsNumber() {
@@ -61,7 +68,7 @@ public class JunitTest {
 
     public void checkEquals(final Object expected,
                             final Object actual) {
-        Assert.assertEquals(
+        assertEquals(
             expected,
             actual
         );

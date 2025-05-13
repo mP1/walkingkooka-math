@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
   <inherits name="walkingkooka.Walkingkooka"/>
+  <inherits name="walkingkooka.j2cl.java.util.locale.Locale"/>
+  <inherits name="walkingkooka.j2cl.java.text.Text"/>
   <source path=""/>
 </module>

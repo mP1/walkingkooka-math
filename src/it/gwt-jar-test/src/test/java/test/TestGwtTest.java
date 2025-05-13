@@ -17,25 +17,54 @@
 package test;
 
 import com.google.gwt.junit.client.GWTTestCase;
+
+import walkingkooka.math.DecimalNumberContexts;
+import walkingkooka.math.DecimalNumberSymbols;
 import walkingkooka.math.Maths;
 
+import java.math.MathContext;
+import java.util.Locale;
+
+@walkingkooka.j2cl.locale.LocaleAware
 public class TestGwtTest extends GWTTestCase {
+
     @Override
     public String getModuleName() {
         return "test.Test";
     }
 
-    public void testAssertEquals() {
-        assertEquals(
-            1,
-            1
+    public void testMathsIsNumber() {
+        this.checkEquals(
+            true,
+            Maths.isNumber(12)
         );
     }
 
-    public void testMathsIsNumber() {
+    public void testDecimalNumberContextBasicCurrencySymbols() {
+        this.checkEquals(
+            "$",
+            DecimalNumberContexts.basic(
+                DecimalNumberSymbols.with(
+                    '-',
+                    '+',
+                    '0',
+                    "$",
+                    '.',
+                    "E",
+                    ',',
+                    '%'
+                ),
+                Locale.getDefault(),
+                MathContext.DECIMAL32
+            ).currencySymbol()
+        );
+    }
+
+    public void checkEquals(final Object expected,
+                            final Object actual) {
         assertEquals(
-            true,
-            Maths.isNumber(12)
+            expected,
+            actual
         );
     }
 }
