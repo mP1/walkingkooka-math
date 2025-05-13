@@ -24,8 +24,8 @@ import walkingkooka.locale.HasLocaleTesting;
 public interface DecimalNumberContextTesting extends HasLocaleTesting,
     HasMathContextTesting {
 
-    default void checkCurrencySymbol(final DecimalNumberContext context,
-                                     final String currencySymbol) {
+    default void currencySymbolAndCheck(final DecimalNumberContext context,
+                                        final String currencySymbol) {
         this.checkEquals(
             currencySymbol,
             context.currencySymbol(),
@@ -33,8 +33,8 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
-    default void checkDecimalSeparator(final DecimalNumberContext context,
-                                       final char decimalSeparator) {
+    default void decimalSeparatorAndCheck(final DecimalNumberContext context,
+                                          final char decimalSeparator) {
         this.checkEquals(
             decimalSeparator,
             context.decimalSeparator(),
@@ -42,8 +42,8 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
-    default void checkExponentSymbol(final DecimalNumberContext context,
-                                     final String exponentSymbol) {
+    default void exponentSymbolAndCheck(final DecimalNumberContext context,
+                                        final String exponentSymbol) {
         this.checkEquals(
             exponentSymbol,
             context.exponentSymbol(),
@@ -51,8 +51,8 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
-    default void checkGroupSeparator(final DecimalNumberContext context,
-                                     final char groupSeparator) {
+    default void groupSeparatorAndCheck(final DecimalNumberContext context,
+                                        final char groupSeparator) {
         this.checkEquals(
             groupSeparator,
             context.groupSeparator(),
@@ -60,8 +60,8 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
-    default void checkNegativeSign(final DecimalNumberContext context,
-                                   final char negativeSign) {
+    default void negativeSignAndCheck(final DecimalNumberContext context,
+                                      final char negativeSign) {
         this.checkEquals(
             negativeSign,
             context.negativeSign(),
@@ -69,8 +69,8 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
-    default void checkPercentageSymbol(final DecimalNumberContext context,
-                                       final char percentageSymbol) {
+    default void percentageSymbolAndCheck(final DecimalNumberContext context,
+                                          final char percentageSymbol) {
         this.checkEquals(
             percentageSymbol,
             context.percentageSymbol(),
@@ -78,8 +78,8 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
-    default void checkPositiveSign(final DecimalNumberContext context,
-                                   final char positiveSign) {
+    default void positiveSignAndCheck(final DecimalNumberContext context,
+                                      final char positiveSign) {
         this.checkEquals(
             positiveSign,
             context.positiveSign(),

@@ -29,7 +29,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     @Test
     default void testCurrencySymbol() {
-        this.checkCurrencySymbol(
+        this.currencySymbolAndCheck(
             this.createContext(),
             this.currencySymbol()
         );
@@ -37,7 +37,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     @Test
     default void testDecimalSeparator() {
-        this.checkDecimalSeparator(
+        this.decimalSeparatorAndCheck(
             this.createContext(),
             this.decimalSeparator()
         );
@@ -45,7 +45,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     @Test
     default void testExponentSymbol() {
-        this.checkExponentSymbol(
+        this.exponentSymbolAndCheck(
             this.createContext(),
             this.exponentSymbol()
         );
@@ -53,7 +53,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     @Test
     default void testGroupSeparator() {
-        this.checkGroupSeparator(
+        this.groupSeparatorAndCheck(
             this.createContext(),
             this.groupSeparator()
         );
@@ -69,7 +69,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     @Test
     default void testNegativeSign() {
-        this.checkNegativeSign(
+        this.negativeSignAndCheck(
             this.createContext(),
             this.negativeSign()
         );
@@ -77,7 +77,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     @Test
     default void testPercentageSymbol() {
-        this.checkPercentageSymbol(
+        this.percentageSymbolAndCheck(
             this.createContext(),
             this.percentageSymbol()
         );
@@ -85,7 +85,7 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     @Test
     default void testPositiveSign() {
-        this.checkPositiveSign(
+        this.positiveSignAndCheck(
             this.createContext(),
             this.positiveSign()
         );

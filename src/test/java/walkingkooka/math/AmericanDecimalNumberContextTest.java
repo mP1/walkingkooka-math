@@ -74,13 +74,13 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
 
     private void withAndCheck(final MathContext mathContext) {
         final AmericanDecimalNumberContext context = AmericanDecimalNumberContext.with(mathContext);
-        this.checkCurrencySymbol(context, "$");
-        this.checkDecimalSeparator(context, '.');
-        this.checkExponentSymbol(context, "E");
-        this.checkGroupSeparator(context, ',');
-        this.checkNegativeSign(context, '-');
-        this.checkPercentageSymbol(context, '%');
-        this.checkPositiveSign(context, '+');
+        this.currencySymbolAndCheck(context, "$");
+        this.decimalSeparatorAndCheck(context, '.');
+        this.exponentSymbolAndCheck(context, "E");
+        this.groupSeparatorAndCheck(context, ',');
+        this.negativeSignAndCheck(context, '-');
+        this.percentageSymbolAndCheck(context, '%');
+        this.positiveSignAndCheck(context, '+');
         this.hasMathContextAndCheck(context, mathContext);
     }
 

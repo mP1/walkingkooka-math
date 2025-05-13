@@ -81,13 +81,13 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     @Test
     public void testWith() {
         final BasicDecimalNumberContext context = this.createContext();
-        this.checkCurrencySymbol(context, "$");
-        this.checkDecimalSeparator(context, '.');
-        this.checkExponentSymbol(context, "E");
-        this.checkGroupSeparator(context, ',');
-        this.checkNegativeSign(context, '-');
-        this.checkPercentageSymbol(context, '%');
-        this.checkPositiveSign(context, '+');
+        this.currencySymbolAndCheck(context, "$");
+        this.decimalSeparatorAndCheck(context, '.');
+        this.exponentSymbolAndCheck(context, "E");
+        this.groupSeparatorAndCheck(context, ',');
+        this.negativeSignAndCheck(context, '-');
+        this.percentageSymbolAndCheck(context, '%');
+        this.positiveSignAndCheck(context, '+');
 
         this.hasLocaleAndCheck(context, LOCALE);
         this.hasMathContextAndCheck(context, MATH_CONTEXT);
