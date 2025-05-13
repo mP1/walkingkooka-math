@@ -2287,13 +2287,18 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
                 Locale.forLanguageTag("EN-AU")
             )
         );
+
         this.positiveSignAndCheck(symbols, '+');
         this.negativeSignAndCheck(symbols, '-');
         this.zeroDigitAndCheck(symbols, '0');
         this.currencySymbolAndCheck(symbols, "$");
         this.exponentSymbolAndCheck(symbols, "e");
         this.groupSeparatorAndCheck(symbols, ',');
+        this.infinitySymbolAndCheck(symbols, "\u221e"); // infinity symbol
+        this.monetaryDecimalSeparatorAndCheck(symbols, '.');
+        this.nanSymbolAndCheck(symbols, "NaN");
         this.percentageSymbolAndCheck(symbols, '%');
+        this.permillSymbolAndCheck(symbols, '\u2030'); // per mill symbol
     }
 
     @Test
