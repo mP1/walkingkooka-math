@@ -29,42 +29,66 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
 
     @Test
     default void testCurrencySymbol() {
-        this.checkCurrencySymbol(this.createContext(), this.currencySymbol());
+        this.checkCurrencySymbol(
+            this.createContext(),
+            this.currencySymbol()
+        );
     }
 
     @Test
     default void testDecimalSeparator() {
-        this.checkDecimalSeparator(this.createContext(), this.decimalSeparator());
+        this.checkDecimalSeparator(
+            this.createContext(),
+            this.decimalSeparator()
+        );
     }
 
     @Test
     default void testExponentSymbol() {
-        this.checkExponentSymbol(this.createContext(), this.exponentSymbol());
+        this.checkExponentSymbol(
+            this.createContext(),
+            this.exponentSymbol()
+        );
     }
 
     @Test
     default void testGroupSeparator() {
-        this.checkGroupSeparator(this.createContext(), this.groupSeparator());
+        this.checkGroupSeparator(
+            this.createContext(),
+            this.groupSeparator()
+        );
     }
 
     @Test
     default void testMathContext() {
-        this.hasMathContextAndCheck(this.createContext(), this.mathContext());
+        this.hasMathContextAndCheck(
+            this.createContext(),
+            this.mathContext()
+        );
     }
 
     @Test
     default void testNegativeSign() {
-        this.checkNegativeSign(this.createContext(), this.negativeSign());
+        this.checkNegativeSign(
+            this.createContext(),
+            this.negativeSign()
+        );
     }
 
     @Test
     default void testPercentageSymbol() {
-        this.checkPercentageSymbol(this.createContext(), this.percentageSymbol());
+        this.checkPercentageSymbol(
+            this.createContext(),
+            this.percentageSymbol()
+        );
     }
 
     @Test
     default void testPositiveSign() {
-        this.checkPositiveSign(this.createContext(), this.positiveSign());
+        this.checkPositiveSign(
+            this.createContext(),
+            this.positiveSign()
+        );
     }
 
     String currencySymbol();
