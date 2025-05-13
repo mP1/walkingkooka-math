@@ -90,7 +90,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         this.exponentSymbolAndCheck(context, "E");
         this.groupSeparatorAndCheck(context, ',');
         this.negativeSignAndCheck(context, '-');
-        this.percentageSymbolAndCheck(context, '%');
+        this.percentSymbolAndCheck(context, '%');
         this.positiveSignAndCheck(context, '+');
 
         this.hasLocaleAndCheck(context, LOCALE);
@@ -101,7 +101,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testToString() {
         this.toStringAndCheck(
             this.createContext(),
-            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY\" monetaryDecimalSeparator='*' nanSymbol=\"NAN\" percentageSymbol='%' permillSymbol='^' fr_FR precision=7 roundingMode=HALF_EVEN"
+            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY\" monetaryDecimalSeparator='*' nanSymbol=\"NAN\" percentSymbol='%' permillSymbol='^' fr_FR precision=7 roundingMode=HALF_EVEN"
         );
     }
 
@@ -145,7 +145,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     }
 
     @Override
-    public char percentageSymbol() {
+    public char percentSymbol() {
         return '%';
     }
 

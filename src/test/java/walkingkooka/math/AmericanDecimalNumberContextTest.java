@@ -79,7 +79,7 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
         this.exponentSymbolAndCheck(context, "E");
         this.groupSeparatorAndCheck(context, ',');
         this.negativeSignAndCheck(context, '-');
-        this.percentageSymbolAndCheck(context, '%');
+        this.percentSymbolAndCheck(context, '%');
         this.positiveSignAndCheck(context, '+');
         this.hasMathContextAndCheck(context, mathContext);
     }
@@ -130,7 +130,7 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
     }
 
     @Override
-    public char percentageSymbol() {
+    public char percentSymbol() {
         return '%';
     }
 

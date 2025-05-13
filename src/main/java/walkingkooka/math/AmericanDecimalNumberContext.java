@@ -86,7 +86,7 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public char percentageSymbol() {
+    public char percentSymbol() {
         return '%';
     }
 
@@ -117,7 +117,7 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
             .value(this.exponentSymbol())
             .value(this.groupSeparator())
             .value(this.negativeSign())
-            .value(this.percentageSymbol())
+            .value(this.percentSymbol())
             .value(this.positiveSign())
             .value(this.mathContext())
             .build();

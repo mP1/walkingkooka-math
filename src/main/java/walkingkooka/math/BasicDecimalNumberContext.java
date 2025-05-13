@@ -73,8 +73,8 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public char percentageSymbol() {
-        return this.symbols.percentageSymbol();
+    public char percentSymbol() {
+        return this.symbols.percentSymbol();
     }
 
     @Override

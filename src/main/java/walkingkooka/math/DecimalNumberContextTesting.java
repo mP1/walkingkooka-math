@@ -69,12 +69,12 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
-    default void percentageSymbolAndCheck(final DecimalNumberContext context,
-                                          final char percentageSymbol) {
+    default void percentSymbolAndCheck(final DecimalNumberContext context,
+                                          final char percentSymbol) {
         this.checkEquals(
-            percentageSymbol,
-            context.percentageSymbol(),
-            "percentageSymbol"
+            percentSymbol,
+            context.percentSymbol(),
+            "percentSymbol"
         );
     }
 
