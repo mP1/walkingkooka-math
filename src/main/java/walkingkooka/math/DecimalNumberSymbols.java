@@ -158,7 +158,9 @@ public final class DecimalNumberSymbols implements TreePrintable,
             );
         }
     }
-    
+
+    // negativeSign.....................................................................................................
+
     /**
      * Returns the negative sign.
      */
@@ -182,6 +184,8 @@ public final class DecimalNumberSymbols implements TreePrintable,
     }
 
     private final char negativeSign;
+
+    // positiveSign.....................................................................................................
 
     /**
      * Returns the positive sign.
@@ -207,6 +211,8 @@ public final class DecimalNumberSymbols implements TreePrintable,
 
     private final char positiveSign;
 
+    // zeroDigit........................................................................................................
+
     /**
      * Returns the zero digit.
      */
@@ -230,6 +236,8 @@ public final class DecimalNumberSymbols implements TreePrintable,
     }
 
     private final char zeroDigit;
+
+    // currencySymbol...................................................................................................
 
     /**
      * The currency symbol character.
@@ -255,6 +263,8 @@ public final class DecimalNumberSymbols implements TreePrintable,
 
     private final String currencySymbol;
 
+    // decimalSeparator.................................................................................................
+
     /**
      * Returns the decimal separator character
      */
@@ -278,6 +288,8 @@ public final class DecimalNumberSymbols implements TreePrintable,
     }
 
     private final char decimalSeparator;
+
+    // exponentSymbol...................................................................................................
 
     /**
      * The exponent symbol
@@ -303,6 +315,8 @@ public final class DecimalNumberSymbols implements TreePrintable,
 
     private final String exponentSymbol;
 
+    // groupSeparator...................................................................................................
+
     /**
      * The group separator.
      */
@@ -326,6 +340,8 @@ public final class DecimalNumberSymbols implements TreePrintable,
     }
 
     private final char groupSeparator;
+
+    // percentageSymbol.................................................................................................
 
     /**
      * The percentage symbol.
