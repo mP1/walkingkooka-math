@@ -20,22 +20,7 @@ package walkingkooka.math;
 /**
  * Defines the getters for a {@link DecimalNumberSymbols}.
  */
-public interface DecimalNumberSymbolsLike {
-
-    /**
-     * Returns the negative sign.
-     */
-    char negativeSign();
-
-    /**
-     * Returns the positive sign.
-     */
-    char positiveSign();
-
-    /**
-     * Returns the zero digit.
-     */
-    char zeroDigit();
+public interface DecimalNumberSymbolsLike extends NumberContextLike {
 
     /**
      * The currency symbol character.

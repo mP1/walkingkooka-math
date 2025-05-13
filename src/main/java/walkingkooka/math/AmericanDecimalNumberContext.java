@@ -81,6 +81,21 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
+    public String infinitySymbol() {
+        return "\u221e";
+    }
+
+    @Override
+    public char monetaryDecimalSeparator() {
+        return '.';
+    }
+
+    @Override
+    public String nanSymbol() {
+        return "NaN";
+    }
+
+    @Override
     public char negativeSign() {
         return '-';
     }
@@ -91,8 +106,18 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
+    public char permillSymbol() {
+        return '\u2030';
+    }
+
+    @Override
     public char positiveSign() {
         return '+';
+    }
+
+    @Override
+    public char zeroDigit() {
+        return '0';
     }
 
     @Override

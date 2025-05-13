@@ -23,20 +23,7 @@ import walkingkooka.locale.HasLocale;
 /**
  * Context that typically accompanies another stateless component such as a number parser or formatter.
  */
-public interface NumberContext extends Context, HasLocale {
-
-    /**
-     * Returns the negative sign.
-     */
-    char negativeSign();
-
-    /**
-     * Returns the positive sign.
-     */
-    char positiveSign();
-
-    /**
-     * Temporary constant that will be removed when a zeroDigit getter is added and this constant removed.
-     */
-    char ZERO_DIGIT = '0';
+public interface NumberContext extends Context,
+    HasLocale,
+    NumberContextLike {
 }

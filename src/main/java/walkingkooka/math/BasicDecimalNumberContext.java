@@ -26,7 +26,8 @@ import java.util.Objects;
 /**
  * A {@link DecimalNumberContext} that holds constant properties.
  */
-final class BasicDecimalNumberContext implements DecimalNumberContext {
+final class BasicDecimalNumberContext implements DecimalNumberContext,
+    DecimalNumberSymbolsDelegator {
 
     static BasicDecimalNumberContext with(final DecimalNumberSymbols symbols,
                                           final Locale locale,
@@ -48,38 +49,8 @@ final class BasicDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public String currencySymbol() {
-        return this.symbols.currencySymbol();
-    }
-
-    @Override
-    public char decimalSeparator() {
-        return this.symbols.decimalSeparator();
-    }
-
-    @Override
-    public String exponentSymbol() {
-        return this.symbols.exponentSymbol();
-    }
-
-    @Override
-    public char groupSeparator() {
-        return this.symbols.groupSeparator();
-    }
-
-    @Override
-    public char negativeSign() {
-        return this.symbols.negativeSign();
-    }
-
-    @Override
-    public char percentSymbol() {
-        return this.symbols.percentSymbol();
-    }
-
-    @Override
-    public char positiveSign() {
-        return this.symbols.positiveSign();
+    public DecimalNumberSymbols decimalNumberSymbols() {
+        return this.symbols;
     }
 
     private final DecimalNumberSymbols symbols;

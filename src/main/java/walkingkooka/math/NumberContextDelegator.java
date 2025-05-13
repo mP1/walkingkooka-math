@@ -34,6 +34,12 @@ public interface NumberContextDelegator extends NumberContext {
     }
 
     @Override
+    default char zeroDigit() {
+        return this.numberContext()
+            .zeroDigit();
+    }
+
+    @Override
     default Locale locale() {
         return this.numberContext()
             .locale();

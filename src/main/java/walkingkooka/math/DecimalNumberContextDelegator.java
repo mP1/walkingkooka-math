@@ -18,54 +18,27 @@
 package walkingkooka.math;
 
 import java.math.MathContext;
+import java.util.Locale;
 
 public interface DecimalNumberContextDelegator extends DecimalNumberContext,
-    NumberContextDelegator {
+    DecimalNumberSymbolsLikeDelegator {
 
     @Override
-    default String currencySymbol() {
-        return this.decimalNumberContext().currencySymbol();
-    }
-
-    @Override
-    default char decimalSeparator() {
-        return this.decimalNumberContext().decimalSeparator();
-    }
-
-    @Override
-    default String exponentSymbol() {
-        return this.decimalNumberContext().exponentSymbol();
-    }
-
-    @Override
-    default char groupSeparator() {
-        return this.decimalNumberContext().groupSeparator();
-    }
-
-    @Override
-    default char negativeSign() {
-        return this.decimalNumberContext().negativeSign();
-    }
-
-    @Override
-    default char percentSymbol() {
-        return this.decimalNumberContext().percentSymbol();
-    }
-
-    @Override
-    default char positiveSign() {
-        return this.decimalNumberContext().positiveSign();
+    default Locale locale() {
+        return this.decimalNumberContext()
+            .locale();
     }
 
     @Override
     default MathContext mathContext() {
-        return this.decimalNumberContext().mathContext();
+        return this.decimalNumberContext()
+            .mathContext();
+    }
+
+    @Override
+    default  DecimalNumberSymbolsLike decimalNumberSymbolsLike() {
+        return this.decimalNumberContext();
     }
 
     DecimalNumberContext decimalNumberContext();
-
-    @Override
-    default NumberContext numberContext() {
-        return this.decimalNumberContext();
-    }
 }

@@ -25,6 +25,7 @@ import java.math.MathContext;
  * Mixing testing interface for {@link DecimalNumberContext}
  */
 public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> extends DecimalNumberContextTesting,
+    DecimalNumberSymbolsLike,
     ContextTesting<C> {
 
     @Test
@@ -60,6 +61,14 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
     }
 
     @Test
+    default void testInfinitySymbol() {
+        this.infinitySymbolAndCheck(
+            this.createContext(),
+            this.infinitySymbol()
+        );
+    }
+
+    @Test
     default void testMathContext() {
         this.hasMathContextAndCheck(
             this.createContext(),
@@ -67,6 +76,22 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
         );
     }
 
+    @Test
+    default void testMonetaryDecimalSeparator() {
+        this.monetaryDecimalSeparatorAndCheck(
+            this.createContext(),
+            this.monetaryDecimalSeparator()
+        );
+    }
+
+    @Test
+    default void testNanSymbol() {
+        this.nanSymbolAndCheck(
+            this.createContext(),
+            this.nanSymbol()
+        );
+    }
+    
     @Test
     default void testNegativeSign() {
         this.negativeSignAndCheck(
@@ -84,6 +109,14 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
     }
 
     @Test
+    default void testPermillSymbol() {
+        this.permillSymbolAndCheck(
+            this.createContext(),
+            this.permillSymbol()
+        );
+    }
+
+    @Test
     default void testPositiveSign() {
         this.positiveSignAndCheck(
             this.createContext(),
@@ -91,21 +124,9 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
         );
     }
 
-    String currencySymbol();
-
-    char decimalSeparator();
-
-    String exponentSymbol();
-
-    char groupSeparator();
-
     MathContext mathContext();
-
-    char negativeSign();
-
-    char percentSymbol();
-
-    char positiveSign();
+    
+    // class............................................................................................................
 
     @Override
     default String typeNameSuffix() {
