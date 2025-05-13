@@ -410,7 +410,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     // infinitySymbol.........................................................................................................
 
     /**
-     * The currency symbol character.
+     * The INFINITY symbol.
      */
     public String infinitySymbol() {
         return this.infinitySymbol;
@@ -470,7 +470,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     // nanSymbol........................................................................................................
 
     /**
-     * The currency symbol character.
+     * The NAN symbol.
      */
     public String nanSymbol() {
         return this.nanSymbol;
@@ -500,7 +500,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     // percentSymbol.................................................................................................
 
     /**
-     * The percentage symbol.
+     * The percent symbol.
      */
     public char percentSymbol() {
         return this.percentSymbol;
