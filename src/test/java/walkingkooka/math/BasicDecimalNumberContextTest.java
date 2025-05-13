@@ -38,7 +38,11 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         '.',
         "E",
         ',',
-        '%'
+        "INFINITY",
+        '*',
+        "NAN",
+        '%',
+        '^'
     );
     private final static MathContext MATH_CONTEXT = MathContext.DECIMAL32;
 
@@ -97,7 +101,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testToString() {
         this.toStringAndCheck(
             this.createContext(),
-            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' percentageSymbol='%' fr_FR precision=7 roundingMode=HALF_EVEN"
+            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY\" monetaryDecimalSeparator='*' nanSymbol=\"NAN\" percentageSymbol='%' permillSymbol='^' fr_FR precision=7 roundingMode=HALF_EVEN"
         );
     }
 

@@ -58,7 +58,11 @@ public final class Sample {
                     '.',
                     "E",
                     ',',
-                    '%'
+                    "INFINITY",
+                    '.',
+                    "NAN",
+                    '%',
+                    '^'
                 ),
                 Locale.getDefault(),
                 MathContext.DECIMAL32
