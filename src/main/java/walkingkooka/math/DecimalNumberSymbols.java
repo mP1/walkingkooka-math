@@ -33,7 +33,8 @@ import java.util.Objects;
 /**
  * Holds locale sensitive symbols related to the text representation or formatting of a number into text.
  */
-public final class DecimalNumberSymbols implements TreePrintable,
+public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
+    TreePrintable,
     HasText {
 
     /**
@@ -202,6 +203,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * Returns the negative sign.
      */
+    @Override
     public char negativeSign() {
         return this.negativeSign;
     }
@@ -232,6 +234,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * Returns the positive sign.
      */
+    @Override
     public char positiveSign() {
         return this.positiveSign;
     }
@@ -262,6 +265,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * Returns the zero digit.
      */
+    @Override
     public char zeroDigit() {
         return this.zeroDigit;
     }
@@ -292,6 +296,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * The currency symbol character.
      */
+    @Override
     public String currencySymbol() {
         return this.currencySymbol;
     }
@@ -322,6 +327,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * Returns the decimal separator character
      */
+    @Override
     public char decimalSeparator() {
         return this.decimalSeparator;
     }
@@ -352,6 +358,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * The exponent symbol
      */
+    @Override
     public String exponentSymbol() {
         return this.exponentSymbol;
     }
@@ -382,6 +389,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * The group separator.
      */
+    @Override
     public char groupSeparator() {
         return this.groupSeparator;
     }
@@ -412,6 +420,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * The INFINITY symbol.
      */
+    @Override
     public String infinitySymbol() {
         return this.infinitySymbol;
     }
@@ -442,6 +451,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * Returns the monetary decimal separator character
      */
+    @Override
     public char monetaryDecimalSeparator() {
         return this.monetaryDecimalSeparator;
     }
@@ -472,6 +482,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * The NAN symbol.
      */
+    @Override
     public String nanSymbol() {
         return this.nanSymbol;
     }
@@ -502,6 +513,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * The percent symbol.
      */
+    @Override
     public char percentSymbol() {
         return this.percentSymbol;
     }
@@ -532,6 +544,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
     /**
      * The permill symbol.
      */
+    @Override
     public char permillSymbol() {
         return this.permillSymbol;
     }
