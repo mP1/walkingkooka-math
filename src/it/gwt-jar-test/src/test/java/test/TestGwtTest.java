@@ -52,7 +52,11 @@ public class TestGwtTest extends GWTTestCase {
                     '.',
                     "E",
                     ',',
-                    '%'
+                    "INFINITY",
+                    '.',
+                    "NAN",
+                    '%',
+                    '^'
                 ),
                 Locale.getDefault(),
                 MathContext.DECIMAL32

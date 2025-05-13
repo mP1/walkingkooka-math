@@ -51,7 +51,11 @@ public class JunitTest {
                     '.',
                     "E",
                     ',',
-                    '%'
+                    "INFINITY",
+                    '.',
+                    "NAN",
+                    '%',
+                    '^'
                 ),
                 Locale.getDefault(),
                 MathContext.DECIMAL32

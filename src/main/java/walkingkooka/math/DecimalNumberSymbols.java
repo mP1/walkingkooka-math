@@ -44,8 +44,8 @@ public final class DecimalNumberSymbols implements TreePrintable,
         final CsvStringList csv = CsvStringList.parse(text);
 
         final int tokenCount = csv.size();
-        if (8 != tokenCount) {
-            throw new IllegalArgumentException("Expected 8 tokens but got " + tokenCount);
+        if (12 != tokenCount) {
+            throw new IllegalArgumentException("Expected 12 tokens but got " + tokenCount);
         }
 
         return with(
@@ -56,7 +56,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
             stringToChar("decimalSeparator", csv.get(4)),
             csv.get(5), // exponentSymbol
             stringToChar("groupSeparator", csv.get(6)),
-            stringToChar("percentageSymbol", csv.get(7))
+            csv.get(7), // infinitySymbol
+            stringToChar("decimalSeparator", csv.get(8)),
+            csv.get(9), // nanSymbol
+            stringToChar("percentageSymbol", csv.get(10)),
+            stringToChar("permillSymbol", csv.get(11))
         );
     }
 
@@ -85,7 +89,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
             symbols.getDecimalSeparator(),
             symbols.getExponentSeparator(),
             symbols.getGroupingSeparator(),
-            symbols.getPercent()
+            symbols.getInfinity(),
+            symbols.getMonetaryDecimalSeparator(),
+            symbols.getNaN(),
+            symbols.getPercent(),
+            symbols.getPerMill()
         );
     }
 
@@ -97,7 +105,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
                                             final char decimalSeparator,
                                             final String exponentSymbol,
                                             final char groupSeparator,
-                                            final char percentageSymbol) {
+                                            final String infinitySymbol,
+                                            final char monetaryDecimalSeparator,
+                                            final String nanSymbol,
+                                            final char percentageSymbol,
+                                            final char permillSymbol) {
         return new DecimalNumberSymbols(
             checkCharacter("negativeSign", negativeSign),
             checkCharacter("positiveSign", positiveSign),
@@ -106,7 +118,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
             checkCharacter("decimalSeparator", decimalSeparator),
             checkString("exponentSymbol", exponentSymbol),
             checkCharacter("groupSeparator", groupSeparator),
-            checkCharacter("percentageSymbol", percentageSymbol)
+            checkString("infinitySymbol", infinitySymbol),
+            checkCharacter("monetaryDecimalSeparator", monetaryDecimalSeparator),
+            checkString("nanSymbol", nanSymbol),
+            checkCharacter("percentageSymbol", percentageSymbol),
+            checkPermillSymbol("permillSymbol", permillSymbol)
         );
     }
 
@@ -117,31 +133,53 @@ public final class DecimalNumberSymbols implements TreePrintable,
                                  final char decimalSeparator,
                                  final String exponentSymbol,
                                  final char groupSeparator,
-                                 final char percentageSymbol) {
+                                 final String infinitySymbol,
+                                 final char monetaryDecimalSeparator,
+                                 final String nanSymbol,
+                                 final char percentageSymbol,
+                                 final char permillSymbol) {
         this.negativeSign = negativeSign;
         this.positiveSign = positiveSign;
         this.zeroDigit = zeroDigit;
 
-        this.decimalSeparator = decimalSeparator;;
+        this.decimalSeparator = decimalSeparator;
+        ;
         this.groupSeparator = groupSeparator;
+        this.monetaryDecimalSeparator = monetaryDecimalSeparator;
         this.percentageSymbol = percentageSymbol;
+        this.permillSymbol = permillSymbol;
 
         failIfEqual(negativeSign, "negativeSign", positiveSign, "positiveSign");
         failIfEqual(negativeSign, "negativeSign", decimalSeparator, "decimalSeparator");
         failIfEqual(negativeSign, "negativeSign", groupSeparator, "groupSeparator");
+        failIfEqual(negativeSign, "negativeSign", monetaryDecimalSeparator, "monetaryDecimalSeparator");
         failIfEqual(negativeSign, "negativeSign", percentageSymbol, "percentageSymbol");
+        failIfEqual(negativeSign, "negativeSign", permillSymbol, "permillSymbol");
 
         failIfEqual(positiveSign, "positiveSign", decimalSeparator, "decimalSeparator");
         failIfEqual(positiveSign, "positiveSign", groupSeparator, "groupSeparator");
+        failIfEqual(positiveSign, "positiveSign", monetaryDecimalSeparator, "monetaryDecimalSeparator");
         failIfEqual(positiveSign, "positiveSign", percentageSymbol, "percentageSymbol");
+        failIfEqual(positiveSign, "positiveSign", permillSymbol, "permillSymbol");
 
         failIfEqual(decimalSeparator, "decimalSeparator", groupSeparator, "groupSeparator");
+        // decimalSeparator can be same as monetaryDecimalSeparator
         failIfEqual(decimalSeparator, "decimalSeparator", percentageSymbol, "percentageSymbol");
+        failIfEqual(decimalSeparator, "decimalSeparator", permillSymbol, "permillSymbol");
 
+        failIfEqual(groupSeparator, "groupSeparator", monetaryDecimalSeparator, "monetaryDecimalSeparator");
         failIfEqual(groupSeparator, "groupSeparator", percentageSymbol, "percentageSymbol");
+        failIfEqual(groupSeparator, "groupSeparator", permillSymbol, "permillSymbol");
+
+        failIfEqual(monetaryDecimalSeparator, "monetaryDecimalSeparator", percentageSymbol, "percentageSymbol");
+        failIfEqual(monetaryDecimalSeparator, "monetaryDecimalSeparator", permillSymbol, "permillSymbol");
+
+        failIfEqual(percentageSymbol, "percentageSymbol", permillSymbol, "permillSymbol");
 
         this.currencySymbol = Objects.requireNonNull(currencySymbol, "currencySymbol");
         this.exponentSymbol = Objects.requireNonNull(exponentSymbol, "exponentSymbol");
+        this.infinitySymbol = infinitySymbol;
+        this.nanSymbol = nanSymbol;
     }
 
     private static void failIfEqual(final char left, final String leftLabel,
@@ -179,7 +217,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 this.decimalSeparator,
                 this.exponentSymbol,
                 this.groupSeparator,
-                this.percentageSymbol
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
             );
     }
 
@@ -205,7 +247,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 this.decimalSeparator,
                 this.exponentSymbol,
                 this.groupSeparator,
-                this.percentageSymbol
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
             );
     }
 
@@ -231,7 +277,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 this.decimalSeparator,
                 this.exponentSymbol,
                 this.groupSeparator,
-                this.percentageSymbol
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
             );
     }
 
@@ -257,7 +307,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 this.decimalSeparator,
                 this.exponentSymbol,
                 this.groupSeparator,
-                this.percentageSymbol
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
             );
     }
 
@@ -283,7 +337,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 checkCharacter("decimalSeparator", decimalSeparator),
                 this.exponentSymbol,
                 this.groupSeparator,
-                this.percentageSymbol
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
             );
     }
 
@@ -309,7 +367,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 this.decimalSeparator,
                 checkString("exponentSymbol", exponentSymbol),
                 this.groupSeparator,
-                this.percentageSymbol
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
             );
     }
 
@@ -335,11 +397,105 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 this.decimalSeparator,
                 this.exponentSymbol,
                 checkCharacter("groupSeparator", groupSeparator),
-                this.percentageSymbol
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
             );
     }
 
     private final char groupSeparator;
+
+    // infinitySymbol.........................................................................................................
+
+    /**
+     * The currency symbol character.
+     */
+    public String infinitySymbol() {
+        return this.infinitySymbol;
+    }
+
+    public DecimalNumberSymbols setInfinitySymbol(final String infinitySymbol) {
+        return this.infinitySymbol.equals(infinitySymbol) ?
+            this :
+            new DecimalNumberSymbols(
+                this.negativeSign,
+                this.positiveSign,
+                this.zeroDigit,
+                this.currencySymbol,
+                this.decimalSeparator,
+                this.exponentSymbol,
+                this.groupSeparator,
+                checkString("infinitySymbol", infinitySymbol),
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
+            );
+    }
+
+    private final String infinitySymbol;
+
+    // monetaryDecimalSeparator.........................................................................................
+
+    /**
+     * Returns the monetary decimal separator character
+     */
+    public char monetaryDecimalSeparator() {
+        return this.monetaryDecimalSeparator;
+    }
+
+    public DecimalNumberSymbols setMonetaryDecimalSeparator(final char monetaryDecimalSeparator) {
+        return this.monetaryDecimalSeparator == monetaryDecimalSeparator ?
+            this :
+            new DecimalNumberSymbols(
+                this.negativeSign,
+                this.positiveSign,
+                this.zeroDigit,
+                this.currencySymbol,
+                decimalSeparator,
+                this.exponentSymbol,
+                this.groupSeparator,
+                this.infinitySymbol,
+                checkCharacter("monetaryDecimalSeparator", monetaryDecimalSeparator),
+                this.nanSymbol,
+                this.percentageSymbol,
+                this.permillSymbol
+            );
+    }
+
+    private final char monetaryDecimalSeparator;
+
+    // nanSymbol........................................................................................................
+
+    /**
+     * The currency symbol character.
+     */
+    public String nanSymbol() {
+        return this.nanSymbol;
+    }
+
+    public DecimalNumberSymbols setNanSymbol(final String nanSymbol) {
+        return this.nanSymbol.equals(nanSymbol) ?
+            this :
+            new DecimalNumberSymbols(
+                this.negativeSign,
+                this.positiveSign,
+                this.zeroDigit,
+                this.currencySymbol,
+                this.decimalSeparator,
+                this.exponentSymbol,
+                this.groupSeparator,
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                checkString("nanSymbol", nanSymbol),
+                this.percentageSymbol,
+                this.permillSymbol
+            );
+    }
+
+    private final String nanSymbol;
 
     // percentageSymbol.................................................................................................
 
@@ -361,11 +517,45 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 this.decimalSeparator,
                 this.exponentSymbol,
                 this.groupSeparator,
-                checkCharacter("percentageSymbol", percentageSymbol)
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                checkCharacter("percentageSymbol", percentageSymbol),
+                this.permillSymbol
             );
     }
 
     private final char percentageSymbol;
+
+    // permillSymbol....................................................................................................
+
+    /**
+     * The permill symbol.
+     */
+    public char permillSymbol() {
+        return this.permillSymbol;
+    }
+
+    public DecimalNumberSymbols setPermillSymbol(final char permillSymbol) {
+        return this.permillSymbol == permillSymbol ?
+            this :
+            new DecimalNumberSymbols(
+                this.negativeSign,
+                this.positiveSign,
+                this.zeroDigit,
+                this.currencySymbol,
+                this.decimalSeparator,
+                this.exponentSymbol,
+                this.groupSeparator,
+                this.infinitySymbol,
+                this.monetaryDecimalSeparator,
+                this.nanSymbol,
+                this.percentageSymbol,
+                checkCharacter("permillSymbol", permillSymbol)
+            );
+    }
+
+    private final char permillSymbol;
 
     // helper...........................................................................................................
 
@@ -384,6 +574,22 @@ public final class DecimalNumberSymbols implements TreePrintable,
                                        final char c) {
         if (false == SYMBOL.test(c)) {
             throw new IllegalArgumentException("Invalid " + label + " " + CharSequences.quoteAndEscape(c) + " is not a symbol");
+        }
+        return c;
+    }
+
+    private final static CharPredicate PERMILL_SYMBOL = PRINTABLE.and(
+        CharPredicates.letter()
+            .negate()
+    ).and(
+        CharPredicates.whitespace()
+            .negate()
+    );
+
+    private static char checkPermillSymbol(final String label,
+                                           final char c) {
+        if (false == PERMILL_SYMBOL.test(c)) {
+            throw new IllegalArgumentException("Invalid " + label + " " + CharSequences.quoteAndEscape(c) + " is not a permill symbol");
         }
         return c;
     }
@@ -425,8 +631,15 @@ public final class DecimalNumberSymbols implements TreePrintable,
             ).concat(this.exponentSymbol)
             .concat(
                 String.valueOf(this.groupSeparator)
-            ).concat(
+            )
+            .concat(this.infinitySymbol)
+            .concat(
+                String.valueOf(this.monetaryDecimalSeparator)
+            ).concat(this.nanSymbol)
+            .concat(
                 String.valueOf(this.percentageSymbol)
+            ).concat(
+                String.valueOf(this.permillSymbol)
             ).text();
     }
 
@@ -442,7 +655,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
             this.decimalSeparator,
             this.exponentSymbol,
             this.groupSeparator,
-            this.percentageSymbol
+            this.infinitySymbol,
+            this.monetaryDecimalSeparator,
+            this.nanSymbol,
+            this.percentageSymbol,
+            this.permillSymbol
         );
     }
 
@@ -459,7 +676,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
             this.decimalSeparator == other.decimalSeparator &&
             this.exponentSymbol.equals(other.exponentSymbol) &&
             this.groupSeparator == other.groupSeparator &&
-            this.percentageSymbol == other.percentageSymbol;
+            this.infinitySymbol.equals(other.infinitySymbol) &&
+            this.monetaryDecimalSeparator == other.monetaryDecimalSeparator &&
+            this.nanSymbol.equals(other.nanSymbol) &&
+            this.percentageSymbol == other.percentageSymbol &&
+            this.permillSymbol == other.permillSymbol;
     }
 
     @Override
@@ -472,7 +693,11 @@ public final class DecimalNumberSymbols implements TreePrintable,
             .label("decimalSeparator").value(this.decimalSeparator)
             .label("exponentSymbol").value(this.exponentSymbol)
             .label("groupSeparator").value(this.groupSeparator)
+            .label("infinitySymbol").value(this.infinitySymbol)
+            .label("monetaryDecimalSeparator").value(this.monetaryDecimalSeparator)
+            .label("nanSymbol").value(this.nanSymbol)
             .label("percentageSymbol").value(this.percentageSymbol)
+            .label("permillSymbol").value(this.permillSymbol)
             .build();
     }
 
@@ -480,7 +705,7 @@ public final class DecimalNumberSymbols implements TreePrintable,
 
     @Override
     public void printTree(IndentingPrinter printer) {
-        printer.print(this.getClass().getSimpleName());
+        printer.println(this.getClass().getSimpleName());
 
         printer.indent();
         {
@@ -520,8 +745,28 @@ public final class DecimalNumberSymbols implements TreePrintable,
                 printer
             );
             this.printLabelAndValues(
+                "infinitySymbol",
+                this.infinitySymbol,
+                printer
+            );
+            this.printLabelAndValues(
+                "monetaryDecimalSeparator",
+                this.monetaryDecimalSeparator,
+                printer
+            );
+            this.printLabelAndValues(
+                "nanSymbol",
+                this.nanSymbol,
+                printer
+            );
+            this.printLabelAndValues(
                 "percentageSymbol",
                 this.percentageSymbol,
+                printer
+            );
+            this.printLabelAndValues(
+                "permillSymbol",
+                this.permillSymbol,
                 printer
             );
         }
