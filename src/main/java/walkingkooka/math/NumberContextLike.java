@@ -18,9 +18,22 @@
 package walkingkooka.math;
 
 /**
- * Context that typically accompanies another stateless component such as a number parser or formatter that involves decimals.
+ * Defines some {@link DecimalNumberSymbols} properties that also exist in {@link NumberContext}.
  */
-public interface DecimalNumberContext extends DecimalNumberSymbolsLike,
-    NumberContext,
-    HasMathContext {
+public interface NumberContextLike {
+
+    /**
+     * Returns the negative sign.
+     */
+    char negativeSign();
+
+    /**
+     * Returns the positive sign.
+     */
+    char positiveSign();
+
+    /**
+     * Returns the zero digit
+     */
+    char zeroDigit();
 }

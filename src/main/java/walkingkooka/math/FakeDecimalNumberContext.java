@@ -43,6 +43,21 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
+    public String infinitySymbol() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public char monetaryDecimalSeparator() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String nanSymbol() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public char negativeSign() {
         throw new UnsupportedOperationException();
     }
@@ -53,7 +68,17 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
+    public char permillSymbol() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public char positiveSign() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public char zeroDigit() {
         throw new UnsupportedOperationException();
     }
 

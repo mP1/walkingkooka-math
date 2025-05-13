@@ -38,9 +38,9 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         '.',
         "E",
         ',',
-        "INFINITY",
+        "INFINITY!",
         '*',
-        "NAN",
+        "NAN!",
         '%',
         '^'
     );
@@ -101,7 +101,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testToString() {
         this.toStringAndCheck(
             this.createContext(),
-            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY\" monetaryDecimalSeparator='*' nanSymbol=\"NAN\" percentSymbol='%' permillSymbol='^' fr_FR precision=7 roundingMode=HALF_EVEN"
+            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY!\" monetaryDecimalSeparator='*' nanSymbol=\"NAN!\" percentSymbol='%' permillSymbol='^' fr_FR precision=7 roundingMode=HALF_EVEN"
         );
     }
 
@@ -135,6 +135,21 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     }
 
     @Override
+    public String infinitySymbol() {
+        return "INFINITY!";
+    }
+
+    @Override
+    public char monetaryDecimalSeparator() {
+        return '*';
+    }
+
+    @Override
+    public String nanSymbol() {
+        return "NAN!";
+    }
+
+    @Override
     public MathContext mathContext() {
         return MathContext.DECIMAL32;
     }
@@ -150,8 +165,18 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     }
 
     @Override
+    public char permillSymbol() {
+        return '^';
+    }
+
+    @Override
     public char positiveSign() {
         return '+';
+    }
+
+    @Override
+    public char zeroDigit() {
+        return '0';
     }
 
     @Override

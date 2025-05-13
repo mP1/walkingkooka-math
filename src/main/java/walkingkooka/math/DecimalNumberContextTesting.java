@@ -60,6 +60,33 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
+    default void infinitySymbolAndCheck(final DecimalNumberContext context,
+                                        final String infinitySymbol) {
+        this.checkEquals(
+            infinitySymbol,
+            context.infinitySymbol(),
+            "infinitySymbol"
+        );
+    }
+    
+    default void monetaryDecimalSeparatorAndCheck(final DecimalNumberContext context, 
+                                                  final char monetaryDecimalSeparator) {
+        this.checkEquals(
+            monetaryDecimalSeparator,
+            context.monetaryDecimalSeparator(),
+            "monetaryDecimalSeparator"
+        );
+    }
+
+    default void nanSymbolAndCheck(final DecimalNumberContext context,
+                                        final String nanSymbol) {
+        this.checkEquals(
+            nanSymbol,
+            context.nanSymbol(),
+            "nanSymbol"
+        );
+    }
+    
     default void negativeSignAndCheck(final DecimalNumberContext context,
                                       final char negativeSign) {
         this.checkEquals(
@@ -70,11 +97,20 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     }
 
     default void percentSymbolAndCheck(final DecimalNumberContext context,
-                                          final char percentSymbol) {
+                                       final char percentSymbol) {
         this.checkEquals(
             percentSymbol,
             context.percentSymbol(),
             "percentSymbol"
+        );
+    }
+
+    default void permillSymbolAndCheck(final DecimalNumberContext context,
+                                       final char permillSymbol) {
+        this.checkEquals(
+            permillSymbol,
+            context.permillSymbol(),
+            "permillSymbol"
         );
     }
 
@@ -84,6 +120,15 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
             positiveSign,
             context.positiveSign(),
             "positiveSign"
+        );
+    }
+
+    default void zeroDigitAndCheck(final DecimalNumberContext context,
+                                   final char zeroDigit) {
+        this.checkEquals(
+            zeroDigit,
+            context.zeroDigit(),
+            "zeroDigit"
         );
     }
 }
