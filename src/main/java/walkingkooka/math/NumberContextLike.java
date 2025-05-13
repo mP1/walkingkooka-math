@@ -28,6 +28,17 @@ public interface NumberContextLike {
     char negativeSign();
 
     /**
+     * Returns the numeric value for the given digit or -1 if it is invalid.
+     */
+    default int digit(final char c) {
+        final int value = c - this.zeroDigit();
+
+        return value < 0 || value > 9 ?
+            -1 :
+            value;
+    }
+
+    /**
      * Returns the positive sign.
      */
     char positiveSign();
