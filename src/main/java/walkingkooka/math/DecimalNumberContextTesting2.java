@@ -124,6 +124,14 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
         );
     }
 
+    @Test
+    default void testZeroDigit() {
+        this.zeroDigitAndCheck(
+            this.createContext(),
+            this.zeroDigit()
+        );
+    }
+
     MathContext mathContext();
     
     // class............................................................................................................
