@@ -21,7 +21,8 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
-public final class NumberContextLikeTest implements ClassTesting<NumberContextLike> {
+public final class NumberContextLikeTest implements MathTesting,
+    ClassTesting<NumberContextLike> {
 
     @Test
     public void testDigitWithZeroDigitAndZeroChar() {
@@ -81,7 +82,7 @@ public final class NumberContextLikeTest implements ClassTesting<NumberContextLi
 
     @Test
     public void testDigitWithArabicDigits() {
-        final char zero = '\u0660';
+        final char zero = ARABIC_ZERO_DIGIT;
 
         for(int i = 0 ; i < 10; i ++) {
             this.digitAndCheck(
@@ -94,7 +95,7 @@ public final class NumberContextLikeTest implements ClassTesting<NumberContextLi
 
     @Test
     public void testDigitWithExtendedArabicIndicDigits() {
-        final char zero = '\u06F0';
+        final char zero = ARABIC_ZERO_DIGIT;
 
         for(int i = 0 ; i < 10; i ++) {
             this.digitAndCheck(
@@ -107,7 +108,7 @@ public final class NumberContextLikeTest implements ClassTesting<NumberContextLi
 
     @Test
     public void testDigitWithDevanagariDigits() {
-        final char zero = '\u0966';
+        final char zero = ARABIC_ZERO_DIGIT;
 
         for(int i = 0 ; i < 10; i ++) {
             this.digitAndCheck(
