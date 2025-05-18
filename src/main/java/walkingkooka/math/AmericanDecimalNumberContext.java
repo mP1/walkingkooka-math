@@ -102,14 +102,12 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext,
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-            .value(this.currencySymbol())
-            .value(this.decimalSeparator())
-            .value(this.exponentSymbol())
-            .value(this.groupSeparator())
-            .value(this.negativeSign())
-            .value(this.percentSymbol())
-            .value(this.positiveSign())
+            .label("locale")
+            .value(this.locale())
+            .value("mathContext")
             .value(this.mathContext())
+            .value("decimalNumberSymbols")
+            .value(DECIMAL_NUMBER_SYMBOLS)
             .build();
     }
 }
