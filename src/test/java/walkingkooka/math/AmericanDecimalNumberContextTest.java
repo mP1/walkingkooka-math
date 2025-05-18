@@ -101,7 +101,10 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
 
     @Test
     public void testToString() {
-        this.toStringAndCheck(this.createContext(), "\"$\" '.' \"E\" ',' '-' '%' '+' " + MATH_CONTEXT);
+        this.toStringAndCheck(
+            this.createContext(),
+            "locale=en_US \"mathContext\" precision=7 roundingMode=HALF_EVEN \"decimalNumberSymbols\" negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"∞\" monetaryDecimalSeparator='.' nanSymbol=\"NaN\" percentSymbol='%' permillSymbol='‰'"
+        );
     }
 
     @Override
