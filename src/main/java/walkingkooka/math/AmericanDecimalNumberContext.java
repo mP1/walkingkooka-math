@@ -28,7 +28,8 @@ import java.util.Objects;
  * This is useful for as many internet standards also use the same symbols. Note the {@link #locale()} throws
  * {@link UnsupportedOperationException}.
  */
-final class AmericanDecimalNumberContext implements DecimalNumberContext {
+final class AmericanDecimalNumberContext implements DecimalNumberContext,
+    DecimalNumberSymbolsLikeDelegator{
 
     /**
      * Factory that returns a constant if a {@link MathContext} constant is given.
@@ -61,66 +62,6 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public String currencySymbol() {
-        return "$";
-    }
-
-    @Override
-    public char decimalSeparator() {
-        return '.';
-    }
-
-    @Override
-    public String exponentSymbol() {
-        return "E";
-    }
-
-    @Override
-    public char groupSeparator() {
-        return ',';
-    }
-
-    @Override
-    public String infinitySymbol() {
-        return "\u221e";
-    }
-
-    @Override
-    public char monetaryDecimalSeparator() {
-        return '.';
-    }
-
-    @Override
-    public String nanSymbol() {
-        return "NaN";
-    }
-
-    @Override
-    public char negativeSign() {
-        return '-';
-    }
-
-    @Override
-    public char percentSymbol() {
-        return '%';
-    }
-
-    @Override
-    public char permillSymbol() {
-        return '\u2030';
-    }
-
-    @Override
-    public char positiveSign() {
-        return '+';
-    }
-
-    @Override
-    public char zeroDigit() {
-        return '0';
-    }
-
-    @Override
     public Locale locale() {
         return US;
     }
@@ -133,6 +74,30 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext {
     }
 
     private final MathContext mathContext;
+
+    // DecimalNumberSymbolsLikeDelegator................................................................................
+
+    @Override
+    public DecimalNumberSymbolsLike decimalNumberSymbolsLike() {
+        return DECIMAL_NUMBER_SYMBOLS;
+    }
+
+    private final static DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS = DecimalNumberSymbols.with(
+        '-',
+        '+',
+        '0',
+        "$",
+        '.', // decimalSeparator
+        "E",
+        ',',
+        "\u221e", // infinitySymbol
+        '.', // monetaryDecimalSeparator
+        "NaN", // nanSymbols
+        '%',
+        '\u2030' // permillSymbol
+    );
+
+    // Object...........................................................................................................
 
     @Override
     public String toString() {
