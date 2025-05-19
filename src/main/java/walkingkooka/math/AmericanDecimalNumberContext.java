@@ -82,6 +82,13 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext,
         return DECIMAL_NUMBER_SYMBOLS;
     }
 
+    // HasDecimalNumberSymbols..........................................................................................
+
+    @Override
+    public DecimalNumberSymbols decimalNumberSymbols() {
+        return DECIMAL_NUMBER_SYMBOLS;
+    }
+
     private final static DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS = DecimalNumberSymbols.with(
         '-',
         '+',

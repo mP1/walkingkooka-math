@@ -83,6 +83,11 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
+    public DecimalNumberSymbols decimalNumberSymbols() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Locale locale() {
         throw new UnsupportedOperationException();
     }
