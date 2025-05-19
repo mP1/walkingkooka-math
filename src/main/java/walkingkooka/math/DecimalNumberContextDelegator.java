@@ -36,6 +36,12 @@ public interface DecimalNumberContextDelegator extends DecimalNumberContext,
     }
 
     @Override
+    default DecimalNumberSymbols decimalNumberSymbols() {
+        return this.decimalNumberContext()
+            .decimalNumberSymbols();
+    }
+
+    @Override
     default  DecimalNumberSymbolsLike decimalNumberSymbolsLike() {
         return this.decimalNumberContext();
     }

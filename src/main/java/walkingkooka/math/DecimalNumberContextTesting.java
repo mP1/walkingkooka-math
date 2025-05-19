@@ -23,6 +23,7 @@ import walkingkooka.locale.HasLocaleTesting;
  */
 public interface DecimalNumberContextTesting extends HasLocaleTesting,
     HasMathContextTesting,
+    HasDecimalNumberSymbolsTesting,
     MathTesting {
 
     default void currencySymbolAndCheck(final DecimalNumberContext context,

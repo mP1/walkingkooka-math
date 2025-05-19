@@ -22,5 +22,6 @@ package walkingkooka.math;
  */
 public interface DecimalNumberContext extends DecimalNumberSymbolsLike,
     NumberContext,
-    HasMathContext {
+    HasMathContext,
+    HasDecimalNumberSymbols {
 }
