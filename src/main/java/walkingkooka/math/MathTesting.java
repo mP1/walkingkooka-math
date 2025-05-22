@@ -16,7 +16,6 @@
  */
 package walkingkooka.math;
 
-import walkingkooka.locale.HasLocaleTesting;
 import walkingkooka.test.Testing;
 
 /**
@@ -28,6 +27,11 @@ public interface MathTesting extends Testing {
      * Useful constant to verify {@link DecimalNumberContext#zeroDigit()} is honoured.
      */
     char ARABIC_ZERO_DIGIT = '\u0660';
+
+    /**
+     * Euro symbol constant
+     */
+    char EURO_SYMBOL = '\u20AC';
 
     /**
      * Helper which may be used within tests to build expected strings to verify {@link DecimalNumberContext#zeroDigit()} is honoured.
