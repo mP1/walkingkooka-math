@@ -18,6 +18,10 @@ package walkingkooka.math;
 
 import walkingkooka.test.Testing;
 
+import java.text.DecimalFormatSymbols;
+import java.util.Arrays;
+import java.util.Locale;
+
 /**
  * Mixing testing interface for {@link DecimalNumberContext}
  */
@@ -27,6 +31,11 @@ public interface MathTesting extends Testing {
      * Useful constant to verify {@link DecimalNumberContext#zeroDigit()} is honoured.
      */
     char ARABIC_ZERO_DIGIT = '\u0660';
+
+    Locale ARABIC_ZERO_DIGIT_LOCALE = Arrays.stream(Locale.getAvailableLocales())
+        .filter(l -> new DecimalFormatSymbols(l).getZeroDigit() == ARABIC_ZERO_DIGIT)
+        .findFirst()
+        .orElseThrow(() -> new IllegalStateException("Unable to find Locale with " + ARABIC_ZERO_DIGIT));
 
     /**
      * Euro symbol constant
