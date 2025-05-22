@@ -41,4 +41,31 @@ public interface MathTesting extends Testing {
             (char)(ARABIC_ZERO_DIGIT + digit)
         );
     }
+
+    /**
+     * Helper which may be used within tests to build expected strings to verify {@link DecimalNumberContext#zeroDigit()} is honoured.
+     */
+    default String arabicDigits(final int value) {
+        final StringBuilder b = new StringBuilder();
+
+        for(final char c : String.valueOf(value).toCharArray()) {
+            switch(c) {
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    b.append(
+                        this.arabicDigit(c - '0')
+                    );
+            }
+        }
+
+        return b.toString();
+    }
 }
