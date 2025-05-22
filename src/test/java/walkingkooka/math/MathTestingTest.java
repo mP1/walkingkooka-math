@@ -19,7 +19,17 @@ package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
 
+import java.text.DecimalFormatSymbols;
+
 public final class MathTestingTest implements MathTesting {
+
+    @Test
+    public void testArabicZeroDigitLocale() {
+        this.checkEquals(
+            ARABIC_ZERO_DIGIT,
+            new DecimalFormatSymbols(ARABIC_ZERO_DIGIT_LOCALE).getZeroDigit()
+        );
+    }
 
     @Test
     public void testArabicDigitsZero() {
