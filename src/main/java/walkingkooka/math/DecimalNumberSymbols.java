@@ -591,7 +591,10 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         return c;
     }
 
-    private final static CharPredicate PERMILL_SYMBOL = PRINTABLE.and(
+    /**
+     * A {@link CharPredicate} that may be used to test if a character is a valid PERMILL symbol.
+     */
+    public final static CharPredicate PERMILL_SYMBOL = PRINTABLE.and(
         CharPredicates.letter()
             .negate()
     ).and(
