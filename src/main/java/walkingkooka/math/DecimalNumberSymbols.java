@@ -18,6 +18,7 @@
 package walkingkooka.math;
 
 import walkingkooka.EmptyTextException;
+import walkingkooka.InvalidCharacterException;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.predicate.Predicates;
@@ -30,6 +31,7 @@ import walkingkooka.text.printer.TreePrintable;
 
 import java.text.DecimalFormatSymbols;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
@@ -606,7 +608,12 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     private static char checkCharacter(final String label,
                                        final char c) {
         if (false == SYMBOL.test(c)) {
-            throw new DecimalNumberSymbolsInvalidCharacterException(label, c);
+            throw new InvalidCharacterException(
+                String.valueOf(c), // text
+                0 // position
+            ).setLabel(
+                Optional.of(label)
+            );
         }
         return c;
     }
@@ -624,7 +631,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
 
     private static char checkPermillSymbol(final char c) {
         if (false == PERMILL_SYMBOL.test(c)) {
-            throw new DecimalNumberSymbolsInvalidCharacterException(PERMILL_SYMBOL_LABEL, c);
+            throw new InvalidCharacterException(PERMILL_SYMBOL_LABEL, c);
         }
         return c;
     }
@@ -656,7 +663,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
 
     private static char checkZeroDigit(final char zeroDigit) {
         if (false == ZERO_DIGIT.test(zeroDigit)) {
-            throw new DecimalNumberSymbolsInvalidCharacterException(ZERO_DIGIT_LABEL, zeroDigit);
+            throw new InvalidCharacterException(ZERO_DIGIT_LABEL, zeroDigit);
         }
 
         return zeroDigit;
