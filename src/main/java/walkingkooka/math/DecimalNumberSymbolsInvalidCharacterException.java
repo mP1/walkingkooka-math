@@ -25,20 +25,20 @@ import walkingkooka.text.CharSequences;
  */
 public final class DecimalNumberSymbolsInvalidCharacterException extends IllegalArgumentException {
 
-    DecimalNumberSymbolsInvalidCharacterException(final String field,
+    DecimalNumberSymbolsInvalidCharacterException(final String property,
                                                   final char value) {
-        this.field = field;
+        this.property = property;
         this.value = value;
     }
 
     /**
-     * Returns the name of the field belonging to a {@link DecimalNumberSymbols}
+     * Returns the name of the property belonging to a {@link DecimalNumberSymbols}
      */
-    public String field() {
-        return this.field;
+    public String property() {
+        return this.property;
     }
 
-    private final String field;
+    private final String property;
 
     /**
      * The invalid character
@@ -51,6 +51,6 @@ public final class DecimalNumberSymbolsInvalidCharacterException extends Illegal
 
     @Override
     public String getMessage() {
-        return "Invalid " + this.field + " character " + CharSequences.quoteIfChars(this.value);
+        return "Invalid " + this.property + " character " + CharSequences.quoteIfChars(this.value);
     }
 }
