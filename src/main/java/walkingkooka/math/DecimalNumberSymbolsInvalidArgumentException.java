@@ -22,9 +22,11 @@ import walkingkooka.text.CharSequences;
 /**
  * An {@link IllegalArgumentException} used to report a failure of some sort for a {@link DecimalNumberSymbols} property/parameter.
  */
-public abstract class DecimalNumberSymbolsInvalidArgumentException extends IllegalArgumentException {
+public class DecimalNumberSymbolsInvalidArgumentException extends IllegalArgumentException {
 
-    DecimalNumberSymbolsInvalidArgumentException(final String property) {
+    DecimalNumberSymbolsInvalidArgumentException(final String message,
+                                                 final String property) {
+        super(message);
         this.property = property;
     }
 
@@ -36,7 +38,4 @@ public abstract class DecimalNumberSymbolsInvalidArgumentException extends Illeg
     }
 
     final String property;
-
-    @Override
-    public abstract String getMessage();
 }
