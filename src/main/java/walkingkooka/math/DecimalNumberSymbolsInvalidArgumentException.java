@@ -20,28 +20,23 @@ package walkingkooka.math;
 import walkingkooka.text.CharSequences;
 
 /**
- * An {@link IllegalArgumentException} used to report invalid characters given to individual {@link DecimalNumberSymbols}
- * properties.
+ * An {@link IllegalArgumentException} used to report a failure of some sort for a {@link DecimalNumberSymbols} property/parameter.
  */
-public final class DecimalNumberSymbolsInvalidCharacterException extends DecimalNumberSymbolsInvalidArgumentException {
+public abstract class DecimalNumberSymbolsInvalidArgumentException extends IllegalArgumentException {
 
-    DecimalNumberSymbolsInvalidCharacterException(final String property,
-                                                  final char value) {
-        super(property);
-        this.value = value;
+    DecimalNumberSymbolsInvalidArgumentException(final String property) {
+        this.property = property;
     }
 
     /**
-     * The invalid character
+     * Returns the name of the property belonging to a {@link DecimalNumberSymbols}
      */
-    public char value() {
-        return this.value;
+    public final String property() {
+        return this.property;
     }
 
-    private final char value;
+    final String property;
 
     @Override
-    public String getMessage() {
-        return "Invalid " + this.property + " character " + CharSequences.quoteIfChars(this.value);
-    }
+    public abstract String getMessage();
 }
