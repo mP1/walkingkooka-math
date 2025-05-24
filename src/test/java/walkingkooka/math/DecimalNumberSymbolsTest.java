@@ -2401,11 +2401,24 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     public void testParseEmptyNegativeSign() {
         final IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
-            () -> DecimalNumberSymbols.parse(",+,0,$,.,E,\",\",\"INFINITY\",'*',\"NAN\",%,^")
+            () -> DecimalNumberSymbols.parse(",+,0,$,.,E,\",\",\"INFINITY\",*,\"NAN\",%,^")
         );
 
         this.checkEquals(
             "Empty \"negativeSign\"",
+            thrown.getMessage()
+        );
+    }
+
+    @Test
+    public void testParseInvalidNegativeSign() {
+        final DecimalNumberSymbolsInvalidCharacterException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidCharacterException.class,
+            () -> DecimalNumberSymbols.parse("A,+,0,$,.,E,\",\",\"INFINITY\",*,\"NAN\",%,^")
+        );
+
+        this.checkEquals(
+            "Invalid negativeSign character 'A'",
             thrown.getMessage()
         );
     }
