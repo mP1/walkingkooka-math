@@ -617,8 +617,15 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         );
     }
 
+    /**
+     * May be used to test if the given character is a valid zero digit.
+     */
+    public static boolean isZeroDigit(final char c) {
+        return Character.isDigit(c);
+    }
+
     private static char checkZeroDigit(final char zeroDigit) {
-        if (false == Character.isDigit(zeroDigit)) {
+        if (false == isZeroDigit(zeroDigit)) {
             throw new IllegalArgumentException("Invalid zero digit " + CharSequences.quoteIfChars(zeroDigit));
         }
 
