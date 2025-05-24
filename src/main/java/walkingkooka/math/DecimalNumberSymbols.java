@@ -39,19 +39,19 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     TreePrintable,
     HasText {
 
-    private static final String NEGATIVE_SIGN_LABEL = "negativeSign";
-    private static final String POSITIVE_SIGN_LABEL = "positiveSign";
-    private static final String ZERO_DIGIT_LABEL = "zeroDigit";
+    static final String NEGATIVE_SIGN_LABEL = "negativeSign";
+    static final String POSITIVE_SIGN_LABEL = "positiveSign";
+    static final String ZERO_DIGIT_LABEL = "zeroDigit";
 
-    private static final String CURRENCY_SYMBOL_LABEL = "currencySymbol";
-    private static final String DECIMAL_SEPARATOR_LABEL = "decimalSeparator";
-    private static final String EXPONENT_SYMBOL_LABEL = "exponentSymbol";
-    private static final String GROUP_SEPARATOR_LABEL = "groupSeparator";
-    private static final String INFINITY_SYMBOL_LABEL = "infinitySymbol";
-    private static final String MONETARY_DECIMAL_SEPARATOR_LABEL = "monetaryDecimalSeparator";
-    private static final String NAN_SYMBOL_LABEL = "nanSymbol";
-    private static final String PERCENT_SYMBOL_LABEL = "percentSymbol";
-    private static final String PERMILL_SYMBOL_LABEL = "permillSymbol";
+    static final String CURRENCY_SYMBOL_LABEL = "currencySymbol";
+    static final String DECIMAL_SEPARATOR_LABEL = "decimalSeparator";
+    static final String EXPONENT_SYMBOL_LABEL = "exponentSymbol";
+    static final String GROUP_SEPARATOR_LABEL = "groupSeparator";
+    static final String INFINITY_SYMBOL_LABEL = "infinitySymbol";
+    static final String MONETARY_DECIMAL_SEPARATOR_LABEL = "monetaryDecimalSeparator";
+    static final String NAN_SYMBOL_LABEL = "nanSymbol";
+    static final String PERCENT_SYMBOL_LABEL = "percentSymbol";
+    static final String PERMILL_SYMBOL_LABEL = "permillSymbol";
 
     /**
      * Parses the {@link String csv text} with each token interpreted as a character or string for each
@@ -203,13 +203,14 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                                     final char right, final String rightLabel) {
         if (left == right) {
             // Invalid character "negativeSign" is same as "positiveSign" '+'
-            throw new IllegalArgumentException(
-                "Invalid character " +
-                    CharSequences.quoteAndEscape(leftLabel) +
-                    " is same as " +
+            throw new DecimalNumberSymbolsInvalidArgumentException(
+                "Duplicate " +
                     CharSequences.quoteAndEscape(rightLabel) +
+                    " is same as " +
+                    CharSequences.quoteAndEscape(leftLabel) +
                     " " +
-                    CharSequences.quoteAndEscape(right)
+                    CharSequences.quoteAndEscape(left),
+                rightLabel // property
             );
         }
     }

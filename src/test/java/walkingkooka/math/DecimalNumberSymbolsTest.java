@@ -401,8 +401,8 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
     @Test
     public void testWithNegativeSignEqualPositiveSignFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 POSITIVE_SIGN,
                 POSITIVE_SIGN,
@@ -419,16 +419,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"negativeSign\" is same as \"positiveSign\" '+'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"positiveSign\" is same as \"negativeSign\" '+'",
+            DecimalNumberSymbols.POSITIVE_SIGN_LABEL
         );
     }
 
     @Test
     public void testWithNegativeSignEqualDecimalSeparatorFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 DECIMAL_SEPARATOR,
                 POSITIVE_SIGN,
@@ -445,16 +446,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"negativeSign\" is same as \"decimalSeparator\" '.'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"decimalSeparator\" is same as \"negativeSign\" '.'",
+            DecimalNumberSymbols.DECIMAL_SEPARATOR_LABEL
         );
     }
 
     @Test
     public void testWithNegativeSignEqualGroupSeparatorFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 GROUP_SEPARATOR,
                 POSITIVE_SIGN,
@@ -471,16 +473,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"negativeSign\" is same as \"groupSeparator\" ','",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"groupSeparator\" is same as \"negativeSign\" ','",
+            DecimalNumberSymbols.GROUP_SEPARATOR_LABEL
         );
     }
 
     @Test
     public void testWithNegativeSignEqualMonetaryDecimalSeparatorFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 MONETARY_DECIMAL_SEPARATOR,
                 POSITIVE_SIGN,
@@ -497,16 +500,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"negativeSign\" is same as \"monetaryDecimalSeparator\" '*'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"monetaryDecimalSeparator\" is same as \"negativeSign\" '*'",
+            DecimalNumberSymbols.MONETARY_DECIMAL_SEPARATOR_LABEL
         );
     }
 
     @Test
     public void testWithNegativeSignEqualPercentSymbolFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 PERCENTAGE_SYMBOL,
                 POSITIVE_SIGN,
@@ -523,16 +527,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"negativeSign\" is same as \"percentSymbol\" '%'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"percentSymbol\" is same as \"negativeSign\" '%'",
+            DecimalNumberSymbols.PERCENT_SYMBOL_LABEL
         );
     }
 
     @Test
     public void testWithNegativeSignEqualPermillSymbolFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 PERMILL_SYMBOL,
                 POSITIVE_SIGN,
@@ -549,16 +554,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"negativeSign\" is same as \"permillSymbol\" '^'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"permillSymbol\" is same as \"negativeSign\" '^'",
+            DecimalNumberSymbols.PERMILL_SYMBOL_LABEL
         );
     }
 
     @Test
     public void testWithPositiveSignEqualDecimalSeparatorFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 DECIMAL_SEPARATOR,
@@ -575,16 +581,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"positiveSign\" is same as \"decimalSeparator\" '.'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"decimalSeparator\" is same as \"positiveSign\" '.'",
+            DecimalNumberSymbols.DECIMAL_SEPARATOR_LABEL
         );
     }
 
     @Test
     public void testWithPositiveSignEqualGroupSeparatorFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 GROUP_SEPARATOR,
@@ -601,16 +608,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"positiveSign\" is same as \"groupSeparator\" ','",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"groupSeparator\" is same as \"positiveSign\" ','",
+            DecimalNumberSymbols.GROUP_SEPARATOR_LABEL
         );
     }
 
     @Test
     public void testWithPositiveSignEqualMonetaryDecimalSeparatorFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 MONETARY_DECIMAL_SEPARATOR,
@@ -627,16 +635,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"positiveSign\" is same as \"monetaryDecimalSeparator\" '*'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"monetaryDecimalSeparator\" is same as \"positiveSign\" '*'",
+            DecimalNumberSymbols.MONETARY_DECIMAL_SEPARATOR_LABEL
         );
     }
 
     @Test
     public void testWithPositiveSignEqualPercentSymbolFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 PERCENTAGE_SYMBOL,
@@ -653,16 +662,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"positiveSign\" is same as \"percentSymbol\" '%'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"percentSymbol\" is same as \"positiveSign\" '%'",
+            DecimalNumberSymbols.PERCENT_SYMBOL_LABEL
         );
     }
 
     @Test
     public void testWithPositiveSignEqualPermillSymbolFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 PERMILL_SYMBOL,
@@ -679,16 +689,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"positiveSign\" is same as \"permillSymbol\" '^'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"permillSymbol\" is same as \"positiveSign\" '^'",
+            DecimalNumberSymbols.PERMILL_SYMBOL_LABEL
         );
     }
 
     @Test
     public void testWithGroupSeparatorEqualMonetaryDecimalSeparatorFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
@@ -705,16 +716,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"groupSeparator\" is same as \"monetaryDecimalSeparator\" '*'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"monetaryDecimalSeparator\" is same as \"groupSeparator\" '*'",
+            DecimalNumberSymbols.MONETARY_DECIMAL_SEPARATOR_LABEL
         );
     }
 
     @Test
     public void testWithGroupSeparatorEqualPercentSymbolFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
@@ -731,16 +743,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"groupSeparator\" is same as \"monetaryDecimalSeparator\" '*'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"monetaryDecimalSeparator\" is same as \"groupSeparator\" '*'",
+            DecimalNumberSymbols.MONETARY_DECIMAL_SEPARATOR_LABEL
         );
     }
 
     @Test
     public void testWithGroupSeparatorEqualPermillSymbolFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
@@ -757,16 +770,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"groupSeparator\" is same as \"permillSymbol\" '^'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"permillSymbol\" is same as \"groupSeparator\" '^'",
+            DecimalNumberSymbols.PERMILL_SYMBOL_LABEL
         );
     }
 
     @Test
     public void testWithPercentSymbolEqualPermillSymbolFails() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+        final DecimalNumberSymbolsInvalidArgumentException thrown = assertThrows(
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> DecimalNumberSymbols.with(
                 NEGATIVE_SIGN,
                 POSITIVE_SIGN,
@@ -783,9 +797,10 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
             )
         );
 
-        this.checkEquals(
-            "Invalid character \"percentSymbol\" is same as \"permillSymbol\" '^'",
-            thrown.getMessage()
+        this.decimalNumberSymbolsInvalidArgumentExceptionAndCheck(
+            thrown,
+            "Duplicate \"permillSymbol\" is same as \"percentSymbol\" '^'",
+            DecimalNumberSymbols.PERMILL_SYMBOL_LABEL
         );
     }
 
@@ -833,7 +848,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetNegativeSignWithPositiveSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setNegativeSign(POSITIVE_SIGN)
         );
@@ -842,7 +857,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetNegativeSignWithDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setNegativeSign(DECIMAL_SEPARATOR)
         );
@@ -851,7 +866,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetNegativeSignWithGroupSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setNegativeSign(GROUP_SEPARATOR)
         );
@@ -860,7 +875,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetNegativeSignWithMonetaryDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setNegativeSign(MONETARY_DECIMAL_SEPARATOR)
         );
@@ -869,7 +884,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetNegativeSignWithPercentSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setNegativeSign(PERCENTAGE_SYMBOL)
         );
@@ -878,7 +893,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetNegativeSignWithPermillSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setNegativeSign(PERMILL_SYMBOL)
         );
@@ -950,7 +965,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPositiveSignWithNegativeSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPositiveSign(NEGATIVE_SIGN)
         );
@@ -959,7 +974,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPositiveSignWithDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPositiveSign(DECIMAL_SEPARATOR)
         );
@@ -968,7 +983,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPositiveSignWithGroupSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPositiveSign(GROUP_SEPARATOR)
         );
@@ -977,7 +992,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPositiveSignWithMonetaryDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPositiveSign(MONETARY_DECIMAL_SEPARATOR)
         );
@@ -986,7 +1001,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPositiveSignWithPercentSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPositiveSign(PERCENTAGE_SYMBOL)
         );
@@ -995,7 +1010,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPositiveSignWithPermillSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPositiveSign(PERMILL_SYMBOL)
         );
@@ -1193,7 +1208,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetDecimalSeparatorWithNegativeSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setDecimalSeparator(NEGATIVE_SIGN)
         );
@@ -1202,7 +1217,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetDecimalSeparatorWithPositiveSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setDecimalSeparator(POSITIVE_SIGN)
         );
@@ -1211,7 +1226,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetDecimalSeparatorWithGroupSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setDecimalSeparator(GROUP_SEPARATOR)
         );
@@ -1229,7 +1244,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetDecimalSeparatorWithPermillSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setDecimalSeparator(PERMILL_SYMBOL)
         );
@@ -1391,7 +1406,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetGroupSeparatorWithNegativeSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setGroupSeparator(NEGATIVE_SIGN)
         );
@@ -1400,7 +1415,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetGroupSeparatorWithPositiveSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setGroupSeparator(POSITIVE_SIGN)
         );
@@ -1409,7 +1424,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetGroupSeparatorWithDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setGroupSeparator(DECIMAL_SEPARATOR)
         );
@@ -1418,7 +1433,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetGroupSeparatorWithMonetaryDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setGroupSeparator(MONETARY_DECIMAL_SEPARATOR)
         );
@@ -1427,7 +1442,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetGroupSeparatorWithPercentSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setGroupSeparator(PERCENTAGE_SYMBOL)
         );
@@ -1436,7 +1451,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetGroupSeparatorWithPermillSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setGroupSeparator(PERMILL_SYMBOL)
         );
@@ -1571,7 +1586,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetMonetaryDecimalSeparatorWithNegativeSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setMonetaryDecimalSeparator(NEGATIVE_SIGN)
         );
@@ -1580,7 +1595,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetMonetaryDecimalSeparatorWithPositiveSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setMonetaryDecimalSeparator(POSITIVE_SIGN)
         );
@@ -1589,7 +1604,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetMonetaryDecimalSeparatorWithGroupSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setMonetaryDecimalSeparator(GROUP_SEPARATOR)
         );
@@ -1598,7 +1613,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetMonetaryDecimalSeparatorWithPercentSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setMonetaryDecimalSeparator(PERCENTAGE_SYMBOL)
         );
@@ -1607,7 +1622,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetMonetaryDecimalSeparatorWithPermillSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setMonetaryDecimalSeparator(PERMILL_SYMBOL)
         );
@@ -1768,7 +1783,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPercentSymbolWithNegativeSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPercentSymbol(NEGATIVE_SIGN)
         );
@@ -1777,7 +1792,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPercentSymbolWithPositiveSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPercentSymbol(POSITIVE_SIGN)
         );
@@ -1786,7 +1801,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPercentSymbolWithDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPercentSymbol(DECIMAL_SEPARATOR)
         );
@@ -1795,7 +1810,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPercentSymbolWithGroupSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPercentSymbol(GROUP_SEPARATOR)
         );
@@ -1804,7 +1819,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPercentSymbolWithMonetaryDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPercentSymbol(MONETARY_DECIMAL_SEPARATOR)
         );
@@ -1813,7 +1828,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPercentSymbolWithPermillSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPercentSymbol(PERMILL_SYMBOL)
         );
@@ -1882,7 +1897,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPermillSymbolWithNegativeSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPermillSymbol(NEGATIVE_SIGN)
         );
@@ -1891,7 +1906,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPermillSymbolWithPositiveSignFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPermillSymbol(POSITIVE_SIGN)
         );
@@ -1900,7 +1915,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPermillSymbolWithDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPermillSymbol(DECIMAL_SEPARATOR)
         );
@@ -1909,7 +1924,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPermillSymbolWithGroupSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPermillSymbol(GROUP_SEPARATOR)
         );
@@ -1918,7 +1933,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPermillSymbolWithMonetaryDecimalSeparatorFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPermillSymbol(MONETARY_DECIMAL_SEPARATOR)
         );
@@ -1927,7 +1942,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Test
     public void testSetPermillSymbolWithPercentSymbolFails() {
         assertThrows(
-            IllegalArgumentException.class,
+            DecimalNumberSymbolsInvalidArgumentException.class,
             () -> this.createObject()
                 .setPermillSymbol(GROUP_SEPARATOR)
         );
@@ -2446,6 +2461,23 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Override
     public RuntimeException parseStringFailedExpected(final RuntimeException thrown) {
         return thrown;
+    }
+
+    // helpers..........................................................................................................
+
+    private void decimalNumberSymbolsInvalidArgumentExceptionAndCheck(final DecimalNumberSymbolsInvalidArgumentException thrown,
+                                                                      final String message,
+                                                                      final String property) {
+        this.checkEquals(
+            message,
+            thrown.getMessage(),
+            "message"
+        );
+        this.checkEquals(
+            property,
+            thrown.property(),
+            "property"
+        );
     }
 
     // CharPredicate....................................................................................................
