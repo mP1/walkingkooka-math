@@ -123,7 +123,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             checkCharacter("monetaryDecimalSeparator", monetaryDecimalSeparator),
             checkString("nanSymbol", nanSymbol),
             checkCharacter("percentSymbol", percentSymbol),
-            checkPermillSymbol("permillSymbol", permillSymbol)
+            checkPermillSymbol(permillSymbol)
         );
     }
 
@@ -602,10 +602,9 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             .negate()
     );
 
-    private static char checkPermillSymbol(final String label,
-                                           final char c) {
+    private static char checkPermillSymbol(final char c) {
         if (false == PERMILL_SYMBOL.test(c)) {
-            throw new IllegalArgumentException("Invalid " + label + " " + CharSequences.quoteAndEscape(c) + " is not a permill symbol");
+            throw new IllegalArgumentException("Invalid permill symbol " + CharSequences.quoteAndEscape(c));
         }
         return c;
     }
