@@ -2435,6 +2435,32 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         return thrown;
     }
 
+    // CharPredicate....................................................................................................
+
+    @Test
+    public void testPermillSymbolCharPredicate() {
+        this.toStringAndCheck(
+            DecimalNumberSymbols.PERMILL_SYMBOL,
+            "permillSymbol"
+        );
+    }
+
+    @Test
+    public void testSymbolCharPredicate() {
+        this.toStringAndCheck(
+            DecimalNumberSymbols.SYMBOL,
+            "symbol"
+        );
+    }
+
+    @Test
+    public void testZeroDigitCharPredicate() {
+        this.toStringAndCheck(
+            DecimalNumberSymbols.ZERO_DIGIT,
+            "zeroDigit"
+        );
+    }
+
     // class............................................................................................................
 
     @Override
