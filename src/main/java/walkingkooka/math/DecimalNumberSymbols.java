@@ -598,7 +598,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     ).and(
         CharPredicates.whitespace()
             .negate()
-    );
+    ).setToString("symbol");
 
     private static char checkCharacter(final String label,
                                        final char c) {
@@ -617,7 +617,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     ).and(
         CharPredicates.whitespace()
             .negate()
-    );
+    ).setToString(PERMILL_SYMBOL_LABEL);
 
     private static char checkPermillSymbol(final char c) {
         if (false == PERMILL_SYMBOL.test(c)) {
@@ -639,7 +639,8 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     /**
      * May be used to test if the given character is a valid zero digit.
      */
-    public final static CharPredicate ZERO_DIGIT = Character::isDigit;
+    public final static CharPredicate ZERO_DIGIT = CharPredicates.digit()
+        .setToString(ZERO_DIGIT_LABEL);
 
     private static char checkZeroDigit(final char zeroDigit) {
         if (false == ZERO_DIGIT.test(zeroDigit)) {
