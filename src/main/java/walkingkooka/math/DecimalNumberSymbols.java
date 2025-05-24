@@ -37,6 +37,20 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     TreePrintable,
     HasText {
 
+    private static final String NEGATIVE_SIGN_LABEL = "negativeSign";
+    private static final String POSITIVE_SIGN_LABEL = "positiveSign";
+    private static final String ZERO_DIGIT_LABEL = "zeroDigit";
+
+    private static final String CURRENCY_SYMBOL_LABEL = "currencySymbol";
+    private static final String DECIMAL_SEPARATOR_LABEL = "decimalSeparator";
+    private static final String EXPONENT_SYMBOL_LABEL = "exponentSymbol";
+    private static final String GROUP_SEPARATOR_LABEL = "groupSeparator";
+    private static final String INFINITY_SYMBOL_LABEL = "infinitySymbol";
+    private static final String MONETARY_DECIMAL_SEPARATOR_LABEL = "monetaryDecimalSeparator";
+    private static final String NAN_SYMBOL_LABEL = "nanSymbol";
+    private static final String PERCENT_SYMBOL_LABEL = "percentSymbol";
+    private static final String PERMILL_SYMBOL_LABEL = "permillSymbol";
+
     /**
      * Parses the {@link String csv text} with each token interpreted as a character or string for each
      * of the {@link DecimalNumberSymbols} properties. This is the inverse of {@link #text()}.
@@ -50,18 +64,18 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         }
 
         return with(
-            stringToChar("negativeSign", csv.get(0)),
-            stringToChar("positiveSign", csv.get(1)),
-            stringToChar("zeroDigit", csv.get(2)),
+            stringToChar(NEGATIVE_SIGN_LABEL, csv.get(0)),
+            stringToChar(POSITIVE_SIGN_LABEL, csv.get(1)),
+            stringToChar(ZERO_DIGIT_LABEL, csv.get(2)),
             csv.get(3), // currencySymbol
-            stringToChar("decimalSeparator", csv.get(4)),
+            stringToChar(DECIMAL_SEPARATOR_LABEL, csv.get(4)),
             csv.get(5), // exponentSymbol
-            stringToChar("groupSeparator", csv.get(6)),
+            stringToChar(GROUP_SEPARATOR_LABEL, csv.get(6)),
             csv.get(7), // infinitySymbol
-            stringToChar("decimalSeparator", csv.get(8)),
+            stringToChar(DECIMAL_SEPARATOR_LABEL, csv.get(8)),
             csv.get(9), // nanSymbol
-            stringToChar("percentSymbol", csv.get(10)),
-            stringToChar("permillSymbol", csv.get(11))
+            stringToChar(PERCENT_SYMBOL_LABEL, csv.get(10)),
+            stringToChar(PERMILL_SYMBOL_LABEL, csv.get(11))
         );
     }
 
@@ -112,17 +126,17 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                                             final char percentSymbol,
                                             final char permillSymbol) {
         return new DecimalNumberSymbols(
-            checkCharacter("negativeSign", negativeSign),
-            checkCharacter("positiveSign", positiveSign),
+            checkCharacter(NEGATIVE_SIGN_LABEL, negativeSign),
+            checkCharacter(POSITIVE_SIGN_LABEL, positiveSign),
             checkZeroDigit(zeroDigit),
-            checkString("currencySymbol", currencySymbol),
-            checkCharacter("decimalSeparator", decimalSeparator),
-            checkString("exponentSymbol", exponentSymbol),
-            checkCharacter("groupSeparator", groupSeparator),
-            checkString("infinitySymbol", infinitySymbol),
-            checkCharacter("monetaryDecimalSeparator", monetaryDecimalSeparator),
-            checkString("nanSymbol", nanSymbol),
-            checkCharacter("percentSymbol", percentSymbol),
+            checkString(CURRENCY_SYMBOL_LABEL, currencySymbol),
+            checkCharacter(DECIMAL_SEPARATOR_LABEL, decimalSeparator),
+            checkString(EXPONENT_SYMBOL_LABEL, exponentSymbol),
+            checkCharacter(GROUP_SEPARATOR_LABEL, groupSeparator),
+            checkString(INFINITY_SYMBOL_LABEL, infinitySymbol),
+            checkCharacter(MONETARY_DECIMAL_SEPARATOR_LABEL, monetaryDecimalSeparator),
+            checkString(NAN_SYMBOL_LABEL, nanSymbol),
+            checkCharacter(PERCENT_SYMBOL_LABEL, percentSymbol),
             checkPermillSymbol(permillSymbol)
         );
     }
@@ -150,35 +164,35 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         this.percentSymbol = percentSymbol;
         this.permillSymbol = permillSymbol;
 
-        failIfEqual(negativeSign, "negativeSign", positiveSign, "positiveSign");
-        failIfEqual(negativeSign, "negativeSign", decimalSeparator, "decimalSeparator");
-        failIfEqual(negativeSign, "negativeSign", groupSeparator, "groupSeparator");
-        failIfEqual(negativeSign, "negativeSign", monetaryDecimalSeparator, "monetaryDecimalSeparator");
-        failIfEqual(negativeSign, "negativeSign", percentSymbol, "percentSymbol");
-        failIfEqual(negativeSign, "negativeSign", permillSymbol, "permillSymbol");
+        failIfEqual(negativeSign, NEGATIVE_SIGN_LABEL, positiveSign, POSITIVE_SIGN_LABEL);
+        failIfEqual(negativeSign, NEGATIVE_SIGN_LABEL, decimalSeparator, DECIMAL_SEPARATOR_LABEL);
+        failIfEqual(negativeSign, NEGATIVE_SIGN_LABEL, groupSeparator, GROUP_SEPARATOR_LABEL);
+        failIfEqual(negativeSign, NEGATIVE_SIGN_LABEL, monetaryDecimalSeparator, MONETARY_DECIMAL_SEPARATOR_LABEL);
+        failIfEqual(negativeSign, NEGATIVE_SIGN_LABEL, percentSymbol, PERCENT_SYMBOL_LABEL);
+        failIfEqual(negativeSign, NEGATIVE_SIGN_LABEL, permillSymbol, PERMILL_SYMBOL_LABEL);
 
-        failIfEqual(positiveSign, "positiveSign", decimalSeparator, "decimalSeparator");
-        failIfEqual(positiveSign, "positiveSign", groupSeparator, "groupSeparator");
-        failIfEqual(positiveSign, "positiveSign", monetaryDecimalSeparator, "monetaryDecimalSeparator");
-        failIfEqual(positiveSign, "positiveSign", percentSymbol, "percentSymbol");
-        failIfEqual(positiveSign, "positiveSign", permillSymbol, "permillSymbol");
+        failIfEqual(positiveSign, POSITIVE_SIGN_LABEL, decimalSeparator, DECIMAL_SEPARATOR_LABEL);
+        failIfEqual(positiveSign, POSITIVE_SIGN_LABEL, groupSeparator, GROUP_SEPARATOR_LABEL);
+        failIfEqual(positiveSign, POSITIVE_SIGN_LABEL, monetaryDecimalSeparator, MONETARY_DECIMAL_SEPARATOR_LABEL);
+        failIfEqual(positiveSign, POSITIVE_SIGN_LABEL, percentSymbol, PERCENT_SYMBOL_LABEL);
+        failIfEqual(positiveSign, POSITIVE_SIGN_LABEL, permillSymbol, PERMILL_SYMBOL_LABEL);
 
-        failIfEqual(decimalSeparator, "decimalSeparator", groupSeparator, "groupSeparator");
+        failIfEqual(decimalSeparator, DECIMAL_SEPARATOR_LABEL, groupSeparator, GROUP_SEPARATOR_LABEL);
         // decimalSeparator can be same as monetaryDecimalSeparator
-        failIfEqual(decimalSeparator, "decimalSeparator", percentSymbol, "percentSymbol");
-        failIfEqual(decimalSeparator, "decimalSeparator", permillSymbol, "permillSymbol");
+        failIfEqual(decimalSeparator, DECIMAL_SEPARATOR_LABEL, percentSymbol, PERCENT_SYMBOL_LABEL);
+        failIfEqual(decimalSeparator, DECIMAL_SEPARATOR_LABEL, permillSymbol, PERMILL_SYMBOL_LABEL);
 
-        failIfEqual(groupSeparator, "groupSeparator", monetaryDecimalSeparator, "monetaryDecimalSeparator");
-        failIfEqual(groupSeparator, "groupSeparator", percentSymbol, "percentSymbol");
-        failIfEqual(groupSeparator, "groupSeparator", permillSymbol, "permillSymbol");
+        failIfEqual(groupSeparator, GROUP_SEPARATOR_LABEL, monetaryDecimalSeparator, MONETARY_DECIMAL_SEPARATOR_LABEL);
+        failIfEqual(groupSeparator, GROUP_SEPARATOR_LABEL, percentSymbol, PERCENT_SYMBOL_LABEL);
+        failIfEqual(groupSeparator, GROUP_SEPARATOR_LABEL, permillSymbol, PERMILL_SYMBOL_LABEL);
 
-        failIfEqual(monetaryDecimalSeparator, "monetaryDecimalSeparator", percentSymbol, "percentSymbol");
-        failIfEqual(monetaryDecimalSeparator, "monetaryDecimalSeparator", permillSymbol, "permillSymbol");
+        failIfEqual(monetaryDecimalSeparator, MONETARY_DECIMAL_SEPARATOR_LABEL, percentSymbol, PERCENT_SYMBOL_LABEL);
+        failIfEqual(monetaryDecimalSeparator, MONETARY_DECIMAL_SEPARATOR_LABEL, permillSymbol, PERMILL_SYMBOL_LABEL);
 
-        failIfEqual(percentSymbol, "percentSymbol", permillSymbol, "permillSymbol");
+        failIfEqual(percentSymbol, PERCENT_SYMBOL_LABEL, permillSymbol, PERMILL_SYMBOL_LABEL);
 
-        this.currencySymbol = Objects.requireNonNull(currencySymbol, "currencySymbol");
-        this.exponentSymbol = Objects.requireNonNull(exponentSymbol, "exponentSymbol");
+        this.currencySymbol = Objects.requireNonNull(currencySymbol, CURRENCY_SYMBOL_LABEL);
+        this.exponentSymbol = Objects.requireNonNull(exponentSymbol, EXPONENT_SYMBOL_LABEL);
         this.infinitySymbol = infinitySymbol;
         this.nanSymbol = nanSymbol;
     }
@@ -212,7 +226,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         return this.negativeSign == negativeSign ?
             this :
             new DecimalNumberSymbols(
-                checkCharacter("negativeSign", negativeSign),
+                checkCharacter(NEGATIVE_SIGN_LABEL, negativeSign),
                 this.positiveSign,
                 this.zeroDigit,
                 this.currencySymbol,
@@ -244,7 +258,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             this :
             new DecimalNumberSymbols(
                 this.negativeSign,
-                checkCharacter("positiveSign", positiveSign),
+                checkCharacter(POSITIVE_SIGN_LABEL, positiveSign),
                 this.zeroDigit,
                 this.currencySymbol,
                 this.decimalSeparator,
@@ -308,7 +322,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.negativeSign,
                 this.positiveSign,
                 this.zeroDigit,
-                checkString("currencySymbol", currencySymbol),
+                checkString(CURRENCY_SYMBOL_LABEL, currencySymbol),
                 this.decimalSeparator,
                 this.exponentSymbol,
                 this.groupSeparator,
@@ -340,7 +354,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.positiveSign,
                 this.zeroDigit,
                 this.currencySymbol,
-                checkCharacter("decimalSeparator", decimalSeparator),
+                checkCharacter(DECIMAL_SEPARATOR_LABEL, decimalSeparator),
                 this.exponentSymbol,
                 this.groupSeparator,
                 this.infinitySymbol,
@@ -372,7 +386,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.zeroDigit,
                 this.currencySymbol,
                 this.decimalSeparator,
-                checkString("exponentSymbol", exponentSymbol),
+                checkString(EXPONENT_SYMBOL_LABEL, exponentSymbol),
                 this.groupSeparator,
                 this.infinitySymbol,
                 this.monetaryDecimalSeparator,
@@ -404,7 +418,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.currencySymbol,
                 this.decimalSeparator,
                 this.exponentSymbol,
-                checkCharacter("groupSeparator", groupSeparator),
+                checkCharacter(GROUP_SEPARATOR_LABEL, groupSeparator),
                 this.infinitySymbol,
                 this.monetaryDecimalSeparator,
                 this.nanSymbol,
@@ -436,7 +450,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.decimalSeparator,
                 this.exponentSymbol,
                 this.groupSeparator,
-                checkString("infinitySymbol", infinitySymbol),
+                checkString(INFINITY_SYMBOL_LABEL, infinitySymbol),
                 this.monetaryDecimalSeparator,
                 this.nanSymbol,
                 this.percentSymbol,
@@ -468,7 +482,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.exponentSymbol,
                 this.groupSeparator,
                 this.infinitySymbol,
-                checkCharacter("monetaryDecimalSeparator", monetaryDecimalSeparator),
+                checkCharacter(MONETARY_DECIMAL_SEPARATOR_LABEL, monetaryDecimalSeparator),
                 this.nanSymbol,
                 this.percentSymbol,
                 this.permillSymbol
@@ -500,7 +514,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.groupSeparator,
                 this.infinitySymbol,
                 this.monetaryDecimalSeparator,
-                checkString("nanSymbol", nanSymbol),
+                checkString(NAN_SYMBOL_LABEL, nanSymbol),
                 this.percentSymbol,
                 this.permillSymbol
             );
@@ -532,7 +546,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.infinitySymbol,
                 this.monetaryDecimalSeparator,
                 this.nanSymbol,
-                checkCharacter("percentSymbol", percentSymbol),
+                checkCharacter(PERCENT_SYMBOL_LABEL, percentSymbol),
                 this.permillSymbol
             );
     }
@@ -564,7 +578,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.monetaryDecimalSeparator,
                 this.nanSymbol,
                 this.percentSymbol,
-                checkCharacter("permillSymbol", permillSymbol)
+                checkCharacter(PERMILL_SYMBOL_LABEL, permillSymbol)
             );
     }
 
@@ -706,18 +720,18 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-            .label("negativeSign").value(this.negativeSign)
-            .label("positiveSign").value(this.positiveSign)
-            .label("zeroDigit").value(this.zeroDigit)
-            .label("currencySymbol").value(this.currencySymbol)
-            .label("decimalSeparator").value(this.decimalSeparator)
-            .label("exponentSymbol").value(this.exponentSymbol)
-            .label("groupSeparator").value(this.groupSeparator)
-            .label("infinitySymbol").value(this.infinitySymbol)
-            .label("monetaryDecimalSeparator").value(this.monetaryDecimalSeparator)
-            .label("nanSymbol").value(this.nanSymbol)
-            .label("percentSymbol").value(this.percentSymbol)
-            .label("permillSymbol").value(this.permillSymbol)
+            .label(NEGATIVE_SIGN_LABEL).value(this.negativeSign)
+            .label(POSITIVE_SIGN_LABEL).value(this.positiveSign)
+            .label(ZERO_DIGIT_LABEL).value(this.zeroDigit)
+            .label(CURRENCY_SYMBOL_LABEL).value(this.currencySymbol)
+            .label(DECIMAL_SEPARATOR_LABEL).value(this.decimalSeparator)
+            .label(EXPONENT_SYMBOL_LABEL).value(this.exponentSymbol)
+            .label(GROUP_SEPARATOR_LABEL).value(this.groupSeparator)
+            .label(INFINITY_SYMBOL_LABEL).value(this.infinitySymbol)
+            .label(MONETARY_DECIMAL_SEPARATOR_LABEL).value(this.monetaryDecimalSeparator)
+            .label(NAN_SYMBOL_LABEL).value(this.nanSymbol)
+            .label(PERCENT_SYMBOL_LABEL).value(this.percentSymbol)
+            .label(PERMILL_SYMBOL_LABEL).value(this.permillSymbol)
             .build();
     }
 
@@ -730,62 +744,62 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         printer.indent();
         {
             this.printLabelAndValues(
-                "negativeSign",
+                NEGATIVE_SIGN_LABEL,
                 this.negativeSign,
                 printer
             );
             this.printLabelAndValues(
-                "positiveSign",
+                POSITIVE_SIGN_LABEL,
                 this.positiveSign,
                 printer
             );
             this.printLabelAndValues(
-                "zeroDigit",
+                ZERO_DIGIT_LABEL,
                 this.zeroDigit,
                 printer
             );
             this.printLabelAndValues(
-                "currencySymbol",
+                CURRENCY_SYMBOL_LABEL,
                 this.currencySymbol,
                 printer
             );
             this.printLabelAndValues(
-                "decimalSeparator",
+                DECIMAL_SEPARATOR_LABEL,
                 this.decimalSeparator,
                 printer
             );
             this.printLabelAndValues(
-                "exponentSymbol",
+                EXPONENT_SYMBOL_LABEL,
                 this.exponentSymbol,
                 printer
             );
             this.printLabelAndValues(
-                "groupSeparator",
+                GROUP_SEPARATOR_LABEL,
                 this.groupSeparator,
                 printer
             );
             this.printLabelAndValues(
-                "infinitySymbol",
+                INFINITY_SYMBOL_LABEL,
                 this.infinitySymbol,
                 printer
             );
             this.printLabelAndValues(
-                "monetaryDecimalSeparator",
+                MONETARY_DECIMAL_SEPARATOR_LABEL,
                 this.monetaryDecimalSeparator,
                 printer
             );
             this.printLabelAndValues(
-                "nanSymbol",
+                NAN_SYMBOL_LABEL,
                 this.nanSymbol,
                 printer
             );
             this.printLabelAndValues(
-                "percentSymbol",
+                PERCENT_SYMBOL_LABEL,
                 this.percentSymbol,
                 printer
             );
             this.printLabelAndValues(
-                "permillSymbol",
+                PERMILL_SYMBOL_LABEL,
                 this.permillSymbol,
                 printer
             );
