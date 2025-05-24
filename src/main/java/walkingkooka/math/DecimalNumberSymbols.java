@@ -20,6 +20,7 @@ package walkingkooka.math;
 import walkingkooka.EmptyTextException;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
+import walkingkooka.predicate.Predicates;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
 import walkingkooka.text.CharSequences;
@@ -29,6 +30,7 @@ import walkingkooka.text.printer.TreePrintable;
 
 import java.text.DecimalFormatSymbols;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 /**
  * Holds locale sensitive symbols related to the text representation or formatting of a number into text.
@@ -635,6 +637,15 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             PRINTABLE
         );
     }
+
+    /**
+     * This {@link Predicate} may be used to verify any of the {@link String} properties of a {@link DecimalNumberSymbols}
+     * such as {@link DecimalNumberSymbols#currencySymbol()}, {@link DecimalNumberSymbols#infinitySymbol()}, {@link DecimalNumberSymbols#nanSymbol()}.
+     */
+    public final static Predicate<CharSequence> STRING = Predicates.initialAndPart(
+        PRINTABLE,
+        PRINTABLE
+    );
 
     /**
      * May be used to test if the given character is a valid zero digit.
