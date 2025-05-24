@@ -74,7 +74,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             csv.get(5), // exponentSymbol
             stringToChar(GROUP_SEPARATOR_LABEL, csv.get(6)),
             csv.get(7), // infinitySymbol
-            stringToChar(DECIMAL_SEPARATOR_LABEL, csv.get(8)),
+            stringToChar(MONETARY_DECIMAL_SEPARATOR_LABEL, csv.get(8)),
             csv.get(9), // nanSymbol
             stringToChar(PERCENT_SYMBOL_LABEL, csv.get(10)),
             stringToChar(PERMILL_SYMBOL_LABEL, csv.get(11))
