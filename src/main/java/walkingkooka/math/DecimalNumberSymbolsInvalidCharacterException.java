@@ -27,7 +27,10 @@ public final class DecimalNumberSymbolsInvalidCharacterException extends Decimal
 
     DecimalNumberSymbolsInvalidCharacterException(final String property,
                                                   final char value) {
-        super(property);
+        super(
+            "Invalid " + property + " character " + CharSequences.quoteIfChars(value), // message
+            property
+        );
         this.value = value;
     }
 
@@ -39,9 +42,4 @@ public final class DecimalNumberSymbolsInvalidCharacterException extends Decimal
     }
 
     private final char value;
-
-    @Override
-    public String getMessage() {
-        return "Invalid " + this.property + " character " + CharSequences.quoteIfChars(this.value);
-    }
 }
