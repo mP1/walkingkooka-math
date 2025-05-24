@@ -19,6 +19,7 @@ package walkingkooka.math;
 
 import walkingkooka.EmptyTextException;
 import walkingkooka.InvalidCharacterException;
+import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.predicate.Predicates;
@@ -204,15 +205,15 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     private static void failIfEqual(final char left, final String leftLabel,
                                     final char right, final String rightLabel) {
         if (left == right) {
-            // Invalid character "negativeSign" is same as "positiveSign" '+'
-            throw new DecimalNumberSymbolsInvalidArgumentException(
+            throw new InvalidTextException(
                 "Duplicate " +
                     CharSequences.quoteAndEscape(rightLabel) +
                     " is same as " +
                     CharSequences.quoteAndEscape(leftLabel) +
                     " " +
-                    CharSequences.quoteAndEscape(left),
-                rightLabel // property
+                    CharSequences.quoteAndEscape(left)
+            ).setLabel(
+                Optional.of(rightLabel)
             );
         }
     }
