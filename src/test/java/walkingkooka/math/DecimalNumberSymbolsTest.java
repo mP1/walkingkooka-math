@@ -19,6 +19,7 @@ package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
+import walkingkooka.InvalidCharacterException;
 import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
@@ -2427,13 +2428,13 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
 
     @Test
     public void testParseInvalidNegativeSign() {
-        final DecimalNumberSymbolsInvalidCharacterException thrown = assertThrows(
-            DecimalNumberSymbolsInvalidCharacterException.class,
+        final InvalidCharacterException thrown = assertThrows(
+            InvalidCharacterException.class,
             () -> DecimalNumberSymbols.parse("A,+,0,$,.,E,\",\",\"INFINITY\",*,\"NAN\",%,^")
         );
 
         this.checkEquals(
-            "Invalid negativeSign character 'A'",
+            "Invalid \"negativeSign\" character 'A'",
             thrown.getMessage()
         );
     }
