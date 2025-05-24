@@ -589,7 +589,10 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     private final static CharPredicate PRINTABLE = CharPredicates.asciiControl()
         .negate();
 
-    private final static CharPredicate SYMBOL = PRINTABLE.and(
+    /**
+     * This {@link CharPredicate} is used to verify all characters except for {@link #permillSymbol()} and {@link #zeroDigit}
+     */
+    public final static CharPredicate SYMBOL = PRINTABLE.and(
         CharPredicates.letterOrDigit()
             .negate()
     ).and(
