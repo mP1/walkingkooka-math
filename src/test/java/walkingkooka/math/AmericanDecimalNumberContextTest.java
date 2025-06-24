@@ -96,7 +96,10 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
 
     @Test
     public void testLocale() {
-        this.hasLocaleAndCheck(this.createContext(), Locale.US);
+        this.localeAndCheck(
+            this.createContext(),
+            Locale.US
+        );
     }
 
     @Test
