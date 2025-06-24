@@ -93,7 +93,10 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         this.percentSymbolAndCheck(context, '%');
         this.positiveSignAndCheck(context, '+');
 
-        this.hasLocaleAndCheck(context, LOCALE);
+        this.localeAndCheck(
+            context,
+            LOCALE
+        );
         this.hasMathContextAndCheck(context, MATH_CONTEXT);
     }
 
