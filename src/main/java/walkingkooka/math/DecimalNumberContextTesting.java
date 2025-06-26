@@ -16,7 +16,7 @@
  */
 package walkingkooka.math;
 
-import walkingkooka.locale.HasLocaleTesting;
+import walkingkooka.util.HasLocaleTesting;
 
 /**
  * Mixing testing interface for {@link DecimalNumberContext}

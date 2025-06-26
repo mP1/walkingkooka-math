@@ -18,7 +18,7 @@
 package walkingkooka.math;
 
 import walkingkooka.Context;
-import walkingkooka.locale.HasLocale;
+import walkingkooka.util.HasLocale;
 
 /**
  * Context that typically accompanies another stateless component such as a number parser or formatter.
