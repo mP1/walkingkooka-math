@@ -23,8 +23,8 @@ import java.math.MathContext;
 
 public interface HasDecimalNumberSymbolsTesting extends Testing {
 
-    default void hasMathContextAndCheck(final HasDecimalNumberSymbols has,
-                                        final DecimalNumberSymbols expected) {
+    default void decimalNumberSymbolsAndCheck(final HasDecimalNumberSymbols has,
+                                              final DecimalNumberSymbols expected) {
         this.checkEquals(
             expected,
             has.decimalNumberSymbols(),
