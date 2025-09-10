@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * An immutable list of {@link Number}.
+ * An immutable list of {@link Number} that allows null elements.
  */
 public final class NumberList extends AbstractList<Number>
     implements ImmutableListDefaults<NumberList, Number> {
@@ -32,10 +32,8 @@ public final class NumberList extends AbstractList<Number>
             DateList = (NumberList) numbers;
         } else {
             final List<Number> copy = Lists.array();
-            for (final Number name : numbers) {
-                copy.add(
-                    Objects.requireNonNull(name, "includes null " + Number.class.getSimpleName())
-                );
+            for (final Number number : numbers) {
+                copy.add(number);
             }
 
             switch (numbers.size()) {
@@ -69,7 +67,7 @@ public final class NumberList extends AbstractList<Number>
 
     @Override
     public void elementCheck(final Number number) {
-        Objects.requireNonNull(number, "number");
+        // nulls are allowed.
     }
 
     @Override
