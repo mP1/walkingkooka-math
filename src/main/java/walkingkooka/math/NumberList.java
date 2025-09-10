@@ -3,7 +3,6 @@ package walkingkooka.math;
 import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
 
-import java.time.*;
 import java.util.AbstractList;
 import java.util.List;
 import java.util.Objects;
@@ -22,24 +21,24 @@ public final class NumberList extends AbstractList<Number>
     );
 
     /**
-     * Factory that creates a {@link NumberList} from the list of {@link Number times}.
+     * Factory that creates a {@link NumberList} from the list of {@link Number numbers}.
      */
-    public static NumberList with(final List<Number> times) {
-        Objects.requireNonNull(times, "times");
+    public static NumberList with(final List<Number> numbers) {
+        Objects.requireNonNull(numbers, "numbers");
 
         NumberList DateList;
 
-        if (times instanceof NumberList) {
-            DateList = (NumberList) times;
+        if (numbers instanceof NumberList) {
+            DateList = (NumberList) numbers;
         } else {
             final List<Number> copy = Lists.array();
-            for (final Number name : times) {
+            for (final Number name : numbers) {
                 copy.add(
                     Objects.requireNonNull(name, "includes null " + Number.class.getSimpleName())
                 );
             }
 
-            switch (times.size()) {
+            switch (numbers.size()) {
                 case 0:
                     DateList = EMPTY;
                     break;
@@ -52,30 +51,30 @@ public final class NumberList extends AbstractList<Number>
         return DateList;
     }
 
-    private NumberList(final List<Number> times) {
-        this.times = times;
+    private NumberList(final List<Number> numbers) {
+        this.numbers = numbers;
     }
 
     @Override
     public Number get(int index) {
-        return this.times.get(index);
+        return this.numbers.get(index);
     }
 
     @Override
     public int size() {
-        return this.times.size();
+        return this.numbers.size();
     }
 
-    private final List<Number> times;
+    private final List<Number> numbers;
 
     @Override
-    public void elementCheck(final Number time) {
-        Objects.requireNonNull(time, "time");
+    public void elementCheck(final Number number) {
+        Objects.requireNonNull(number, "number");
     }
 
     @Override
-    public NumberList setElements(final List<Number> times) {
-        final NumberList copy = with(times);
+    public NumberList setElements(final List<Number> numbers) {
+        final NumberList copy = with(numbers);
         return this.equals(copy) ?
             this :
             copy;
