@@ -112,20 +112,19 @@ public class NumberListTest implements ListTesting2<NumberList, Number>,
     }
 
     @Test
-    public void testSetElementsIncludesNullFails() {
-        final NullPointerException thrown = assertThrows(
-            NullPointerException.class,
-            () -> this.createList()
-                .setElements(
-                    Lists.of(
-                        NUMBER1,
-                        null
-                    )
+    public void testReplaceWithNull() {
+        final NumberList numbers = this.createList();
+
+        this.replaceAndCheck(
+            numbers,
+            1,
+            (Number) null,
+            NumberList.with(
+                Lists.of(
+                    NUMBER1,
+                    null
                 )
-        );
-        this.checkEquals(
-            "includes null Number",
-            thrown.getMessage()
+            )
         );
     }
 
