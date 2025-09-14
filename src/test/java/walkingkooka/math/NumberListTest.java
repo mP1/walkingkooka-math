@@ -25,7 +25,6 @@ import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class NumberListTest implements ListTesting2<NumberList, Number>,
     ClassTesting<NumberList>,
@@ -34,33 +33,6 @@ public class NumberListTest implements ListTesting2<NumberList, Number>,
     private final static Number NUMBER1 = 111;
 
     private final static Number NUMBER2 = 222;
-
-    @Test
-    public void testWithNullFails() {
-        assertThrows(
-            NullPointerException.class,
-            () -> NumberList.with(null)
-        );
-    }
-
-    @Test
-    public void testWithDoesntDoubleWrap() {
-        final NumberList list = this.createList();
-        assertSame(
-            list,
-            NumberList.with(list)
-        );
-    }
-
-    @Test
-    public void testWithEmpty() {
-        assertSame(
-            NumberList.EMPTY,
-            NumberList.with(
-                Lists.empty()
-            )
-        );
-    }
 
     // list.............................................................................................................
 
@@ -111,6 +83,33 @@ public class NumberListTest implements ListTesting2<NumberList, Number>,
         );
     }
 
+    // setElements......................................................................................................
+
+    @Test
+    public void testWithDoesntDoubleWrap() {
+        final NumberList list = this.createList();
+        assertSame(
+            list,
+            list.setElements(list)
+        );
+    }
+
+    @Test
+    public void testSetElementsWithEmpty() {
+        assertSame(
+            NumberList.EMPTY,
+            new NumberList(
+                Lists.of(
+                    1,
+                    22,
+                    333
+                )
+            ).setElements(Lists.empty())
+        );
+    }
+
+    // replace..........................................................................................................
+
     @Test
     public void testReplaceWithNull() {
         final NumberList numbers = this.createList();
@@ -119,7 +118,7 @@ public class NumberListTest implements ListTesting2<NumberList, Number>,
             numbers,
             1,
             (Number) null,
-            NumberList.with(
+            new NumberList(
                 Lists.of(
                     NUMBER1,
                     null
@@ -130,7 +129,7 @@ public class NumberListTest implements ListTesting2<NumberList, Number>,
 
     @Override
     public NumberList createList() {
-        return NumberList.with(
+        return new NumberList(
             Lists.of(
                 NUMBER1,
                 NUMBER2

@@ -38,36 +38,8 @@ public final class NumberList extends AbstractList<Number>
         Lists.empty()
     );
 
-    /**
-     * Factory that creates a {@link NumberList} from the list of {@link Number numbers}.
-     */
-    public static NumberList with(final Collection<Number> numbers) {
-        Objects.requireNonNull(numbers, "numbers");
-
-        NumberList DateList;
-
-        if (numbers instanceof NumberList) {
-            DateList = (NumberList) numbers;
-        } else {
-            final List<Number> copy = Lists.array();
-            for (final Number number : numbers) {
-                copy.add(number);
-            }
-
-            switch (numbers.size()) {
-                case 0:
-                    DateList = EMPTY;
-                    break;
-                default:
-                    DateList = new NumberList(copy);
-                    break;
-            }
-        }
-
-        return DateList;
-    }
-
-    private NumberList(final List<Number> numbers) {
+    // @VisibleForTesting
+    NumberList(final List<Number> numbers) {
         this.numbers = numbers;
     }
 
@@ -90,9 +62,28 @@ public final class NumberList extends AbstractList<Number>
 
     @Override
     public NumberList setElements(final Collection<Number> numbers) {
-        final NumberList copy = with(numbers);
-        return this.equals(copy) ?
+        Objects.requireNonNull(numbers, "numbers");
+
+        NumberList numberList;
+
+        if (numbers instanceof NumberList) {
+            numberList = (NumberList) numbers;
+        } else {
+            final List<Number> copy = Lists.array();
+            copy.addAll(numbers);
+
+            switch (numbers.size()) {
+                case 0:
+                    numberList = EMPTY;
+                    break;
+                default:
+                    numberList = new NumberList(copy);
+                    break;
+            }
+        }
+
+        return this.equals(numberList) ?
             this :
-            copy;
+            numberList;
     }
 }
