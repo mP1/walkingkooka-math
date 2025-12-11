@@ -36,6 +36,13 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
         );
     }
 
+    default void testDcimalNumberDigitCount() {
+        this.decimalNumberDigitCountAndCheck(
+            this.createContext(),
+            this.decimalNumberDigitCount()
+        );
+    }
+
     @Test
     default void testDecimalSeparator() {
         this.decimalSeparatorAndCheck(
@@ -131,6 +138,8 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
             this.zeroDigit()
         );
     }
+
+    int decimalNumberDigitCount();
 
     MathContext mathContext();
     

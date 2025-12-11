@@ -18,6 +18,7 @@
 package walkingkooka.math.sample;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.math.DecimalNumberContext;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.math.DecimalNumberSymbols;
 import walkingkooka.math.Maths;
@@ -50,6 +51,7 @@ public final class Sample {
         this.checkEquals(
             "$",
             DecimalNumberContexts.basic(
+                DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT,
                 DecimalNumberSymbols.with(
                     '-',
                     '+',

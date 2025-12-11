@@ -29,6 +29,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicDecimalNumberContext>,
     DecimalNumberContextTesting2<BasicDecimalNumberContext> {
 
+    private final static int DECIMAL_NUMBER_DIGIT_COUNT = 10;
+    
     private final static Locale LOCALE = Locale.FRANCE;
     private final static DecimalNumberSymbols SYMBOLS = DecimalNumberSymbols.with(
         '-',
@@ -47,10 +49,24 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     private final static MathContext MATH_CONTEXT = MathContext.DECIMAL32;
 
     @Test
+    public void testWithNullInvalidDecimalNumberDigitCount() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> BasicDecimalNumberContext.with(
+                -1,
+                null,
+                LOCALE,
+                MATH_CONTEXT
+            )
+        );
+    }
+
+    @Test
     public void testWithNullDecimalNumberSymbols() {
         assertThrows(
             NullPointerException.class,
             () -> BasicDecimalNumberContext.with(
+                DECIMAL_NUMBER_DIGIT_COUNT,
                 null,
                 LOCALE,
                 MATH_CONTEXT
@@ -63,6 +79,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         assertThrows(
             NullPointerException.class,
             () -> BasicDecimalNumberContext.with(
+                DECIMAL_NUMBER_DIGIT_COUNT,
                 SYMBOLS,
                 null,
                 MATH_CONTEXT
@@ -75,6 +92,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         assertThrows(
             NullPointerException.class,
             () -> BasicDecimalNumberContext.with(
+                DECIMAL_NUMBER_DIGIT_COUNT,
                 SYMBOLS,
                 LOCALE,
                 null
@@ -92,6 +110,10 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         this.negativeSignAndCheck(context, '-');
         this.percentSymbolAndCheck(context, '%');
         this.positiveSignAndCheck(context, '+');
+        this.decimalNumberDigitCountAndCheck(
+            context,
+            DECIMAL_NUMBER_DIGIT_COUNT
+        );
 
         this.localeAndCheck(
             context,
@@ -111,6 +133,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     @Override
     public BasicDecimalNumberContext createContext() {
         return BasicDecimalNumberContext.with(
+            DECIMAL_NUMBER_DIGIT_COUNT,
             SYMBOLS,
             LOCALE,
             MATH_CONTEXT
@@ -122,6 +145,11 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         return "$";
     }
 
+    @Override
+    public int decimalNumberDigitCount() {
+        return DECIMAL_NUMBER_DIGIT_COUNT;
+    }
+    
     @Override
     public char decimalSeparator() {
         return '.';

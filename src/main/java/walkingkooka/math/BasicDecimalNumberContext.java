@@ -29,24 +29,39 @@ import java.util.Objects;
 final class BasicDecimalNumberContext implements DecimalNumberContext,
     DecimalNumberSymbolsDelegator {
 
-    static BasicDecimalNumberContext with(final DecimalNumberSymbols symbols,
+    static BasicDecimalNumberContext with(final int decimalNumberDigitCount,
+                                          final DecimalNumberSymbols symbols,
                                           final Locale locale,
                                           final MathContext mathContext) {
+        if(decimalNumberDigitCount < 0) {
+            throw new IllegalArgumentException("Invalid decimalNumberDigitCount " + decimalNumberDigitCount + " < 0");
+        }
         return new BasicDecimalNumberContext(
+            decimalNumberDigitCount,
             Objects.requireNonNull(symbols, "symbols"),
             Objects.requireNonNull(locale, "locale"),
             Objects.requireNonNull(mathContext, "mathContext")
         );
     }
 
-    private BasicDecimalNumberContext(final DecimalNumberSymbols symbols,
+    private BasicDecimalNumberContext(final int decimalNumberDigitCount,
+                                      final DecimalNumberSymbols symbols,
                                       final Locale locale,
                                       final MathContext mathContext) {
         super();
+
+        this.decimalNumberDigitCount = decimalNumberDigitCount;
         this.symbols = symbols;
         this.locale = locale;
         this.mathContext = mathContext;
     }
+
+    @Override
+    public int decimalNumberDigitCount() {
+        return this.decimalNumberDigitCount;
+    }
+
+    private final int decimalNumberDigitCount;
 
     @Override
     public DecimalNumberSymbols decimalNumberSymbols() {
@@ -72,6 +87,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext,
     @Override
     public String toString() {
         return ToStringBuilder.empty()
+            .labelSeparator("decimalNumberDigitNumberCount")
             .value(this.symbols)
             .value(this.locale)
             .value(this.mathContext)

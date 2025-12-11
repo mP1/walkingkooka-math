@@ -24,6 +24,12 @@ public interface DecimalNumberContextDelegator extends DecimalNumberContext,
     DecimalNumberSymbolsLikeDelegator {
 
     @Override
+    default int decimalNumberDigitCount() {
+        return this.decimalNumberContext()
+            .decimalNumberDigitCount();
+    }
+
+    @Override
     default Locale locale() {
         return this.decimalNumberContext()
             .locale();
