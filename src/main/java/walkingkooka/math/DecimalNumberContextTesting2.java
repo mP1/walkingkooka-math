@@ -36,7 +36,8 @@ public interface DecimalNumberContextTesting2<C extends DecimalNumberContext> ex
         );
     }
 
-    default void testDcimalNumberDigitCount() {
+    @Test
+    default void testDecimalNumberDigitCount() {
         this.decimalNumberDigitCountAndCheck(
             this.createContext(),
             this.decimalNumberDigitCount()
