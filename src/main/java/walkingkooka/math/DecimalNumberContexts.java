@@ -36,10 +36,12 @@ public final class DecimalNumberContexts implements PublicStaticHelper {
     /**
      * {@see BasicDecimalNumberContext}
      */
-    public static DecimalNumberContext basic(final DecimalNumberSymbols symbols,
+    public static DecimalNumberContext basic(final int decimalNumberDigitCount,
+                                             final DecimalNumberSymbols symbols,
                                              final Locale locale,
                                              final MathContext mathContext) {
         return BasicDecimalNumberContext.with(
+            decimalNumberDigitCount,
             symbols,
             locale,
             mathContext);

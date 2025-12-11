@@ -88,6 +88,11 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
+    public int decimalNumberDigitCount() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Locale locale() {
         throw new UnsupportedOperationException();
     }

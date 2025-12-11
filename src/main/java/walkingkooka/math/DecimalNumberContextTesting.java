@@ -35,6 +35,15 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
 
+    default void decimalNumberDigitCountAndCheck(final DecimalNumberContext context,
+                                                 final int expected) {
+        this.checkEquals(
+            expected,
+            context.decimalNumberDigitCount(),
+            "decimalNumberDigitCount"
+        );
+    }
+
     default void decimalSeparatorAndCheck(final DecimalNumberContext context,
                                           final char decimalSeparator) {
         this.checkEquals(

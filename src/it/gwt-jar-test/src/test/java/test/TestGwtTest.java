@@ -18,6 +18,7 @@ package test;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
+import walkingkooka.math.DecimalNumberContext;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.math.DecimalNumberSymbols;
 import walkingkooka.math.Maths;
@@ -44,6 +45,7 @@ public class TestGwtTest extends GWTTestCase {
         this.checkEquals(
             "$",
             DecimalNumberContexts.basic(
+                DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT,
                 DecimalNumberSymbols.with(
                     '-',
                     '+',

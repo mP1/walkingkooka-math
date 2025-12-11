@@ -79,6 +79,7 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
         final AmericanDecimalNumberContext context = AmericanDecimalNumberContext.with(mathContext);
 
         this.currencySymbolAndCheck(context, symbols.getCurrencySymbol());
+        this.decimalNumberDigitCountAndCheck(context, DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT);
         this.decimalSeparatorAndCheck(context, symbols.getDecimalSeparator());
         this.exponentSymbolAndCheck(context, symbols.getExponentSeparator());
         this.groupSeparatorAndCheck(context, symbols.getGroupingSeparator());
@@ -118,6 +119,11 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
     @Override
     public String currencySymbol() {
         return "$";
+    }
+
+    @Override
+    public int decimalNumberDigitCount() {
+        return DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT;
     }
 
     @Override

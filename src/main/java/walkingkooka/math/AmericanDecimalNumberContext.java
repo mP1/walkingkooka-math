@@ -62,6 +62,11 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext,
     }
 
     @Override
+    public int decimalNumberDigitCount() {
+        return DEFAULT_NUMBER_DIGIT_COUNT;
+    }
+
+    @Override
     public Locale locale() {
         return US;
     }

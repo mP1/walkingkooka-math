@@ -20,6 +20,7 @@ import com.google.j2cl.junit.apt.J2clTestInput;
 import org.junit.Assert;
 import org.junit.Test;
 
+import walkingkooka.math.DecimalNumberContext;
 import walkingkooka.math.DecimalNumberContexts;
 import walkingkooka.math.DecimalNumberSymbols;
 import walkingkooka.math.Maths;
@@ -43,6 +44,7 @@ public class JunitTest {
         this.checkEquals(
             "$",
             DecimalNumberContexts.basic(
+                DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT,
                 DecimalNumberSymbols.with(
                     '-',
                     '+',

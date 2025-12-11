@@ -53,6 +53,12 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
     }
 
     @Override
+    public int decimalNumberDigitCount() {
+        return this.decimalNumberContext()
+            .decimalNumberDigitCount();
+    }
+
+    @Override
     public char decimalSeparator() {
         return this.decimalNumberContext().decimalSeparator();
     }
