@@ -24,4 +24,9 @@ public interface DecimalNumberContext extends DecimalNumberSymbolsLike,
     NumberContext,
     HasMathContext,
     HasDecimalNumberSymbols {
+
+    /**
+     * A useful default number of digits constant, useful when formatting decimal numbers into text.
+     */
+    int DEFAULT_NUMBER_DIGIT_COUNT = 9;
 }
