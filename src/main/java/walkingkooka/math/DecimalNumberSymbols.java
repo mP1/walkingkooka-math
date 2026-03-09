@@ -32,6 +32,7 @@ import walkingkooka.text.HasText;
 import walkingkooka.text.printer.IndentingPrinter;
 import walkingkooka.text.printer.TreePrintable;
 
+import javax.xml.stream.events.Characters;
 import java.text.DecimalFormatSymbols;
 import java.util.Objects;
 import java.util.Optional;
@@ -702,6 +703,69 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             ).concat(
                 String.valueOf(this.permillSymbol)
             ).text();
+    }
+
+    // fromProperties...................................................................................................
+
+    public static DecimalNumberSymbols fromProperties(final Properties properties) {
+        Objects.requireNonNull(properties, "properties");
+
+        return with(
+            character(
+                properties,
+                NEGATIVE_SIGN_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                POSITIVE_SIGN_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                ZERO_DIGIT_PROPERTIES_KEY
+            ),
+            properties.getOrFail(
+                CURRENCY_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                DECIMAL_SEPARATOR_PROPERTIES_KEY
+            ),
+            properties.getOrFail(
+                EXPONENT_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                GROUP_SEPARATOR_PROPERTIES_KEY
+            ),
+            properties.getOrFail(
+                INFINITY_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                MONETARY_DECIMAL_SEPARATOR_PROPERTIES_KEY
+            ),
+            properties.getOrFail(
+                NAN_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                PERCENT_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                PERMILL_SYMBOL_PROPERTIES_KEY
+            )
+        );
+    }
+
+    private static char character(final Properties properties,
+                                  final PropertiesPath key) {
+        final String stringValue = properties.getOrFail(key);
+        if(stringValue.length() != 1) {
+            throw new IllegalArgumentException("Invalid property " + key + " got " + CharSequences.quote(stringValue));
+        }
+
+        return stringValue.charAt(0);
     }
 
     // HasProperties....................................................................................................
