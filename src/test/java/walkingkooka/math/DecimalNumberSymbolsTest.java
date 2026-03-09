@@ -22,6 +22,7 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.InvalidCharacterException;
 import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringTesting;
+import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
@@ -38,6 +39,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTesting2<DecimalNumberSymbols>,
     ToStringTesting<DecimalNumberSymbols>,
+    HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DecimalNumberSymbols>,
     TreePrintableTesting,
@@ -2506,6 +2508,27 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.toStringAndCheck(
             DecimalNumberSymbols.ZERO_DIGIT,
             "zeroDigit"
+        );
+    }
+
+    // HasProperties....................................................................................................
+
+    @Test
+    public void testProperties() {
+        this.propertiesAndCheck(
+            this.createObject(),
+            "currencySymbol=AUD\n" +
+                "decimalSeparator=.\n" +
+                "exponentSymbol=E\n" +
+                "groupSeparator=,\n" +
+                "infinitySymbol=INFINITY\n" +
+                "monetaryDecimalSeparator=*\n" +
+                "nanSymbol=NAN\n" +
+                "negativeSign=-\n" +
+                "percentSymbol=%\n" +
+                "permillSymbol=^\n" +
+                "positiveSign=+\n" +
+                "zeroDigit=0"
         );
     }
 
