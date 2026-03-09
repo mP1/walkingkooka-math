@@ -23,6 +23,7 @@ import walkingkooka.InvalidCharacterException;
 import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringTesting;
 import walkingkooka.props.HasPropertiesTesting;
+import walkingkooka.props.Properties;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
@@ -2508,6 +2509,43 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.toStringAndCheck(
             DecimalNumberSymbols.ZERO_DIGIT,
             "zeroDigit"
+        );
+    }
+
+    // fromProperties..................................................................................................
+
+    @Test
+    public void testFromProperties() {
+        this.checkEquals(
+            DecimalNumberSymbols.fromProperties(
+                Properties.parse(
+                    "currencySymbol=AUD\n" +
+                        "decimalSeparator=.\n" +
+                        "exponentSymbol=E\n" +
+                        "groupSeparator=,\n" +
+                        "infinitySymbol=INFINITY\n" +
+                        "monetaryDecimalSeparator=*\n" +
+                        "nanSymbol=NAN\n" +
+                        "negativeSign=-\n" +
+                        "percentSymbol=%\n" +
+                        "permillSymbol=^\n" +
+                        "positiveSign=+\n" +
+                        "zeroDigit=0"
+                )
+            ),
+            this.createObject()
+        );
+    }
+
+    @Test
+    public void testFromPropertiesAndProperties() {
+        final DecimalNumberSymbols decimalNumberSymbols = this.createObject();
+
+        this.checkEquals(
+            decimalNumberSymbols,
+            DecimalNumberSymbols.fromProperties(
+                decimalNumberSymbols.properties()
+            )
         );
     }
 
