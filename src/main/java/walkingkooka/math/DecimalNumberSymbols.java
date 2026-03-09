@@ -18,6 +18,7 @@
 package walkingkooka.math;
 
 import walkingkooka.EmptyTextException;
+import walkingkooka.HasProperty;
 import walkingkooka.InvalidCharacterException;
 import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringBuilder;
@@ -25,6 +26,7 @@ import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.predicate.Predicates;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
+import walkingkooka.props.*;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.HasText;
 import walkingkooka.text.printer.IndentingPrinter;
@@ -40,6 +42,7 @@ import java.util.function.Predicate;
  */
 public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     TreePrintable,
+    HasProperties,
     HasText {
 
     static final String NEGATIVE_SIGN_LABEL = "negativeSign";
@@ -700,6 +703,62 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 String.valueOf(this.permillSymbol)
             ).text();
     }
+
+    // HasProperties....................................................................................................
+
+    @Override
+    public Properties properties() {
+        return Properties.EMPTY.set(
+            NEGATIVE_SIGN_PROPERTIES_KEY,
+            String.valueOf(this.negativeSign)
+        ).set(
+            POSITIVE_SIGN_PROPERTIES_KEY,
+            String.valueOf(this.positiveSign)
+        ).set(
+            ZERO_DIGIT_PROPERTIES_KEY,
+            String.valueOf(this.zeroDigit)
+        ).set(
+            CURRENCY_SYMBOL_PROPERTIES_KEY,
+            String.valueOf(this.currencySymbol)
+        ).set(
+            DECIMAL_SEPARATOR_PROPERTIES_KEY,
+            String.valueOf(this.decimalSeparator)
+        ).set(
+            EXPONENT_SYMBOL_PROPERTIES_KEY,
+            String.valueOf(this.exponentSymbol)
+        ).set(
+            GROUP_SEPARATOR_PROPERTIES_KEY,
+            String.valueOf(this.groupSeparator)
+        ).set(
+            INFINITY_SYMBOL_PROPERTIES_KEY,
+            String.valueOf(this.infinitySymbol)
+        ).set(
+            MONETARY_DECIMAL_SEPARATOR_PROPERTIES_KEY,
+            String.valueOf(this.monetaryDecimalSeparator)
+        ).set(
+            NAN_SYMBOL_PROPERTIES_KEY,
+            String.valueOf(this.nanSymbol)
+        ).set(
+            PERCENT_SYMBOL_PROPERTIES_KEY,
+            String.valueOf(this.percentSymbol)
+        ).set(
+            PERMILL_SYMBOL_PROPERTIES_KEY,
+            String.valueOf(this.permillSymbol)
+        );
+    }
+
+    private final static PropertiesPath NEGATIVE_SIGN_PROPERTIES_KEY = PropertiesPath.parse("negativeSign");
+    private final static PropertiesPath POSITIVE_SIGN_PROPERTIES_KEY = PropertiesPath.parse("positiveSign");
+    private final static PropertiesPath ZERO_DIGIT_PROPERTIES_KEY = PropertiesPath.parse("zeroDigit");
+    private final static PropertiesPath CURRENCY_SYMBOL_PROPERTIES_KEY = PropertiesPath.parse("currencySymbol");
+    private final static PropertiesPath DECIMAL_SEPARATOR_PROPERTIES_KEY = PropertiesPath.parse("decimalSeparator");
+    private final static PropertiesPath EXPONENT_SYMBOL_PROPERTIES_KEY = PropertiesPath.parse("exponentSymbol");
+    private final static PropertiesPath GROUP_SEPARATOR_PROPERTIES_KEY = PropertiesPath.parse("groupSeparator");
+    private final static PropertiesPath INFINITY_SYMBOL_PROPERTIES_KEY = PropertiesPath.parse("infinitySymbol");
+    private final static PropertiesPath MONETARY_DECIMAL_SEPARATOR_PROPERTIES_KEY = PropertiesPath.parse("monetaryDecimalSeparator");
+    private final static PropertiesPath NAN_SYMBOL_PROPERTIES_KEY = PropertiesPath.parse("nanSymbol");
+    private final static PropertiesPath PERCENT_SYMBOL_PROPERTIES_KEY = PropertiesPath.parse("percentSymbol");
+    private final static PropertiesPath PERMILL_SYMBOL_PROPERTIES_KEY = PropertiesPath.parse("permillSymbol");
 
     // Object...........................................................................................................
 
