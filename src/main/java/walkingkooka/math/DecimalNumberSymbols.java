@@ -167,7 +167,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         this.zeroDigit = zeroDigit;
 
         this.decimalSeparator = decimalSeparator;
-        ;
+
         this.groupSeparator = groupSeparator;
         this.monetaryDecimalSeparator = monetaryDecimalSeparator;
         this.percentSymbol = percentSymbol;
