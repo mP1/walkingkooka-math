@@ -19,8 +19,6 @@ package walkingkooka.math;
 
 import walkingkooka.test.Testing;
 
-import java.math.MathContext;
-
 public interface HasDecimalNumberSymbolsTesting extends Testing {
 
     default void decimalNumberSymbolsAndCheck(final HasDecimalNumberSymbols has,

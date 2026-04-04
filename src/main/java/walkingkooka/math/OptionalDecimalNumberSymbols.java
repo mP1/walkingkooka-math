@@ -1,8 +1,8 @@
 package walkingkooka.math;
 
 
-import walkingkooka.Value;
 import walkingkooka.Cast;
+import walkingkooka.Value;
 
 import java.util.Objects;
 import java.util.Optional;

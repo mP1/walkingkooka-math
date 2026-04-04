@@ -18,7 +18,6 @@
 package walkingkooka.math;
 
 import walkingkooka.EmptyTextException;
-import walkingkooka.HasProperty;
 import walkingkooka.InvalidCharacterException;
 import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringBuilder;
@@ -26,13 +25,14 @@ import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.predicate.Predicates;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
-import walkingkooka.props.*;
+import walkingkooka.props.HasProperties;
+import walkingkooka.props.Properties;
+import walkingkooka.props.PropertiesPath;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.HasText;
 import walkingkooka.text.printer.IndentingPrinter;
 import walkingkooka.text.printer.TreePrintable;
 
-import javax.xml.stream.events.Characters;
 import java.text.DecimalFormatSymbols;
 import java.util.Objects;
 import java.util.Optional;
