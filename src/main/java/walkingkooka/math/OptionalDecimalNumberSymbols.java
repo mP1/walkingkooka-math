@@ -2,7 +2,7 @@ package walkingkooka.math;
 
 
 import walkingkooka.Cast;
-import walkingkooka.Value;
+import walkingkooka.HasValue;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import java.util.Optional;
 /**
  * A typed {@link Optional} necessary because generic types are lost in java.
  */
-public final class OptionalDecimalNumberSymbols implements Value<Optional<DecimalNumberSymbols>> {
+public final class OptionalDecimalNumberSymbols implements HasValue<Optional<DecimalNumberSymbols>> {
 
     public final static OptionalDecimalNumberSymbols EMPTY = new OptionalDecimalNumberSymbols(Optional.empty());
 
