@@ -210,6 +210,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                                     final char right, final String rightLabel) {
         if (left == right) {
             throw new InvalidTextException(
+                String.valueOf(left),
                 "Duplicate " +
                     CharSequences.quoteAndEscape(rightLabel) +
                     " is same as " +
