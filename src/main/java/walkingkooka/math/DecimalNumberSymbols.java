@@ -43,6 +43,7 @@ import java.util.function.Predicate;
  */
 public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     TreePrintable,
+    HasDecimalNumberSymbols,
     HasProperties,
     HasText {
 
@@ -967,5 +968,12 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             );
         }
         printer.outdent();
+    }
+
+    // HasDecimalNumberSymbols..........................................................................................
+
+    @Override
+    public DecimalNumberSymbols decimalNumberSymbols() {
+        return this;
     }
 }

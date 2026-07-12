@@ -40,6 +40,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTesting2<DecimalNumberSymbols>,
     ToStringTesting<DecimalNumberSymbols>,
+    HasDecimalNumberSymbolsTesting,
     HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DecimalNumberSymbols>,
@@ -2567,6 +2568,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
                 "permillSymbol=^\n" +
                 "positiveSign=+\n" +
                 "zeroDigit=0"
+        );
+    }
+
+    // HasDecimalNumberSymbols..........................................................................................
+
+    @Test
+    public void testHasDecimalNumberSymbols() {
+        final DecimalNumberSymbols symbols = this.createObject();
+        this.decimalNumberSymbolsAndCheck(
+            symbols,
+            symbols
         );
     }
 
