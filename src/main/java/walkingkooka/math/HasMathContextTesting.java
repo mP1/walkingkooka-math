@@ -24,6 +24,8 @@ import java.math.MathContext;
 
 public interface HasMathContextTesting extends TreePrintableTesting {
 
+    MathContext MATH_CONTEXT = MathContext.DECIMAL32;
+
     default void hasMathContextAndCheck(final HasMathContext has, final MathContext mathContext) {
         this.checkEquals(
             mathContext,
