@@ -18,10 +18,11 @@
 package walkingkooka.math;
 
 import walkingkooka.test.Testing;
+import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.util.Optional;
 
-public interface HasOptionalDecimalNumberSymbolsTesting extends Testing {
+public interface HasOptionalDecimalNumberSymbolsTesting extends TreePrintableTesting {
 
     default void decimalNumberSymbolsAndCheck(final HasOptionalDecimalNumberSymbols has) {
         this.decimalNumberSymbolsAndCheck(

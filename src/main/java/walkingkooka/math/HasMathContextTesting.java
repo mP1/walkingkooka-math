@@ -18,10 +18,11 @@
 package walkingkooka.math;
 
 import walkingkooka.test.Testing;
+import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.math.MathContext;
 
-public interface HasMathContextTesting extends Testing {
+public interface HasMathContextTesting extends TreePrintableTesting {
 
     default void hasMathContextAndCheck(final HasMathContext has, final MathContext mathContext) {
         this.checkEquals(
