@@ -46,7 +46,6 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
         '%',
         '^'
     );
-    private final static MathContext MATH_CONTEXT = MathContext.DECIMAL32;
 
     @Test
     public void testWithNullInvalidDecimalNumberDigitCount() {
