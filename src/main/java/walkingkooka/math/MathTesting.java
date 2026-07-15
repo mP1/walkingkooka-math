@@ -17,6 +17,7 @@
 package walkingkooka.math;
 
 import walkingkooka.test.Testing;
+import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
@@ -25,7 +26,7 @@ import java.util.Locale;
 /**
  * Mixing testing interface for {@link DecimalNumberContext}
  */
-public interface MathTesting extends Testing {
+public interface MathTesting extends TreePrintableTesting {
 
     /**
      * Useful constant to verify {@link DecimalNumberContext#zeroDigit()} is honoured.

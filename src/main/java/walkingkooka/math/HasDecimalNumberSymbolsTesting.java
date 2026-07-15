@@ -18,8 +18,9 @@
 package walkingkooka.math;
 
 import walkingkooka.test.Testing;
+import walkingkooka.text.printer.TreePrintableTesting;
 
-public interface HasDecimalNumberSymbolsTesting extends Testing {
+public interface HasDecimalNumberSymbolsTesting extends TreePrintableTesting {
 
     default void decimalNumberSymbolsAndCheck(final HasDecimalNumberSymbols has,
                                               final DecimalNumberSymbols expected) {
