@@ -19,8 +19,17 @@ package walkingkooka.math;
 
 import walkingkooka.test.Testing;
 import walkingkooka.text.printer.TreePrintableTesting;
+import walkingkooka.util.HasLocaleTesting;
 
-public interface HasDecimalNumberSymbolsTesting extends TreePrintableTesting {
+import java.text.DecimalFormatSymbols;
+
+public interface HasDecimalNumberSymbolsTesting extends TreePrintableTesting,
+    HasLocaleTesting {
+
+    DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS = DecimalNumberSymbols.fromDecimalFormatSymbols(
+        '+',
+        new DecimalFormatSymbols(LOCALE)
+    );
 
     default void decimalNumberSymbolsAndCheck(final HasDecimalNumberSymbols has,
                                               final DecimalNumberSymbols expected) {
