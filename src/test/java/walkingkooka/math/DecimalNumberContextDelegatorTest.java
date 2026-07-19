@@ -38,7 +38,7 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
 
         @Override
         public DecimalNumberContext decimalNumberContext() {
-            return DecimalNumberContexts.american(MathContext.DECIMAL32);
+            return DECIMAL_NUMBER_CONTEXT;
         }
 
         @Override
@@ -95,7 +95,7 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
 
     @Override
     public DecimalNumberContext decimalNumberContext() {
-        return DecimalNumberContexts.american(MathContext.DECIMAL32);
+        return DECIMAL_NUMBER_CONTEXT;
     }
 
     // Class............................................................................................................
