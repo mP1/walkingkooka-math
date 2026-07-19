@@ -26,6 +26,10 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     HasDecimalNumberSymbolsTesting,
     MathTesting {
 
+    DecimalNumberContext DECIMAL_NUMBER_CONTEXT = DecimalNumberContexts.american(
+        MATH_CONTEXT
+    );
+
     default void currencySymbolAndCheck(final DecimalNumberContext context,
                                         final String currencySymbol) {
         this.checkEquals(
