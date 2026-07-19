@@ -17,7 +17,6 @@
 
 package walkingkooka.math;
 
-import walkingkooka.test.Testing;
 import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.util.Optional;
