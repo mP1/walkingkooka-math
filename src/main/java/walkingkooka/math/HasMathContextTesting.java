@@ -25,6 +25,8 @@ public interface HasMathContextTesting extends TreePrintableTesting {
 
     MathContext MATH_CONTEXT = MathContext.DECIMAL32;
 
+    MathContext DIFFERENT_MATH_CONTEXT = MathContext.DECIMAL64;
+
     default void hasMathContextAndCheck(final HasMathContext has, final MathContext mathContext) {
         this.checkEquals(
             mathContext,
