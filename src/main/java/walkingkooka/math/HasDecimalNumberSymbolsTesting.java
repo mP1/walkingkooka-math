@@ -33,6 +33,11 @@ public interface HasDecimalNumberSymbolsTesting extends TreePrintableTesting,
 
     Optional<DecimalNumberSymbols> OPTIONAL_DECIMAL_NUMBER_SYMBOLS = Optional.of(DECIMAL_NUMBER_SYMBOLS);
 
+    DecimalNumberSymbols DIFFERENT_DECIMAL_NUMBER_SYMBOLS = DecimalNumberSymbols.fromDecimalFormatSymbols(
+        '+',
+        new DecimalFormatSymbols(DIFFERENT_LOCALE)
+    );
+
     default void decimalNumberSymbolsAndCheck(final HasDecimalNumberSymbols has,
                                               final DecimalNumberSymbols expected) {
         this.checkEquals(
