@@ -87,9 +87,13 @@ final class DecimalNumberContextBasic implements DecimalNumberContext,
     @Override
     public String toString() {
         return ToStringBuilder.empty()
-            .labelSeparator("decimalNumberDigitNumberCount")
+            .label("decimalNumberDigitNumberCount")
+            .value(this.decimalNumberDigitCount)
+            .label("symbols")
             .value(this.symbols)
+            .label("locale")
             .value(this.locale)
+            .label("mathContext")
             .value(this.mathContext)
             .build();
     }

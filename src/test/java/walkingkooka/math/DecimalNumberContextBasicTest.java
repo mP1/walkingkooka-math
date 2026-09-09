@@ -124,7 +124,7 @@ public final class DecimalNumberContextBasicTest implements ClassTesting2<Decima
     public void testToString() {
         this.toStringAndCheck(
             this.createContext(),
-            "negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY!\" monetaryDecimalSeparator='*' nanSymbol=\"NAN!\" percentSymbol='%' permillSymbol='^' fr_FR precision=7 roundingMode=HALF_EVEN"
+            "decimalNumberDigitNumberCount=10 symbols=negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY!\" monetaryDecimalSeparator='*' nanSymbol=\"NAN!\" percentSymbol='%' permillSymbol='^' locale=fr_FR mathContext=precision=7 roundingMode=HALF_EVEN"
         );
     }
 
