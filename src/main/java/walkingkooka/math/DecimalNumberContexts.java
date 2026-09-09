@@ -27,10 +27,10 @@ import java.util.Locale;
 public final class DecimalNumberContexts implements PublicStaticHelper {
 
     /**
-     * {@see AmericanDecimalNumberContext}
+     * {@see DecimalNumberContextAmerican}
      */
     public static DecimalNumberContext american(final MathContext mathContext) {
-        return AmericanDecimalNumberContext.with(mathContext);
+        return DecimalNumberContextAmerican.with(mathContext);
     }
 
     /**
