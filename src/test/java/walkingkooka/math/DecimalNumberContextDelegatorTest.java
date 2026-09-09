@@ -104,4 +104,9 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
     public Class<TestDecimalNumberContextDelegator> type() {
         return TestDecimalNumberContextDelegator.class;
     }
+
+    @Override
+    public void testTestNaming() {
+        throw new UnsupportedOperationException();
+    }
 }

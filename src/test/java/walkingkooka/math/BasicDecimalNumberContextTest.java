@@ -19,7 +19,6 @@ package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
-import walkingkooka.reflect.JavaVisibility;
 
 import java.math.MathContext;
 import java.util.Locale;
@@ -212,10 +211,5 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     @Override
     public Class<BasicDecimalNumberContext> type() {
         return BasicDecimalNumberContext.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
     }
 }
