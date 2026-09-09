@@ -26,17 +26,17 @@ import java.util.Objects;
 /**
  * A {@link DecimalNumberContext} that holds constant properties.
  */
-final class BasicDecimalNumberContext implements DecimalNumberContext,
+final class DecimalNumberContextBasic implements DecimalNumberContext,
     DecimalNumberSymbolsDelegator {
 
-    static BasicDecimalNumberContext with(final int decimalNumberDigitCount,
+    static DecimalNumberContextBasic with(final int decimalNumberDigitCount,
                                           final DecimalNumberSymbols symbols,
                                           final Locale locale,
                                           final MathContext mathContext) {
         if(decimalNumberDigitCount < 0) {
             throw new IllegalArgumentException("Invalid decimalNumberDigitCount " + decimalNumberDigitCount + " < 0");
         }
-        return new BasicDecimalNumberContext(
+        return new DecimalNumberContextBasic(
             decimalNumberDigitCount,
             Objects.requireNonNull(symbols, "symbols"),
             Objects.requireNonNull(locale, "locale"),
@@ -44,7 +44,7 @@ final class BasicDecimalNumberContext implements DecimalNumberContext,
         );
     }
 
-    private BasicDecimalNumberContext(final int decimalNumberDigitCount,
+    private DecimalNumberContextBasic(final int decimalNumberDigitCount,
                                       final DecimalNumberSymbols symbols,
                                       final Locale locale,
                                       final MathContext mathContext) {
