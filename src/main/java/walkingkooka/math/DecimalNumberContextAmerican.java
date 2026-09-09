@@ -28,13 +28,13 @@ import java.util.Objects;
  * This is useful for as many internet standards also use the same symbols. Note the {@link #locale()} throws
  * {@link UnsupportedOperationException}.
  */
-final class AmericanDecimalNumberContext implements DecimalNumberContext,
+final class DecimalNumberContextAmerican implements DecimalNumberContext,
     DecimalNumberSymbolsLikeDelegator{
 
     /**
      * Factory that returns a constant if a {@link MathContext} constant is given.
      */
-    static AmericanDecimalNumberContext with(final MathContext mathContext) {
+    static DecimalNumberContextAmerican with(final MathContext mathContext) {
         Objects.requireNonNull(mathContext, "mathContext");
 
         return UNLIMITED.mathContext.equals(mathContext) ?
@@ -45,18 +45,18 @@ final class AmericanDecimalNumberContext implements DecimalNumberContext,
                     DECIMAL64 :
                     DECIMAL128.mathContext.equals(mathContext) ?
                         DECIMAL128 :
-                        new AmericanDecimalNumberContext(mathContext);
+                        new DecimalNumberContextAmerican(mathContext);
     }
 
-    private final static AmericanDecimalNumberContext UNLIMITED = new AmericanDecimalNumberContext(MathContext.UNLIMITED);
-    private final static AmericanDecimalNumberContext DECIMAL32 = new AmericanDecimalNumberContext(MathContext.DECIMAL32);
-    private final static AmericanDecimalNumberContext DECIMAL64 = new AmericanDecimalNumberContext(MathContext.DECIMAL64);
-    private final static AmericanDecimalNumberContext DECIMAL128 = new AmericanDecimalNumberContext(MathContext.DECIMAL128);
+    private final static DecimalNumberContextAmerican UNLIMITED = new DecimalNumberContextAmerican(MathContext.UNLIMITED);
+    private final static DecimalNumberContextAmerican DECIMAL32 = new DecimalNumberContextAmerican(MathContext.DECIMAL32);
+    private final static DecimalNumberContextAmerican DECIMAL64 = new DecimalNumberContextAmerican(MathContext.DECIMAL64);
+    private final static DecimalNumberContextAmerican DECIMAL128 = new DecimalNumberContextAmerican(MathContext.DECIMAL128);
 
     /**
      * Private ctor use singleton.
      */
-    private AmericanDecimalNumberContext(final MathContext mathContext) {
+    private DecimalNumberContextAmerican(final MathContext mathContext) {
         super();
         this.mathContext = mathContext;
     }

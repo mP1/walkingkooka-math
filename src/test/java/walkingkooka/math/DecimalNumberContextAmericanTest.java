@@ -19,7 +19,6 @@ package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
-import walkingkooka.reflect.JavaVisibility;
 
 import java.math.MathContext;
 import java.text.DecimalFormatSymbols;
@@ -28,12 +27,12 @@ import java.util.Locale;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class AmericanDecimalNumberContextTest implements ClassTesting2<AmericanDecimalNumberContext>,
-    DecimalNumberContextTesting2<AmericanDecimalNumberContext> {
+public final class DecimalNumberContextAmericanTest implements ClassTesting2<DecimalNumberContextAmerican>,
+    DecimalNumberContextTesting2<DecimalNumberContextAmerican> {
 
     @Test
     public void testWithNullMathContextFails() {
-        assertThrows(NullPointerException.class, () -> AmericanDecimalNumberContext.with(null));
+        assertThrows(NullPointerException.class, () -> DecimalNumberContextAmerican.with(null));
     }
 
     @Test
@@ -57,7 +56,7 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
     }
 
     private void withConstantAndCheck(final MathContext mathContext) {
-        assertSame(AmericanDecimalNumberContext.with(mathContext), AmericanDecimalNumberContext.with(mathContext));
+        assertSame(DecimalNumberContextAmerican.with(mathContext), DecimalNumberContextAmerican.with(mathContext));
         withAndCheck(mathContext);
     }
 
@@ -74,7 +73,7 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
     private void withAndCheck(final MathContext mathContext) {
         final DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(Locale.US);
 
-        final AmericanDecimalNumberContext context = AmericanDecimalNumberContext.with(mathContext);
+        final DecimalNumberContextAmerican context = DecimalNumberContextAmerican.with(mathContext);
 
         this.currencySymbolAndCheck(context, symbols.getCurrencySymbol());
         this.decimalNumberDigitCountAndCheck(context, DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT);
@@ -110,8 +109,8 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
     }
 
     @Override
-    public AmericanDecimalNumberContext createContext() {
-        return AmericanDecimalNumberContext.with(MATH_CONTEXT);
+    public DecimalNumberContextAmerican createContext() {
+        return DecimalNumberContextAmerican.with(MATH_CONTEXT);
     }
 
     @Override
@@ -189,12 +188,12 @@ public final class AmericanDecimalNumberContextTest implements ClassTesting2<Ame
     // class............................................................................................................
 
     @Override
-    public Class<AmericanDecimalNumberContext> type() {
-        return AmericanDecimalNumberContext.class;
+    public Class<DecimalNumberContextAmerican> type() {
+        return DecimalNumberContextAmerican.class;
     }
 
     @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
+    public void testTypeNaming() {
+        throw new UnsupportedOperationException();
     }
 }
