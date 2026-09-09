@@ -25,8 +25,8 @@ import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicDecimalNumberContext>,
-    DecimalNumberContextTesting2<BasicDecimalNumberContext> {
+public final class DecimalNumberContextBasicTest implements ClassTesting2<DecimalNumberContextBasic>,
+    DecimalNumberContextTesting2<DecimalNumberContextBasic> {
 
     private final static int DECIMAL_NUMBER_DIGIT_COUNT = 10;
     
@@ -50,7 +50,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testWithNullInvalidDecimalNumberDigitCount() {
         assertThrows(
             IllegalArgumentException.class,
-            () -> BasicDecimalNumberContext.with(
+            () -> DecimalNumberContextBasic.with(
                 -1,
                 null,
                 LOCALE,
@@ -63,7 +63,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testWithNullDecimalNumberSymbols() {
         assertThrows(
             NullPointerException.class,
-            () -> BasicDecimalNumberContext.with(
+            () -> DecimalNumberContextBasic.with(
                 DECIMAL_NUMBER_DIGIT_COUNT,
                 null,
                 LOCALE,
@@ -76,7 +76,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testWithNullLocale() {
         assertThrows(
             NullPointerException.class,
-            () -> BasicDecimalNumberContext.with(
+            () -> DecimalNumberContextBasic.with(
                 DECIMAL_NUMBER_DIGIT_COUNT,
                 SYMBOLS,
                 null,
@@ -89,7 +89,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     public void testWithNullMathContext() {
         assertThrows(
             NullPointerException.class,
-            () -> BasicDecimalNumberContext.with(
+            () -> DecimalNumberContextBasic.with(
                 DECIMAL_NUMBER_DIGIT_COUNT,
                 SYMBOLS,
                 LOCALE,
@@ -100,7 +100,7 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
 
     @Test
     public void testWith() {
-        final BasicDecimalNumberContext context = this.createContext();
+        final DecimalNumberContextBasic context = this.createContext();
         this.currencySymbolAndCheck(context, "$");
         this.decimalSeparatorAndCheck(context, '.');
         this.exponentSymbolAndCheck(context, "E");
@@ -129,8 +129,8 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     }
 
     @Override
-    public BasicDecimalNumberContext createContext() {
-        return BasicDecimalNumberContext.with(
+    public DecimalNumberContextBasic createContext() {
+        return DecimalNumberContextBasic.with(
             DECIMAL_NUMBER_DIGIT_COUNT,
             SYMBOLS,
             LOCALE,
@@ -209,7 +209,12 @@ public final class BasicDecimalNumberContextTest implements ClassTesting2<BasicD
     }
 
     @Override
-    public Class<BasicDecimalNumberContext> type() {
-        return BasicDecimalNumberContext.class;
+    public Class<DecimalNumberContextBasic> type() {
+        return DecimalNumberContextBasic.class;
+    }
+
+    @Override
+    public void testTypeNaming() {
+        throw new UnsupportedOperationException();
     }
 }
