@@ -35,7 +35,7 @@ public final class HasDecimalNumberSymbolsTestingTest implements HasDecimalNumbe
     public void testOptionalConstants() {
         this.checkNotEquals(
             HasDecimalNumberSymbolsTesting.OPTIONAL_DECIMAL_NUMBER_SYMBOLS,
-            HasDecimalNumberSymbolsTesting.DIFFERENT_OPTIONAL_DECIMAL_NUMBER_SYMBOLS
+            HasDecimalNumberSymbolsTesting.OPTIONAL_DIFFERENT_DECIMAL_NUMBER_SYMBOLS
         );
     }
 

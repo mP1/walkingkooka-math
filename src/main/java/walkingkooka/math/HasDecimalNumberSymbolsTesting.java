@@ -38,7 +38,7 @@ public interface HasDecimalNumberSymbolsTesting extends TreePrintableTesting,
         new DecimalFormatSymbols(DIFFERENT_LOCALE)
     );
 
-    Optional<DecimalNumberSymbols> DIFFERENT_OPTIONAL_DECIMAL_NUMBER_SYMBOLS = Optional.of(DIFFERENT_DECIMAL_NUMBER_SYMBOLS);
+    Optional<DecimalNumberSymbols> OPTIONAL_DIFFERENT_DECIMAL_NUMBER_SYMBOLS = Optional.of(DIFFERENT_DECIMAL_NUMBER_SYMBOLS);
 
     default void decimalNumberSymbolsAndCheck(final HasDecimalNumberSymbols has,
                                               final DecimalNumberSymbols expected) {
