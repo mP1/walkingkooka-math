@@ -24,6 +24,14 @@ public final class DecimalNumberContextTestingTest implements DecimalNumberConte
     PublicClassTesting<DecimalNumberContextTesting> {
 
     @Test
+    public void testDecimalNumberContextConstantAndDecimalNumberSymbolsConstant() {
+        this.checkEquals(
+            DECIMAL_NUMBER_SYMBOLS,
+            DECIMAL_NUMBER_CONTEXT.decimalNumberSymbols()
+        );
+    }
+
+    @Test
     public void testDecimalNumberSymbolsAndCheck() {
         this.decimalSeparatorAndCheck(
             DecimalNumberContexts.american(MATH_CONTEXT),

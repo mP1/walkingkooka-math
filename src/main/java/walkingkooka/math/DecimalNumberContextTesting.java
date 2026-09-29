@@ -26,7 +26,10 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     HasDecimalNumberSymbolsTesting,
     MathTesting {
 
-    DecimalNumberContext DECIMAL_NUMBER_CONTEXT = DecimalNumberContexts.american(
+    DecimalNumberContext DECIMAL_NUMBER_CONTEXT = DecimalNumberContexts.basic(
+        DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT,
+        DECIMAL_NUMBER_SYMBOLS,
+        LOCALE,
         MATH_CONTEXT
     );
 
