@@ -2513,26 +2513,24 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         );
     }
 
-    // fromProperties..................................................................................................
+    // fromProperties...................................................................................................
 
     @Test
     public void testFromProperties() {
-        this.checkEquals(
-            DecimalNumberSymbols.fromProperties(
-                Properties.parse(
-                    "currencySymbol=AUD\n" +
-                        "decimalSeparator=.\n" +
-                        "exponentSymbol=E\n" +
-                        "groupSeparator=,\n" +
-                        "infinitySymbol=INFINITY\n" +
-                        "monetaryDecimalSeparator=*\n" +
-                        "nanSymbol=NAN\n" +
-                        "negativeSign=-\n" +
-                        "percentSymbol=%\n" +
-                        "permillSymbol=^\n" +
-                        "positiveSign=+\n" +
-                        "zeroDigit=0"
-                )
+        this.fromPropertiesAndCheck(
+            Properties.parse(
+                "currencySymbol=AUD\n" +
+                    "decimalSeparator=.\n" +
+                    "exponentSymbol=E\n" +
+                    "groupSeparator=,\n" +
+                    "infinitySymbol=INFINITY\n" +
+                    "monetaryDecimalSeparator=*\n" +
+                    "nanSymbol=NAN\n" +
+                    "negativeSign=-\n" +
+                    "percentSymbol=%\n" +
+                    "permillSymbol=^\n" +
+                    "positiveSign=+\n" +
+                    "zeroDigit=0"
             ),
             this.createObject()
         );
@@ -2542,11 +2540,17 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     public void testFromPropertiesAndProperties() {
         final DecimalNumberSymbols decimalNumberSymbols = this.createObject();
 
+        this.fromPropertiesAndCheck(
+            decimalNumberSymbols.properties(),
+            decimalNumberSymbols
+        );
+    }
+
+    private void fromPropertiesAndCheck(final Properties properties,
+                                        final DecimalNumberSymbols expected) {
         this.checkEquals(
-            decimalNumberSymbols,
-            DecimalNumberSymbols.fromProperties(
-                decimalNumberSymbols.properties()
-            )
+            DecimalNumberSymbols.fromProperties(properties),
+            expected
         );
     }
 
