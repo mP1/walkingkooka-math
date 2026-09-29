@@ -26,10 +26,12 @@ import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.MethodAttributes;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
 
+import java.lang.reflect.Method;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.util.Optional;
@@ -2572,6 +2574,54 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
                 "permillSymbol=^\n" +
                 "positiveSign=+\n" +
                 "zeroDigit=0"
+        );
+    }
+
+    @Test
+    public void testPropertiesAndFromPropertiesAllLocales() throws Exception {
+        int i = 0;
+
+        Next:
+        //
+        for (final Locale locale : Locale.getAvailableLocales()) {
+            final DecimalFormatSymbols decimalFormatSymbols = DecimalFormatSymbols.getInstance(locale);
+
+            int j = 0;
+            for (final Method method : DecimalFormatSymbols.class.getMethods()) {
+                if (MethodAttributes.STATIC.is(method)) {
+                    continue;
+                }
+                if (false == method.getName().startsWith("get")) {
+                    continue;
+                }
+                if (method.getParameterCount() != 0) {
+                    continue;
+                }
+                if (method.getReturnType() != Character.TYPE) {
+                    continue;
+                }
+
+                if (Character.valueOf('\u200e').equals(method.invoke(decimalFormatSymbols))) {
+                    continue Next;
+                }
+            }
+
+            i++;
+
+            final DecimalNumberSymbols decimalNumberSymbols = DecimalNumberSymbols.fromDecimalFormatSymbols(
+                '+',
+                decimalFormatSymbols
+            );
+
+            this.fromPropertiesAndCheck(
+                decimalNumberSymbols.properties(),
+                decimalNumberSymbols
+            );
+        }
+
+        this.checkNotEquals(
+            0,
+            i
         );
     }
 
