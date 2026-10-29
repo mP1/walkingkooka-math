@@ -27,7 +27,8 @@ import java.util.Optional;
 /**
  * A typed {@link Optional} necessary because generic types are lost in java.
  */
-public final class OptionalDecimalNumberSymbols implements HasValue<Optional<DecimalNumberSymbols>> {
+public final class OptionalDecimalNumberSymbols implements HasValue<Optional<DecimalNumberSymbols>>,
+    HasOptionalDecimalNumberSymbols {
 
     public final static OptionalDecimalNumberSymbols EMPTY = new OptionalDecimalNumberSymbols(Optional.empty());
 
@@ -51,6 +52,13 @@ public final class OptionalDecimalNumberSymbols implements HasValue<Optional<Dec
     }
 
     private final Optional<DecimalNumberSymbols> value;
+
+    // HasOptionalDecimalNumberSymbols..................................................................................
+
+    @Override
+    public Optional<DecimalNumberSymbols> decimalNumberSymbols() {
+        return this.value;
+    }
 
     // Object...........................................................................................................
 
