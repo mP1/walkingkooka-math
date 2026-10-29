@@ -31,6 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class OptionalDecimalNumberSymbolsTest implements ClassTesting<OptionalDecimalNumberSymbols>,
+    HasOptionalDecimalNumberSymbolsTesting,
     HashCodeEqualsDefinedTesting2<OptionalDecimalNumberSymbols>,
     ToStringTesting<OptionalDecimalNumberSymbols> {
 
@@ -70,6 +71,25 @@ public final class OptionalDecimalNumberSymbolsTest implements ClassTesting<Opti
         assertSame(
             DECIMAL_NUMBER_SYMBOLS,
             optional.value()
+        );
+    }
+
+    // decimalNumberSymbols.............................................................................................
+
+    @Test
+    public void testDecimalNumberSymbolsWithEmpty() {
+        this.decimalNumberSymbolsAndCheck(
+            OptionalDecimalNumberSymbols.EMPTY
+        );
+    }
+
+    @Test
+    public void testDecimalNumberSymbolsWithNotEmpty() {
+        final OptionalDecimalNumberSymbols optional = OptionalDecimalNumberSymbols.with(DECIMAL_NUMBER_SYMBOLS);
+
+        this.decimalNumberSymbolsAndCheck(
+            optional,
+            DECIMAL_NUMBER_SYMBOLS
         );
     }
 
