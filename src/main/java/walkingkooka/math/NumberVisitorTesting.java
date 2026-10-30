@@ -17,9 +17,11 @@
 
 package walkingkooka.math;
 
+import walkingkooka.text.printer.TreePrintableTesting;
 import walkingkooka.visit.VisitorTesting;
 
-public interface NumberVisitorTesting<V extends NumberVisitor> extends VisitorTesting<V, Number> {
+public interface NumberVisitorTesting<V extends NumberVisitor> extends VisitorTesting<V, Number>,
+    TreePrintableTesting {
 
     @Override
     default String typeNameSuffix() {
