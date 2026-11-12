@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public final class OptionalDecimalNumberSymbolsTest implements ClassTesting<OptionalDecimalNumberSymbols>,
     HasOptionalDecimalNumberSymbolsTesting,
     HashCodeEqualsDefinedTesting2<OptionalDecimalNumberSymbols>,
-    ToStringTesting<OptionalDecimalNumberSymbols> {
+    ToStringTesting {
 
     private final static Optional<DecimalNumberSymbols> DECIMAL_NUMBER_SYMBOLS = Optional.of(
         DecimalNumberSymbols.fromDecimalFormatSymbols(

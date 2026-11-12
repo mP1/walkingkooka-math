@@ -370,10 +370,6 @@ public final class NumberTypeVisitorTest implements NumberTypeVisitorTesting<Num
     }
 
     @Override
-    public void testCheckToStringOverridden() {
-    }
-
-    @Override
     public NumberTypeVisitor createVisitor() {
         return new FakeNumberTypeVisitor();
     }
