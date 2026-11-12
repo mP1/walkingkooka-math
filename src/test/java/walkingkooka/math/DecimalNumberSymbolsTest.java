@@ -41,11 +41,11 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTesting2<DecimalNumberSymbols>,
-    ToStringTesting<DecimalNumberSymbols>,
     HasDecimalNumberSymbolsTesting,
     HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DecimalNumberSymbols>,
+    ToStringTesting,
     TreePrintableTesting,
     ClassTesting<DecimalNumberSymbols> {
 
