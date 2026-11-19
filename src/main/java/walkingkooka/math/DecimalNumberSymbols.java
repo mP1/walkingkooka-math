@@ -22,6 +22,8 @@ import walkingkooka.InvalidCharacterException;
 import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
+import walkingkooka.collect.list.DelimiterStringImmutableList;
+import walkingkooka.collect.list.HasCsvStringList;
 import walkingkooka.predicate.Predicates;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
@@ -43,6 +45,7 @@ import java.util.function.Predicate;
  */
 public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     TreePrintable,
+    HasCsvStringList,
     HasDecimalNumberSymbols,
     HasProperties,
     HasText {
@@ -975,5 +978,40 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     @Override
     public DecimalNumberSymbols decimalNumberSymbols() {
         return this;
+    }
+
+    // HasCsvStringList.................................................................................................
+
+    @Override
+    public CsvStringList csvStringList() {
+        return toStringList(CsvStringList.EMPTY);
+    }
+
+    private <T extends DelimiterStringImmutableList> T toStringList(final T empty) {
+        return (T) (
+            empty.concat(
+                String.valueOf(this.negativeSign)
+            ).concat(
+                String.valueOf(this.positiveSign)
+            ).concat(
+                this.currencySymbol
+            ).concat(
+                String.valueOf(this.decimalSeparator)
+            ).concat(
+                this.exponentSymbol
+            ).concat(
+                String.valueOf(this.groupSeparator)
+            ).concat(
+                this.infinitySymbol
+            ).concat(
+                String.valueOf(this.monetaryDecimalSeparator)
+            ).concat(
+                this.nanSymbol
+            ).concat(
+                String.valueOf(this.percentSymbol)
+            ).concat(
+                String.valueOf(this.permillSymbol)
+            )
+        );
     }
 }
