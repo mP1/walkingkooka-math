@@ -25,9 +25,8 @@ import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.MethodAttributes;
+import walkingkooka.reflect.PublicClassTesting;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
@@ -49,7 +48,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     ParseStringTesting<DecimalNumberSymbols>,
     ToStringTesting,
     TreePrintableTesting,
-    ClassTesting<DecimalNumberSymbols> {
+    PublicClassTesting<DecimalNumberSymbols> {
 
     private final static char NEGATIVE_SIGN = '-';
     private final static char POSITIVE_SIGN = '+';
@@ -2653,10 +2652,5 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     @Override
     public Class<DecimalNumberSymbols> type() {
         return DecimalNumberSymbols.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
