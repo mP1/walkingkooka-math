@@ -23,6 +23,7 @@ import walkingkooka.InvalidCharacterException;
 import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.HasCsvStringListTesting;
+import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
 import walkingkooka.reflect.MethodAttributes;
@@ -43,6 +44,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTesting2<DecimalNumberSymbols>,
     HasDecimalNumberSymbolsTesting,
     HasCsvStringListTesting,
+    HasTsvStringListTesting,
     HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DecimalNumberSymbols>,
@@ -2644,6 +2646,16 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
         this.csvStringListAndCheck(
             this.createObject(),
             "-,+,AUD,.,E,\",\",INFINITY,*,NAN,%,^"
+        );
+    }
+
+    // HasTsvStringList.................................................................................................
+
+    @Test
+    public void testTsvStringList() {
+        this.tsvStringListAndCheck(
+            this.createObject(),
+            "-\t+\tAUD\t.\tE\t,\tINFINITY\t*\tNAN\t%\t^"
         );
     }
 

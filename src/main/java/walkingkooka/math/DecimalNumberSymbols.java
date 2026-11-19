@@ -23,6 +23,8 @@ import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringList;
+import walkingkooka.collect.list.HasTsvStringList;
+import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.predicate.Predicates;
 import walkingkooka.predicate.character.CharPredicate;
 import walkingkooka.predicate.character.CharPredicates;
@@ -45,6 +47,7 @@ import java.util.function.Predicate;
 public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     TreePrintable,
     HasCsvStringList,
+    HasTsvStringList,
     HasDecimalNumberSymbols,
     HasProperties,
     HasText {
@@ -1006,5 +1009,12 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         ).concat(
             String.valueOf(this.permillSymbol)
         );
+    }
+
+    // HasTsvStringList.................................................................................................
+
+    @Override
+    public TsvStringList tsvStringList() {
+        return TsvStringList.EMPTY.setElements(this.csvStringList());
     }
 }
