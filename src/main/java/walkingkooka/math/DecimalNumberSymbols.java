@@ -24,6 +24,7 @@ import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringList;
 import walkingkooka.collect.list.HasTsvStringList;
+import walkingkooka.collect.list.StringLikeList;
 import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.predicate.Predicates;
 import walkingkooka.predicate.character.CharPredicate;
@@ -71,32 +72,32 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * of the {@link DecimalNumberSymbols} properties. This is the inverse of {@link #text()}.
      */
     public static DecimalNumberSymbols parse(final String text) {
-        return fromCsvStringList(
+        return fromStringsLikeList(
             CsvStringList.parse(text)
         );
     }
 
-    public static DecimalNumberSymbols fromCsvStringList(final CsvStringList csv) {
-        Objects.requireNonNull(csv, "csvStringList");
+    public static DecimalNumberSymbols fromStringsLikeList(final StringLikeList strings) {
+        Objects.requireNonNull(strings, "strings");
 
-        final int tokenCount = csv.size();
+        final int tokenCount = strings.size();
         if (12 != tokenCount) {
             throw new IllegalArgumentException("Expected 12 tokens but got " + tokenCount);
         }
 
         return with(
-            stringToChar(NEGATIVE_SIGN_LABEL, csv.get(0)),
-            stringToChar(POSITIVE_SIGN_LABEL, csv.get(1)),
-            stringToChar(ZERO_DIGIT_LABEL, csv.get(2)),
-            csv.get(3), // currencySymbol
-            stringToChar(DECIMAL_SEPARATOR_LABEL, csv.get(4)),
-            csv.get(5), // exponentSymbol
-            stringToChar(GROUP_SEPARATOR_LABEL, csv.get(6)),
-            csv.get(7), // infinitySymbol
-            stringToChar(MONETARY_DECIMAL_SEPARATOR_LABEL, csv.get(8)),
-            csv.get(9), // nanSymbol
-            stringToChar(PERCENT_SYMBOL_LABEL, csv.get(10)),
-            stringToChar(PERMILL_SYMBOL_LABEL, csv.get(11))
+            stringToChar(NEGATIVE_SIGN_LABEL, strings.get(0)),
+            stringToChar(POSITIVE_SIGN_LABEL, strings.get(1)),
+            stringToChar(ZERO_DIGIT_LABEL, strings.get(2)),
+            strings.get(3), // currencySymbol
+            stringToChar(DECIMAL_SEPARATOR_LABEL, strings.get(4)),
+            strings.get(5), // exponentSymbol
+            stringToChar(GROUP_SEPARATOR_LABEL, strings.get(6)),
+            strings.get(7), // infinitySymbol
+            stringToChar(MONETARY_DECIMAL_SEPARATOR_LABEL, strings.get(8)),
+            strings.get(9), // nanSymbol
+            stringToChar(PERCENT_SYMBOL_LABEL, strings.get(10)),
+            stringToChar(PERMILL_SYMBOL_LABEL, strings.get(11))
         );
     }
 
