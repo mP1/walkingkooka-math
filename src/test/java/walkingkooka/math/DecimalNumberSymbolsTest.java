@@ -22,6 +22,7 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.InvalidCharacterException;
 import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringTesting;
+import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.props.HasPropertiesTesting;
@@ -72,6 +73,43 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     private final static char DIFFERENT_CHAR = '!';
     private final static char DIFFERENT_ZERO_DIGIT = '1';
     private final static String DIFFERENT_STRING = "Different";
+
+    // fromCsvStringList................................................................................................
+
+    @Test
+    public void testFromCsvStringListWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DecimalNumberSymbols.fromCsvStringList(null)
+        );
+    }
+
+    @Test
+    public void testFromCsvStringList() {
+        this.fromCsvStringListAndCheck(
+            CsvStringList.parse("-,+,0,AUD,.,E,\",\",INFINITY,*,NAN,%,^"),
+            this.createObject()
+        );
+    }
+
+    @Test
+    public void testFromCsvStringListWithDecimalNumberSymbolsText() {
+        final DecimalNumberSymbols decimalNumberSymbols = this.createObject();
+
+        this.fromCsvStringListAndCheck(
+            decimalNumberSymbols.csvStringList(),
+            decimalNumberSymbols
+        );
+    }
+
+    private void fromCsvStringListAndCheck(final CsvStringList csvStringList,
+                                           final DecimalNumberSymbols expected) {
+        this.checkEquals(
+            expected,
+            DecimalNumberSymbols.fromCsvStringList(csvStringList),
+            csvStringList::toString
+        );
+    }
 
     // with.............................................................................................................
 
