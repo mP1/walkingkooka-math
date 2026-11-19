@@ -2645,7 +2645,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     public void testCsvStringList() {
         this.csvStringListAndCheck(
             this.createObject(),
-            "-,+,AUD,.,E,\",\",INFINITY,*,NAN,%,^"
+            "-,+,0,AUD,.,E,\",\",INFINITY,*,NAN,%,^"
         );
     }
 
@@ -2655,7 +2655,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     public void testTsvStringList() {
         this.tsvStringListAndCheck(
             this.createObject(),
-            "-\t+\tAUD\t.\tE\t,\tINFINITY\t*\tNAN\t%\t^"
+            "-\t+\t0\tAUD\t.\tE\t,\tINFINITY\t*\tNAN\t%\t^"
         );
     }
 

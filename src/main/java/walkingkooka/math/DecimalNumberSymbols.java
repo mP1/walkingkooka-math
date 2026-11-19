@@ -991,6 +991,8 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         ).concat(
             String.valueOf(this.positiveSign)
         ).concat(
+            String.valueOf(this.zeroDigit)
+        ).concat(
             this.currencySymbol
         ).concat(
             String.valueOf(this.decimalSeparator)
