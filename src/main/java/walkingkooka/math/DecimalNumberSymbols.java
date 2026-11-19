@@ -71,7 +71,13 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * of the {@link DecimalNumberSymbols} properties. This is the inverse of {@link #text()}.
      */
     public static DecimalNumberSymbols parse(final String text) {
-        final CsvStringList csv = CsvStringList.parse(text);
+        return fromCsvStringList(
+            CsvStringList.parse(text)
+        );
+    }
+
+    public static DecimalNumberSymbols fromCsvStringList(final CsvStringList csv) {
+        Objects.requireNonNull(csv, "csvStringList");
 
         final int tokenCount = csv.size();
         if (12 != tokenCount) {
