@@ -25,6 +25,7 @@ import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.HasTsvStringListTesting;
+import walkingkooka.collect.list.StringLikeList;
 import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
 import walkingkooka.reflect.MethodAttributes;
@@ -74,40 +75,49 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     private final static char DIFFERENT_ZERO_DIGIT = '1';
     private final static String DIFFERENT_STRING = "Different";
 
-    // fromCsvStringList................................................................................................
+    // fromStringLikeList...............................................................................................
 
     @Test
-    public void testFromCsvStringListWithNullFails() {
+    public void testFromStringLikeListWithNullFails() {
         assertThrows(
             NullPointerException.class,
-            () -> DecimalNumberSymbols.fromCsvStringList(null)
+            () -> DecimalNumberSymbols.fromStringsLikeList(null)
         );
     }
 
     @Test
-    public void testFromCsvStringList() {
-        this.fromCsvStringListAndCheck(
+    public void testFromStringLikeListWithCsvStringList() {
+        this.fromStringLikeListAndCheck(
             CsvStringList.parse("-,+,0,AUD,.,E,\",\",INFINITY,*,NAN,%,^"),
             this.createObject()
         );
     }
 
     @Test
-    public void testFromCsvStringListWithDecimalNumberSymbolsText() {
+    public void testFromStringLikeListWithTsvStringList() {
+        this.fromStringLikeListAndCheck(
+            CsvStringList.parse("-,+,0,AUD,.,E,\",\",INFINITY,*,NAN,%,^")
+                .tsvStringList(),
+            this.createObject()
+        );
+    }
+
+    @Test
+    public void testFromStringLikeListWithDecimalNumberSymbolsText() {
         final DecimalNumberSymbols decimalNumberSymbols = this.createObject();
 
-        this.fromCsvStringListAndCheck(
+        this.fromStringLikeListAndCheck(
             decimalNumberSymbols.csvStringList(),
             decimalNumberSymbols
         );
     }
 
-    private void fromCsvStringListAndCheck(final CsvStringList csvStringList,
-                                           final DecimalNumberSymbols expected) {
+    private void fromStringLikeListAndCheck(final StringLikeList strings,
+                                            final DecimalNumberSymbols expected) {
         this.checkEquals(
             expected,
-            DecimalNumberSymbols.fromCsvStringList(csvStringList),
-            csvStringList::toString
+            DecimalNumberSymbols.fromStringsLikeList(strings),
+            strings::toString
         );
     }
 
