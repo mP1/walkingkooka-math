@@ -22,10 +22,12 @@ import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.collect.list.ImmutableListTesting;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.text.HasMultiLineTextTesting;
 
 public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<DecimalNumberSymbolsList, DecimalNumberSymbols>,
     HasDecimalNumberSymbolsTesting,
     HasCsvStringListTesting,
+    HasMultiLineTextTesting,
     HasTsvStringListTesting {
 
     // setElements......................................................................................................
@@ -57,6 +59,38 @@ public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<
     @Override
     public DecimalNumberSymbolsList createList() {
         return DecimalNumberSymbolsList.EMPTY;
+    }
+
+    // CsvStringList....................................................................................................
+
+    @Test
+    public void testCsvStringListWithEmpty() {
+        this.csvStringListAndCheck(
+            DecimalNumberSymbolsList.EMPTY,
+            ""
+        );
+    }
+
+    @Test
+    public void testCsvStringListWithNotEmpty() {
+        this.csvStringListAndCheck(
+            DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+                .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS),
+            "\"-,+,0,$,.,e,\"\",\"\",∞,.,NaN,%,‰\"\n" +
+                "\"-,+,0,$,.,E,\"\",\"\",∞,.,NaN,%,‰\"\n"
+        );
+    }
+
+    @Test
+    public void testCsvStringListAndMultiLineText() {
+        this.multiLineTextAndCheck(
+            DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+                .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS)
+                .csvStringList(),
+            TEXT_CONTEXT,
+            "-,+,0,$,.,e,\",\",∞,.,NaN,%,‰\n" +
+                "-,+,0,$,.,E,\",\",∞,.,NaN,%,‰\n"
+        );
     }
 
     // class............................................................................................................
