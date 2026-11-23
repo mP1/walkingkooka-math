@@ -18,17 +18,95 @@
 package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.collect.list.ImmutableListTesting;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.text.HasMultiLineTextTesting;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<DecimalNumberSymbolsList, DecimalNumberSymbols>,
     HasDecimalNumberSymbolsTesting,
     HasCsvStringListTesting,
     HasMultiLineTextTesting,
     HasTsvStringListTesting {
+
+    // fromCsvStringList................................................................................................
+
+    @Test
+    public void testFromCsvStringListWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DecimalNumberSymbolsList.fromCsvStringList(null)
+        );
+    }
+
+    @Test
+    public void testFromCsvStringListWithEmpty() {
+        this.fromCsvStringListAndCheck(
+            CsvStringList.EMPTY,
+            DecimalNumberSymbolsList.EMPTY
+        );
+    }
+
+    @Test
+    public void testFromCsvStringListWithNotEmpty() {
+        final DecimalNumberSymbolsList list = DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+            .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS);
+
+        this.fromCsvStringListAndCheck(
+            list.csvStringList(),
+            list
+        );
+    }
+
+    private void fromCsvStringListAndCheck(final CsvStringList csvStringList,
+                                           final DecimalNumberSymbolsList expected) {
+        this.checkEquals(
+            expected,
+            DecimalNumberSymbolsList.fromCsvStringList(csvStringList)
+        );
+    }
+
+    // fromTsvStringList................................................................................................
+
+    @Test
+    public void testFromTsvStringListWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DecimalNumberSymbolsList.fromTsvStringList(null)
+        );
+    }
+
+    @Test
+    public void testFromTsvStringListWithEmpty() {
+        this.fromTsvStringListAndCheck(
+            TsvStringList.EMPTY,
+            DecimalNumberSymbolsList.EMPTY
+        );
+    }
+
+    @Test
+    public void testFromTsvStringListWithNotEmpty() {
+        final DecimalNumberSymbolsList list = DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+            .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS);
+
+        this.fromTsvStringListAndCheck(
+            list.tsvStringList(),
+            list
+        );
+    }
+
+    private void fromTsvStringListAndCheck(final TsvStringList tsvStringList,
+                                           final DecimalNumberSymbolsList expected) {
+        this.checkEquals(
+            expected,
+            DecimalNumberSymbolsList.fromTsvStringList(tsvStringList)
+        );
+    }
 
     // setElements......................................................................................................
 

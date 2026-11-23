@@ -22,11 +22,15 @@ import walkingkooka.collect.list.HasCsvStringList;
 import walkingkooka.collect.list.HasTsvStringList;
 import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.collect.list.StringLikeList;
 import walkingkooka.collect.list.TsvStringList;
 
 import java.util.AbstractList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * A {@link List} that holds nullable {@link DecimalNumberSymbols symbols}.
@@ -35,6 +39,36 @@ public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSy
     implements ImmutableListDefaults<DecimalNumberSymbolsList, DecimalNumberSymbols>,
     HasCsvStringList,
     HasTsvStringList {
+
+    public static DecimalNumberSymbolsList fromCsvStringList(final CsvStringList csvStringList) {
+        Objects.requireNonNull(csvStringList, "csvStringList");
+
+        return fromStringLikeList(
+            csvStringList,
+            CsvStringList::parse
+        );
+    }
+
+    public static DecimalNumberSymbolsList fromTsvStringList(final TsvStringList tsvStringList) {
+        Objects.requireNonNull(tsvStringList, "tsvStringList");
+
+        return fromStringLikeList(
+            tsvStringList,
+            TsvStringList::parse
+        );
+    }
+
+    private static DecimalNumberSymbolsList fromStringLikeList(final StringLikeList stringLikeList,
+                                                               final Function<String, StringLikeList> parser) {
+        return EMPTY.setElements(
+            stringLikeList.stream()
+                .map(
+                    (String string) -> DecimalNumberSymbols.fromStringsLikeList(
+                        parser.apply(string)
+                    )
+                ).collect(Collectors.toList())
+        );
+    }
 
     public final static DecimalNumberSymbolsList EMPTY = new DecimalNumberSymbolsList(Lists.empty());
 
