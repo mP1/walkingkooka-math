@@ -93,6 +93,38 @@ public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<
         );
     }
 
+    // TsvStringList....................................................................................................
+
+    @Test
+    public void testTsvStringListWithEmpty() {
+        this.tsvStringListAndCheck(
+            DecimalNumberSymbolsList.EMPTY,
+            ""
+        );
+    }
+
+    @Test
+    public void testTsvStringListWithNotEmpty() {
+        this.tsvStringListAndCheck(
+            DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+                .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS),
+            "\"-\t+\t0\t$\t.\te\t,\t∞\t.\tNaN\t%\t‰\"\n" +
+                "\"-\t+\t0\t$\t.\tE\t,\t∞\t.\tNaN\t%\t‰\"\n"
+        );
+    }
+
+    @Test
+    public void testTsvStringListAndMultiLineText() {
+        this.multiLineTextAndCheck(
+            DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+                .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS)
+                .tsvStringList(),
+            TEXT_CONTEXT,
+            "-\t+\t0\t$\t.\te\t,\t∞\t.\tNaN\t%\t‰\n" +
+                "-\t+\t0\t$\t.\tE\t,\t∞\t.\tNaN\t%\t‰\n"
+        );
+    }
+
     // class............................................................................................................
 
     @Override

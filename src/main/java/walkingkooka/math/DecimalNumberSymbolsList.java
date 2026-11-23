@@ -19,8 +19,10 @@ package walkingkooka.math;
 
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringList;
+import walkingkooka.collect.list.HasTsvStringList;
 import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.collect.list.TsvStringList;
 
 import java.util.AbstractList;
 import java.util.Collection;
@@ -31,7 +33,8 @@ import java.util.List;
  */
 public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSymbols>
     implements ImmutableListDefaults<DecimalNumberSymbolsList, DecimalNumberSymbols>,
-    HasCsvStringList {
+    HasCsvStringList,
+    HasTsvStringList {
 
     public final static DecimalNumberSymbolsList EMPTY = new DecimalNumberSymbolsList(Lists.empty());
 
@@ -87,6 +90,17 @@ public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSy
         return CsvStringList.makeCsvStringList(
             this,
             (final DecimalNumberSymbols decimalNumberSymbols) -> decimalNumberSymbols.csvStringList()
+                .text()
+        ).setAllLineBreaks();
+    }
+
+    // HasTsvStringList.................................................................................................
+
+    @Override
+    public TsvStringList tsvStringList() {
+        return TsvStringList.makeTsvStringList(
+            this,
+            (final DecimalNumberSymbols decimalNumberSymbols) -> decimalNumberSymbols.tsvStringList()
                 .text()
         ).setAllLineBreaks();
     }
