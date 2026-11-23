@@ -18,11 +18,10 @@
 package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 
 public final class NumberContextLikeTest implements MathTesting,
-    ClassTesting<NumberContextLike> {
+    PublicClassTesting<NumberContextLike> {
 
     @Test
     public void testDigitWithZeroDigitAndZeroChar() {
@@ -139,10 +138,5 @@ public final class NumberContextLikeTest implements MathTesting,
     @Override
     public Class<NumberContextLike> type() {
         return NumberContextLike.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
