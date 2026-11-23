@@ -18,30 +18,22 @@
 package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.HasValueTesting;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.PublicClassTesting;
 
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class OptionalDecimalNumberSymbolsTest implements PublicClassTesting<OptionalDecimalNumberSymbols>,
+    HasDecimalNumberSymbolsTesting,
     HasOptionalDecimalNumberSymbolsTesting,
     HashCodeEqualsDefinedTesting2<OptionalDecimalNumberSymbols>,
+    HasValueTesting,
     ToStringTesting {
-
-    private final static Optional<DecimalNumberSymbols> DECIMAL_NUMBER_SYMBOLS = Optional.of(
-        DecimalNumberSymbols.fromDecimalFormatSymbols(
-            '+',
-            new DecimalFormatSymbols(
-                Locale.forLanguageTag("en-AU")
-            )
-        )
-    );
 
     // with.............................................................................................................
 
@@ -65,11 +57,9 @@ public final class OptionalDecimalNumberSymbolsTest implements PublicClassTestin
 
     @Test
     public void testWithNotEmpty() {
-        final OptionalDecimalNumberSymbols optional = OptionalDecimalNumberSymbols.with(DECIMAL_NUMBER_SYMBOLS);
-
-        assertSame(
-            DECIMAL_NUMBER_SYMBOLS,
-            optional.value()
+        this.valueAndCheck(
+            OptionalDecimalNumberSymbols.with(OPTIONAL_DECIMAL_NUMBER_SYMBOLS),
+            OPTIONAL_DECIMAL_NUMBER_SYMBOLS
         );
     }
 
@@ -84,7 +74,7 @@ public final class OptionalDecimalNumberSymbolsTest implements PublicClassTestin
 
     @Test
     public void testDecimalNumberSymbolsWithNotEmpty() {
-        final OptionalDecimalNumberSymbols optional = OptionalDecimalNumberSymbols.with(DECIMAL_NUMBER_SYMBOLS);
+        final OptionalDecimalNumberSymbols optional = OptionalDecimalNumberSymbols.with(OPTIONAL_DECIMAL_NUMBER_SYMBOLS);
 
         this.decimalNumberSymbolsAndCheck(
             optional,
@@ -97,22 +87,13 @@ public final class OptionalDecimalNumberSymbolsTest implements PublicClassTestin
     @Test
     public void testEqualsDifferent() {
         this.checkNotEquals(
-            OptionalDecimalNumberSymbols.with(
-                Optional.of(
-                    DecimalNumberSymbols.fromDecimalFormatSymbols(
-                        '+',
-                        new DecimalFormatSymbols(
-                            Locale.forLanguageTag("en-NZ")
-                        )
-                    )
-                )
-            )
+            OptionalDecimalNumberSymbols.with(OPTIONAL_DIFFERENT_DECIMAL_NUMBER_SYMBOLS)
         );
     }
 
     @Override
     public OptionalDecimalNumberSymbols createObject() {
-        return OptionalDecimalNumberSymbols.with(DECIMAL_NUMBER_SYMBOLS);
+        return OptionalDecimalNumberSymbols.with(OPTIONAL_DECIMAL_NUMBER_SYMBOLS);
     }
 
     // toString.........................................................................................................
@@ -121,8 +102,7 @@ public final class OptionalDecimalNumberSymbolsTest implements PublicClassTestin
     public void testToString() {
         this.toStringAndCheck(
             this.createObject(),
-            DECIMAL_NUMBER_SYMBOLS.get()
-                .toString()
+            DECIMAL_NUMBER_SYMBOLS.toString()
         );
     }
 
