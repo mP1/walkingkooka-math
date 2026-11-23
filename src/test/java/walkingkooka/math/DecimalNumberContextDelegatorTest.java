@@ -59,7 +59,7 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
     }
 
     @Override
-    public char decimalSeparator() {
+    public String decimalSeparator() {
         return this.decimalNumberContext().decimalSeparator();
     }
 
@@ -69,7 +69,7 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
     }
 
     @Override
-    public char groupSeparator() {
+    public String groupSeparator() {
         return this.decimalNumberContext().groupSeparator();
     }
 
@@ -79,17 +79,17 @@ public final class DecimalNumberContextDelegatorTest implements DecimalNumberCon
     }
 
     @Override
-    public char negativeSign() {
+    public String negativeSign() {
         return this.decimalNumberContext().negativeSign();
     }
 
     @Override
-    public char percentSymbol() {
+    public String percentSymbol() {
         return this.decimalNumberContext().percentSymbol();
     }
 
     @Override
-    public char positiveSign() {
+    public String positiveSign() {
         return this.decimalNumberContext().positiveSign();
     }
 

@@ -29,7 +29,7 @@ public final class DecimalNumberSymbolsDelegatorTest implements ClassTesting<Dec
         @Override
         public DecimalNumberSymbols decimalNumberSymbols() {
             return DecimalNumberSymbols.fromDecimalFormatSymbols(
-                '+',
+                "+",
                 new DecimalFormatSymbols(Locale.ENGLISH)
             );
         }

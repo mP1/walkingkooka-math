@@ -53,18 +53,18 @@ public final class Sample {
             DecimalNumberContexts.basic(
                 DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT,
                 DecimalNumberSymbols.with(
-                    '-',
-                    '+',
+                    "-",
+                    "+",
                     '0',
                     "$",
-                    '.',
+                    ".",
                     "E",
-                    ',',
+                    ",",
                     "INFINITY",
-                    '.',
+                    ".",
                     "NAN",
-                    '%',
-                    '^'
+                    "%",
+                    "^"
                 ),
                 Locale.getDefault(),
                 MathContext.DECIMAL32
