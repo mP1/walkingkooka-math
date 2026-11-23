@@ -18,10 +18,12 @@
 package walkingkooka.math;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.reflect.PublicClassTesting;
 
 import java.text.DecimalFormatSymbols;
 
-public final class MathTestingTest implements MathTesting {
+public final class MathTestingTest implements MathTesting,
+    PublicClassTesting<MathTesting> {
 
     @Test
     public void testArabicZeroDigitLocale() {
@@ -55,5 +57,12 @@ public final class MathTestingTest implements MathTesting {
             expected,
             this.arabicDigits(value)
         );
+    }
+
+    // class............................................................................................................
+
+    @Override
+    public Class<MathTesting> type() {
+        return MathTesting.class;
     }
 }
