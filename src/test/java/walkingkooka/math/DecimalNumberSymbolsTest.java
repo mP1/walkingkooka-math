@@ -30,6 +30,7 @@ import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
 import walkingkooka.reflect.MethodAttributes;
 import walkingkooka.reflect.PublicClassTesting;
+import walkingkooka.reflect.ThrowableTesting;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
@@ -50,6 +51,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DecimalNumberSymbols>,
+    ThrowableTesting,
     ToStringTesting,
     TreePrintableTesting,
     PublicClassTesting<DecimalNumberSymbols> {
@@ -2460,41 +2462,35 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     // parseString......................................................................................................
 
     @Test
-    public void testParseWrongTokenCount() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
-            () -> DecimalNumberSymbols.parse("-,+,0")
-        );
-
-        this.checkEquals(
-            "Expected 12 tokens but got 3",
-            thrown.getMessage()
+    public void testParseWrongTokenCountFails() {
+        this.getMessageAndCheck(
+            assertThrows(
+                IllegalArgumentException.class,
+                () -> DecimalNumberSymbols.parse("-,+,0")
+            ),
+            "Expected 12 tokens but got 3"
         );
     }
 
     @Test
-    public void testParseEmptyNegativeSign() {
-        final IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
-            () -> DecimalNumberSymbols.parse(",+,0,$,.,E,\",\",\"INFINITY\",*,\"NAN\",%,^")
-        );
-
-        this.checkEquals(
-            "Empty \"negativeSign\"",
-            thrown.getMessage()
+    public void testParseEmptyNegativeSignFails() {
+        this.getMessageAndCheck(
+            assertThrows(
+                IllegalArgumentException.class,
+                () -> DecimalNumberSymbols.parse(",+,0,$,.,E,\",\",\"INFINITY\",*,\"NAN\",%,^")
+            ),
+            "Empty \"negativeSign\""
         );
     }
 
     @Test
-    public void testParseInvalidNegativeSign() {
-        final InvalidCharacterException thrown = assertThrows(
-            InvalidCharacterException.class,
-            () -> DecimalNumberSymbols.parse("A,+,0,$,.,E,\",\",\"INFINITY\",*,\"NAN\",%,^")
-        );
-
-        this.checkEquals(
-            "Invalid \"negativeSign\" character 'A'",
-            thrown.getMessage()
+    public void testParseInvalidNegativeSignFails() {
+        this.getMessageAndCheck(
+            assertThrows(
+                InvalidCharacterException.class,
+                () -> DecimalNumberSymbols.parse("A,+,0,$,.,E,\",\",\"INFINITY\",*,\"NAN\",%,^")
+            ),
+            "Invalid \"negativeSign\" character 'A'"
         );
     }
 
@@ -2528,10 +2524,9 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     private void invalidTextExceptionAndCheck(final InvalidTextException thrown,
                                               final String message,
                                               final String label) {
-        this.checkEquals(
-            message,
-            thrown.getMessage(),
-            "message"
+        this.getMessageAndCheck(
+            thrown,
+            message
         );
         this.checkEquals(
             Optional.of(label),
