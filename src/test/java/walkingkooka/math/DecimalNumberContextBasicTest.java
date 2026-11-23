@@ -32,18 +32,18 @@ public final class DecimalNumberContextBasicTest implements ClassTesting2<Decima
     
     private final static Locale LOCALE = Locale.FRANCE;
     private final static DecimalNumberSymbols SYMBOLS = DecimalNumberSymbols.with(
-        '-',
-        '+',
+        "-",
+        "+",
         '0',
         "$",
-        '.',
+        ".",
         "E",
-        ',',
+        ",",
         "INFINITY!",
-        '*',
+        "*",
         "NAN!",
-        '%',
-        '^'
+        "%",
+        "^"
     );
 
     @Test
@@ -102,12 +102,12 @@ public final class DecimalNumberContextBasicTest implements ClassTesting2<Decima
     public void testWith() {
         final DecimalNumberContextBasic context = this.createContext();
         this.currencySymbolAndCheck(context, "$");
-        this.decimalSeparatorAndCheck(context, '.');
+        this.decimalSeparatorAndCheck(context, ".");
         this.exponentSymbolAndCheck(context, "E");
-        this.groupSeparatorAndCheck(context, ',');
-        this.negativeSignAndCheck(context, '-');
-        this.percentSymbolAndCheck(context, '%');
-        this.positiveSignAndCheck(context, '+');
+        this.groupSeparatorAndCheck(context, ",");
+        this.negativeSignAndCheck(context, "-");
+        this.percentSymbolAndCheck(context, "%");
+        this.positiveSignAndCheck(context, "+");
         this.decimalNumberDigitCountAndCheck(
             context,
             DECIMAL_NUMBER_DIGIT_COUNT
@@ -124,7 +124,7 @@ public final class DecimalNumberContextBasicTest implements ClassTesting2<Decima
     public void testToString() {
         this.toStringAndCheck(
             this.createContext(),
-            "decimalNumberDigitNumberCount=10 symbols=negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"INFINITY!\" monetaryDecimalSeparator='*' nanSymbol=\"NAN!\" percentSymbol='%' permillSymbol='^' locale=fr_FR mathContext=precision=7 roundingMode=HALF_EVEN"
+            "decimalNumberDigitNumberCount=10 symbols=negativeSign=\"-\" positiveSign=\"+\" zeroDigit='0' currencySymbol=\"$\" decimalSeparator=\".\" exponentSymbol=\"E\" groupSeparator=\",\" infinitySymbol=\"INFINITY!\" monetaryDecimalSeparator=\"*\" nanSymbol=\"NAN!\" percentSymbol=\"%\" permillSymbol=\"^\" locale=fr_FR mathContext=precision=7 roundingMode=HALF_EVEN"
         );
     }
 
@@ -149,8 +149,8 @@ public final class DecimalNumberContextBasicTest implements ClassTesting2<Decima
     }
     
     @Override
-    public char decimalSeparator() {
-        return '.';
+    public String decimalSeparator() {
+        return ".";
     }
 
     @Override
@@ -159,8 +159,8 @@ public final class DecimalNumberContextBasicTest implements ClassTesting2<Decima
     }
 
     @Override
-    public char groupSeparator() {
-        return ',';
+    public String groupSeparator() {
+        return ",";
     }
 
     @Override
@@ -169,8 +169,8 @@ public final class DecimalNumberContextBasicTest implements ClassTesting2<Decima
     }
 
     @Override
-    public char monetaryDecimalSeparator() {
-        return '*';
+    public String monetaryDecimalSeparator() {
+        return "*";
     }
 
     @Override
@@ -184,23 +184,23 @@ public final class DecimalNumberContextBasicTest implements ClassTesting2<Decima
     }
 
     @Override
-    public char negativeSign() {
-        return '-';
+    public String negativeSign() {
+        return "-";
     }
 
     @Override
-    public char percentSymbol() {
-        return '%';
+    public String percentSymbol() {
+        return "%";
     }
 
     @Override
-    public char permillSymbol() {
-        return '^';
+    public String permillSymbol() {
+        return "^";
     }
 
     @Override
-    public char positiveSign() {
-        return '+';
+    public String positiveSign() {
+        return "+";
     }
 
     @Override

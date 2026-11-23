@@ -75,19 +75,69 @@ public final class DecimalNumberContextAmericanTest implements ClassTesting2<Dec
 
         final DecimalNumberContextAmerican context = DecimalNumberContextAmerican.with(mathContext);
 
-        this.currencySymbolAndCheck(context, symbols.getCurrencySymbol());
-        this.decimalNumberDigitCountAndCheck(context, DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT);
-        this.decimalSeparatorAndCheck(context, symbols.getDecimalSeparator());
-        this.exponentSymbolAndCheck(context, symbols.getExponentSeparator());
-        this.groupSeparatorAndCheck(context, symbols.getGroupingSeparator());
+        this.currencySymbolAndCheck(
+            context,
+            symbols.getCurrencySymbol()
+        );
+        this.decimalNumberDigitCountAndCheck(
+            context,
+            DecimalNumberContext.DEFAULT_NUMBER_DIGIT_COUNT
+        );
+        this.decimalSeparatorAndCheck(
+            context,
+            String.valueOf(
+                symbols.getDecimalSeparator()
+            )
+        );
+        this.exponentSymbolAndCheck(
+            context,
+            String.valueOf(
+                symbols.getExponentSeparator()
+            )
+        );
+        this.groupSeparatorAndCheck(
+            context,
+            String.valueOf(
+                symbols.getGroupingSeparator()
+            )
+        );
         this.infinitySymbolAndCheck(context, symbols.getInfinity());
-        this.monetaryDecimalSeparatorAndCheck(context, symbols.getMonetaryDecimalSeparator());
-        this.nanSymbolAndCheck(context, symbols.getNaN());
-        this.negativeSignAndCheck(context, symbols.getMinusSign());
-        this.percentSymbolAndCheck(context, symbols.getPercent());
-        this.permillSymbolAndCheck(context, symbols.getPerMill());
-        this.positiveSignAndCheck(context, '+');
-        this.zeroDigitAndCheck(context, symbols.getZeroDigit());
+        this.monetaryDecimalSeparatorAndCheck(
+            context,
+            String.valueOf(
+                symbols.getMonetaryDecimalSeparator()
+            )
+        );
+        this.nanSymbolAndCheck(
+            context,
+            symbols.getNaN()
+        );
+        this.negativeSignAndCheck(
+            context,
+            String.valueOf(
+                symbols.getMinusSign()
+            )
+        );
+        this.percentSymbolAndCheck(
+            context,
+            String.valueOf(
+                symbols.getPercent()
+            )
+        );
+        this.permillSymbolAndCheck(
+            context,
+            String.valueOf(
+                symbols.getPerMill()
+            )
+        );
+        this.positiveSignAndCheck(
+            context,
+            String.valueOf('+')
+        );
+        this.zeroDigitAndCheck(
+            context,
+            symbols.getZeroDigit()
+        );
 
         this.hasMathContextAndCheck(context, mathContext);
     }
@@ -104,7 +154,7 @@ public final class DecimalNumberContextAmericanTest implements ClassTesting2<Dec
     public void testToString() {
         this.toStringAndCheck(
             this.createContext(),
-            "locale=en_US \"mathContext\" precision=7 roundingMode=HALF_EVEN \"decimalNumberSymbols\" negativeSign='-' positiveSign='+' zeroDigit='0' currencySymbol=\"$\" decimalSeparator='.' exponentSymbol=\"E\" groupSeparator=',' infinitySymbol=\"∞\" monetaryDecimalSeparator='.' nanSymbol=\"NaN\" percentSymbol='%' permillSymbol='‰'"
+            "locale=en_US \"mathContext\" precision=7 roundingMode=HALF_EVEN \"decimalNumberSymbols\" negativeSign=\"-\" positiveSign=\"+\" zeroDigit='0' currencySymbol=\"$\" decimalSeparator=\".\" exponentSymbol=\"E\" groupSeparator=\",\" infinitySymbol=\"∞\" monetaryDecimalSeparator=\".\" nanSymbol=\"NaN\" percentSymbol=\"%\" permillSymbol=\"‰\""
         );
     }
 
@@ -124,8 +174,8 @@ public final class DecimalNumberContextAmericanTest implements ClassTesting2<Dec
     }
 
     @Override
-    public char decimalSeparator() {
-        return '.';
+    public String decimalSeparator() {
+        return ".";
     }
 
     @Override
@@ -134,8 +184,8 @@ public final class DecimalNumberContextAmericanTest implements ClassTesting2<Dec
     }
 
     @Override
-    public char groupSeparator() {
-        return ',';
+    public String groupSeparator() {
+        return ",";
     }
 
     @Override
@@ -149,8 +199,8 @@ public final class DecimalNumberContextAmericanTest implements ClassTesting2<Dec
     }
 
     @Override
-    public char monetaryDecimalSeparator() {
-        return '.';
+    public String monetaryDecimalSeparator() {
+        return ".";
     }
 
     @Override
@@ -159,23 +209,25 @@ public final class DecimalNumberContextAmericanTest implements ClassTesting2<Dec
     }
 
     @Override
-    public char negativeSign() {
-        return '-';
+    public String negativeSign() {
+        return "-";
     }
 
     @Override
-    public char percentSymbol() {
-        return '%';
+    public String percentSymbol() {
+        return "%";
     }
 
     @Override
-    public char permillSymbol() {
-        return DECIMAL_FORMAT_SYMBOLS.getPerMill();
+    public String permillSymbol() {
+        return String.valueOf(
+            DECIMAL_FORMAT_SYMBOLS.getPerMill()
+        );
     }
 
     @Override
-    public char positiveSign() {
-        return '+';
+    public String positiveSign() {
+        return "+";
     }
 
     @Override

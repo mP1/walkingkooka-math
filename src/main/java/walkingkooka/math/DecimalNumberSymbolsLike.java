@@ -30,7 +30,7 @@ public interface DecimalNumberSymbolsLike extends NumberContextLike {
     /**
      * Returns the decimal separator character
      */
-    char decimalSeparator();
+    String decimalSeparator();
 
     /**
      * The exponent symbol
@@ -40,7 +40,7 @@ public interface DecimalNumberSymbolsLike extends NumberContextLike {
     /**
      * The group separator.
      */
-    char groupSeparator();
+    String groupSeparator();
 
     /**
      * The Infinity symbol character.
@@ -50,7 +50,7 @@ public interface DecimalNumberSymbolsLike extends NumberContextLike {
     /**
      * Returns the monetary decimal separator character
      */
-    char monetaryDecimalSeparator();
+    String monetaryDecimalSeparator();
 
     /**
      * The NAN character.
@@ -60,10 +60,10 @@ public interface DecimalNumberSymbolsLike extends NumberContextLike {
     /**
      * The percentage symbol.
      */
-    char percentSymbol();
+    String percentSymbol();
 
     /**
      * The permill symbol.
      */
-    char permillSymbol();
+    String permillSymbol();
 }

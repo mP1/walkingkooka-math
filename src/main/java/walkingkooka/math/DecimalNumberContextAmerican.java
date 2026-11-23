@@ -95,18 +95,18 @@ final class DecimalNumberContextAmerican implements DecimalNumberContext,
     }
 
     private final static DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS = DecimalNumberSymbols.with(
-        '-',
-        '+',
+        "-",
+        "+",
         '0',
         "$",
-        '.', // decimalSeparator
+        ".", // decimalSeparator
         "E",
-        ',',
+        ",",
         "\u221e", // infinitySymbol
-        '.', // monetaryDecimalSeparator
+        ".", // monetaryDecimalSeparator
         "NaN", // nanSymbols
-        '%',
-        '\u2030' // permillSymbol
+        "%",
+        "\u2030" // permillSymbol
     );
 
     // Object...........................................................................................................

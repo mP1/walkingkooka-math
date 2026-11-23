@@ -54,7 +54,7 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     }
 
     default void decimalSeparatorAndCheck(final DecimalNumberContext context,
-                                          final char decimalSeparator) {
+                                          final String decimalSeparator) {
         this.checkEquals(
             decimalSeparator,
             context.decimalSeparator(),
@@ -72,7 +72,7 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     }
 
     default void groupSeparatorAndCheck(final DecimalNumberContext context,
-                                        final char groupSeparator) {
+                                        final String groupSeparator) {
         this.checkEquals(
             groupSeparator,
             context.groupSeparator(),
@@ -89,8 +89,8 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
         );
     }
     
-    default void monetaryDecimalSeparatorAndCheck(final DecimalNumberContext context, 
-                                                  final char monetaryDecimalSeparator) {
+    default void monetaryDecimalSeparatorAndCheck(final DecimalNumberContext context,
+                                                  final String monetaryDecimalSeparator) {
         this.checkEquals(
             monetaryDecimalSeparator,
             context.monetaryDecimalSeparator(),
@@ -108,7 +108,7 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     }
     
     default void negativeSignAndCheck(final DecimalNumberContext context,
-                                      final char negativeSign) {
+                                      final String negativeSign) {
         this.checkEquals(
             negativeSign,
             context.negativeSign(),
@@ -117,7 +117,7 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     }
 
     default void percentSymbolAndCheck(final DecimalNumberContext context,
-                                       final char percentSymbol) {
+                                       final String percentSymbol) {
         this.checkEquals(
             percentSymbol,
             context.percentSymbol(),
@@ -126,7 +126,7 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     }
 
     default void permillSymbolAndCheck(final DecimalNumberContext context,
-                                       final char permillSymbol) {
+                                       final String permillSymbol) {
         this.checkEquals(
             permillSymbol,
             context.permillSymbol(),
@@ -135,7 +135,7 @@ public interface DecimalNumberContextTesting extends HasLocaleTesting,
     }
 
     default void positiveSignAndCheck(final DecimalNumberContext context,
-                                      final char positiveSign) {
+                                      final String positiveSign) {
         this.checkEquals(
             positiveSign,
             context.positiveSign(),
