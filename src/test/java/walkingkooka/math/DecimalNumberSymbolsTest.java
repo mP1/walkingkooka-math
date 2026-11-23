@@ -2360,9 +2360,7 @@ public final class DecimalNumberSymbolsTest implements HashCodeEqualsDefinedTest
     public void testFromDecimalFormatSymbols() {
         final DecimalNumberSymbols symbols = DecimalNumberSymbols.fromDecimalFormatSymbols(
             '+',
-            DecimalFormatSymbols.getInstance(
-                Locale.forLanguageTag("EN-AU")
-            )
+            DecimalFormatSymbols.getInstance(LOCALE)
         );
 
         this.positiveSignAndCheck(symbols, '+');
