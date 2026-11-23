@@ -27,14 +27,14 @@ public interface HasDecimalNumberSymbolsTesting extends TreePrintableTesting,
     HasLocaleTesting {
 
     DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS = DecimalNumberSymbols.fromDecimalFormatSymbols(
-        "+",
+        '+',
         new DecimalFormatSymbols(LOCALE)
     );
 
     Optional<DecimalNumberSymbols> OPTIONAL_DECIMAL_NUMBER_SYMBOLS = Optional.of(DECIMAL_NUMBER_SYMBOLS);
 
     DecimalNumberSymbols DIFFERENT_DECIMAL_NUMBER_SYMBOLS = DecimalNumberSymbols.fromDecimalFormatSymbols(
-        "+",
+        '+',
         new DecimalFormatSymbols(DIFFERENT_LOCALE)
     );
 

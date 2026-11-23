@@ -17,6 +17,7 @@
 
 package walkingkooka.math;
 
+import walkingkooka.EmptyTextException;
 import walkingkooka.InvalidCharacterException;
 import walkingkooka.InvalidTextException;
 import walkingkooka.ToStringBuilder;
@@ -85,94 +86,95 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         }
 
         return with(
-            strings.get(0),
-            strings.get(1),
-            strings.getCharacter(2),
+            stringToChar(NEGATIVE_SIGN_LABEL, strings.get(0)),
+            stringToChar(POSITIVE_SIGN_LABEL, strings.get(1)),
+            stringToChar(ZERO_DIGIT_LABEL, strings.get(2)),
             strings.get(3), // currencySymbol
-            strings.get(4),
+            stringToChar(DECIMAL_SEPARATOR_LABEL, strings.get(4)),
             strings.get(5), // exponentSymbol
-            strings.get(6),
+            stringToChar(GROUP_SEPARATOR_LABEL, strings.get(6)),
             strings.get(7), // infinitySymbol
-            strings.get(8),
+            stringToChar(MONETARY_DECIMAL_SEPARATOR_LABEL, strings.get(8)),
             strings.get(9), // nanSymbol
-            strings.get(10),
-            strings.get(11)
+            stringToChar(PERCENT_SYMBOL_LABEL, strings.get(10)),
+            stringToChar(PERMILL_SYMBOL_LABEL, strings.get(11))
         );
     }
 
-    public static DecimalNumberSymbols fromDecimalFormatSymbols(final String positiveSign,
+    private static char stringToChar(final String label,
+                                     final String string) {
+        final int length = string.length();
+        switch (length) {
+            case 0:
+                throw new EmptyTextException(label);
+            case 1:
+                return string.charAt(0);
+            default:
+                throw new IllegalArgumentException("Invalid " + label + " expected 1 character but got " + length);
+        }
+    }
+
+    public static DecimalNumberSymbols fromDecimalFormatSymbols(final char positiveSign,
                                                                 final DecimalFormatSymbols symbols) {
         Objects.requireNonNull(symbols, "symbols");
 
         return with(
-            String.valueOf(
-                symbols.getMinusSign()
-            ),
+            symbols.getMinusSign(),
             positiveSign,
             symbols.getZeroDigit(),
             symbols.getCurrencySymbol(),
-            String.valueOf(
-                symbols.getDecimalSeparator()
-            ),
+            symbols.getDecimalSeparator(),
             symbols.getExponentSeparator(),
-            String.valueOf(
-                symbols.getGroupingSeparator()
-            ),
+            symbols.getGroupingSeparator(),
             symbols.getInfinity(),
-            String.valueOf(
-                symbols.getMonetaryDecimalSeparator()
-            ),
+            symbols.getMonetaryDecimalSeparator(),
             symbols.getNaN(),
-            String.valueOf(
-                symbols.getPercent()
-            ),
-            String.valueOf(
-                symbols.getPerMill()
-            )
+            symbols.getPercent(),
+            symbols.getPerMill()
         );
     }
 
 
-    public static DecimalNumberSymbols with(final String negativeSign,
-                                            final String positiveSign,
+    public static DecimalNumberSymbols with(final char negativeSign,
+                                            final char positiveSign,
                                             final char zeroDigit,
                                             final String currencySymbol,
-                                            final String decimalSeparator,
+                                            final char decimalSeparator,
                                             final String exponentSymbol,
-                                            final String groupSeparator,
+                                            final char groupSeparator,
                                             final String infinitySymbol,
-                                            final String monetaryDecimalSeparator,
+                                            final char monetaryDecimalSeparator,
                                             final String nanSymbol,
-                                            final String percentSymbol,
-                                            final String permillSymbol) {
+                                            final char percentSymbol,
+                                            final char permillSymbol) {
         return new DecimalNumberSymbols(
-            checkSymbol(NEGATIVE_SIGN_LABEL, negativeSign),
-            checkSymbol(POSITIVE_SIGN_LABEL, positiveSign),
+            checkCharacter(NEGATIVE_SIGN_LABEL, negativeSign),
+            checkCharacter(POSITIVE_SIGN_LABEL, positiveSign),
             checkZeroDigit(zeroDigit),
             checkString(CURRENCY_SYMBOL_LABEL, currencySymbol),
-            checkSymbol(DECIMAL_SEPARATOR_LABEL, decimalSeparator),
+            checkCharacter(DECIMAL_SEPARATOR_LABEL, decimalSeparator),
             checkString(EXPONENT_SYMBOL_LABEL, exponentSymbol),
-            checkSymbol(GROUP_SEPARATOR_LABEL, groupSeparator),
+            checkCharacter(GROUP_SEPARATOR_LABEL, groupSeparator),
             checkString(INFINITY_SYMBOL_LABEL, infinitySymbol),
-            checkSymbol(MONETARY_DECIMAL_SEPARATOR_LABEL, monetaryDecimalSeparator),
+            checkCharacter(MONETARY_DECIMAL_SEPARATOR_LABEL, monetaryDecimalSeparator),
             checkString(NAN_SYMBOL_LABEL, nanSymbol),
-            checkSymbol(PERCENT_SYMBOL_LABEL, percentSymbol),
+            checkCharacter(PERCENT_SYMBOL_LABEL, percentSymbol),
             checkPermillSymbol(permillSymbol)
         );
     }
 
-    private DecimalNumberSymbols(final String negativeSign,
-                                 final String positiveSign,
+    private DecimalNumberSymbols(final char negativeSign,
+                                 final char positiveSign,
                                  final char zeroDigit,
                                  final String currencySymbol,
-                                 final String decimalSeparator,
+                                 final char decimalSeparator,
                                  final String exponentSymbol,
-                                 final String groupSeparator,
+                                 final char groupSeparator,
                                  final String infinitySymbol,
-                                 final String monetaryDecimalSeparator,
+                                 final char monetaryDecimalSeparator,
                                  final String nanSymbol,
-                                 final String percentSymbol,
-                                 final String permillSymbol) {
+                                 final char percentSymbol,
+                                 final char permillSymbol) {
         this.negativeSign = negativeSign;
         this.positiveSign = positiveSign;
         this.zeroDigit = zeroDigit;
@@ -217,13 +219,11 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         this.nanSymbol = nanSymbol;
     }
 
-    private static void failIfEqual(final String left,
-                                    final String leftLabel,
-                                    final String right,
-                                    final String rightLabel) {
-        if (left.equals(right)) {
+    private static void failIfEqual(final char left, final String leftLabel,
+                                    final char right, final String rightLabel) {
+        if (left == right) {
             throw new InvalidTextException(
-                left,
+                String.valueOf(left),
                 "Duplicate " +
                     CharSequences.quoteAndEscape(rightLabel) +
                     " is same as " +
@@ -242,15 +242,15 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * Returns the negative sign.
      */
     @Override
-    public String negativeSign() {
+    public char negativeSign() {
         return this.negativeSign;
     }
 
-    public DecimalNumberSymbols setNegativeSign(final String negativeSign) {
-        return this.negativeSign.equals(negativeSign) ?
+    public DecimalNumberSymbols setNegativeSign(final char negativeSign) {
+        return this.negativeSign == negativeSign ?
             this :
             new DecimalNumberSymbols(
-                checkString(NEGATIVE_SIGN_LABEL, negativeSign),
+                checkCharacter(NEGATIVE_SIGN_LABEL, negativeSign),
                 this.positiveSign,
                 this.zeroDigit,
                 this.currencySymbol,
@@ -265,7 +265,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             );
     }
 
-    private final String negativeSign;
+    private final char negativeSign;
 
     // positiveSign.....................................................................................................
 
@@ -273,16 +273,16 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * Returns the positive sign.
      */
     @Override
-    public String positiveSign() {
+    public char positiveSign() {
         return this.positiveSign;
     }
 
-    public DecimalNumberSymbols setPositiveSign(final String positiveSign) {
-        return this.positiveSign.equals(positiveSign) ?
+    public DecimalNumberSymbols setPositiveSign(final char positiveSign) {
+        return this.positiveSign == positiveSign ?
             this :
             new DecimalNumberSymbols(
                 this.negativeSign,
-                checkSymbol(POSITIVE_SIGN_LABEL, positiveSign),
+                checkCharacter(POSITIVE_SIGN_LABEL, positiveSign),
                 this.zeroDigit,
                 this.currencySymbol,
                 this.decimalSeparator,
@@ -296,7 +296,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             );
     }
 
-    private final String positiveSign;
+    private final char positiveSign;
 
     // zeroDigit........................................................................................................
 
@@ -366,19 +366,19 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * Returns the decimal separator character
      */
     @Override
-    public String decimalSeparator() {
+    public char decimalSeparator() {
         return this.decimalSeparator;
     }
 
-    public DecimalNumberSymbols setDecimalSeparator(final String decimalSeparator) {
-        return this.decimalSeparator.equals(decimalSeparator) ?
+    public DecimalNumberSymbols setDecimalSeparator(final char decimalSeparator) {
+        return this.decimalSeparator == decimalSeparator ?
             this :
             new DecimalNumberSymbols(
                 this.negativeSign,
                 this.positiveSign,
                 this.zeroDigit,
                 this.currencySymbol,
-                checkSymbol(DECIMAL_SEPARATOR_LABEL, decimalSeparator),
+                checkCharacter(DECIMAL_SEPARATOR_LABEL, decimalSeparator),
                 this.exponentSymbol,
                 this.groupSeparator,
                 this.infinitySymbol,
@@ -389,7 +389,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             );
     }
 
-    private final String decimalSeparator;
+    private final char decimalSeparator;
 
     // exponentSymbol...................................................................................................
 
@@ -428,12 +428,12 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * The group separator.
      */
     @Override
-    public String groupSeparator() {
+    public char groupSeparator() {
         return this.groupSeparator;
     }
 
-    public DecimalNumberSymbols setGroupSeparator(final String groupSeparator) {
-        return this.groupSeparator.equals(groupSeparator) ?
+    public DecimalNumberSymbols setGroupSeparator(final char groupSeparator) {
+        return this.groupSeparator == groupSeparator ?
             this :
             new DecimalNumberSymbols(
                 this.negativeSign,
@@ -442,7 +442,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.currencySymbol,
                 this.decimalSeparator,
                 this.exponentSymbol,
-                checkSymbol(GROUP_SEPARATOR_LABEL, groupSeparator),
+                checkCharacter(GROUP_SEPARATOR_LABEL, groupSeparator),
                 this.infinitySymbol,
                 this.monetaryDecimalSeparator,
                 this.nanSymbol,
@@ -451,7 +451,7 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             );
     }
 
-    private final String groupSeparator;
+    private final char groupSeparator;
 
     // infinitySymbol.........................................................................................................
 
@@ -490,12 +490,12 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * Returns the monetary decimal separator character
      */
     @Override
-    public String monetaryDecimalSeparator() {
+    public char monetaryDecimalSeparator() {
         return this.monetaryDecimalSeparator;
     }
 
-    public DecimalNumberSymbols setMonetaryDecimalSeparator(final String monetaryDecimalSeparator) {
-        return this.monetaryDecimalSeparator.equals(monetaryDecimalSeparator) ?
+    public DecimalNumberSymbols setMonetaryDecimalSeparator(final char monetaryDecimalSeparator) {
+        return this.monetaryDecimalSeparator == monetaryDecimalSeparator ?
             this :
             new DecimalNumberSymbols(
                 this.negativeSign,
@@ -506,14 +506,14 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.exponentSymbol,
                 this.groupSeparator,
                 this.infinitySymbol,
-                checkSymbol(MONETARY_DECIMAL_SEPARATOR_LABEL, monetaryDecimalSeparator),
+                checkCharacter(MONETARY_DECIMAL_SEPARATOR_LABEL, monetaryDecimalSeparator),
                 this.nanSymbol,
                 this.percentSymbol,
                 this.permillSymbol
             );
     }
 
-    private final String monetaryDecimalSeparator;
+    private final char monetaryDecimalSeparator;
 
     // nanSymbol........................................................................................................
 
@@ -552,12 +552,12 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * The percent symbol.
      */
     @Override
-    public String percentSymbol() {
+    public char percentSymbol() {
         return this.percentSymbol;
     }
 
-    public DecimalNumberSymbols setPercentSymbol(final String percentSymbol) {
-        return this.percentSymbol.equals(percentSymbol) ?
+    public DecimalNumberSymbols setPercentSymbol(final char percentSymbol) {
+        return this.percentSymbol == percentSymbol ?
             this :
             new DecimalNumberSymbols(
                 this.negativeSign,
@@ -570,12 +570,12 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.infinitySymbol,
                 this.monetaryDecimalSeparator,
                 this.nanSymbol,
-                checkSymbol(PERCENT_SYMBOL_LABEL, percentSymbol),
+                checkCharacter(PERCENT_SYMBOL_LABEL, percentSymbol),
                 this.permillSymbol
             );
     }
 
-    private final String percentSymbol;
+    private final char percentSymbol;
 
     // permillSymbol....................................................................................................
 
@@ -583,12 +583,12 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      * The permill symbol.
      */
     @Override
-    public String permillSymbol() {
+    public char permillSymbol() {
         return this.permillSymbol;
     }
 
-    public DecimalNumberSymbols setPermillSymbol(final String permillSymbol) {
-        return this.permillSymbol.equals(permillSymbol) ?
+    public DecimalNumberSymbols setPermillSymbol(final char permillSymbol) {
+        return this.permillSymbol == permillSymbol ?
             this :
             new DecimalNumberSymbols(
                 this.negativeSign,
@@ -602,17 +602,20 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
                 this.monetaryDecimalSeparator,
                 this.nanSymbol,
                 this.percentSymbol,
-                checkSymbol(PERMILL_SYMBOL_LABEL, permillSymbol)
+                checkCharacter(PERMILL_SYMBOL_LABEL, permillSymbol)
             );
     }
 
-    private final String permillSymbol;
+    private final char permillSymbol;
 
     // helper...........................................................................................................
 
     private final static CharPredicate PRINTABLE = CharPredicates.asciiControl()
         .negate();
 
+    /**
+     * This {@link CharPredicate} is used to verify all characters except for {@link #permillSymbol()} and {@link #zeroDigit}
+     */
     public final static CharPredicate SYMBOL = PRINTABLE.and(
         CharPredicates.letterOrDigit()
             .negate()
@@ -621,8 +624,21 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             .negate()
     ).setToString("symbol");
 
+    private static char checkCharacter(final String label,
+                                       final char c) {
+        if (false == SYMBOL.test(c)) {
+            throw new InvalidCharacterException(
+                String.valueOf(c), // text
+                0 // position
+            ).setLabel(
+                Optional.of(label)
+            );
+        }
+        return c;
+    }
+
     /**
-     * A {@link Predicate} that may be used to test if a {@link CharSequence} is a valid PERMILL symbol.
+     * A {@link CharPredicate} that may be used to test if a character is a valid PERMILL symbol.
      */
     public final static CharPredicate PERMILL_SYMBOL = PRINTABLE.and(
         CharPredicates.letter()
@@ -632,16 +648,11 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             .negate()
     ).setToString(PERMILL_SYMBOL_LABEL);
 
-    private static String checkPermillSymbol(final String permillSymbol) {
-        int i = 0;
-
-        for (final char c : permillSymbol.toCharArray()) {
-            if (false == PERMILL_SYMBOL.test(c)) {
-                throw new InvalidCharacterException(PERMILL_SYMBOL_LABEL, i);
-            }
-            i++;
+    private static char checkPermillSymbol(final char c) {
+        if (false == PERMILL_SYMBOL.test(c)) {
+            throw new InvalidCharacterException(PERMILL_SYMBOL_LABEL, c);
         }
-        return permillSymbol;
+        return c;
     }
 
     private static String checkString(final String label,
@@ -651,16 +662,6 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
             label,
             PRINTABLE,
             PRINTABLE
-        );
-    }
-
-    private static String checkSymbol(final String label,
-                                      final String value) {
-        return CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(
-            value,
-            label,
-            SYMBOL,
-            SYMBOL
         );
     }
 
@@ -694,20 +695,28 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
      */
     @Override
     public String text() {
-        return CsvStringList.EMPTY.concat(this.negativeSign)
-            .concat(this.positiveSign)
-            .concat(
+        return CsvStringList.EMPTY.concat(
+                String.valueOf(this.negativeSign)
+            ).concat(
+                String.valueOf(this.positiveSign)
+            ).concat(
                 String.valueOf(this.zeroDigit)
             ).concat(this.currencySymbol)
-            .concat(this.decimalSeparator)
-            .concat(this.exponentSymbol)
-            .concat(this.groupSeparator)
+            .concat(
+                String.valueOf(this.decimalSeparator)
+            ).concat(this.exponentSymbol)
+            .concat(
+                String.valueOf(this.groupSeparator)
+            )
             .concat(this.infinitySymbol)
-            .concat(this.monetaryDecimalSeparator)
-            .concat(this.nanSymbol)
-            .concat(this.percentSymbol)
-            .concat(this.permillSymbol)
-            .text();
+            .concat(
+                String.valueOf(this.monetaryDecimalSeparator)
+            ).concat(this.nanSymbol)
+            .concat(
+                String.valueOf(this.percentSymbol)
+            ).concat(
+                String.valueOf(this.permillSymbol)
+            ).text();
     }
 
     // fromProperties...................................................................................................
@@ -716,28 +725,57 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
         Objects.requireNonNull(properties, "properties");
 
         return with(
-            properties.getOrFail(NEGATIVE_SIGN_PROPERTIES_KEY),
-            properties.getOrFail(POSITIVE_SIGN_PROPERTIES_KEY),
+            character(
+                properties,
+                NEGATIVE_SIGN_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                POSITIVE_SIGN_PROPERTIES_KEY
+            ),
             character(
                 properties,
                 ZERO_DIGIT_PROPERTIES_KEY
             ),
-            properties.getOrFail(CURRENCY_SYMBOL_PROPERTIES_KEY),
-            properties.getOrFail(DECIMAL_SEPARATOR_PROPERTIES_KEY),
-            properties.getOrFail(EXPONENT_SYMBOL_PROPERTIES_KEY),
-            properties.getOrFail(GROUP_SEPARATOR_PROPERTIES_KEY),
-            properties.getOrFail(INFINITY_SYMBOL_PROPERTIES_KEY),
-            properties.getOrFail(MONETARY_DECIMAL_SEPARATOR_PROPERTIES_KEY),
-            properties.getOrFail(NAN_SYMBOL_PROPERTIES_KEY),
-            properties.getOrFail(PERCENT_SYMBOL_PROPERTIES_KEY),
-            properties.getOrFail(PERMILL_SYMBOL_PROPERTIES_KEY)
+            properties.getOrFail(
+                CURRENCY_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                DECIMAL_SEPARATOR_PROPERTIES_KEY
+            ),
+            properties.getOrFail(
+                EXPONENT_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                GROUP_SEPARATOR_PROPERTIES_KEY
+            ),
+            properties.getOrFail(
+                INFINITY_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                MONETARY_DECIMAL_SEPARATOR_PROPERTIES_KEY
+            ),
+            properties.getOrFail(
+                NAN_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                PERCENT_SYMBOL_PROPERTIES_KEY
+            ),
+            character(
+                properties,
+                PERMILL_SYMBOL_PROPERTIES_KEY
+            )
         );
     }
 
     private static char character(final Properties properties,
                                   final PropertiesPath key) {
         final String stringValue = properties.getOrFail(key);
-        if (stringValue.length() != 1) {
+        if(stringValue.length() != 1) {
             throw new IllegalArgumentException("Invalid property " + key + " got " + CharSequences.quote(stringValue));
         }
 
@@ -750,40 +788,40 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     public Properties properties() {
         return Properties.EMPTY.set(
             NEGATIVE_SIGN_PROPERTIES_KEY,
-            this.negativeSign
+            String.valueOf(this.negativeSign)
         ).set(
             POSITIVE_SIGN_PROPERTIES_KEY,
-            this.positiveSign
+            String.valueOf(this.positiveSign)
         ).set(
             ZERO_DIGIT_PROPERTIES_KEY,
             String.valueOf(this.zeroDigit)
         ).set(
             CURRENCY_SYMBOL_PROPERTIES_KEY,
-            this.currencySymbol
+            String.valueOf(this.currencySymbol)
         ).set(
             DECIMAL_SEPARATOR_PROPERTIES_KEY,
-            this.decimalSeparator
+            String.valueOf(this.decimalSeparator)
         ).set(
             EXPONENT_SYMBOL_PROPERTIES_KEY,
-            this.exponentSymbol
+            String.valueOf(this.exponentSymbol)
         ).set(
             GROUP_SEPARATOR_PROPERTIES_KEY,
-            this.groupSeparator
+            String.valueOf(this.groupSeparator)
         ).set(
             INFINITY_SYMBOL_PROPERTIES_KEY,
-            this.infinitySymbol
+            String.valueOf(this.infinitySymbol)
         ).set(
             MONETARY_DECIMAL_SEPARATOR_PROPERTIES_KEY,
-            this.monetaryDecimalSeparator
+            String.valueOf(this.monetaryDecimalSeparator)
         ).set(
             NAN_SYMBOL_PROPERTIES_KEY,
-            this.nanSymbol
+            String.valueOf(this.nanSymbol)
         ).set(
             PERCENT_SYMBOL_PROPERTIES_KEY,
-            this.percentSymbol
+            String.valueOf(this.percentSymbol)
         ).set(
             PERMILL_SYMBOL_PROPERTIES_KEY,
-            this.permillSymbol
+            String.valueOf(this.permillSymbol)
         );
     }
 
@@ -826,18 +864,18 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
     }
 
     private boolean equals0(final DecimalNumberSymbols other) {
-        return this.negativeSign.equals(other.negativeSign) &&
-            this.positiveSign.equals(other.positiveSign) &&
+        return this.negativeSign == other.negativeSign &&
+            this.positiveSign == other.positiveSign &&
             this.zeroDigit == other.zeroDigit &&
             this.currencySymbol.equals(other.currencySymbol) &&
-            this.decimalSeparator.equals(other.decimalSeparator) &&
+            this.decimalSeparator == other.decimalSeparator &&
             this.exponentSymbol.equals(other.exponentSymbol) &&
-            this.groupSeparator.equals(other.groupSeparator) &&
+            this.groupSeparator == other.groupSeparator &&
             this.infinitySymbol.equals(other.infinitySymbol) &&
-            this.monetaryDecimalSeparator.equals(other.monetaryDecimalSeparator) &&
+            this.monetaryDecimalSeparator == other.monetaryDecimalSeparator &&
             this.nanSymbol.equals(other.nanSymbol) &&
-            this.percentSymbol.equals(other.percentSymbol) &&
-            this.permillSymbol.equals(other.permillSymbol);
+            this.percentSymbol == other.percentSymbol &&
+            this.permillSymbol == other.permillSymbol;
     }
 
     @Override
@@ -955,22 +993,31 @@ public final class DecimalNumberSymbols implements DecimalNumberSymbolsLike,
 
     @Override
     public CsvStringList csvStringList() {
-        return CsvStringList.EMPTY.concat(this.negativeSign)
-            .concat(this.positiveSign)
-            .concat(
-                String.valueOf(this.zeroDigit)
-            ).concat(this.currencySymbol)
-            .concat(
-                String.valueOf(this.decimalSeparator)
-            ).concat(this.exponentSymbol)
-            .concat(
-                String.valueOf(this.groupSeparator)
-            ).concat(this.infinitySymbol)
-            .concat(
-                String.valueOf(this.monetaryDecimalSeparator)
-            ).concat(this.nanSymbol)
-            .concat(this.percentSymbol)
-            .concat(this.permillSymbol);
+        return CsvStringList.EMPTY.concat(
+            String.valueOf(this.negativeSign)
+        ).concat(
+            String.valueOf(this.positiveSign)
+        ).concat(
+            String.valueOf(this.zeroDigit)
+        ).concat(
+            this.currencySymbol
+        ).concat(
+            String.valueOf(this.decimalSeparator)
+        ).concat(
+            this.exponentSymbol
+        ).concat(
+            String.valueOf(this.groupSeparator)
+        ).concat(
+            this.infinitySymbol
+        ).concat(
+            String.valueOf(this.monetaryDecimalSeparator)
+        ).concat(
+            this.nanSymbol
+        ).concat(
+            String.valueOf(this.percentSymbol)
+        ).concat(
+            String.valueOf(this.permillSymbol)
+        );
     }
 
     // HasTsvStringList.................................................................................................
