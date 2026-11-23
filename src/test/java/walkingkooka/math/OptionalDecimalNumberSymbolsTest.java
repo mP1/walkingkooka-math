@@ -37,7 +37,7 @@ public final class OptionalDecimalNumberSymbolsTest implements ClassTesting<Opti
 
     private final static Optional<DecimalNumberSymbols> DECIMAL_NUMBER_SYMBOLS = Optional.of(
         DecimalNumberSymbols.fromDecimalFormatSymbols(
-            "+",
+            '+',
             new DecimalFormatSymbols(
                 Locale.forLanguageTag("en-AU")
             )
@@ -101,7 +101,7 @@ public final class OptionalDecimalNumberSymbolsTest implements ClassTesting<Opti
             OptionalDecimalNumberSymbols.with(
                 Optional.of(
                     DecimalNumberSymbols.fromDecimalFormatSymbols(
-                        "+",
+                        '+',
                         new DecimalFormatSymbols(
                             Locale.forLanguageTag("en-NZ")
                         )

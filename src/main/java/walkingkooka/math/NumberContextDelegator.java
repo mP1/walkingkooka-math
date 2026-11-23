@@ -22,13 +22,13 @@ import java.util.Locale;
 public interface NumberContextDelegator extends NumberContext {
 
     @Override
-    default String negativeSign() {
+    default char negativeSign() {
         return this.numberContext()
             .negativeSign();
     }
 
     @Override
-    default String positiveSign() {
+    default char positiveSign() {
         return this.numberContext()
             .positiveSign();
     }

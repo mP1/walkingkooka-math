@@ -28,7 +28,7 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public String decimalSeparator() {
+    public char decimalSeparator() {
         throw new UnsupportedOperationException();
     }
 
@@ -38,7 +38,7 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public String groupSeparator() {
+    public char groupSeparator() {
         throw new UnsupportedOperationException();
     }
 
@@ -48,7 +48,7 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public String monetaryDecimalSeparator() {
+    public char monetaryDecimalSeparator() {
         throw new UnsupportedOperationException();
     }
 
@@ -58,22 +58,22 @@ public class FakeDecimalNumberContext implements DecimalNumberContext {
     }
 
     @Override
-    public String negativeSign() {
+    public char negativeSign() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public String percentSymbol() {
+    public char percentSymbol() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public String permillSymbol() {
+    public char permillSymbol() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public String positiveSign() {
+    public char positiveSign() {
         throw new UnsupportedOperationException();
     }
 

@@ -35,7 +35,7 @@ public final class DecimalNumberContextTestingTest implements DecimalNumberConte
     public void testDecimalNumberSymbolsAndCheck() {
         this.decimalSeparatorAndCheck(
             DecimalNumberContexts.american(MATH_CONTEXT),
-            "."
+            '.'
         );
     }
 
@@ -51,7 +51,7 @@ public final class DecimalNumberContextTestingTest implements DecimalNumberConte
     public void testDecimalSeparatorAndCheck() {
         this.decimalSeparatorAndCheck(
             DecimalNumberContexts.american(MATH_CONTEXT),
-            "."
+            '.'
         );
     }
 
@@ -67,7 +67,7 @@ public final class DecimalNumberContextTestingTest implements DecimalNumberConte
     public void testGroupSeparatorAndCheck() {
         this.groupSeparatorAndCheck(
             DecimalNumberContexts.american(MATH_CONTEXT),
-            ","
+            ','
         );
     }
 

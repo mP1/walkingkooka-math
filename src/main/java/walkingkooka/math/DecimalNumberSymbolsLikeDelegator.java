@@ -26,7 +26,7 @@ public interface DecimalNumberSymbolsLikeDelegator extends DecimalNumberSymbolsL
      * Returns the negative sign.
      */
     @Override
-    default String negativeSign() {
+    default char negativeSign() {
         return this.decimalNumberSymbolsLike()
             .negativeSign();
     }
@@ -35,7 +35,7 @@ public interface DecimalNumberSymbolsLikeDelegator extends DecimalNumberSymbolsL
      * Returns the positive sign.
      */
     @Override
-    default String positiveSign() {
+    default char positiveSign() {
         return this.decimalNumberSymbolsLike()
             .positiveSign();
     }
@@ -62,7 +62,7 @@ public interface DecimalNumberSymbolsLikeDelegator extends DecimalNumberSymbolsL
      * Returns the decimal separator character
      */
     @Override
-    default String decimalSeparator() {
+    default char decimalSeparator() {
         return this.decimalNumberSymbolsLike()
             .decimalSeparator();
     }
@@ -80,7 +80,7 @@ public interface DecimalNumberSymbolsLikeDelegator extends DecimalNumberSymbolsL
      * The group separator.
      */
     @Override
-    default String groupSeparator() {
+    default char groupSeparator() {
         return this.decimalNumberSymbolsLike()
             .groupSeparator();
     }
@@ -98,7 +98,7 @@ public interface DecimalNumberSymbolsLikeDelegator extends DecimalNumberSymbolsL
      * Returns the monetary decimal separator character
      */
     @Override
-    default String monetaryDecimalSeparator() {
+    default char monetaryDecimalSeparator() {
         return this.decimalNumberSymbolsLike()
             .monetaryDecimalSeparator();
     }
@@ -116,7 +116,7 @@ public interface DecimalNumberSymbolsLikeDelegator extends DecimalNumberSymbolsL
      * The percent symbol.
      */
     @Override
-    default String percentSymbol() {
+    default char percentSymbol() {
         return this.decimalNumberSymbolsLike()
             .percentSymbol();
     }
@@ -125,7 +125,7 @@ public interface DecimalNumberSymbolsLikeDelegator extends DecimalNumberSymbolsL
      * The permill symbol.
      */
     @Override
-    default String permillSymbol() {
+    default char permillSymbol() {
         return this.decimalNumberSymbolsLike()
             .permillSymbol();
     }

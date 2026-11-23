@@ -25,7 +25,7 @@ public interface NumberContextLike {
     /**
      * Returns the negative sign.
      */
-    String negativeSign();
+    char negativeSign();
 
     /**
      * Returns the numeric value for the given digit or -1 if it is invalid.
@@ -41,7 +41,7 @@ public interface NumberContextLike {
     /**
      * Returns the positive sign.
      */
-    String positiveSign();
+    char positiveSign();
 
     /**
      * Returns the zero digit
