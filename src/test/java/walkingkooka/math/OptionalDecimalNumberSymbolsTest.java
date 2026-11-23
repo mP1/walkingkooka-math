@@ -20,8 +20,7 @@ package walkingkooka.math;
 import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -30,7 +29,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class OptionalDecimalNumberSymbolsTest implements ClassTesting<OptionalDecimalNumberSymbols>,
+public final class OptionalDecimalNumberSymbolsTest implements PublicClassTesting<OptionalDecimalNumberSymbols>,
     HasOptionalDecimalNumberSymbolsTesting,
     HashCodeEqualsDefinedTesting2<OptionalDecimalNumberSymbols>,
     ToStringTesting {
@@ -140,10 +139,5 @@ public final class OptionalDecimalNumberSymbolsTest implements ClassTesting<Opti
     @Override
     public Class<OptionalDecimalNumberSymbols> type() {
         return OptionalDecimalNumberSymbols.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
