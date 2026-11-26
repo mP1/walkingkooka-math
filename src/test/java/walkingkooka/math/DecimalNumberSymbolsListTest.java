@@ -26,6 +26,10 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.text.HasMultiLineTextTesting;
 
+import java.text.DecimalFormatSymbols;
+import java.util.List;
+import java.util.Locale;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<DecimalNumberSymbolsList, DecimalNumberSymbols>,
@@ -139,6 +143,86 @@ public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<
         return DecimalNumberSymbolsList.EMPTY;
     }
 
+    // subList..........................................................................................................
+
+    private final static DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS1 = DECIMAL_NUMBER_SYMBOLS;
+    private final static DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS2 = DIFFERENT_DECIMAL_NUMBER_SYMBOLS;
+    private final static DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS3 = DecimalNumberSymbols.fromDecimalFormatSymbols(
+        '+',
+        new DecimalFormatSymbols(
+            Locale.forLanguageTag("en-CA")
+        )
+    );
+    private final static DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS4 = DecimalNumberSymbols.fromDecimalFormatSymbols(
+        '+',
+        new DecimalFormatSymbols(
+            Locale.forLanguageTag("en-UK")
+        )
+    );
+    private final static DecimalNumberSymbols DECIMAL_NUMBER_SYMBOLS5 = DecimalNumberSymbols.fromDecimalFormatSymbols(
+        '+',
+        new DecimalFormatSymbols(
+            Locale.forLanguageTag("en-US")
+        )
+    );
+
+    private final static List<DecimalNumberSymbols> ELEMENTS = Lists.of(
+        DECIMAL_NUMBER_SYMBOLS1,
+        DECIMAL_NUMBER_SYMBOLS2,
+        DECIMAL_NUMBER_SYMBOLS3,
+        DECIMAL_NUMBER_SYMBOLS4,
+        DECIMAL_NUMBER_SYMBOLS5
+    );
+
+    @Test
+    public void testSubList() {
+        this.subListAndCheck(
+            new DecimalNumberSymbolsList(ELEMENTS),
+            0,
+            2,
+            new DecimalNumberSymbolsList(
+                Lists.of(
+                    DECIMAL_NUMBER_SYMBOLS1,
+                    DECIMAL_NUMBER_SYMBOLS2
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubList2() {
+        this.subListAndCheck(
+            new DecimalNumberSymbolsList(ELEMENTS),
+            2,
+            4,
+            new DecimalNumberSymbolsList(
+                Lists.of(
+                    DECIMAL_NUMBER_SYMBOLS3,
+                    DECIMAL_NUMBER_SYMBOLS4
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubListSubList() {
+        this.subListAndCheck(
+            new DecimalNumberSymbolsList(ELEMENTS)
+                .subList(
+                    1,
+                    4
+                ), // 2, 3, 4
+            1,
+            3,
+            new DecimalNumberSymbolsList(
+                Lists.of(
+                    DECIMAL_NUMBER_SYMBOLS3,
+                    DECIMAL_NUMBER_SYMBOLS4
+                )
+            )
+        );
+    }
+    
     // CsvStringList....................................................................................................
 
     @Test
