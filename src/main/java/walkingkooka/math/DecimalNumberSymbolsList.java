@@ -90,7 +90,7 @@ public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSy
 
     @Override
     public DecimalNumberSymbolsList setElements(final Collection<DecimalNumberSymbols> collection) {
-        DecimalNumberSymbolsList decimalNumberSymbolsList;
+        final DecimalNumberSymbolsList decimalNumberSymbolsList;
 
         if (collection instanceof DecimalNumberSymbolsList) {
             decimalNumberSymbolsList = (DecimalNumberSymbolsList) collection;
@@ -98,16 +98,31 @@ public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSy
             final List<DecimalNumberSymbols> copy = Lists.array();
             copy.addAll(collection);
 
-            if (copy.equals(this)) {
-                decimalNumberSymbolsList = this;
-            } else {
-                decimalNumberSymbolsList = copy.isEmpty() ?
-                    EMPTY :
-                    new DecimalNumberSymbolsList(copy);
-            }
+            decimalNumberSymbolsList = this.equals(copy) ?
+                this :
+                this.replaceDecimalNumberSymbols(copy);
         }
 
         return decimalNumberSymbolsList;
+    }
+
+    @Override
+    public DecimalNumberSymbolsList subList(final int from,
+                                            final int to) {
+        return 0 == from && this.size() == to ?
+            this :
+            this.replaceDecimalNumberSymbols(
+                this.list.subList(
+                    from,
+                    to
+                )
+            );
+    }
+
+    private DecimalNumberSymbolsList replaceDecimalNumberSymbols(final List<DecimalNumberSymbols> decimalNumberSymbolss) {
+        return decimalNumberSymbolss.isEmpty() ?
+            EMPTY :
+            new DecimalNumberSymbolsList(decimalNumberSymbolss);
     }
 
     @Override

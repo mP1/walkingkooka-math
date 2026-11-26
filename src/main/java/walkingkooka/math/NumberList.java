@@ -62,28 +62,40 @@ public final class NumberList extends AbstractList<Number>
 
     @Override
     public NumberList setElements(final Collection<Number> numbers) {
-        Objects.requireNonNull(numbers, "numbers");
-
-        NumberList numberList;
+        final NumberList numberList;
 
         if (numbers instanceof NumberList) {
             numberList = (NumberList) numbers;
         } else {
             final List<Number> copy = Lists.array();
-            copy.addAll(numbers);
+            copy.addAll(
+                Objects.requireNonNull(numbers, "numbers")
+            );
 
-            switch (numbers.size()) {
-                case 0:
-                    numberList = EMPTY;
-                    break;
-                default:
-                    numberList = new NumberList(copy);
-                    break;
-            }
+            numberList = this.equals(copy) ?
+                this :
+                this.replaceNumber(copy);
         }
 
-        return this.equals(numberList) ?
+        return numberList;
+    }
+
+    @Override
+    public NumberList subList(final int from,
+                              final int to) {
+        return 0 == from && this.size() == to ?
             this :
-            numberList;
+            this.replaceNumber(
+                this.numbers.subList(
+                    from,
+                    to
+                )
+            );
+    }
+
+    private NumberList replaceNumber(final List<Number> numbers) {
+        return numbers.isEmpty() ?
+            EMPTY :
+            new NumberList(numbers);
     }
 }

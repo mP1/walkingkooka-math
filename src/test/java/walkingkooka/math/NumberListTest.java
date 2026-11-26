@@ -41,6 +41,8 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class NumberListTest implements ListTesting2<NumberList, Number>,
@@ -50,6 +52,12 @@ public class NumberListTest implements ListTesting2<NumberList, Number>,
     private final static Number NUMBER1 = 111;
 
     private final static Number NUMBER2 = 222;
+
+    private final static Number NUMBER3 = 333;
+
+    private final static Number NUMBER4 = 444;
+
+    private final static Number NUMBER5 = 555;
 
     // list.............................................................................................................
 
@@ -144,6 +152,65 @@ public class NumberListTest implements ListTesting2<NumberList, Number>,
         );
     }
 
+    // subList..........................................................................................................
+
+    private final static List<Number> ELEMENTS = Lists.of(
+        NUMBER1,
+        NUMBER2,
+        NUMBER3,
+        NUMBER4,
+        NUMBER5
+    );
+
+    @Test
+    public void testSubList() {
+        this.subListAndCheck(
+            new NumberList(ELEMENTS),
+            0,
+            2,
+            new NumberList(
+                Lists.of(
+                    NUMBER1,
+                    NUMBER2
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubList2() {
+        this.subListAndCheck(
+            new NumberList(ELEMENTS),
+            2,
+            4,
+            new NumberList(
+                Lists.of(
+                    NUMBER3,
+                    NUMBER4
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubListSubList() {
+        this.subListAndCheck(
+            new NumberList(ELEMENTS)
+                .subList(
+                    1,
+                    4
+                ), // 2, 3, 4
+            1,
+            3,
+            new NumberList(
+                Lists.of(
+                    NUMBER3,
+                    NUMBER4
+                )
+            )
+        );
+    }
+    
     @Override
     public NumberList createList() {
         return new NumberList(
