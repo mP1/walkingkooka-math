@@ -24,6 +24,7 @@ import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.list.StringLikeList;
 import walkingkooka.collect.list.TsvStringList;
+import walkingkooka.text.CharSequences;
 
 import java.util.AbstractList;
 import java.util.Collection;
@@ -63,9 +64,11 @@ public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSy
         return EMPTY.setElements(
             stringLikeList.stream()
                 .map(
-                    (String string) -> DecimalNumberSymbols.fromStringsLikeList(
-                        parser.apply(string)
-                    )
+                    (final String string) -> CharSequences.isNullOrEmpty(string) ?
+                        null :
+                        DecimalNumberSymbols.fromStringsLikeList(
+                            parser.apply(string)
+                        )
                 ).collect(Collectors.toList())
         );
     }
@@ -131,8 +134,10 @@ public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSy
     public CsvStringList csvStringList() {
         return CsvStringList.makeCsvStringList(
             this,
-            (final DecimalNumberSymbols decimalNumberSymbols) -> decimalNumberSymbols.csvStringList()
-                .text()
+            (final DecimalNumberSymbols decimalNumberSymbols) -> null != decimalNumberSymbols ?
+                decimalNumberSymbols.csvStringList()
+                    .text() :
+                ""
         ).setAllLineBreaks();
     }
 
