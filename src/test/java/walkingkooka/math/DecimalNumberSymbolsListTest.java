@@ -162,6 +162,22 @@ public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<
         );
     }
 
+    @Test
+    public void testSetElementsWithDifferentListIncludesNull() {
+        final List<DecimalNumberSymbols> list = Lists.of(
+            null,
+            DIFFERENT_DECIMAL_NUMBER_SYMBOLS
+        );
+
+        this.setElementsAndCheck(
+            new DecimalNumberSymbolsList(
+                Lists.of(DECIMAL_NUMBER_SYMBOLS)
+            ),
+            list,
+            new DecimalNumberSymbolsList(list)
+        );
+    }
+
     @Override
     public DecimalNumberSymbolsList createList() {
         return DecimalNumberSymbolsList.EMPTY;
