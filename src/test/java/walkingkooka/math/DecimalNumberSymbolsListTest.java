@@ -67,6 +67,18 @@ public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<
         );
     }
 
+    @Test
+    public void testFromCsvStringListWithNotEmptyListIncludesNull() {
+        final DecimalNumberSymbolsList list = DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+            .concat(null)
+            .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS);
+
+        this.fromCsvStringListAndCheck(
+            list.csvStringList(),
+            list
+        );
+    }
+
     private void fromCsvStringListAndCheck(final CsvStringList csvStringList,
                                            final DecimalNumberSymbolsList expected) {
         this.checkEquals(
@@ -239,6 +251,18 @@ public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<
             DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
                 .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS),
             "\"-,+,0,$,.,e,\"\",\"\",∞,.,NaN,%,‰\"\n" +
+                "\"-,+,0,$,.,E,\"\",\"\",∞,.,NaN,%,‰\"\n"
+        );
+    }
+
+    @Test
+    public void testCsvStringListWithNotEmptyListIncludesNull() {
+        this.csvStringListAndCheck(
+            DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+                .concat(null)
+                .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS),
+            "\"-,+,0,$,.,e,\"\",\"\",∞,.,NaN,%,‰\"\n" +
+                "\n" +
                 "\"-,+,0,$,.,E,\"\",\"\",∞,.,NaN,%,‰\"\n"
         );
     }
