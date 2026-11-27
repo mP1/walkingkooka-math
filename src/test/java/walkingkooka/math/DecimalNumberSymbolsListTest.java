@@ -116,6 +116,18 @@ public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<
         );
     }
 
+    @Test
+    public void testFromTsvStringListWithNotEmptyListIncludesNull() {
+        final DecimalNumberSymbolsList list = DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+            .concat(null)
+            .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS);
+
+        this.fromTsvStringListAndCheck(
+            list.tsvStringList(),
+            list
+        );
+    }
+
     private void fromTsvStringListAndCheck(final TsvStringList tsvStringList,
                                            final DecimalNumberSymbolsList expected) {
         this.checkEquals(
@@ -295,6 +307,18 @@ public final class DecimalNumberSymbolsListTest implements ImmutableListTesting<
             DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
                 .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS),
             "\"-\t+\t0\t$\t.\te\t,\t∞\t.\tNaN\t%\t‰\"\n" +
+                "\"-\t+\t0\t$\t.\tE\t,\t∞\t.\tNaN\t%\t‰\"\n"
+        );
+    }
+
+    @Test
+    public void testTsvStringListWithNotEmptyListIncludesNull() {
+        this.tsvStringListAndCheck(
+            DecimalNumberSymbolsList.EMPTY.concat(DECIMAL_NUMBER_SYMBOLS)
+                .concat(null)
+                .concat(DIFFERENT_DECIMAL_NUMBER_SYMBOLS),
+            "\"-\t+\t0\t$\t.\te\t,\t∞\t.\tNaN\t%\t‰\"\n" +
+                "\n" +
                 "\"-\t+\t0\t$\t.\tE\t,\t∞\t.\tNaN\t%\t‰\"\n"
         );
     }

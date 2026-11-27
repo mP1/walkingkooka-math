@@ -147,8 +147,10 @@ public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSy
     public TsvStringList tsvStringList() {
         return TsvStringList.makeTsvStringList(
             this,
-            (final DecimalNumberSymbols decimalNumberSymbols) -> decimalNumberSymbols.tsvStringList()
-                .text()
+            (final DecimalNumberSymbols decimalNumberSymbols) -> null != decimalNumberSymbols ?
+                decimalNumberSymbols.tsvStringList()
+                    .text() :
+                ""
         ).setAllLineBreaks();
     }
 }
