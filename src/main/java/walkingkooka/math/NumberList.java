@@ -23,7 +23,6 @@ import walkingkooka.collect.list.Lists;
 import java.util.AbstractList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * An immutable list of {@link Number} that allows null elements.
@@ -61,23 +60,14 @@ public final class NumberList extends AbstractList<Number>
     }
 
     @Override
-    public NumberList setElements(final Collection<Number> numbers) {
-        final NumberList numberList;
-
-        if (numbers instanceof NumberList) {
-            numberList = (NumberList) numbers;
-        } else {
-            final List<Number> copy = Lists.array();
-            copy.addAll(
-                Objects.requireNonNull(numbers, "numbers")
+    public NumberList setElements(final Collection<Number> elements) {
+        return (NumberList)
+            this.setElementsMaybeCreate(
+                elements,
+                (final Collection<Number> collection) -> collection instanceof NumberList,
+                this::elementCheck,
+                this::replaceNumbers
             );
-
-            numberList = this.equals(copy) ?
-                this :
-                this.replaceNumber(copy);
-        }
-
-        return numberList;
     }
 
     @Override
@@ -85,7 +75,7 @@ public final class NumberList extends AbstractList<Number>
                               final int to) {
         return 0 == from && this.size() == to ?
             this :
-            this.replaceNumber(
+            this.replaceNumbers(
                 this.numbers.subList(
                     from,
                     to
@@ -93,7 +83,7 @@ public final class NumberList extends AbstractList<Number>
             );
     }
 
-    private NumberList replaceNumber(final List<Number> numbers) {
+    private NumberList replaceNumbers(final List<Number> numbers) {
         return numbers.isEmpty() ?
             EMPTY :
             new NumberList(numbers);

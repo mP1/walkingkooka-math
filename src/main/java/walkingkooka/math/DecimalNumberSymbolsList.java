@@ -89,21 +89,14 @@ public final class DecimalNumberSymbolsList extends AbstractList<DecimalNumberSy
     }
 
     @Override
-    public DecimalNumberSymbolsList setElements(final Collection<DecimalNumberSymbols> collection) {
-        final DecimalNumberSymbolsList decimalNumberSymbolsList;
-
-        if (collection instanceof DecimalNumberSymbolsList) {
-            decimalNumberSymbolsList = (DecimalNumberSymbolsList) collection;
-        } else {
-            final List<DecimalNumberSymbols> copy = Lists.array();
-            copy.addAll(collection);
-
-            decimalNumberSymbolsList = this.equals(copy) ?
-                this :
-                this.replaceDecimalNumberSymbols(copy);
-        }
-
-        return decimalNumberSymbolsList;
+    public DecimalNumberSymbolsList setElements(final Collection<DecimalNumberSymbols> elements) {
+        return (DecimalNumberSymbolsList)
+            this.setElementsMaybeCreate(
+                elements,
+                (final Collection<DecimalNumberSymbols> collection) -> collection instanceof DecimalNumberSymbolsList,
+                this::elementCheck,
+                this::replaceDecimalNumberSymbols
+            );
     }
 
     @Override
